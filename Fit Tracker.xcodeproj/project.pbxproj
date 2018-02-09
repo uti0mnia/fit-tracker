@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		53ADD1F2A311B0FC989B9ACF /* Pods_Fit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
-		C9775CFD2020441C00C2E9B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* ViewController.swift */; };
+		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
 		C9775D022020441C00C2E9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9775D012020441C00C2E9B3 /* Assets.xcassets */; };
 		C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775D032020441C00C2E9B3 /* LaunchScreen.storyboard */; };
-		C9CDFDC72020468C00FEE905 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDC62020468C00FEE905 /* Exercise.swift */; };
+		C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDC62020468C00FEE905 /* FTExercise.swift */; };
+		C9CDFDCB20204ADF00FEE905 /* FTWorkoutExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDCA20204ADF00FEE905 /* FTWorkoutExercise.swift */; };
+		C9CDFDCD20204F9800FEE905 /* FTWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDCC20204F9800FEE905 /* FTWorkout.swift */; };
+		C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */; };
+		C9CDFDD620218D7500FEE905 /* FTRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C9775CFC2020441C00C2E9B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainViewController.swift; sourceTree = "<group>"; };
 		C9775CFF2020441C00C2E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9775D012020441C00C2E9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9775D042020441C00C2E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9775D062020441C00C2E9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9CDFDC62020468C00FEE905 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		C9CDFDC62020468C00FEE905 /* FTExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExercise.swift; sourceTree = "<group>"; };
+		C9CDFDCA20204ADF00FEE905 /* FTWorkoutExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutExercise.swift; sourceTree = "<group>"; };
+		C9CDFDCC20204F9800FEE905 /* FTWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkout.swift; sourceTree = "<group>"; };
+		C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFactoryManager.swift; sourceTree = "<group>"; };
+		C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmManager.swift; sourceTree = "<group>"; };
 		DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B50096F82319BCEFF02D81 /* Pods-Fit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,15 +88,43 @@
 		C9775CF92020441C00C2E9B3 /* Fit Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */,
-				C9775CFC2020441C00C2E9B3 /* ViewController.swift */,
+				C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */,
 				C9775CFE2020441C00C2E9B3 /* Main.storyboard */,
+				C9CDFDC920204AD100FEE905 /* Database */,
+				C9CDFDD720219C2800FEE905 /* Helper */,
+				C9CDFDCE202050FC00FEE905 /* Supporting Files */,
+			);
+			path = "Fit Tracker";
+			sourceTree = "<group>";
+		};
+		C9CDFDC920204AD100FEE905 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				C9CDFDC62020468C00FEE905 /* FTExercise.swift */,
+				C9CDFDCA20204ADF00FEE905 /* FTWorkoutExercise.swift */,
+				C9CDFDCC20204F9800FEE905 /* FTWorkout.swift */,
+				C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */,
+				C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		C9CDFDCE202050FC00FEE905 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */,
 				C9775D012020441C00C2E9B3 /* Assets.xcassets */,
 				C9775D032020441C00C2E9B3 /* LaunchScreen.storyboard */,
 				C9775D062020441C00C2E9B3 /* Info.plist */,
-				C9CDFDC62020468C00FEE905 /* Exercise.swift */,
 			);
-			path = "Fit Tracker";
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9CDFDD720219C2800FEE905 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +262,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9775CFD2020441C00C2E9B3 /* ViewController.swift in Sources */,
+				C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */,
+				C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */,
 				C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */,
-				C9CDFDC72020468C00FEE905 /* Exercise.swift in Sources */,
+				C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */,
+				C9CDFDCD20204F9800FEE905 /* FTWorkout.swift in Sources */,
+				C9CDFDCB20204ADF00FEE905 /* FTWorkoutExercise.swift in Sources */,
+				C9CDFDD620218D7500FEE905 /* FTRealmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
