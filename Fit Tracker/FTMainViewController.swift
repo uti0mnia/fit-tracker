@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainViewController: UIViewController {
-    
-    
     
 }
 
