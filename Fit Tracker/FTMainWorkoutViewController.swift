@@ -38,7 +38,7 @@ class FTMainWorkoutViewController: UIViewController {
         // New workout button.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(_:)))
         addButton.tintColor = Colours.mainPrimary
-        navigationController?.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem = addButton
     }
     
     @objc private func addButton(_ sender: Any) {
