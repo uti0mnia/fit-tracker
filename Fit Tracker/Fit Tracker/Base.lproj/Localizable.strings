@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Fit Tracker
+
+  Created by Casey McLewin on 2018-02-08.
+  Copyright © 2018 Casey McLewin. All rights reserved.
+*/
+
+// Main Tab Bar
+"FTMainTabBar_Home" = "Profile";
+"FTMainTabBar_Workout" = "Workout";
+"FTMainTabBar_Log" = "Logs";
+"FTMainTabBar_Settings" = "Settings";
+
+// Home View Controller
+"FTHomeViewController_Exercise" = "Exercises";
+
+// Workout View Controller
+"FTMainWorkoutViewController_QuickStart" = "Start Empty Workout";

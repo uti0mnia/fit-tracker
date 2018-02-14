@@ -9,7 +9,13 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+class FTMainViewController: UITabBarController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        viewControllers = [UINavigationController(rootViewController: FTMainWorkoutViewController())]
+    }
     
 }
 
