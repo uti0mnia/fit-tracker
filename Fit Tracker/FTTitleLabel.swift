@@ -23,7 +23,7 @@ class FTTitleLabel: UILabel {
     }
     
     private func commonInit() {
-        self.textColor = Colours.darkPrimary
+        self.textColor = Colours.darkTextColour
         self.font = Fonts.title
     }
     

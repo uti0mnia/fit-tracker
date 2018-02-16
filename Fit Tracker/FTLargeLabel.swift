@@ -1,15 +1,15 @@
 //
-//  FTSubLabel.swift
+//  FTLargeLabel.swift
 //  Fit Tracker
 //
-//  Created by Casey McLewin on 2018-02-12.
+//  Created by Casey McLewin on 2018-02-14.
 //  Copyright © 2018 Casey McLewin. All rights reserved.
 //
 
 import UIKit
 
-class FTBodyLabel: UILabel {
-    
+class FTLargeLabel: UILabel {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,7 +24,6 @@ class FTBodyLabel: UILabel {
     
     private func commonInit() {
         self.textColor = Colours.darkTextColour
-        self.font = Fonts.body
+        self.font = Fonts.large
     }
-    
 }

@@ -33,6 +33,8 @@ class Layout: NSObject {
     // Buttons.
     public static let buttonCornerRadius: CGFloat = 4
     public static let buttonShadowOffset = CGSize(width: 0.5, height: 0.5)
-    public static let simpleButtonHeight: CGFloat = 44
+    public static let defaultButtonHeight: CGFloat = 44
+    public static let smallButtonHeight: CGFloat = 30
+    public static let contourButtonBorderWidth: CGFloat = 1.5
     
 }

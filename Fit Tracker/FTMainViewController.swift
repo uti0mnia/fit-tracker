@@ -11,10 +11,23 @@ import SnapKit
 
 class FTMainViewController: UITabBarController {
     
+    private let workoutVC = FTMainWorkoutViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [UINavigationController(rootViewController: FTMainWorkoutViewController())]
+        setupVisuals()
+        setupViewControllers()
+    }
+    
+    private func setupVisuals() {
+        tabBar.tintColor = Colours.tabBarTintColour
+        tabBar.barTintColor = Colours.tabBarBarTintColour
+    }
+    
+    private func setupViewControllers() {
+        workoutVC.tabBarItem = UITabBarItem(title: "FTMainTabBar_Workout".localized, image: #imageLiteral(resourceName: "barbell"), selectedImage: #imageLiteral(resourceName: "barbell"))
+        viewControllers = [UINavigationController(rootViewController: workoutVC)]
     }
     
 }

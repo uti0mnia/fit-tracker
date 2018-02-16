@@ -29,7 +29,7 @@ class FTHomeDataView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = Colours.lightPrimary
+        backgroundColor = Colours.lightForeground
         
         addSubview(mainLabel)
         addSubview(subLabel)

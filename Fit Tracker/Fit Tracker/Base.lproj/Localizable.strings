@@ -16,4 +16,7 @@
 "FTHomeViewController_Exercise" = "Exercises";
 
 // Workout View Controller
-"FTMainWorkoutViewController_QuickStart" = "Start Empty Workout";
+"FTMainWorkoutViewController_QuickStart" = "Start Free Workout";
+"FTMainWorkoutViewController_Title" = "Workout";
+"FTMainWorkoutCollectionViewCell_Start" = "Start";
+"FTMainWorkoutCollectionViewCell_Edit" = "Edit";

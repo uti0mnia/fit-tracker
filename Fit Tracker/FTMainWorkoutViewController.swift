@@ -8,22 +8,41 @@
 
 import UIKit
 
-class FTMainWorkoutViewController: UIViewController {
+class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
+    
+    private static let workoutIdentifier = "workoutIdentifier"
+    
+    let workout = FTWorkout()
 
-    private let quickStackButton = FTButtonFactory.simpleButton()
+    private let quickStackButton = FTButtonFactory.simpleRoundedButton()
+    private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        workout.name = "Push A"
+        
         setupVisuals()
     }
     
     private func setupVisuals() {
         // Navigation bar.
-        self.title = "Workouts"
+        self.title = "FTMainWorkoutViewController_Title".localized
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        }
+        
+        // UITableView, note that if the tableView isn't the first view added, the scroll to hide large title doesn't work.
+        view.addSubview(tableView)
+        tableView.estimatedRowHeight = 150
+        tableView.dataSource = self
+        tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
+        tableView.dataSource = self
+        tableView.snp.makeConstraints() { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.bottom.equalTo(quickStackButton.snp.top).offset(-Layout.defaultPadding)
         }
         
         // Quick add button.
@@ -31,18 +50,34 @@ class FTMainWorkoutViewController: UIViewController {
         quickStackButton.snp.makeConstraints() { make in
             make.left.right.equalToSuperview().inset(Layout.defaultPadding)
             make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Layout.defaultPadding)
-            make.height.equalTo(Layout.simpleButtonHeight)
+            make.height.equalTo(Layout.defaultButtonHeight)
         }
-        quickStackButton.setTitle(NSLocalizedString("FTMainWorkoutViewController_QuickStart", comment: ""), for: .normal)
+        quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".localized, for: .normal)
         
         // New workout button.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(_:)))
         addButton.tintColor = Colours.mainPrimary
         self.navigationItem.rightBarButtonItem = addButton
+        
     }
     
     @objc private func addButton(_ sender: Any) {
         
     }
-
+    
+    // MARK: - UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTMainWorkoutTableViewCell
+        cell.workout = workout
+        return cell
+    }
 }

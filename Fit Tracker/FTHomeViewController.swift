@@ -24,7 +24,7 @@ class FTHomeViewController: UIViewController {
     }
     
     private func setupVisuals() {
-        view.backgroundColor = Colours.lightSecondary
+        view.backgroundColor = Colours.lightBackground
         
         // Navigation bar.
         self.title = "Home"
@@ -55,7 +55,7 @@ class FTHomeViewController: UIViewController {
     
     private func setupData() {
         // Exercise data.
-        exerciseDataView.mainLabel.text = NSLocalizedString("FTHomeViewController_Exercise", comment: "")
+        exerciseDataView.mainLabel.text = "FTHomeViewController_Exercise".localized
         exerciseDataView.subLabel.text = "\(20)"
     }
     
