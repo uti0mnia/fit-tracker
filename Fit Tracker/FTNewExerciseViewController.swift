@@ -13,6 +13,8 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     private static let sectionCount = 3
     private static let sectionRowCount: [Int] = [1, 2, 1]
     private static let cellHeight: CGFloat = 60
+    
+    private let detailVC = FTNewExerciseDetailViewController()
 
     // Set as lazy so I can use self lol.
     private lazy var tableView: UITableView = { [unowned self] in
@@ -20,8 +22,6 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         tv.rowHeight = FTNewExerciseViewController.cellHeight
         tv.dataSource = self
         tv.delegate = self
-        tv.alwaysBounceVertical = true
-        tv.showsVerticalScrollIndicator = false
         return tv
     }()
     private var name: String?
@@ -105,7 +105,20 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = indexPath.section
+        let row = indexPath.row
+        var opts: [CustomStringConvertible]!
         
+        if section == 1 {
+            opts = (row == 0) ? FTExercise.BodyPart.array : FTExercise.Category.array
+        } else {
+            opts = FTNewExerciseViewController.restTimers
+        }
+        
+        detailVC.options = opts
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - UITextFieldDelegate

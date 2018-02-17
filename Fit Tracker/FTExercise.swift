@@ -10,12 +10,64 @@ import Foundation
 import RealmSwift
 
 @objc class FTExercise: Object  {
-    public enum BodyPart: Int {
-        case chest, back, shoulders, arms, abs, legs, none
+    public enum BodyPart: Int, CustomStringConvertible {
+        case abs, arms, back, chest, legs, shoulders, none
+        
+        public var description: String {
+            switch self {
+            case .abs:
+                return "Abs"
+            case .arms:
+                return "Arms"
+            case .back:
+                return "Back"
+            case .chest:
+                return "Chest"
+            case .legs:
+                return "Legs"
+            case .shoulders:
+                return "Shoulders"
+            case .none:
+                return "None"
+            }
+        }
+        
+        public static var array: [BodyPart] {
+            return [.abs, .arms, .back, .chest, .legs, .shoulders, .none]
+        }
     }
 
-    public enum Category: Int {
-        case barbell, dumbbell, machine, weighted, assisted, reps, cardio, duration, none
+    public enum Category: Int, CustomStringConvertible {
+        case assisted, barbell, cardio, dumbbell, duration, machine, other, reps, weighted, none
+        
+        public var description: String {
+            switch self {
+            case .assisted:
+                return "Assisted"
+            case .barbell:
+                return "Barbell"
+            case .cardio:
+                return "Cardio"
+            case .dumbbell:
+                return "Dumbbell"
+            case .duration:
+                return "Duration"
+            case .machine:
+                return "Machine"
+            case .other:
+                return "Other"
+            case .reps:
+                return "Reps"
+            case .weighted:
+                return "Weighted"
+            case .none:
+                return "None"
+            }
+        }
+        
+        public static var array: [Category] {
+            return [.assisted, .barbell, .cardio, .dumbbell, .duration, .machine, .other, .reps, .weighted, .none]
+        }
     }
     
     @objc dynamic public var name = ""
