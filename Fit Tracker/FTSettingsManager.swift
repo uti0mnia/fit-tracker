@@ -12,11 +12,14 @@ import UIKit
 class FTSettingsManager: NSObject {
     public enum Settings: String {
         case primaryColour
+        case prefferedRestTime
     }
     
     public static let shared = FTSettingsManager()
     
     private let user = UserDefaults.standard
+    
+    private override init() {}
     
     public var primaryColour: UIColor {
         get {
@@ -33,7 +36,17 @@ class FTSettingsManager: NSObject {
         }
     }
     
-    private override init() {}
+    // In seconds.
+    public var prefferedRestTime: Int {
+        get {
+            let time = user.integer(forKey: Settings.prefferedRestTime.rawValue)
+            return (time <= 0) ? Globals.defaultRestTime : time
+        }
+        set {
+            user.set(newValue, forKey: Settings.prefferedRestTime.rawValue)
+        }
+    }
+    
     
     
 }

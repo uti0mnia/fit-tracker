@@ -1,5 +1,5 @@
 //
-//  FTLargeLabel.swift
+//  FTSizedLabel.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-14.
@@ -8,7 +8,13 @@
 
 import UIKit
 
-class FTLargeLabel: UILabel {
+class FTSizedLabel: UILabel, FTSimpleFontSize {
+    
+    public var textSize: SimpleFontSize = .large {
+        didSet {
+            self.font = textSize.font
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +30,5 @@ class FTLargeLabel: UILabel {
     
     private func commonInit() {
         self.textColor = Colours.darkTextColour
-        self.font = Fonts.large
     }
 }

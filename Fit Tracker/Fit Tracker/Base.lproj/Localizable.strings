@@ -20,3 +20,14 @@
 "FTMainWorkoutViewController_Title" = "Workout";
 "FTMainWorkoutCollectionViewCell_Start" = "Start";
 "FTMainWorkoutCollectionViewCell_Edit" = "Edit";
+
+// New exercise controller
+"FTNewExerciseViewController_Title" = "New Exericse";
+"FTNewExerciseViewController_ExercisePlaceholder" = "Exercise Name";
+"FTNewExerciseViewController_BodyPart" = "Body Part";
+"FTNewExerciseViewController_Category" = "Category";
+"FTNewExerciseViewController_RestTimerValue" = "Default (%@)";
+"FTNewExerciseViewController_TestTimer" = "Rest Timer";
+
+// General
+"FTGeneral_None" = "None";
