@@ -13,7 +13,7 @@ class FTButtonFactory: NSObject {
     private override init() { }
     
     // The default button to be used around the app.
-    public static func simpleRoundedButton() -> UIButton {
+    public static func simpleButton(cornerRadius: CGFloat = 0) -> UIButton {
         let button = UIButton()
         button.setTitleColor(Colours.mainPrimary, for: .normal)
         button.titleLabel?.font = Fonts.simpleButton
@@ -21,7 +21,7 @@ class FTButtonFactory: NSObject {
         
         button.layer.shadowOffset = Layout.buttonShadowOffset
         button.layer.shadowColor = Colours.shadow.cgColor
-        button.layer.cornerRadius = Layout.buttonCornerRadius
+        button.layer.cornerRadius = cornerRadius
         
         return button
     }
@@ -40,7 +40,7 @@ class FTButtonFactory: NSObject {
     
     // A button with a contour
     public static func countourRoundedButton() -> UIButton {
-        let button = FTButtonFactory.simpleRoundedButton()
+        let button = FTButtonFactory.simpleButton(cornerRadius: Layout.buttonCornerRadius)
         
         button.backgroundColor = UIColor.white
         button.layer.borderColor = Colours.mainPrimary.cgColor

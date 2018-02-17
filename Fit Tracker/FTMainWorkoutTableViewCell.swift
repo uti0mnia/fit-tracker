@@ -29,6 +29,7 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
             }
             
             nameLabel.text = workout.name
+            descriptionLabel.text = "This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text."
             
         }
     }
@@ -61,20 +62,20 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
         contentView.addSubview(editButton)
         
         nameLabel.snp.makeConstraints() { make in
-            make.left.top.right.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.top.right.equalToSuperview().inset(Layout.largeInsets)
         }
         descriptionLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.right.equalToSuperview().inset(Layout.largeInsets)
             make.top.equalTo(nameLabel.snp.bottom).offset(Layout.defaultPadding)
         }
         startButton.snp.makeConstraints() { make in
-            make.right.bottom.equalToSuperview().inset(Layout.defaultInsets)
-            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.right.bottom.equalToSuperview().inset(Layout.largeInsets)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(Layout.defaultPadding)
             make.left.equalTo(editButton.snp.right).offset(Layout.largePadding)
         }
         editButton.snp.makeConstraints() { make in
-            make.left.bottom.equalToSuperview().inset(Layout.defaultInsets)
-            make.top.equalTo(descriptionLabel.snp.bottom)
+            make.left.bottom.equalToSuperview().inset(Layout.largeInsets)
+            make.top.equalTo(startButton)
             make.width.equalTo(startButton.snp.width)
         }
     }

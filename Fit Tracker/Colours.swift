@@ -28,6 +28,7 @@ class Colours: NSObject {
     
     // TextColours
     public static let darkTextColour = UIColor.flatBlackDark
+    public static let darkGrayTextColour = UIColor.flatGrayDark
     public static let grayTextColour = UIColor.flatGrayDark
     public static let lightTextColour = Colours.lightBackground
     

@@ -14,7 +14,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     
     let workout = FTWorkout()
 
-    private let quickStackButton = FTButtonFactory.simpleRoundedButton()
+    private let quickStackButton = FTButtonFactory.simpleButton()
     private let tableView = UITableView()
     
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     }
     
     private func setupVisuals() {
+        view.backgroundColor = Colours.lightBackground
         // Navigation bar.
         self.title = "FTMainWorkoutViewController_Title".localized
         if #available(iOS 11.0, *) {
@@ -42,7 +43,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         tableView.snp.makeConstraints() { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(topLayoutGuide.snp.bottom)
-            make.bottom.equalTo(quickStackButton.snp.top).offset(-Layout.defaultPadding)
         }
         
         // Quick add button.
@@ -50,6 +50,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         quickStackButton.snp.makeConstraints() { make in
             make.left.right.equalToSuperview().inset(Layout.defaultPadding)
             make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Layout.defaultPadding)
+            make.top.equalTo(tableView.snp.bottom).offset(Layout.defaultPadding)
             make.height.equalTo(Layout.defaultButtonHeight)
         }
         quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".localized, for: .normal)

@@ -11,16 +11,16 @@ import UIKit
 class Fonts: NSObject {
     
     // General.
-    static let title = UIFont.boldSystemFont(ofSize: 24)
-    static let subtitle = UIFont.systemFont(ofSize: 18, weight: .medium)
-    static let body = UIFont.systemFont(ofSize: 12)
-    static let description = UIFont.systemFont(ofSize: 11)
+    static let title = UIFont.systemFont(ofSize: 26, weight: .bold)
+    static let subtitle = UIFont.systemFont(ofSize: 24, weight: .medium)
+    static let body = UIFont.systemFont(ofSize: 20)
+    static let description = UIFont.systemFont(ofSize: 16)
     
-    static let large = UIFont.systemFont(ofSize: 16, weight: .medium)
+    static let large = UIFont.systemFont(ofSize: 16)
     static let medium = UIFont.systemFont(ofSize: 14)
     static let small = UIFont.systemFont(ofSize: 11)
     
     // Buttons.
-    static let simpleButton = UIFont.boldSystemFont(ofSize: 14)
-    static let strongButton = UIFont.boldSystemFont(ofSize: 12)
+    static let simpleButton = UIFont.systemFont(ofSize: 16, weight: .bold)
+    static let strongButton = UIFont.systemFont(ofSize: 14, weight: .heavy)
 }
