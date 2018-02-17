@@ -12,9 +12,16 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     private static let sectionCount = 3
     private static let sectionRowCount: [Int] = [1, 2, 1]
-    private static let cellHeight: CGFloat = 60
+    private static let cellHeight: CGFloat = 50
+    
+    private static let restTimers = [15, 30, 45, 60, 90, 120, 300]
     
     private let detailVC = FTNewExerciseDetailViewController()
+    
+    private var saveButton: UIBarButtonItem?
+    private var dismissButton: UIBarButtonItem?
+    
+    private var exerciseNameCell: FTTextFieldTableViewCell?
 
     // Set as lazy so I can use self lol.
     private lazy var tableView: UITableView = { [unowned self] in
@@ -36,15 +43,29 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupVisuals()
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChangeNotification(_:)), name: .UITextFieldTextDidChange, object: nil)
     }
     
     private func setupVisuals() {
         title = "FTNewExerciseViewController_Title".localized
+        view.backgroundColor = Colours.lightBackground
         
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
+        saveButton?.tintColor = Colours.mainPrimary
+        saveButton?.isEnabled = false
+        self.navigationItem.rightBarButtonItem = saveButton!
+        
+        dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
+        dismissButton?.tintColor = Colours.mainPrimary
+        self.navigationItem.leftBarButtonItem = dismissButton!
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints() { make in
@@ -62,13 +83,38 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    private func newChooseValueCell(title: String, detail: String) -> FTNewExerciseSelectionCell {
-        let cell = FTNewExerciseSelectionCell()
+    private func newChooseValueCell(title: String, detail: String) -> FTExerciseSelectionCell {
+        let cell = FTExerciseSelectionCell()
         cell.mainLabel.text = title
         cell.detailLabel.text = detail
         return cell
     }
+    
+    private func updateSaveButton() {
+        guard let cell = exerciseNameCell else {
+            return
+        }
+        
+        if cell.textField.text != nil && cell.textField.text != "" {
+            saveButton?.isEnabled = true
+        } else {
+            saveButton?.isEnabled = false
+        }
+    }
 
+    @objc private func didTapSaveButton(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            self.exerciseNameCell?.textField.text = nil
+        }
+    }
+    
+    @objc private func textFieldDidChangeNotification(_ notification: Notification) {
+        updateSaveButton()
+    }
     
     // MARK: - UITableViewDataSource
     
@@ -86,7 +132,10 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         // Exercise name.
         if section == 0 {
-            return newTextFieldCell()
+            if exerciseNameCell == nil {
+                exerciseNameCell = newTextFieldCell()
+            }
+            return exerciseNameCell!
         }
         
         // Body Part/Category.
@@ -123,4 +172,5 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - UITextFieldDelegate
 
+    
 }

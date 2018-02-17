@@ -30,11 +30,8 @@ class FTMainViewController: UITabBarController {
     private func setupViewControllers() {
         workoutVC.tabBarItem = UITabBarItem(title: "FTMainTabBar_Workout".localized, image: #imageLiteral(resourceName: "barbell"), selectedImage: #imageLiteral(resourceName: "barbell"))
         viewControllers = [
-            UINavigationController(rootViewController: workoutVC),
-            UINavigationController(rootViewController: exerciseVC)
+            UINavigationController(rootViewController: workoutVC)
             ]
-        
-        
     }
     
 }

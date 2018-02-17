@@ -56,13 +56,13 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".localized, for: .normal)
         
         // New workout button.
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton(_:)))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         addButton.tintColor = Colours.mainPrimary
         self.navigationItem.rightBarButtonItem = addButton
         
     }
     
-    @objc private func addButton(_ sender: Any) {
+    @objc private func didTapAddButton(_ sender: Any) {
         
     }
     

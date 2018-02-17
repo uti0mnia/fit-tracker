@@ -1,5 +1,5 @@
 //
-//  FTNewExerciseSelectionCell.swift
+//  FTExerciseSelectionCell.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FTNewExerciseSelectionCell: UITableViewCell {
+class FTExerciseSelectionCell: UITableViewCell {
     
     public let mainLabel = FTSizedLabel()
     public let detailLabel = FTSizedLabel()
