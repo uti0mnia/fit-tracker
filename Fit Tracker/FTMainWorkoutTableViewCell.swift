@@ -9,8 +9,8 @@
 import UIKit
 
 protocol FTMainWorkoutCollectionViewCellDelegate: class {
-    func mainWokroutCollectionViewCellDidTapStart(_ cell: FTMainWorkoutTableViewCell, forWorkout: FTWorkout)
-    func mainWokroutCollectionViewCellDidTapEdit(_ cell: FTMainWorkoutTableViewCell, forWorkout: FTWorkout)
+    func mainWokroutCollectionViewCellDidTapStart(_ cell: FTMainWorkoutTableViewCell, forWorkout: FTWorkoutTemplate)
+    func mainWokroutCollectionViewCellDidTapEdit(_ cell: FTMainWorkoutTableViewCell, forWorkout: FTWorkoutTemplate)
 }
 
 class FTMainWorkoutTableViewCell: UITableViewCell {
@@ -22,15 +22,24 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
     public let startButton = FTButtonFactory.strongRoundedButton()
     public let editButton = FTButtonFactory.countourRoundedButton()
     
-    public var workout: FTWorkout? {
+    public var workout: FTWorkoutTemplate? {
         didSet {
             guard let workout = workout else {
                 return
             }
             
             nameLabel.text = workout.name
-            descriptionLabel.text = "This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text. This is a lot of text."
-            
+            var details = ""
+            var separator = ""
+            workout.exercises.ft_forEach() { exercise in
+                
+                assert(exercise.exercise != nil, "FTExerciseTemplate should never have an empty exercise property")
+                
+                let detailStr = String(format: "%@ (x%i)", exercise.exercise?.name ?? "", exercise.setTemplates.count)
+                details += "\(separator)\(detailStr)"
+                separator = " • "
+            }
+            descriptionLabel.text = details
         }
     }
     

@@ -33,7 +33,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private let workout: FTWorkout
     
     
-    required init(name: String? = nil, workout: FTWorkout {
+    required init(name: String? = nil, workout: FTWorkout) {
         self.workout = workout
         
         super.init(nibName: nil, bundle: nil)

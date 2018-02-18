@@ -31,7 +31,7 @@
 		C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */; };
 		C9EC4E44203553FD00CF538F /* FTSizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E43203553FD00CF538F /* FTSizedLabel.swift */; };
 		C9EC4E462035559E00CF538F /* FTDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E452035559E00CF538F /* FTDescriptionLabel.swift */; };
-		C9EC4E4D20355C8A00CF538F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E4C20355C8A00CF538F /* StringExtension.swift */; };
+		C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */; };
 		C9EC4E512037D34900CF538F /* FTNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E502037D34900CF538F /* FTNewExerciseViewController.swift */; };
 		C9EC4E552037DA9D00CF538F /* FTTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */; };
 		C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */; };
@@ -47,6 +47,7 @@
 		C9EC4E6D2039412100CF538F /* FTExerciseTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6C2039412100CF538F /* FTExerciseTemplate.swift */; };
 		C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */; };
 		C9EC4E72203941B300CF538F /* FTSetTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E71203941B300CF538F /* FTSetTemplate.swift */; };
+		C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +80,7 @@
 		C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		C9EC4E43203553FD00CF538F /* FTSizedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSizedLabel.swift; sourceTree = "<group>"; };
 		C9EC4E452035559E00CF538F /* FTDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDescriptionLabel.swift; sourceTree = "<group>"; };
-		C9EC4E4C20355C8A00CF538F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTStringExtension.swift; sourceTree = "<group>"; };
 		C9EC4E502037D34900CF538F /* FTNewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNewExerciseViewController.swift; sourceTree = "<group>"; };
 		C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDefaultTextField.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		C9EC4E6C2039412100CF538F /* FTExerciseTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseTemplate.swift; sourceTree = "<group>"; };
 		C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutLog.swift; sourceTree = "<group>"; };
 		C9EC4E71203941B300CF538F /* FTSetTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetTemplate.swift; sourceTree = "<group>"; };
+		C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmExetension.swift; sourceTree = "<group>"; };
 		DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B50096F82319BCEFF02D81 /* Pods-Fit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,7 +271,8 @@
 		C9EC4E4B20355C6300CF538F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC4E4C20355C8A00CF538F /* StringExtension.swift */,
+				C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */,
+				C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */,
 				C9EC4E672038C1E600CF538F /* FTEditWorkoutTableViewCell.swift in Sources */,
 				C9EC4E462035559E00CF538F /* FTDescriptionLabel.swift in Sources */,
+				C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */,
 				C9EC4E5B2037E44C00CF538F /* Globals.swift in Sources */,
 				C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */,
 				C9EC4E632037F88500CF538F /* FTNewExerciseDetailViewController.swift in Sources */,
@@ -499,7 +503,7 @@
 				C9EC4E72203941B300CF538F /* FTSetTemplate.swift in Sources */,
 				C9EC4E6520389FD900CF538F /* FTEditWorkoutViewController.swift in Sources */,
 				C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */,
-				C9EC4E4D20355C8A00CF538F /* StringExtension.swift in Sources */,
+				C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */,
 				C9CDFDD620218D7500FEE905 /* FTRealmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
