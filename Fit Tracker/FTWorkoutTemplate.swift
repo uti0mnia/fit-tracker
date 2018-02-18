@@ -11,7 +11,9 @@ import RealmSwift
 
 class FTWorkoutTemplate: Object {
     @objc dynamic public var name = ""
+    @objc dynamic public var isDefault = false // For included workouts.
     
     // Relationships
-    public var exercises = List<FTWorkoutExercise>()
+    public var workoutLogs = List<FTWorkoutLog>()
+    public var exercises = List<FTExerciseTemplate>()
 }

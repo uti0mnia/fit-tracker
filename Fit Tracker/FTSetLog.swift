@@ -11,4 +11,9 @@ import RealmSwift
 
 class FTSetLog: Object {
     
+    @objc dynamic public var weight: Double = 0
+    @objc dynamic public var reps = 0
+    
+    public let exerciseLog = LinkingObjects(fromType: FTExerciseLog.self, property: "setLogs")
+    
 }

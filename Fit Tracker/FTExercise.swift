@@ -76,8 +76,8 @@ import RealmSwift
     @objc dynamic public var restTime = 0
     
     // Relationships
-    public var workoutExercise = List<FTExerciseLog>()
-    public var workout = List<FTExerciseTemplate>()
+    public var exerciseLogs = LinkingObjects(fromType: FTExerciseLog.self, property: "exercise")
+    public let exerciseTemplates = LinkingObjects(fromType: FTExerciseTemplate.self, property: "exercise")
     
     public func getBodyPart() -> BodyPart? {
         return BodyPart.init(rawValue: self.bodyPart)

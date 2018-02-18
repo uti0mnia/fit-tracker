@@ -11,4 +11,11 @@ import RealmSwift
 
 class FTExerciseLog: Object {
     
+    @objc dynamic public var date = Date()
+    
+    // Relationships.
+    @objc dynamic var exercise: FTExercise?
+    public let setLogs = List<FTSetLog>()
+    
+    public var workoutLog = LinkingObjects(fromType: FTWorkoutLog.self, property: "exerciseLog")
 }

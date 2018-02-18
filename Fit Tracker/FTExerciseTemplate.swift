@@ -11,4 +11,8 @@ import RealmSwift
 
 class FTExerciseTemplate: Object {
     
+    @objc dynamic public var exercise: FTExercise?
+    
+    public let setTemplates = List<FTSetTemplate>()
+    public let workoutTemplates = LinkingObjects(fromType: FTWorkoutTemplate.self, property: "exercises")
 }

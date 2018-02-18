@@ -188,8 +188,8 @@
 			children = (
 				C9CDFDC62020468C00FEE905 /* FTExercise.swift */,
 				C9EC4E74203941D800CF538F /* Log */,
-				C9EC4E702039415B00CF538F /* Manager */,
 				C9EC4E73203941C900CF538F /* Templates */,
+				C9EC4E702039415B00CF538F /* Manager */,
 			);
 			name = Database;
 			sourceTree = "<group>";

@@ -11,5 +11,9 @@ import RealmSwift
 
 class FTSetTemplate: Object {
     
+    @objc dynamic var weight: Double = 0
+    @objc dynamic var reps = 0
+    
+    public let exerciseTemplate = LinkingObjects(fromType: FTExerciseTemplate.self, property: "setTemplates")
 }
 
