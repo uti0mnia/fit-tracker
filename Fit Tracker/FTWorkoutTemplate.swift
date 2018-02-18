@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class FTWorkout: Object {
+class FTWorkoutTemplate: Object {
     @objc dynamic public var name = ""
     
     // Relationships

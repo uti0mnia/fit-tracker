@@ -55,7 +55,7 @@ class FTHomeViewController: UIViewController {
     
     private func setupData() {
         // Exercise data.
-        exerciseDataView.mainLabel.text = "FTHomeViewController_Exercise".localized
+        exerciseDataView.mainLabel.text = "FTHomeViewController_Exercise".ft_localized
         exerciseDataView.subLabel.text = "\(20)"
     }
     

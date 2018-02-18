@@ -46,10 +46,10 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
     }
     
     private func setupVisuals() {
-        startButton.setTitle("FTMainWorkoutCollectionViewCell_Start".localized, for: .normal)
+        startButton.setTitle("FTMainWorkoutCollectionViewCell_Start".ft_localized, for: .normal)
         startButton.addTarget(self, action: #selector(didTapStartButton(_:)), for: .touchUpInside)
         
-        editButton.setTitle("FTMainWorkoutCollectionViewCell_Edit".localized, for: .normal)
+        editButton.setTitle("FTMainWorkoutCollectionViewCell_Edit".ft_localized, for: .normal)
         editButton.addTarget(self, action: #selector(didTapEditButton(_:)), for: .touchUpInside)
         
         descriptionLabel.numberOfLines = 0

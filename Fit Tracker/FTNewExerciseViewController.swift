@@ -18,6 +18,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     private let detailVC = FTNewExerciseDetailViewController()
     
+    // Refactor to be lazy init so they're not optional.
     private var saveButton: UIBarButtonItem?
     private var dismissButton: UIBarButtonItem?
     
@@ -55,7 +56,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     private func setupVisuals() {
-        title = "FTNewExerciseViewController_Title".localized
+        title = "FTNewExerciseViewController_Title".ft_localized
         view.backgroundColor = Colours.lightBackground
         
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
@@ -78,7 +79,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     private func newTextFieldCell() -> FTTextFieldTableViewCell {
         let cell = FTTextFieldTableViewCell()
         cell.textField.delegate = self
-        cell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".localized
+        cell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".ft_localized
         cell.textField.text = self.name
         return cell
     }
@@ -140,14 +141,14 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         // Body Part/Category.
         if section == 1 {
-            let title = (row == 0) ? "FTNewExerciseViewController_BodyPart".localized : "FTNewExerciseViewController_Category".localized
-            return newChooseValueCell(title: title, detail: "FTGeneral_None".localized)
+            let title = (row == 0) ? "FTNewExerciseViewController_BodyPart".ft_localized : "FTNewExerciseViewController_Category".ft_localized
+            return newChooseValueCell(title: title, detail: "FTGeneral_None".ft_localized)
         }
         
         // Timer.
-        let title = "FTNewExerciseViewController_TestTimer".localized
+        let title = "FTNewExerciseViewController_TestTimer".ft_localized
         let time = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.prefferedRestTime)
-        let detail = String(format: "FTNewExerciseViewController_RestTimerValue".localized, time)
+        let detail = String(format: "FTNewExerciseViewController_RestTimerValue".ft_localized, time)
         return newChooseValueCell(title: title, detail: detail)
     }
     

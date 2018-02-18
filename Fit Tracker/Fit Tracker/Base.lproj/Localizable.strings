@@ -31,3 +31,8 @@
 
 // General
 "FTGeneral_None" = "None";
+"FTGeneral_Next" = "Next";
+"FTGeneral_Finish" = "Finish";
+
+// Edit workout VC
+"FTEditWorkoutViewController_NewWorkout" = "New Workout";

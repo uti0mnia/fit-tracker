@@ -74,11 +74,10 @@ import RealmSwift
     @objc dynamic public var bodyPart = BodyPart.none.rawValue
     @objc dynamic public var category = Category.none.rawValue
     @objc dynamic public var restTime = 0
-    @objc dynamic public var created = Date()
     
     // Relationships
-    public var workoutExercise = List<FTWorkoutExercise>()
-    public var workout = List<FTWorkout>()
+    public var workoutExercise = List<FTExerciseLog>()
+    public var workout = List<FTExerciseTemplate>()
     
     public func getBodyPart() -> BodyPart? {
         return BodyPart.init(rawValue: self.bodyPart)

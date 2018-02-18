@@ -28,7 +28,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     private func setupVisuals() {
         view.backgroundColor = Colours.lightBackground
         // Navigation bar.
-        self.title = "FTMainWorkoutViewController_Title".localized
+        self.title = "FTMainWorkoutViewController_Title".ft_localized
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationItem.largeTitleDisplayMode = .automatic
@@ -53,7 +53,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
             make.top.equalTo(tableView.snp.bottom).offset(Layout.defaultPadding)
             make.height.equalTo(Layout.defaultButtonHeight)
         }
-        quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".localized, for: .normal)
+        quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".ft_localized, for: .normal)
         
         // New workout button.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
