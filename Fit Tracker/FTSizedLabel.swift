@@ -15,6 +15,12 @@ class FTSizedLabel: UILabel, FTSimpleFontSize {
             self.font = textSize.font
         }
     }
+    
+    convenience init(textSize: SimpleFontSize) {
+        self.init(frame: CGRect.zero)
+        
+        self.textSize = textSize
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

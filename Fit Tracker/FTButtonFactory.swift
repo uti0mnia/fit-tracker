@@ -48,4 +48,16 @@ class FTButtonFactory: NSObject {
         
         return button
     }
+    
+    // A square button with custom colour.
+    public static func destructiveButton(cornerRadius: CGFloat = 0) -> UIButton {
+        let button = UIButton()
+        button.setTitleColor(Colours.destructiveColour, for: .normal)
+        button.titleLabel?.font = Fonts.simpleButton
+        button.backgroundColor = Colours.lightForeground
+        
+        button.layer.cornerRadius = cornerRadius
+        
+        return button
+    }
 }

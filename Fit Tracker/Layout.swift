@@ -37,4 +37,7 @@ class Layout: NSObject {
     public static let smallButtonHeight: CGFloat = 30
     public static let contourButtonBorderWidth: CGFloat = 1.5
     
+    // Specific
+    public static let setMultiplySize: CGFloat = 12
+    
 }

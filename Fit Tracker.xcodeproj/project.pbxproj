@@ -48,6 +48,9 @@
 		C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */; };
 		C9EC4E72203941B300CF538F /* FTSetTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E71203941B300CF538F /* FTSetTemplate.swift */; };
 		C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */; };
+		C9EC4E782039EC8300CF538F /* FTButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */; };
+		C9EC4E7A2039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */; };
+		C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E7D203BFADD00CF538F /* FTDoubleExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +100,9 @@
 		C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutLog.swift; sourceTree = "<group>"; };
 		C9EC4E71203941B300CF538F /* FTSetTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetTemplate.swift; sourceTree = "<group>"; };
 		C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmExetension.swift; sourceTree = "<group>"; };
+		C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTButtonTableViewCell.swift; sourceTree = "<group>"; };
+		C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditWorkoutSetTableViewCell.swift; sourceTree = "<group>"; };
+		C9EC4E7D203BFADD00CF538F /* FTDoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDoubleExtension.swift; sourceTree = "<group>"; };
 		DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fit_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B50096F82319BCEFF02D81 /* Pods-Fit Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +251,7 @@
 				C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */,
 				C9EC4E6420389FD900CF538F /* FTEditWorkoutViewController.swift */,
 				C9EC4E662038C1E600CF538F /* FTEditWorkoutTableViewCell.swift */,
+				C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -273,6 +280,7 @@
 			children = (
 				C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */,
 				C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */,
+				C9EC4E7D203BFADD00CF538F /* FTDoubleExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */,
+				C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -480,6 +489,7 @@
 				C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */,
 				C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */,
 				C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */,
+				C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */,
 				C9EC4E552037DA9D00CF538F /* FTTextFieldTableViewCell.swift in Sources */,
 				C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */,
 				C9EC4E672038C1E600CF538F /* FTEditWorkoutTableViewCell.swift in Sources */,
@@ -490,12 +500,14 @@
 				C9EC4E632037F88500CF538F /* FTNewExerciseDetailViewController.swift in Sources */,
 				C9EC4E6B203940F400CF538F /* FTSetLog.swift in Sources */,
 				C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */,
+				C9EC4E782039EC8300CF538F /* FTButtonTableViewCell.swift in Sources */,
 				C9CDFDCD20204F9800FEE905 /* FTWorkoutTemplate.swift in Sources */,
 				C9A65FCA202D78EB00C3AC72 /* Layout.swift in Sources */,
 				C9EC4E3C20340C5400CF538F /* FTButtonFactory.swift in Sources */,
 				C9EC4E512037D34900CF538F /* FTNewExerciseViewController.swift in Sources */,
 				C9EC4E5F2037EF4100CF538F /* FTExerciseSelectionCell.swift in Sources */,
 				C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */,
+				C9EC4E7A2039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift in Sources */,
 				C9EC4E6D2039412100CF538F /* FTExerciseTemplate.swift in Sources */,
 				C9EC4E5D2037E6F200CF538F /* FTStringFormatter.swift in Sources */,
 				C9D2DA142032ABC700A1FB1C /* FTBodyLabel.swift in Sources */,

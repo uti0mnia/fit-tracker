@@ -147,7 +147,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         // Timer.
         let title = "FTNewExerciseViewController_TestTimer".ft_localized
-        let time = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.prefferedRestTime)
+        let time = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.preferredRestTime)
         let detail = String(format: "FTNewExerciseViewController_RestTimerValue".ft_localized, time)
         return newChooseValueCell(title: title, detail: detail)
     }

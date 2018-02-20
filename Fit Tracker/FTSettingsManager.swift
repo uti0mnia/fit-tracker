@@ -12,7 +12,22 @@ import UIKit
 class FTSettingsManager: NSObject {
     public enum Settings: String {
         case primaryColour
-        case prefferedRestTime
+        case preferredRestTime
+        case preferredWeight
+    }
+    
+    public enum Weight: Int {
+        case lbs
+        case kilo
+        
+        var string: String {
+            switch self {
+            case .lbs:
+                return "lbs"
+            case .kilo:
+                return "kg"
+            }
+        }
     }
     
     public static let shared = FTSettingsManager()
@@ -37,16 +52,24 @@ class FTSettingsManager: NSObject {
     }
     
     // In seconds.
-    public var prefferedRestTime: Int {
+    public var preferredRestTime: Int {
         get {
-            let time = user.integer(forKey: Settings.prefferedRestTime.rawValue)
-            return (time <= 0) ? Globals.defaultRestTime : time
+            let time = user.integer(forKey: Settings.preferredRestTime.rawValue)
+            return (time < 0) ? Globals.defaultRestTime : time
         }
         set {
-            user.set(newValue, forKey: Settings.prefferedRestTime.rawValue)
+            user.set(newValue, forKey: Settings.preferredRestTime.rawValue)
         }
     }
     
+    public var preferredWeight: Weight {
+        get {
+            return Weight.init(rawValue: user.integer(forKey: Settings.preferredWeight.rawValue)) ?? .lbs
+        }
+        set {
+            user.set(preferredWeight.rawValue, forKey: Settings.preferredWeight.rawValue)
+        }
+    }
     
     
 }

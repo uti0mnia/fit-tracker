@@ -26,4 +26,7 @@ class Fonts: NSObject {
     
     // TextFields.
     static let defaultTextField = UIFont.systemFont(ofSize: 14)
+    
+    // Specific
+    static let setDescription = UIFont.boldSystemFont(ofSize: 13)
 }
