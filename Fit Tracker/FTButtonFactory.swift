@@ -27,7 +27,7 @@ class FTButtonFactory: NSObject {
     }
     
     // A button that makes it obvious what we want.
-    public static func strongRoundedButton() -> UIButton {
+    public static func strongButton(cornerRadius: CGFloat = 0) -> UIButton {
         let button = UIButton()
         button.setTitleColor(Colours.lightTextColour, for: .normal)
         button.titleLabel?.font = Fonts.simpleButton
@@ -39,7 +39,7 @@ class FTButtonFactory: NSObject {
     }
     
     // A button with a contour
-    public static func countourRoundedButton() -> UIButton {
+    public static func countourButton(cornerRadius: CGFloat = 0) -> UIButton {
         let button = FTButtonFactory.simpleButton(cornerRadius: Layout.buttonCornerRadius)
         
         button.backgroundColor = UIColor.white

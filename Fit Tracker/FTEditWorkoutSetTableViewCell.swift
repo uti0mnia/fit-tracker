@@ -10,6 +10,7 @@ import UIKit
 
 protocol FTEditWorkoutSetTableViewCellDelegate: class {
     func editWorkoutSetTableViewCell(_ cell: FTEditWorkoutSetTableViewCell, didTapRemoveForSet: FTSetTemplate)
+//    func editWorkoutSetTableViewCell(_ cell: FTEditWorkoutSetTableViewCell, didSwipeToDeleteSet: FTSetTemplate)
 }
 
 class FTEditWorkoutSetTableViewCell: UITableViewCell {
