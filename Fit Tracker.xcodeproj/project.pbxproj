@@ -20,7 +20,7 @@
 		C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDC62020468C00FEE905 /* FTExercise.swift */; };
 		C9CDFDCD20204F9800FEE905 /* FTWorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDCC20204F9800FEE905 /* FTWorkoutTemplate.swift */; };
 		C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */; };
-		C9CDFDD620218D7500FEE905 /* FTRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */; };
+		C9CDFDD620218D7500FEE905 /* FTRealmFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */; };
 		C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */; };
 		C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */; };
 		C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */; };
@@ -72,7 +72,7 @@
 		C9CDFDC62020468C00FEE905 /* FTExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExercise.swift; sourceTree = "<group>"; };
 		C9CDFDCC20204F9800FEE905 /* FTWorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutTemplate.swift; sourceTree = "<group>"; };
 		C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFactoryManager.swift; sourceTree = "<group>"; };
-		C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmManager.swift; sourceTree = "<group>"; };
+		C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFetchController.swift; sourceTree = "<group>"; };
 		C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeViewController.swift; sourceTree = "<group>"; };
 		C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeDataView.swift; sourceTree = "<group>"; };
 		C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTitleLabel.swift; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */,
-				C9CDFDD520218D7500FEE905 /* FTRealmManager.swift */,
+				C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -516,7 +516,7 @@
 				C9EC4E6520389FD900CF538F /* FTEditWorkoutViewController.swift in Sources */,
 				C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */,
 				C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */,
-				C9CDFDD620218D7500FEE905 /* FTRealmManager.swift in Sources */,
+				C9CDFDD620218D7500FEE905 /* FTRealmFetchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
