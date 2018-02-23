@@ -13,8 +13,8 @@
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
 		C9775D022020441C00C2E9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9775D012020441C00C2E9B3 /* Assets.xcassets */; };
 		C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775D032020441C00C2E9B3 /* LaunchScreen.storyboard */; };
-		C9A65FCA202D78EB00C3AC72 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FC9202D78EB00C3AC72 /* Layout.swift */; };
-		C9A65FCE202D79A500C3AC72 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* Colours.swift */; };
+		C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */; };
+		C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* FTColours.swift */; };
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
 		C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9A65FD3202D821B00C3AC72 /* Localizable.strings */; };
 		C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDC62020468C00FEE905 /* FTExercise.swift */; };
@@ -25,7 +25,7 @@
 		C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */; };
 		C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */; };
 		C9D2DA142032ABC700A1FB1C /* FTBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA132032ABC700A1FB1C /* FTBodyLabel.swift */; };
-		C9D2DA182032B3E500A1FB1C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA172032B3E500A1FB1C /* Fonts.swift */; };
+		C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA172032B3E500A1FB1C /* FTFonts.swift */; };
 		C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */; };
 		C9EC4E3C20340C5400CF538F /* FTButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E3B20340C5400CF538F /* FTButtonFactory.swift */; };
 		C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */; };
@@ -35,7 +35,7 @@
 		C9EC4E512037D34900CF538F /* FTNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E502037D34900CF538F /* FTNewExerciseViewController.swift */; };
 		C9EC4E552037DA9D00CF538F /* FTTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */; };
 		C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */; };
-		C9EC4E5B2037E44C00CF538F /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E5A2037E44C00CF538F /* Globals.swift */; };
+		C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */; };
 		C9EC4E5D2037E6F200CF538F /* FTStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E5C2037E6F200CF538F /* FTStringFormatter.swift */; };
 		C9EC4E5F2037EF4100CF538F /* FTExerciseSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E5E2037EF4100CF538F /* FTExerciseSelectionCell.swift */; };
 		C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */; };
@@ -62,8 +62,8 @@
 		C9775D012020441C00C2E9B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9775D042020441C00C2E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9775D062020441C00C2E9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9A65FC9202D78EB00C3AC72 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		C9A65FCD202D79A500C3AC72 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTLayout.swift; sourceTree = "<group>"; };
+		C9A65FCD202D79A500C3AC72 /* FTColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTColours.swift; sourceTree = "<group>"; };
 		C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsManager.swift; sourceTree = "<group>"; };
 		C9A65FD1202D81B300C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		C9A65FD2202D81B300C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeDataView.swift; sourceTree = "<group>"; };
 		C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTitleLabel.swift; sourceTree = "<group>"; };
 		C9D2DA132032ABC700A1FB1C /* FTBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBodyLabel.swift; sourceTree = "<group>"; };
-		C9D2DA172032B3E500A1FB1C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		C9D2DA172032B3E500A1FB1C /* FTFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFonts.swift; sourceTree = "<group>"; };
 		C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainWorkoutViewController.swift; sourceTree = "<group>"; };
 		C9EC4E3B20340C5400CF538F /* FTButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTButtonFactory.swift; sourceTree = "<group>"; };
 		C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainWorkoutTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		C9EC4E502037D34900CF538F /* FTNewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNewExerciseViewController.swift; sourceTree = "<group>"; };
 		C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDefaultTextField.swift; sourceTree = "<group>"; };
-		C9EC4E5A2037E44C00CF538F /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGlobals.swift; sourceTree = "<group>"; };
 		C9EC4E5C2037E6F200CF538F /* FTStringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTStringFormatter.swift; sourceTree = "<group>"; };
 		C9EC4E5E2037EF4100CF538F /* FTExerciseSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseSelectionCell.swift; sourceTree = "<group>"; };
 		C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSimpleFontSizeProtocol.swift; sourceTree = "<group>"; };
@@ -183,10 +183,10 @@
 		C9A65FC8202D78D300C3AC72 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				C9A65FCD202D79A500C3AC72 /* Colours.swift */,
-				C9A65FC9202D78EB00C3AC72 /* Layout.swift */,
-				C9D2DA172032B3E500A1FB1C /* Fonts.swift */,
-				C9EC4E5A2037E44C00CF538F /* Globals.swift */,
+				C9A65FCD202D79A500C3AC72 /* FTColours.swift */,
+				C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */,
+				C9D2DA172032B3E500A1FB1C /* FTFonts.swift */,
+				C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -478,14 +478,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D2DA182032B3E500A1FB1C /* Fonts.swift in Sources */,
+				C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */,
 				C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */,
 				C9EC4E69203940E000CF538F /* FTExerciseLog.swift in Sources */,
 				C9EC4E80203E8BF300CF538F /* FTAddExerciseViewController.swift in Sources */,
 				C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */,
 				C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */,
 				C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */,
-				C9A65FCE202D79A500C3AC72 /* Colours.swift in Sources */,
+				C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */,
 				C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */,
 				C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */,
 				C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */,
@@ -495,14 +495,14 @@
 				C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */,
 				C9EC4E462035559E00CF538F /* FTDescriptionLabel.swift in Sources */,
 				C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */,
-				C9EC4E5B2037E44C00CF538F /* Globals.swift in Sources */,
+				C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */,
 				C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */,
 				C9EC4E632037F88500CF538F /* FTNewExerciseDetailViewController.swift in Sources */,
 				C9EC4E6B203940F400CF538F /* FTSetLog.swift in Sources */,
 				C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */,
 				C9EC4E782039EC8300CF538F /* FTButtonTableViewCell.swift in Sources */,
 				C9CDFDCD20204F9800FEE905 /* FTWorkoutTemplate.swift in Sources */,
-				C9A65FCA202D78EB00C3AC72 /* Layout.swift in Sources */,
+				C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */,
 				C9EC4E3C20340C5400CF538F /* FTButtonFactory.swift in Sources */,
 				C9EC4E512037D34900CF538F /* FTNewExerciseViewController.swift in Sources */,
 				C9EC4E5F2037EF4100CF538F /* FTExerciseSelectionCell.swift in Sources */,

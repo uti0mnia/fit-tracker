@@ -26,7 +26,7 @@ class FTTextFieldTableViewCell: UITableViewCell {
     
     private func setupVisuals() {
         contentView.addSubview(textField)
-        textField.frame = contentView.bounds.insetBy(dx: Layout.defaultPadding * 2, dy: Layout.defaultPadding * 2)
+        textField.frame = contentView.bounds.insetBy(dx: FTLayout.defaultPadding * 2, dy: FTLayout.defaultPadding * 2)
         textField.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 

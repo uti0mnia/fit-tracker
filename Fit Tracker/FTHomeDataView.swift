@@ -29,20 +29,20 @@ class FTHomeDataView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = Colours.lightForeground
+        backgroundColor = FTColours.lightForeground
         
         addSubview(mainLabel)
         addSubview(subLabel)
 
         mainLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(Layout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
             make.top.equalToSuperview()
         }
 
         subLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(Layout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
             make.bottom.equalToSuperview()
-            make.top.equalTo(mainLabel.snp.bottom).offset(Layout.defaultPadding)
+            make.top.equalTo(mainLabel.snp.bottom).offset(FTLayout.defaultPadding)
         }
     }
     

@@ -24,7 +24,7 @@ class FTHomeViewController: UIViewController {
     }
     
     private func setupVisuals() {
-        view.backgroundColor = Colours.lightBackground
+        view.backgroundColor = FTColours.lightBackground
         
         // Navigation bar.
         self.title = "Home"
@@ -42,12 +42,12 @@ class FTHomeViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         scrollView.alwaysBounceVertical = true
-        scrollView.contentInset = Layout.largeInsets
+        scrollView.contentInset = FTLayout.largeInsets
         
         // Data views.
         scrollView.addSubview(exerciseDataView)
         exerciseDataView.snp.makeConstraints() { make in
-            make.width.equalToSuperview().inset(Layout.largeInsets)
+            make.width.equalToSuperview().inset(FTLayout.largeInsets)
             make.top.equalToSuperview()
             make.bottom.equalTo(scrollView.snp.bottom).priority(250) // Low priority.
         }

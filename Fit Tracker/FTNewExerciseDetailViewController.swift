@@ -23,7 +23,7 @@ class FTNewExerciseDetailViewController: UIViewController, UITableViewDataSource
         tv.delegate = self
         tv.dataSource = self
         tv.tableFooterView = UIView()
-        tv.backgroundColor = Colours.lightBackground
+        tv.backgroundColor = FTColours.lightBackground
         return tv
     }()
     

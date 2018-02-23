@@ -68,7 +68,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             make.right.bottom.equalToSuperview()
             make.left.equalTo(addSupersetButton.snp.right)
             make.width.equalTo(addSupersetButton)
-            make.height.equalTo(Layout.defaultButtonHeight)
+            make.height.equalTo(FTLayout.defaultButtonHeight)
         }
         
         addSupersetButton.snp.makeConstraints() { make in

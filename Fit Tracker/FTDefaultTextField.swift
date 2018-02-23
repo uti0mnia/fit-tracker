@@ -16,7 +16,7 @@ class FTDefaultTextField: UITextField, FTSimpleFontSize {
         }
     }
     
-    public var placeholderColour = Colours.grayTextColour {
+    public var placeholderColour = FTColours.grayTextColour {
         didSet {
             updatePlaceholder()
         }
@@ -41,7 +41,7 @@ class FTDefaultTextField: UITextField, FTSimpleFontSize {
     }
     
     private func commonInit() {
-        self.textColor = Colours.darkTextColour
+        self.textColor = FTColours.darkTextColour
         self.borderStyle = .none
         self.clearButtonMode = .always
     }

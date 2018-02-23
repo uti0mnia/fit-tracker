@@ -35,6 +35,6 @@ class FTSizedLabel: UILabel, FTSimpleFontSize {
     }
     
     private func commonInit() {
-        self.textColor = Colours.darkTextColour
+        self.textColor = FTColours.darkTextColour
     }
 }

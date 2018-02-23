@@ -55,29 +55,29 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
         
         // Constraints.
         removeButton.snp.makeConstraints() { make in
-            make.left.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
             make.width.equalTo(removeButton.snp.height)
         }
         weightLabel.snp.makeConstraints() { make in
-            make.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
-            make.left.equalTo(removeButton.snp.right).offset(Layout.defaultPadding)
+            make.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
+            make.left.equalTo(removeButton.snp.right).offset(FTLayout.defaultPadding)
         }
         weightDescriptionLabel.snp.makeConstraints() { make in
-            make.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
-            make.left.equalTo(weightLabel.snp.right).offset(Layout.defaultPadding)
+            make.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
+            make.left.equalTo(weightLabel.snp.right).offset(FTLayout.defaultPadding)
         }
         multiplyView.snp.makeConstraints() { make in
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(Layout.setMultiplySize)
-            make.left.equalTo(weightDescriptionLabel.snp.right).offset(Layout.defaultPadding)
+            make.height.width.equalTo(FTLayout.setMultiplySize)
+            make.left.equalTo(weightDescriptionLabel.snp.right).offset(FTLayout.defaultPadding)
         }
         repsLabel.snp.makeConstraints() { make in
-            make.left.equalTo(multiplyView.snp.right).offset(Layout.defaultPadding)
-            make.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.equalTo(multiplyView.snp.right).offset(FTLayout.defaultPadding)
+            make.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
         }
         repsDescriptionLabel.snp.makeConstraints() { make in
-            make.left.equalTo(repsLabel.snp.right).offset(Layout.defaultPadding)
-            make.top.right.bottom.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.equalTo(repsLabel.snp.right).offset(FTLayout.defaultPadding)
+            make.top.right.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
         }
         
         // Visuals.
@@ -89,10 +89,10 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
         weightLabel.textAlignment = .right
         repsLabel.textAlignment = .right
         
-        weightDescriptionLabel.font = Fonts.setDescription
+        weightDescriptionLabel.font = FTFonts.setDescription
         weightDescriptionLabel.text = FTSettingsManager.shared.preferredWeight.string
         
-        repsDescriptionLabel.font = Fonts.setDescription
+        repsDescriptionLabel.font = FTFonts.setDescription
         repsDescriptionLabel.text = "FTGeneral_Reps".ft_localized
         
         // Other

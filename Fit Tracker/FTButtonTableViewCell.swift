@@ -27,7 +27,7 @@ class FTButtonTableViewCell: UITableViewCell {
     private func commonInit() {
         contentView.addSubview(button)
         button.snp.makeConstraints() { make in
-            make.left.top.right.bottom.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.top.right.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  Colours.swift
+//  FTColours.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-08.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ChameleonFramework
 
-class Colours: NSObject {
+class FTColours: NSObject {
     
     private override init() {}
     
@@ -23,14 +23,14 @@ class Colours: NSObject {
     public static let darkBackground = UIColor.flatBlack
     
     // Item colours.
-    public static let tabBarTintColour = Colours.lightBackground
-    public static let tabBarBarTintColour = Colours.darkBackground
+    public static let tabBarTintColour = FTColours.lightBackground
+    public static let tabBarBarTintColour = FTColours.darkBackground
     
     // TextColours
     public static let darkTextColour = UIColor.flatBlackDark
     public static let darkGrayTextColour = UIColor.flatGrayDark
     public static let grayTextColour = UIColor.flatGrayDark
-    public static let lightTextColour = Colours.lightBackground
+    public static let lightTextColour = FTColours.lightBackground
     
     // Colour used for interactions or popping out.
     public static let defaultMainPrimary = UIColor.flatGreenDark

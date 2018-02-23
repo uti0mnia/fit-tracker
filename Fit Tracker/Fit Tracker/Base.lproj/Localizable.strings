@@ -33,7 +33,7 @@
 "FTGeneral_None" = "None";
 "FTGeneral_Next" = "Next";
 "FTGeneral_Finish" = "Finish";
-"FTGeneral_Reps" = "Reps"
+"FTGeneral_Reps" = "Reps";
 
 // Edit workout VC
 "FTEditWorkoutViewController_NewWorkout" = "New Workout";
@@ -41,6 +41,6 @@
 // Add exercise vC
 "FTAddExerciseViewController_Title" = "Add Exercises";
 "FTAddExerciseViewController_AddExercise" = "Add Exercise";
-"FTAddExerciseViewController_AddExercise_Plural" = "Add Exercises"
+"FTAddExerciseViewController_AddExercise_Plural" = "Add Exercises";
 "FTAddExerciseViewController_AddSuperset" = "Superset";
 "FTAddExerciseViewController_New" = "New";

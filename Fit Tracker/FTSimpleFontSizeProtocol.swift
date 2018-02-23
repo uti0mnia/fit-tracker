@@ -14,11 +14,11 @@ public enum SimpleFontSize {
     public var font: UIFont {
         switch self {
         case .small:
-            return Fonts.small
+            return FTFonts.small
         case .medium:
-            return Fonts.medium
+            return FTFonts.medium
         case .large:
-            return Fonts.large
+            return FTFonts.large
         }
     }
 }

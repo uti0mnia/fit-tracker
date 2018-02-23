@@ -22,8 +22,8 @@ class FTMainViewController: UITabBarController {
     }
     
     private func setupVisuals() {
-        tabBar.tintColor = Colours.tabBarTintColour
-        tabBar.barTintColor = Colours.tabBarBarTintColour
+        tabBar.tintColor = FTColours.tabBarTintColour
+        tabBar.barTintColor = FTColours.tabBarBarTintColour
         tabBar.isTranslucent = false
     }
     

@@ -7,26 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     
     private static let workoutIdentifier = "workoutIdentifier"
-    
-    let workout = FTWorkout()
+    private static let esitmatedCellHeight: CGFloat = 150
 
     private let quickStackButton = FTButtonFactory.simpleButton()
-    private let tableView = UITableView()
+    private lazy var tableView: UITableView = { [unowned self] in
+        let tableView = UITableView()
+        tableView.estimatedRowHeight = FTMainWorkoutViewController.esitmatedCellHeight
+        tableView.dataSource = self
+        tableView.dataSource = self
+        tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
+        return tableView
+    }()
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        workout.name = "Push A"
         
         setupVisuals()
     }
     
     private func setupVisuals() {
-        view.backgroundColor = Colours.lightBackground
+        view.backgroundColor = FTColours.lightBackground
         // Navigation bar.
         self.title = "FTMainWorkoutViewController_Title".ft_localized
         if #available(iOS 11.0, *) {
@@ -36,10 +45,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         
         // UITableView, note that if the tableView isn't the first view added, the scroll to hide large title doesn't work.
         view.addSubview(tableView)
-        tableView.estimatedRowHeight = 150
-        tableView.dataSource = self
-        tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
-        tableView.dataSource = self
         tableView.snp.makeConstraints() { make in
             make.left.right.equalToSuperview()
             make.top.equalTo(topLayoutGuide.snp.bottom)
@@ -48,16 +53,16 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         // Quick add button.
         view.addSubview(quickStackButton)
         quickStackButton.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(Layout.defaultPadding)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-Layout.defaultPadding)
-            make.top.equalTo(tableView.snp.bottom).offset(Layout.defaultPadding)
-            make.height.equalTo(Layout.defaultButtonHeight)
+            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.defaultPadding)
+            make.top.equalTo(tableView.snp.bottom).offset(FTLayout.defaultPadding)
+            make.height.equalTo(FTLayout.defaultButtonHeight)
         }
         quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".ft_localized, for: .normal)
         
         // New workout button.
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
-        addButton.tintColor = Colours.mainPrimary
+        addButton.tintColor = FTColours.mainPrimary
         self.navigationItem.rightBarButtonItem = addButton
         
     }
@@ -68,17 +73,12 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTMainWorkoutTableViewCell
-        cell.workout = workout
         return cell
     }
 }

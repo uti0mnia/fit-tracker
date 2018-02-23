@@ -40,7 +40,7 @@ class FTSettingsManager: NSObject {
         get {
             guard let colourData = user.data(forKey: Settings.primaryColour.rawValue),
                 let colour = NSKeyedUnarchiver.unarchiveObject(with: colourData) as? UIColor else {
-                return Colours.defaultMainPrimary
+                return FTColours.defaultMainPrimary
             }
             
             return colour
@@ -55,7 +55,7 @@ class FTSettingsManager: NSObject {
     public var preferredRestTime: Int {
         get {
             let time = user.integer(forKey: Settings.preferredRestTime.rawValue)
-            return (time < 0) ? Globals.defaultRestTime : time
+            return (time < 0) ? FTGlobals.defaultRestTime : time
         }
         set {
             user.set(newValue, forKey: Settings.preferredRestTime.rawValue)

@@ -1,5 +1,5 @@
 //
-//  Globals.swift
+//  FTGlobals.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Globals: NSObject {
+class FTGlobals: NSObject {
     
     static let defaultRestTime = 60
     

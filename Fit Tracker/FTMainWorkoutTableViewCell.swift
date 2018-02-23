@@ -71,19 +71,19 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
         contentView.addSubview(editButton)
         
         nameLabel.snp.makeConstraints() { make in
-            make.left.top.right.equalToSuperview().inset(Layout.largeInsets)
+            make.left.top.right.equalToSuperview().inset(FTLayout.largeInsets)
         }
         descriptionLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(Layout.largeInsets)
-            make.top.equalTo(nameLabel.snp.bottom).offset(Layout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.largeInsets)
+            make.top.equalTo(nameLabel.snp.bottom).offset(FTLayout.defaultPadding)
         }
         startButton.snp.makeConstraints() { make in
-            make.right.bottom.equalToSuperview().inset(Layout.largeInsets)
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(Layout.defaultPadding)
-            make.left.equalTo(editButton.snp.right).offset(Layout.largePadding)
+            make.right.bottom.equalToSuperview().inset(FTLayout.largeInsets)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(FTLayout.defaultPadding)
+            make.left.equalTo(editButton.snp.right).offset(FTLayout.largePadding)
         }
         editButton.snp.makeConstraints() { make in
-            make.left.bottom.equalToSuperview().inset(Layout.largeInsets)
+            make.left.bottom.equalToSuperview().inset(FTLayout.largeInsets)
             make.top.equalTo(startButton)
             make.width.equalTo(startButton.snp.width)
         }

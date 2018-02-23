@@ -30,16 +30,16 @@ class FTExerciseSelectionCell: UITableViewCell {
         accessoryType = .disclosureIndicator
         
         mainLabel.snp.makeConstraints() { make in
-            make.left.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
+            make.left.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
         }
         mainLabel.textSize = .large
         
         detailLabel.snp.makeConstraints() { make in
-            make.top.bottom.equalToSuperview().inset(Layout.defaultInsets)
-            make.right.equalTo(accessoryView?.snp.left ?? contentView.snp.right).inset(Layout.defaultInsets)
-            make.left.greaterThanOrEqualTo(mainLabel.snp.right).offset(Layout.defaultPadding)
+            make.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
+            make.right.equalTo(accessoryView?.snp.left ?? contentView.snp.right).inset(FTLayout.defaultInsets)
+            make.left.greaterThanOrEqualTo(mainLabel.snp.right).offset(FTLayout.defaultPadding)
         }
-        detailLabel.textColor = Colours.grayTextColour
+        detailLabel.textColor = FTColours.grayTextColour
         detailLabel.textAlignment = .right
         detailLabel.textSize = .large
     }

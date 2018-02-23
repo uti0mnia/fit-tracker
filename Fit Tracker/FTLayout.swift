@@ -1,5 +1,5 @@
 //
-//  Layout.swift
+//  FTLayout.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-08.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Layout: NSObject {
+class FTLayout: NSObject {
     
     private override init() {}
     
@@ -21,14 +21,14 @@ class Layout: NSObject {
     public static let largePadding: CGFloat = 16
     
     // Insets.
-    public static let defaultInsets = UIEdgeInsets(top: Layout.defaultPadding,
-                                                   left: Layout.defaultPadding,
-                                                   bottom: Layout.defaultPadding,
-                                                   right: Layout.defaultPadding)
-    public static let largeInsets = UIEdgeInsets(top: Layout.largePadding,
-                                                 left: Layout.largePadding,
-                                                 bottom: Layout.largePadding,
-                                                 right: Layout.largePadding)
+    public static let defaultInsets = UIEdgeInsets(top: FTLayout.defaultPadding,
+                                                   left: FTLayout.defaultPadding,
+                                                   bottom: FTLayout.defaultPadding,
+                                                   right: FTLayout.defaultPadding)
+    public static let largeInsets = UIEdgeInsets(top: FTLayout.largePadding,
+                                                 left: FTLayout.largePadding,
+                                                 bottom: FTLayout.largePadding,
+                                                 right: FTLayout.largePadding)
     
     // Buttons.
     public static let buttonCornerRadius: CGFloat = 4

@@ -24,12 +24,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private lazy var dismissButton: UIBarButtonItem = {[unowned self] in
         let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
-        button.tintColor = Colours.mainPrimary
+        button.tintColor = FTColours.mainPrimary
         return button
     }()
     private lazy var addButton: UIBarButtonItem = {[unowned self] in
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
-        button.tintColor = Colours.mainPrimary
+        button.tintColor = FTColours.mainPrimary
         return button
     }()
     private let finishButton = FTButtonFactory.simpleButton()
@@ -64,7 +64,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private func setupVisuals() {
         self.title = name ?? "FTEditWorkoutViewController_NewWorkout".ft_localized
         
-        view.backgroundColor = Colours.lightBackground
+        view.backgroundColor = FTColours.lightBackground
         
         self.navigationItem.leftBarButtonItem = dismissButton
         self.navigationItem.rightBarButtonItem = addButton

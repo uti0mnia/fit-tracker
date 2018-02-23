@@ -23,8 +23,8 @@ class FTDescriptionLabel: UILabel {
     }
     
     private func commonInit() {
-        self.textColor = Colours.grayTextColour
-        self.font = Fonts.description
+        self.textColor = FTColours.grayTextColour
+        self.font = FTFonts.description
         
     }
 

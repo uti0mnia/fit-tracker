@@ -57,15 +57,15 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     private func setupVisuals() {
         title = "FTNewExerciseViewController_Title".ft_localized
-        view.backgroundColor = Colours.lightBackground
+        view.backgroundColor = FTColours.lightBackground
         
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
-        saveButton?.tintColor = Colours.mainPrimary
+        saveButton?.tintColor = FTColours.mainPrimary
         saveButton?.isEnabled = false
         self.navigationItem.rightBarButtonItem = saveButton!
         
         dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
-        dismissButton?.tintColor = Colours.mainPrimary
+        dismissButton?.tintColor = FTColours.mainPrimary
         self.navigationItem.leftBarButtonItem = dismissButton!
         
         view.addSubview(tableView)

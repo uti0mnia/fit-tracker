@@ -1,5 +1,5 @@
 //
-//  Fonts.swift
+//  FTFonts.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-12.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Fonts: NSObject {
+class FTFonts: NSObject {
     
     // General.
     static let title = UIFont.systemFont(ofSize: 26, weight: .bold)
