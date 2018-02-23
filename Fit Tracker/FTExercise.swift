@@ -10,6 +10,38 @@ import Foundation
 import RealmSwift
 
 @objc class FTExercise: Object  {
+    
+    @objc dynamic public var name = ""
+    @objc dynamic public var bodyPart = BodyPart.none.rawValue
+    @objc dynamic public var category = Category.none.rawValue
+    @objc dynamic public var restTime = 0
+    
+    // Relationships
+    public var exerciseLogs = LinkingObjects(fromType: FTExerciseLog.self, property: "exercise")
+    public let exerciseTemplates = LinkingObjects(fromType: FTExerciseTemplate.self, property: "exercise")
+    
+    convenience  init(name: String, bodyPart: BodyPart, category: Category, restTime: Int) {
+        self.init()
+        
+        self.name = name
+        self.bodyPart = bodyPart.rawValue
+        self.category = category.rawValue
+        self.restTime = restTime
+    }
+    
+    public func getBodyPart() -> BodyPart? {
+        return BodyPart.init(rawValue: self.bodyPart)
+    }
+    
+    public func getCategory() -> Category? {
+        return Category.init(rawValue: self.category)
+    }
+    
+    // TODO: Primary Key?
+    // TODO: Indexing?
+}
+
+extension FTExercise {
     public enum BodyPart: Int, CustomStringConvertible {
         case abs, arms, back, chest, legs, shoulders, none
         
@@ -36,7 +68,7 @@ import RealmSwift
             return [.abs, .arms, .back, .chest, .legs, .shoulders, .none]
         }
     }
-
+    
     public enum Category: Int, CustomStringConvertible {
         case assisted, barbell, cardio, dumbbell, duration, machine, other, reps, weighted, none
         
@@ -69,25 +101,4 @@ import RealmSwift
             return [.assisted, .barbell, .cardio, .dumbbell, .duration, .machine, .other, .reps, .weighted, .none]
         }
     }
-    
-    @objc dynamic public var name = ""
-    @objc dynamic public var bodyPart = BodyPart.none.rawValue
-    @objc dynamic public var category = Category.none.rawValue
-    @objc dynamic public var restTime = 0
-    
-    // Relationships
-    public var exerciseLogs = LinkingObjects(fromType: FTExerciseLog.self, property: "exercise")
-    public let exerciseTemplates = LinkingObjects(fromType: FTExerciseTemplate.self, property: "exercise")
-    
-    public func getBodyPart() -> BodyPart? {
-        return BodyPart.init(rawValue: self.bodyPart)
-    }
-    
-    public func getCategory() -> Category? {
-        return Category.init(rawValue: self.category)
-    }
-    
-    // TODO: Primary Key?
-    // TODO: Indexing?
 }
-

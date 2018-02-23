@@ -15,4 +15,10 @@ class FTExerciseTemplate: Object {
     
     public let setTemplates = List<FTSetTemplate>()
     public let workoutTemplates = LinkingObjects(fromType: FTWorkoutTemplate.self, property: "exercises")
+    
+    convenience init(exercise: FTExercise) {
+        self.init()
+        
+        self.exercise = exercise
+    }
 }

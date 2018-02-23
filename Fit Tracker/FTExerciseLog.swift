@@ -18,4 +18,12 @@ class FTExerciseLog: Object {
     public let setLogs = List<FTSetLog>()
     
     public var workoutLog = LinkingObjects(fromType: FTWorkoutLog.self, property: "exerciseLog")
+    
+    convenience init(date: Date, exercise: FTExercise) {
+        self.init()
+        
+        self.date = date
+        self.exercise = exercise
+    }
+    
 }

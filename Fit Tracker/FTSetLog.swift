@@ -16,4 +16,10 @@ class FTSetLog: Object {
     
     public let exerciseLog = LinkingObjects(fromType: FTExerciseLog.self, property: "setLogs")
     
+    convenience init(weight: Double, reps: Int) {
+        self.init()
+        
+        self.weight = weight
+        self.reps = reps
+    }
 }

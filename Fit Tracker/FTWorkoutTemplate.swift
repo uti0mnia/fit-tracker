@@ -16,4 +16,11 @@ class FTWorkoutTemplate: Object {
     // Relationships
     public var workoutLogs = List<FTWorkoutLog>()
     public var exercises = List<FTExerciseTemplate>()
+    
+    convenience init(name: String, isDefault: Bool) {
+        self.init()
+        
+        self.name = name
+        self.isDefault = isDefault
+    }
 }

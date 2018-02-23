@@ -15,5 +15,12 @@ class FTSetTemplate: Object {
     @objc dynamic var reps = 0
     
     public let exerciseTemplate = LinkingObjects(fromType: FTExerciseTemplate.self, property: "setTemplates")
+    
+    convenience init(weight: Double, reps: Int) {
+        self.init()
+        
+        self.weight = weight
+        self.reps = reps
+    }
 }
 
