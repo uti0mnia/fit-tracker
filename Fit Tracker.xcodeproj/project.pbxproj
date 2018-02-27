@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		53ADD1F2A311B0FC989B9ACF /* Pods_Fit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */; };
+		C902CEAB20429EB4005A14E3 /* FTRealmFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */; };
+		C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
 		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFetchRequest.swift; sourceTree = "<group>"; };
+		C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArrayExtension.swift; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C902CEB2204516D0005A14E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9EC4E47203555FC00CF538F /* Labels */,
+				C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */,
+				C9EC4E572037DAE600CF538F /* Textfield */,
+				C9EC4E562037DAA200CF538F /* Cells */,
+				C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */,
+				C9EC4E48203559AD00CF538F /* Buttons */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C9775CEE2020441C00C2E9B3 = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +182,7 @@
 				C9CDFDC920204AD100FEE905 /* Database */,
 				C9A65FC8202D78D300C3AC72 /* Constants */,
 				C9CDFDD720219C2800FEE905 /* Helper */,
-				C9D2DA0E2032AA2E00A1FB1C /* FTViews */,
+				C9D2DA0E2032AA2E00A1FB1C /* FTClasses */,
 				C9EC4E4B20355C6300CF538F /* Extensions */,
 				C9CDFDCE202050FC00FEE905 /* Supporting Files */,
 			);
@@ -189,6 +206,13 @@
 				C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		C9B354ED204516F800B48D04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		C9CDFDC920204AD100FEE905 /* Database */ = {
@@ -232,16 +256,13 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		C9D2DA0E2032AA2E00A1FB1C /* FTViews */ = {
+		C9D2DA0E2032AA2E00A1FB1C /* FTClasses */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */,
-				C9EC4E572037DAE600CF538F /* Textfield */,
-				C9EC4E562037DAA200CF538F /* Cells */,
-				C9EC4E48203559AD00CF538F /* Buttons */,
-				C9EC4E47203555FC00CF538F /* Labels */,
+				C9B354ED204516F800B48D04 /* Models */,
+				C902CEB2204516D0005A14E3 /* Views */,
 			);
-			name = FTViews;
+			name = FTClasses;
 			sourceTree = "<group>";
 		};
 		C9EC4E3820340BD400CF538F /* Workouts */ = {
@@ -277,9 +298,10 @@
 		C9EC4E4B20355C6300CF538F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */,
-				C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */,
+				C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */,
 				C9EC4E7D203BFADD00CF538F /* FTDoubleExtension.swift */,
+				C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */,
+				C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -298,7 +320,6 @@
 		C9EC4E562037DAA200CF538F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */,
 				C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */,
 			);
 			name = Cells;
@@ -317,6 +338,7 @@
 			children = (
 				C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */,
 				C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */,
+				C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -480,6 +502,7 @@
 			files = (
 				C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */,
 				C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */,
+				C902CEAB20429EB4005A14E3 /* FTRealmFetchRequest.swift in Sources */,
 				C9EC4E69203940E000CF538F /* FTExerciseLog.swift in Sources */,
 				C9EC4E80203E8BF300CF538F /* FTAddExerciseViewController.swift in Sources */,
 				C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */,
@@ -517,6 +540,7 @@
 				C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */,
 				C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */,
 				C9CDFDD620218D7500FEE905 /* FTRealmFetchController.swift in Sources */,
+				C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,3 +27,13 @@ extension List {
         return str
     }
 }
+
+extension Results {
+    public func ft_safeAccess(at idx: Int) -> Element? {
+        guard idx >= 0, idx < count else {
+            return nil
+        }
+        
+        return self[idx]
+    }
+}
