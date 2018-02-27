@@ -35,7 +35,7 @@ class RealmLogger {
     }
     
     @objc func registerNotificationBlock() {
-        notificationToken = realm?.addNotificationBlock { [weak self] notification, realm in
+        notificationToken = realm?.observe() { [weak self] notification, realm in
             if notification == .didChange {
                 self?.finishRealmTransaction()
             }

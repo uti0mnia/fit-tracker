@@ -177,7 +177,7 @@ extension Realm {
     
     - returns Realm Results<T>
     */
-    public func execute<T: RealmSwift.Object>(_ request: RealmRequest<T>) -> Results<T> {
+    public func execute<T>(_ request: RealmRequest<T>) -> Results<T> {
         let retrievedObjects = objects(request.entityType).filter(request.predicate)
         if request.sortDescriptors.isEmpty { return retrievedObjects }
         return retrievedObjects.sorted(by: request.sortDescriptors)
@@ -191,8 +191,8 @@ extension Results {
     
     - returns Array<T>
     */
-    func toArray() -> [T] {
-        var array = [T]()
+    func toArray() -> [Element] {
+        var array = [Element]()
         for result in self {
             array.append(result)
         }

@@ -222,7 +222,7 @@ public class RealmResultsController<T: RealmSwift.Object, U> : RealmResultsCache
     // At this point, we are sure sorts.first always has a SortDescriptor
     private func keyPathIsValid(_ keyPath: String?, sorts: [RealmSwift.SortDescriptor]) -> Bool {
         if keyPath == nil { return true }
-        return keyPath == sorts.first!.property
+        return keyPath == sorts.first!.keyPath
     }
     
     private func realmSectionMapper<S>(_ section: Section<S>) -> RealmSection<U> {
@@ -250,14 +250,14 @@ public class RealmResultsController<T: RealmSwift.Object, U> : RealmResultsCache
         }
     }
     
-    func didInsertSection<T : RealmSwift.Object>(_ section: Section<T>, index: Int) {
+    func didInsertSection<T>(_ section: Section<T>, index: Int) {
         if populating { return }
         Threading.executeOnMainThread {
             self.delegate?.didChangeSection(self, section: self.realmSectionMapper(section), index: index, changeType: .Insert)
         }
     }
     
-    func didDeleteSection<T : RealmSwift.Object>(_ section: Section<T>, index: Int) {
+    func didDeleteSection<T>(_ section: Section<T>, index: Int) {
         Threading.executeOnMainThread {
             self.delegate?.didChangeSection(self, section: self.realmSectionMapper(section), index: index, changeType: .Delete)
         }

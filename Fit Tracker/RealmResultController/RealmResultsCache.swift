@@ -16,8 +16,8 @@ enum RealmCacheUpdateType: String {
 }
 
 protocol RealmResultsCacheDelegate: class {
-    func didInsertSection<T: RealmSwift.Object>(_ section: Section<T>, index: Int)
-    func didDeleteSection<T: RealmSwift.Object>(_ section: Section<T>, index: Int)
+    func didInsertSection<T>(_ section: Section<T>, index: Int)
+    func didDeleteSection<T>(_ section: Section<T>, index: Int)
     func didInsert<T: RealmSwift.Object>(_ object: T, indexPath: IndexPath)
     func didUpdate<T: RealmSwift.Object>(_ object: T, oldIndexPath: IndexPath, newIndexPath: IndexPath, changeType: RealmResultsChangeType)
     func didDelete<T: RealmSwift.Object>(_ object: T, indexPath: IndexPath)
@@ -275,6 +275,6 @@ class RealmResultsCache<T: Object> {
     :returns: NSSortDescriptor
     */
     private func toNSSortDescriptor(_ sort: SortDescriptor) -> NSSortDescriptor {
-        return NSSortDescriptor(key: sort.property, ascending: sort.ascending)
+        return NSSortDescriptor(key: sort.keyPath, ascending: sort.ascending)
     }
 }
