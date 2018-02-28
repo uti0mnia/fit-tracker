@@ -2,35 +2,17 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - RBQFetchedResultsController (5.0.2):
-    - RBQSafeRealmObject
-    - Realm (>= 1.0.0)
-    - RealmUtilities
-  - RBQSafeRealmObject (1.1):
-    - Realm (>= 0.99.1)
-    - RealmUtilities (>= 0.2.1)
-  - Realm (3.0.2):
-    - Realm/Headers (= 3.0.2)
-  - Realm/Headers (3.0.2)
-  - RealmSwift (3.0.2):
-    - Realm (= 3.0.2)
-  - RealmUtilities (0.4):
-    - Realm (>= 0.95)
-  - SafeRealmObject (1.1):
-    - RBQSafeRealmObject
-    - RealmSwift (>= 0.99.1)
-    - RealmUtilities (>= 0.2.1)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
   - SnapKit (4.0.0)
-  - SwiftFetchedResultsController (5.0.2):
-    - RBQFetchedResultsController (>= 5.0.2)
-    - RealmSwift (>= 2.1.1)
-    - SafeRealmObject
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - RealmSwift
   - SnapKit (~> 4.0.0)
-  - SwiftFetchedResultsController
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -43,15 +25,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  RBQFetchedResultsController: 24877a429680be6d22709a2e527bcb766877bf4e
-  RBQSafeRealmObject: 128e6ece2acceeb7dea9d00b8fa40ba4c489c3fa
-  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
-  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
-  RealmUtilities: bd4d18141e62a6cdcfa1859f1f090a27ab282628
-  SafeRealmObject: b881780ebc49621ab4a12bb14cd283955fe540ad
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftFetchedResultsController: 377825910b5294a48295481ab04e70b8fa9696de
 
-PODFILE CHECKSUM: 07a92f735e68920ffeed27e9d851d20c523635b9
+PODFILE CHECKSUM: 411138521c9b1b2ad2d7ecb8a0f4b083dd163f2c
 
 COCOAPODS: 1.4.0
