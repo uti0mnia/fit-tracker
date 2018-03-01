@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		53ADD1F2A311B0FC989B9ACF /* Pods_Fit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */; };
-		C902CEAB20429EB4005A14E3 /* FTRealmFetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */; };
 		C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
 		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
@@ -19,22 +18,14 @@
 		C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* FTColours.swift */; };
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
 		C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9A65FD3202D821B00C3AC72 /* Localizable.strings */; };
-		C9B354FE20452E7D00B48D04 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F120452E7C00B48D04 /* RealmExtension.swift */; };
-		C9B354FF20452E7D00B48D04 /* RealmQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F220452E7C00B48D04 /* RealmQueueManager.swift */; };
-		C9B3550020452E7D00B48D04 /* RealmSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F320452E7C00B48D04 /* RealmSection.swift */; };
-		C9B3550120452E7D00B48D04 /* RealmResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F420452E7C00B48D04 /* RealmResultsController.swift */; };
-		C9B3550320452E7D00B48D04 /* ObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F620452E7D00B48D04 /* ObjectExtension.swift */; };
-		C9B3550420452E7D00B48D04 /* RealmLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F720452E7D00B48D04 /* RealmLogger.swift */; };
-		C9B3550520452E7D00B48D04 /* RealmRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F820452E7D00B48D04 /* RealmRequest.swift */; };
-		C9B3550620452E7D00B48D04 /* RealmResultsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354F920452E7D00B48D04 /* RealmResultsCache.swift */; };
-		C9B3550720452E7D00B48D04 /* RealmChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354FA20452E7D00B48D04 /* RealmChange.swift */; };
-		C9B3550820452E7D00B48D04 /* RealmThreadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354FB20452E7D00B48D04 /* RealmThreadHelper.swift */; };
-		C9B3550920452E7D00B48D04 /* RealmNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354FC20452E7D00B48D04 /* RealmNotification.swift */; };
-		C9B3550A20452E7D00B48D04 /* RRCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B354FD20452E7D00B48D04 /* RRCError.swift */; };
-		C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDC62020468C00FEE905 /* FTExercise.swift */; };
-		C9CDFDCD20204F9800FEE905 /* FTWorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDCC20204F9800FEE905 /* FTWorkoutTemplate.swift */; };
-		C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */; };
-		C9CDFDD620218D7500FEE905 /* FTRealmFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */; };
+		C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9B355132047CE6100B48D04 /* Model.xcdatamodeld */; };
+		C9B3551E2047CE8800B48D04 /* FTWorkoutLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355172047CE8700B48D04 /* FTWorkoutLog.swift */; };
+		C9B3551F2047CE8800B48D04 /* FTWorkoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355182047CE8700B48D04 /* FTWorkoutTemplate.swift */; };
+		C9B355202047CE8800B48D04 /* FTSetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355192047CE8800B48D04 /* FTSetLog.swift */; };
+		C9B355212047CE8800B48D04 /* FTExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3551A2047CE8800B48D04 /* FTExercise.swift */; };
+		C9B355222047CE8800B48D04 /* FTExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3551B2047CE8800B48D04 /* FTExerciseLog.swift */; };
+		C9B355232047CE8800B48D04 /* FTSetTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3551C2047CE8800B48D04 /* FTSetTemplate.swift */; };
+		C9B355242047CE8800B48D04 /* FTExerciseTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3551D2047CE8800B48D04 /* FTExerciseTemplate.swift */; };
 		C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */; };
 		C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */; };
 		C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */; };
@@ -55,11 +46,6 @@
 		C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */; };
 		C9EC4E632037F88500CF538F /* FTNewExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E622037F88500CF538F /* FTNewExerciseDetailViewController.swift */; };
 		C9EC4E6520389FD900CF538F /* FTEditWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6420389FD900CF538F /* FTEditWorkoutViewController.swift */; };
-		C9EC4E69203940E000CF538F /* FTExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E68203940E000CF538F /* FTExerciseLog.swift */; };
-		C9EC4E6B203940F400CF538F /* FTSetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6A203940F400CF538F /* FTSetLog.swift */; };
-		C9EC4E6D2039412100CF538F /* FTExerciseTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6C2039412100CF538F /* FTExerciseTemplate.swift */; };
-		C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */; };
-		C9EC4E72203941B300CF538F /* FTSetTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E71203941B300CF538F /* FTSetTemplate.swift */; };
 		C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */; };
 		C9EC4E782039EC8300CF538F /* FTButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */; };
 		C9EC4E7A2039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */; };
@@ -69,7 +55,6 @@
 
 /* Begin PBXFileReference section */
 		950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
-		C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFetchRequest.swift; sourceTree = "<group>"; };
 		C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArrayExtension.swift; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,22 +70,14 @@
 		C9A65FD2202D81B300C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C9A65FD4202D821B00C3AC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Fit Tracker/Base.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C9A65FD6202D824200C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "Fit Tracker/fr.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		C9B354F120452E7C00B48D04 /* RealmExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmExtension.swift; path = RealmResultController/RealmExtension.swift; sourceTree = "<group>"; };
-		C9B354F220452E7C00B48D04 /* RealmQueueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmQueueManager.swift; path = RealmResultController/RealmQueueManager.swift; sourceTree = "<group>"; };
-		C9B354F320452E7C00B48D04 /* RealmSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmSection.swift; path = RealmResultController/RealmSection.swift; sourceTree = "<group>"; };
-		C9B354F420452E7C00B48D04 /* RealmResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmResultsController.swift; path = RealmResultController/RealmResultsController.swift; sourceTree = "<group>"; };
-		C9B354F620452E7D00B48D04 /* ObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjectExtension.swift; path = RealmResultController/ObjectExtension.swift; sourceTree = "<group>"; };
-		C9B354F720452E7D00B48D04 /* RealmLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmLogger.swift; path = RealmResultController/RealmLogger.swift; sourceTree = "<group>"; };
-		C9B354F820452E7D00B48D04 /* RealmRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmRequest.swift; path = RealmResultController/RealmRequest.swift; sourceTree = "<group>"; };
-		C9B354F920452E7D00B48D04 /* RealmResultsCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmResultsCache.swift; path = RealmResultController/RealmResultsCache.swift; sourceTree = "<group>"; };
-		C9B354FA20452E7D00B48D04 /* RealmChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmChange.swift; path = RealmResultController/RealmChange.swift; sourceTree = "<group>"; };
-		C9B354FB20452E7D00B48D04 /* RealmThreadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmThreadHelper.swift; path = RealmResultController/RealmThreadHelper.swift; sourceTree = "<group>"; };
-		C9B354FC20452E7D00B48D04 /* RealmNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmNotification.swift; path = RealmResultController/RealmNotification.swift; sourceTree = "<group>"; };
-		C9B354FD20452E7D00B48D04 /* RRCError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RRCError.swift; path = RealmResultController/RRCError.swift; sourceTree = "<group>"; };
-		C9CDFDC62020468C00FEE905 /* FTExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExercise.swift; sourceTree = "<group>"; };
-		C9CDFDCC20204F9800FEE905 /* FTWorkoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutTemplate.swift; sourceTree = "<group>"; };
-		C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFactoryManager.swift; sourceTree = "<group>"; };
-		C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmFetchController.swift; sourceTree = "<group>"; };
+		C9B355142047CE6100B48D04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C9B355172047CE8700B48D04 /* FTWorkoutLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTWorkoutLog.swift; path = "Fit Tracker/Archive/FTWorkoutLog.swift"; sourceTree = SOURCE_ROOT; };
+		C9B355182047CE8700B48D04 /* FTWorkoutTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTWorkoutTemplate.swift; path = "Fit Tracker/Archive/FTWorkoutTemplate.swift"; sourceTree = SOURCE_ROOT; };
+		C9B355192047CE8800B48D04 /* FTSetLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTSetLog.swift; path = "Fit Tracker/Archive/FTSetLog.swift"; sourceTree = SOURCE_ROOT; };
+		C9B3551A2047CE8800B48D04 /* FTExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTExercise.swift; path = "Fit Tracker/Archive/FTExercise.swift"; sourceTree = SOURCE_ROOT; };
+		C9B3551B2047CE8800B48D04 /* FTExerciseLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTExerciseLog.swift; path = "Fit Tracker/Archive/FTExerciseLog.swift"; sourceTree = SOURCE_ROOT; };
+		C9B3551C2047CE8800B48D04 /* FTSetTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTSetTemplate.swift; path = "Fit Tracker/Archive/FTSetTemplate.swift"; sourceTree = SOURCE_ROOT; };
+		C9B3551D2047CE8800B48D04 /* FTExerciseTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FTExerciseTemplate.swift; path = "Fit Tracker/Archive/FTExerciseTemplate.swift"; sourceTree = SOURCE_ROOT; };
 		C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeViewController.swift; sourceTree = "<group>"; };
 		C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeDataView.swift; sourceTree = "<group>"; };
 		C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTitleLabel.swift; sourceTree = "<group>"; };
@@ -121,11 +98,6 @@
 		C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSimpleFontSizeProtocol.swift; sourceTree = "<group>"; };
 		C9EC4E622037F88500CF538F /* FTNewExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNewExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		C9EC4E6420389FD900CF538F /* FTEditWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditWorkoutViewController.swift; sourceTree = "<group>"; };
-		C9EC4E68203940E000CF538F /* FTExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseLog.swift; sourceTree = "<group>"; };
-		C9EC4E6A203940F400CF538F /* FTSetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetLog.swift; sourceTree = "<group>"; };
-		C9EC4E6C2039412100CF538F /* FTExerciseTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseTemplate.swift; sourceTree = "<group>"; };
-		C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutLog.swift; sourceTree = "<group>"; };
-		C9EC4E71203941B300CF538F /* FTSetTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSetTemplate.swift; sourceTree = "<group>"; };
 		C9EC4E7520394E7100CF538F /* FTRealmExetension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRealmExetension.swift; sourceTree = "<group>"; };
 		C9EC4E772039EC8300CF538F /* FTButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTButtonTableViewCell.swift; sourceTree = "<group>"; };
 		C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditWorkoutSetTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,17 +170,17 @@
 		C9775CF92020441C00C2E9B3 /* Fit Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				C9B355162047CE7C00B48D04 /* Archive */,
 				C9775CFE2020441C00C2E9B3 /* Main.storyboard */,
 				C9EC4E4F2037D32E00CF538F /* Exercise */,
 				C9EC4E3820340BD400CF538F /* Workouts */,
 				C9D2DA09202F694B00A1FB1C /* Home */,
 				C9A65FC5202D784F00C3AC72 /* Main */,
-				C9CDFDC920204AD100FEE905 /* Database */,
+				C9B355122047CE4900B48D04 /* Core Data */,
 				C9A65FC8202D78D300C3AC72 /* Constants */,
 				C9CDFDD720219C2800FEE905 /* Helper */,
 				C9D2DA0E2032AA2E00A1FB1C /* FTClasses */,
 				C9EC4E4B20355C6300CF538F /* Extensions */,
-				C9B354F020452E6200B48D04 /* RealmResultController */,
 				C9CDFDCE202050FC00FEE905 /* Supporting Files */,
 			);
 			path = "Fit Tracker";
@@ -240,34 +212,27 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		C9B354F020452E6200B48D04 /* RealmResultController */ = {
+		C9B355122047CE4900B48D04 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				C9B354F620452E7D00B48D04 /* ObjectExtension.swift */,
-				C9B354FA20452E7D00B48D04 /* RealmChange.swift */,
-				C9B354F120452E7C00B48D04 /* RealmExtension.swift */,
-				C9B354F720452E7D00B48D04 /* RealmLogger.swift */,
-				C9B354FC20452E7D00B48D04 /* RealmNotification.swift */,
-				C9B354F220452E7C00B48D04 /* RealmQueueManager.swift */,
-				C9B354F820452E7D00B48D04 /* RealmRequest.swift */,
-				C9B354F920452E7D00B48D04 /* RealmResultsCache.swift */,
-				C9B354F420452E7C00B48D04 /* RealmResultsController.swift */,
-				C9B354F320452E7C00B48D04 /* RealmSection.swift */,
-				C9B354FB20452E7D00B48D04 /* RealmThreadHelper.swift */,
-				C9B354FD20452E7D00B48D04 /* RRCError.swift */,
+				C9B355132047CE6100B48D04 /* Model.xcdatamodeld */,
 			);
-			name = RealmResultController;
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		C9CDFDC920204AD100FEE905 /* Database */ = {
+		C9B355162047CE7C00B48D04 /* Archive */ = {
 			isa = PBXGroup;
 			children = (
-				C9CDFDC62020468C00FEE905 /* FTExercise.swift */,
-				C9EC4E74203941D800CF538F /* Log */,
-				C9EC4E73203941C900CF538F /* Templates */,
-				C9EC4E702039415B00CF538F /* Manager */,
+				C9B3551A2047CE8800B48D04 /* FTExercise.swift */,
+				C9B3551B2047CE8800B48D04 /* FTExerciseLog.swift */,
+				C9B3551D2047CE8800B48D04 /* FTExerciseTemplate.swift */,
+				C9B355192047CE8800B48D04 /* FTSetLog.swift */,
+				C9B3551C2047CE8800B48D04 /* FTSetTemplate.swift */,
+				C9B355172047CE8700B48D04 /* FTWorkoutLog.swift */,
+				C9B355182047CE8700B48D04 /* FTWorkoutTemplate.swift */,
 			);
-			name = Database;
+			name = Archive;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		C9CDFDCE202050FC00FEE905 /* Supporting Files */ = {
@@ -375,36 +340,6 @@
 				C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */,
 			);
 			name = Textfield;
-			sourceTree = "<group>";
-		};
-		C9EC4E702039415B00CF538F /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				C9CDFDD32021844C00FEE905 /* FTRealmFactoryManager.swift */,
-				C9CDFDD520218D7500FEE905 /* FTRealmFetchController.swift */,
-				C902CEAA20429EB4005A14E3 /* FTRealmFetchRequest.swift */,
-			);
-			name = Manager;
-			sourceTree = "<group>";
-		};
-		C9EC4E73203941C900CF538F /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				C9EC4E6C2039412100CF538F /* FTExerciseTemplate.swift */,
-				C9EC4E71203941B300CF538F /* FTSetTemplate.swift */,
-				C9CDFDCC20204F9800FEE905 /* FTWorkoutTemplate.swift */,
-			);
-			name = Templates;
-			sourceTree = "<group>";
-		};
-		C9EC4E74203941D800CF538F /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				C9EC4E68203940E000CF538F /* FTExerciseLog.swift */,
-				C9EC4E6A203940F400CF538F /* FTSetLog.swift */,
-				C9EC4E6E2039412E00CF538F /* FTWorkoutLog.swift */,
-			);
-			name = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,22 +480,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */,
-				C9CDFDD42021844C00FEE905 /* FTRealmFactoryManager.swift in Sources */,
-				C902CEAB20429EB4005A14E3 /* FTRealmFetchRequest.swift in Sources */,
-				C9B3550720452E7D00B48D04 /* RealmChange.swift in Sources */,
-				C9B3550A20452E7D00B48D04 /* RRCError.swift in Sources */,
-				C9B354FE20452E7D00B48D04 /* RealmExtension.swift in Sources */,
-				C9EC4E69203940E000CF538F /* FTExerciseLog.swift in Sources */,
+				C9B355222047CE8800B48D04 /* FTExerciseLog.swift in Sources */,
+				C9B355232047CE8800B48D04 /* FTSetTemplate.swift in Sources */,
 				C9EC4E80203E8BF300CF538F /* FTAddExerciseViewController.swift in Sources */,
 				C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */,
 				C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */,
 				C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */,
-				C9B3550620452E7D00B48D04 /* RealmResultsCache.swift in Sources */,
 				C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */,
-				C9B3550420452E7D00B48D04 /* RealmLogger.swift in Sources */,
 				C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */,
-				C9B3550020452E7D00B48D04 /* RealmSection.swift in Sources */,
-				C9CDFDC72020468C00FEE905 /* FTExercise.swift in Sources */,
+				C9B355202047CE8800B48D04 /* FTSetLog.swift in Sources */,
 				C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */,
 				C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */,
 				C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */,
@@ -569,33 +497,26 @@
 				C9EC4E462035559E00CF538F /* FTDescriptionLabel.swift in Sources */,
 				C9EC4E7620394E7100CF538F /* FTRealmExetension.swift in Sources */,
 				C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */,
-				C9EC4E6F2039412E00CF538F /* FTWorkoutLog.swift in Sources */,
 				C9EC4E632037F88500CF538F /* FTNewExerciseDetailViewController.swift in Sources */,
-				C9EC4E6B203940F400CF538F /* FTSetLog.swift in Sources */,
 				C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */,
-				C9B3550820452E7D00B48D04 /* RealmThreadHelper.swift in Sources */,
+				C9B3551F2047CE8800B48D04 /* FTWorkoutTemplate.swift in Sources */,
 				C9EC4E782039EC8300CF538F /* FTButtonTableViewCell.swift in Sources */,
-				C9CDFDCD20204F9800FEE905 /* FTWorkoutTemplate.swift in Sources */,
 				C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */,
 				C9EC4E3C20340C5400CF538F /* FTButtonFactory.swift in Sources */,
-				C9B3550120452E7D00B48D04 /* RealmResultsController.swift in Sources */,
-				C9B3550920452E7D00B48D04 /* RealmNotification.swift in Sources */,
 				C9EC4E512037D34900CF538F /* FTNewExerciseViewController.swift in Sources */,
+				C9B3551E2047CE8800B48D04 /* FTWorkoutLog.swift in Sources */,
+				C9B355242047CE8800B48D04 /* FTExerciseTemplate.swift in Sources */,
 				C9EC4E5F2037EF4100CF538F /* FTExerciseSelectionCell.swift in Sources */,
 				C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */,
 				C9EC4E7A2039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift in Sources */,
-				C9EC4E6D2039412100CF538F /* FTExerciseTemplate.swift in Sources */,
 				C9EC4E5D2037E6F200CF538F /* FTStringFormatter.swift in Sources */,
 				C9D2DA142032ABC700A1FB1C /* FTBodyLabel.swift in Sources */,
+				C9B355212047CE8800B48D04 /* FTExercise.swift in Sources */,
 				C9EC4E44203553FD00CF538F /* FTSizedLabel.swift in Sources */,
-				C9B3550520452E7D00B48D04 /* RealmRequest.swift in Sources */,
-				C9EC4E72203941B300CF538F /* FTSetTemplate.swift in Sources */,
-				C9B354FF20452E7D00B48D04 /* RealmQueueManager.swift in Sources */,
+				C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */,
 				C9EC4E6520389FD900CF538F /* FTEditWorkoutViewController.swift in Sources */,
 				C9EC4E612037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift in Sources */,
-				C9B3550320452E7D00B48D04 /* ObjectExtension.swift in Sources */,
 				C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */,
-				C9CDFDD620218D7500FEE905 /* FTRealmFetchController.swift in Sources */,
 				C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,6 +719,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C9B355132047CE6100B48D04 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9B355142047CE6100B48D04 /* Model.xcdatamodel */,
+			);
+			currentVersion = C9B355142047CE6100B48D04 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C9775CEF2020441C00C2E9B3 /* Project object */;
 }
