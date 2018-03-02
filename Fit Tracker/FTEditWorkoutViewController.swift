@@ -7,27 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private static let editSetCell = "editSetCell"
     private static let rowHeight: CGFloat = 50
     
-    private lazy var tableView: UITableView = {[unowned self] in
+    private var tableView: UITableView = {
         let tv = UITableView()
-        tv.delegate = self
-        tv.dataSource = self
         tv.register(FTEditWorkoutSetTableViewCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.editSetCell)
         tv.rowHeight = FTEditWorkoutViewController.rowHeight
         return tv
     }()
     
-    private lazy var dismissButton: UIBarButtonItem = {[unowned self] in
+    private lazy var dismissButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
         button.tintColor = FTColours.mainPrimary
         return button
     }()
-    private lazy var addButton: UIBarButtonItem = {[unowned self] in
+    private lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         button.tintColor = FTColours.mainPrimary
         return button
@@ -36,13 +35,26 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private var name: String?
     private let workout: FTWorkoutTemplate
+    private var sets = [Int: [FTSetTemplate]]()
+    private var exercises: [FTExerciseTemplate]
     
+    private var context: NSManagedObjectContext {
+        return (UIApplication.shared.delegate as! AppDelegate).dataController.moc
+    }
     
     required init(name: String? = nil, workout: FTWorkoutTemplate) {
         self.name = name
         self.workout = workout
+        self.exercises = workout.exerciseTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTExerciseTemplate]()
         
         super.init(nibName: nil, bundle: nil)
+        
+        exercises.forEach() { template in
+            self.sets[Int(template.index)] = template.setTemplates?.sorted(by: { return $0.index < $1.index }) ?? [FTSetTemplate]()
+        }
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,17 +96,19 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         guard let cell = cell as? FTEditWorkoutSetTableViewCell else {
             return
         }
-        cell.setTemplate = workout.exercises[indexPath.section].setTemplates[indexPath.row]
+        
+        // We will assume that
+        cell.setTemplate = sets[indexPath.section]?[indexPath.row]
     }
     
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return workout.exercises.count
+        return exercises.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workout.exercises[section].setTemplates.count
+        return sets[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,7 +118,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    // UITableViewDelegate
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return exercises.map({ return $0.exercise?.name ?? "" })
+    }
     
+    // MARK: - UITableViewDelegate
     
 }

@@ -29,17 +29,10 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
             }
             
             nameLabel.text = workout.name
-            var details = ""
-            var separator = ""
-            workout.exercises.ft_forEach() { exercise in
-                
-                assert(exercise.exercise != nil, "FTExerciseTemplate should never have an empty exercise property")
-                
-                let detailStr = String(format: "%@ (x%i)", exercise.exercise?.name ?? "", exercise.setTemplates.count)
-                details += "\(separator)\(detailStr)"
-                separator = " • "
-            }
-            descriptionLabel.text = details
+            // The flat map grabs the name of the exercise associated with the exercise template if the elements are of type FTExerciseTemplate
+            descriptionLabel.text = workout.exerciseTemplates?.array.flatMap({
+                return ($0 as? FTExerciseTemplate)?.exercise?.name
+            }).joined(separator: " • ")
         }
     }
     
