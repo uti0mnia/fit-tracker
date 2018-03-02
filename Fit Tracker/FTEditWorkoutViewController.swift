@@ -34,18 +34,19 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private let finishButton = FTButtonFactory.simpleButton()
     
     private var name: String?
-    private let workout: FTWorkoutTemplate
+    private var workout: FTWorkoutTemplate
     private var sets = [Int: [FTSetTemplate]]()
     private var exercises: [FTExerciseTemplate]
     
-    private var context: NSManagedObjectContext {
-        return (UIApplication.shared.delegate as! AppDelegate).dataController.moc
-    }
+    private var context: NSManagedObjectContext
     
-    required init(name: String? = nil, workout: FTWorkoutTemplate) {
+    required init(name: String? = nil, workout: FTWorkoutTemplate? = nil) {
         self.name = name
-        self.workout = workout
-        self.exercises = workout.exerciseTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTExerciseTemplate]()
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
+        self.context = context
+        self.workout = workout ?? FTWorkoutTemplate(context: context)
+        self.exercises = workout?.exerciseTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTExerciseTemplate]()
         
         super.init(nibName: nil, bundle: nil)
         
@@ -75,6 +76,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private func setupVisuals() {
         self.title = name ?? "FTEditWorkoutViewController_NewWorkout".ft_localized
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
+        
         
         view.backgroundColor = FTColours.lightBackground
         
