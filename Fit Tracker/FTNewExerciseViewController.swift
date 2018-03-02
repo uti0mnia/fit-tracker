@@ -14,7 +14,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     private static let sectionRowCount: [Int] = [1, 2, 1]
     private static let cellHeight: CGFloat = 50
     
-    private static let restTimers = [15, 30, 45, 60, 90, 120, 300]
+    private static let restTimers = [0, 15, 30, 45, 60, 90, 120, 300]
     
     private let detailVC = FTNewExerciseDetailViewController()
     

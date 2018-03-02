@@ -1,0 +1,46 @@
+/*
+ Localizable.strings
+ Fit Tracker
+ 
+ Created by Casey McLewin on 2018-02-08.
+ Copyright © 2018 Casey McLewin. All rights reserved.
+ */
+
+// Main Tab Bar
+"FTMainTabBar_Home" = "Profile";
+"FTMainTabBar_Workout" = "Workout";
+"FTMainTabBar_Log" = "Logs";
+"FTMainTabBar_Settings" = "Settings";
+
+// Home View Controller
+"FTHomeViewController_Exercise" = "Exercises";
+
+// Workout View Controller
+"FTMainWorkoutViewController_QuickStart" = "Start Free Workout";
+"FTMainWorkoutViewController_Title" = "Workout";
+"FTMainWorkoutCollectionViewCell_Start" = "Start";
+"FTMainWorkoutCollectionViewCell_Edit" = "Edit";
+
+// New exercise controller
+"FTNewExerciseViewController_Title" = "New Exericse";
+"FTNewExerciseViewController_ExercisePlaceholder" = "Exercise Name";
+"FTNewExerciseViewController_BodyPart" = "Body Part";
+"FTNewExerciseViewController_Category" = "Category";
+"FTNewExerciseViewController_RestTimerValue" = "Default (%@)";
+"FTNewExerciseViewController_TestTimer" = "Rest Timer";
+
+// General
+"FTGeneral_None" = "None";
+"FTGeneral_Next" = "Next";
+"FTGeneral_Finish" = "Finish";
+"FTGeneral_Reps" = "Reps";
+
+// Edit workout VC
+"FTEditWorkoutViewController_NewWorkout" = "New Workout";
+
+// Add exercise vC
+"FTAddExerciseViewController_Title" = "Add Exercises";
+"FTAddExerciseViewController_AddExercise" = "Add Exercise";
+"FTAddExerciseViewController_AddExercise_Plural" = "Add Exercises";
+"FTAddExerciseViewController_AddSuperset" = "Superset";
+"FTAddExerciseViewController_New" = "New";
