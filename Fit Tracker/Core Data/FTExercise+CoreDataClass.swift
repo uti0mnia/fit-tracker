@@ -12,6 +12,10 @@ import CoreData
 @objc(FTExercise)
 public class FTExercise: NSManagedObject {
     
+    public var isComplete: Bool {
+        return name != nil && createdAt != nil
+    }
+    
     public var firstLetter: String {
         self.willAccessValue(forKey: "firstLetter")
         let firstLetter = self.name?[0] ?? ""

@@ -12,7 +12,6 @@ import SnapKit
 class FTMainViewController: UITabBarController {
     
     private let workoutVC = FTMainWorkoutViewController()
-    let exerciseVC = FTNewExerciseViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

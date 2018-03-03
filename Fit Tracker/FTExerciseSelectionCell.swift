@@ -27,8 +27,6 @@ class FTExerciseSelectionCell: UITableViewCell {
         contentView.addSubview(mainLabel)
         contentView.addSubview(detailLabel)
         
-        accessoryType = .disclosureIndicator
-        
         mainLabel.snp.makeConstraints() { make in
             make.left.top.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
         }

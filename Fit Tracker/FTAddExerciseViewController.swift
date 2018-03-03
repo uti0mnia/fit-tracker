@@ -28,10 +28,10 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     private let addExerciseButton = FTButtonFactory.simpleButton()
     private let addSupersetButton = FTButtonFactory.countourButton()
     
-    private lazy var frc: NSFetchedResultsController<FTExerciseTemplate> = {
-        let request = NSFetchRequest<FTExerciseTemplate>(entityName: "FTExerciseTemplate")
-        request.sortDescriptors = [NSSortDescriptor(key: "exercise.name", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataController.moc, sectionNameKeyPath: "exercise.firstLetter", cacheName: nil)
+    private lazy var frc: NSFetchedResultsController<FTExercise> = {
+        let request = NSFetchRequest<FTExercise>(entityName: "FTExercise")
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataController.moc, sectionNameKeyPath: "firstLetter", cacheName: nil)
         return frc
     }()
     
@@ -95,8 +95,9 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @objc private func didTapNewButton(_ sender: UIBarButtonItem) {
-        let vc = UINavigationController(rootViewController: FTNewExerciseViewController())
-        present(vc, animated: true, completion: nil)
+        let vc = FTNewExerciseViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
     }
     
     @objc private func didTapAddExercisesButton(_ sender: UIButton) {
@@ -119,7 +120,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTAddExerciseViewController.cellReuse, for: indexPath)
-        cell.textLabel?.text = frc.object(at: indexPath).exercise?.name ?? ""
+        cell.textLabel?.text = frc.object(at: indexPath).name ?? ""
         return cell
     }
     

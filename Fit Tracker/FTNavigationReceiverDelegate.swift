@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FTReceiveDataDelegate: class {
-    func 
+protocol FTNavigationReceiverDelegate: class {
+    func receive(_ object: Any)
 }

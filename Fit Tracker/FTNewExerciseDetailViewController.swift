@@ -8,15 +8,23 @@
 
 import UIKit
 
+protocol FTNewExerciseDetailViewControllerDelegate: class {
+    func newExerciseDetailViewController(_ viewController: FTNewExerciseViewController, willDismissWithSelectedIndexPath indexPath: IndexPath?)
+}
+
 class FTNewExerciseDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private static let cellIdentifier = "cellIdentifier"
+    
+    public weak var delegate: FTNewExerciseDetailViewControllerDelegate?
     
     public var options: [CustomStringConvertible]? {
         didSet {
             tableView.reloadData()
         }
     }
+    public var selectedIndex: IndexPath?
+    
     
     private lazy var tableView: UITableView = {[unowned self] in
         let tv = UITableView()
@@ -45,13 +53,24 @@ class FTNewExerciseDetailViewController: UIViewController, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTNewExerciseDetailViewController.cellIdentifier, for: indexPath)
         cell.textLabel?.text = "\(options?[indexPath.row] ?? "")"
+        cell.accessoryType = indexPath == selectedIndex ? .checkmark : .none
         return cell
     }
     
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = true
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard indexPath != selectedIndex else {
+            return
+        }
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        if let index = selectedIndex {
+            tableView.cellForRow(at: index)?.accessoryType = .none
+        }
+        selectedIndex = indexPath
     }
 
 }

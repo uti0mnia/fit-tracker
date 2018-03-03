@@ -15,8 +15,8 @@ class FTStringFormatter: NSObject {
     override private init() {}
     
     public func formatAsMinutes(seconds: Int) -> String {
-        let m = seconds % 59
-        let s = seconds - seconds * m
+        let m = Int(seconds/60)
+        let s = seconds - 60 * m
         return String(format: "%i:%02d", m, s)
     }
     

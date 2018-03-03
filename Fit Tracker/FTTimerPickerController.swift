@@ -8,7 +8,13 @@
 
 import UIKit
 
-class FTTimerPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
+protocol FTTimerPickerControllerDelegate: class {
+    func timerPickerController(_ controller: FTTimerPickerController, didUpdateTimeTo time: Int)
+}
+
+class FTTimerPickerController: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    public weak var delegate: FTTimerPickerControllerDelegate?
     
     private var minutes: [Int] = {
         var minutes = [Int]()
@@ -25,6 +31,15 @@ class FTTimerPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDeleg
         }
         return seconds
     }()
+    
+    public let pickerView = UIPickerView()
+    
+    override init() {
+        super.init()
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+    }
 
     // MARK: - UIPickerViewDataSource
     
@@ -44,6 +59,12 @@ class FTTimerPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDeleg
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return component == 0 ? "\(seconds[row]) s" : "\(minutes[row]) m"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let minutes = self.minutes[pickerView.selectedRow(inComponent: 0)]
+        let seconds = self.seconds[pickerView.selectedRow(inComponent: 1)]
+        delegate?.timerPickerController(self, didUpdateTimeTo: minutes * 60 + seconds)
     }
 
 }

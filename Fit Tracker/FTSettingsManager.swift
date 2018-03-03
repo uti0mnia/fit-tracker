@@ -55,7 +55,7 @@ class FTSettingsManager: NSObject {
     public var preferredRestTime: Int {
         get {
             let time = user.integer(forKey: Settings.preferredRestTime.rawValue)
-            return (time < 0) ? FTGlobals.defaultRestTime : time
+            return (time <= 0) ? FTGlobals.defaultRestTime : time // We need to limit the minimum rest time to 15 or else this fails.
         }
         set {
             user.set(newValue, forKey: Settings.preferredRestTime.rawValue)

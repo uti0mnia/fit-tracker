@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, FTNewExerciseDetailViewControllerDelegate, FTTimerPickerCellDelegate {
     
     private static let sectionCount = 3
     private static let sectionRowCount: [Int] = [1, 2, 1]
@@ -23,21 +24,26 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     private var dismissButton: UIBarButtonItem?
     
     private var exerciseNameCell: FTTextFieldTableViewCell?
+    private var timerCell: FTExerciseSelectionCell?
+    
+    private var context: NSManagedObjectContext
 
     // Set as lazy so I can use self lol.
-    private lazy var tableView: UITableView = { [unowned self] in
+    private var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
-        tv.rowHeight = FTNewExerciseViewController.cellHeight
-        tv.dataSource = self
-        tv.delegate = self
+        tv.rowHeight = UITableViewAutomaticDimension
         return tv
     }()
-    private var name: String?
+    private var exercise: FTExercise?
     
-    required init(withExerciseName name: String? = nil) {
+    required init() {
+        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        
         super.init(nibName: nil, bundle: nil)
         
-        self.name = name
+        self.context.parent = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
+        exercise = FTExercise(context: context)
+        exercise?.createdAt = NSDate()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,6 +52,11 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        detailVC.delegate = self
 
         setupVisuals()
     }
@@ -66,13 +77,13 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         title = "FTNewExerciseViewController_Title".ft_localized
         view.backgroundColor = FTColours.lightBackground
         
+        navigationController?.navigationBar.tintColor = FTColours.mainPrimary
+        
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
-        saveButton?.tintColor = FTColours.mainPrimary
         saveButton?.isEnabled = false
         navigationItem.rightBarButtonItem = saveButton!
         
         dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
-        dismissButton?.tintColor = FTColours.mainPrimary
         navigationItem.leftBarButtonItem = dismissButton!
         
         view.addSubview(tableView)
@@ -87,7 +98,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         let cell = FTTextFieldTableViewCell()
         cell.textField.delegate = self
         cell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".ft_localized
-        cell.textField.text = self.name
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -111,18 +122,34 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     @objc private func didTapSaveButton(_ sender: UIBarButtonItem) {
+        assert(exercise?.isComplete ?? false, "Saving uncomplete exercise")
         
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context: \(error.localizedDescription)")
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
+        if exercise?.name != nil {
+            // TODO: Double check with user.
+            context.rollback()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func textFieldDidChangeNotification(_ notification: Notification) {
         updateSaveButton()
+        exercise?.name = exerciseNameCell?.textField.text
     }
     
     // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return FTNewExerciseViewController.sectionCount
@@ -147,36 +174,59 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         // Body Part/Category.
         if section == 1 {
             let title = (row == 0) ? "FTNewExerciseViewController_BodyPart".ft_localized : "FTNewExerciseViewController_Category".ft_localized
-            return newChooseValueCell(title: title, detail: "FTGeneral_None".ft_localized)
+            let cell = newChooseValueCell(title: title, detail: "FTGeneral_None".ft_localized)
+            cell.accessoryType = .disclosureIndicator
+            return cell
         }
         
         // Timer.
-        let title = "FTNewExerciseViewController_TestTimer".ft_localized
-        let time = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.preferredRestTime)
-        let detail = String(format: "FTNewExerciseViewController_RestTimerValue".ft_localized, time)
-        return newChooseValueCell(title: title, detail: detail)
+        let cell = FTTimerPickerCell()
+        cell.delegate = self
+        return cell
     }
     
     // MARK: - UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = indexPath.section
-        let row = indexPath.row
-        var opts: [CustomStringConvertible]!
-        
-        if section == 1 {
-            opts = (row == 0) ? FTExercise.BodyPart.array : FTExercise.Category.array
-        } else {
-            opts = FTNewExerciseViewController.restTimers
-        }
-        
-        detailVC.options = opts
-        navigationController?.pushViewController(detailVC, animated: true)
-        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            return
+        } else if indexPath.section == 1 {
+            let row = indexPath.row
+            var opts: [CustomStringConvertible]!
+            var selectedIndex: IndexPath?
+            
+            opts = (row == 0) ? FTExercise.BodyPart.array : FTExercise.Category.array
+            if let idx = (row == 0) ? exercise?.bodyPart : exercise?.category {
+                selectedIndex = IndexPath(row: Int(idx), section: 0)
+            }
+            
+            detailVC.options = opts
+            detailVC.selectedIndex = selectedIndex
+            navigationController?.pushViewController(detailVC, animated: true)
+        } else {
+            if let cell = tableView.cellForRow(at: indexPath) as? FTTimerPickerCell {
+                cell.togglePickerView()
+            }
+        }
     }
     
     // MARK: - UITextFieldDelegate
 
+    // MARK: - FTNewExerciseDetailViewControllerDelegate
     
+    func newExerciseDetailViewController(_ viewController: FTNewExerciseViewController, willDismissWithSelectedIndexPath indexPath: IndexPath?) {
+        guard let indexPath = indexPath else {
+            return
+        }
+        
+        
+    }
+    
+    // MARK: - FTTimerPickerCellDelegate
+    
+    func timerPickerCell(_ cell: FTTimerPickerCell, didUpdateTimerValueTo value: Int) {
+        
+    }
 }

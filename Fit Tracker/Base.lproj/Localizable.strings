@@ -27,7 +27,7 @@
 "FTNewExerciseViewController_BodyPart" = "Body Part";
 "FTNewExerciseViewController_Category" = "Category";
 "FTNewExerciseViewController_RestTimerValue" = "Default (%@)";
-"FTNewExerciseViewController_TestTimer" = "Rest Timer";
+"FTNewExerciseViewController_RestTimer" = "Rest Timer";
 
 // General
 "FTGeneral_None" = "None";
@@ -45,3 +45,10 @@
 "FTAddExerciseViewController_AddExercise" = "Add Exercise";
 "FTAddExerciseViewController_AddSuperset" = "Superset";
 "FTAddExerciseViewController_New" = "New";
+
+// Timer picker view
+"FTTimerPickerView_Minutes" = "Minutes";
+"FTTimerPickerView_Seconds" = "Seconds";
+
+// FTTimerPickerCell
+"FTTimerPickerCell_RestTimer" = "Rest Timer";
