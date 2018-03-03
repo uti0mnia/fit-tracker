@@ -78,10 +78,22 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         setupToolBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // TODO: make name text field first reponder if no name.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.setToolbarHidden(true, animated: true)
     }
     
     private func setupVisuals() {
@@ -108,7 +120,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let rightSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         addBarButton.tintColor = FTColours.mainPrimary
         
         let label = FTSizedLabel(textSize: .small)
@@ -131,7 +143,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapAddButton(_ sender: UIButton) {
-        // TODO: Bring up ExerciseSelectionVC
+        let vc = FTAddExerciseViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) {

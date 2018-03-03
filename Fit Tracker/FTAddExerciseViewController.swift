@@ -19,7 +19,6 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     private var selectedExercises = [FTExerciseTemplate]()
     
-    private let dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nil, action: nil)
     private let newButton = UIBarButtonItem(title: "FTAddExerciseViewController_New".ft_localized, style: .plain, target: nil, action: nil)
     private let addExerciseButton = FTButtonFactory.simpleButton()
     private let addSupersetButton = FTButtonFactory.countourButton()
@@ -37,15 +36,13 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             navigationController?.navigationBar.prefersLargeTitles = false
         }
         
+        view.backgroundColor = FTColours.lightBackground
         view.addSubview(tableView)
         view.addSubview(addExerciseButton)
         view.addSubview(addSupersetButton)
         
-        navigationItem.rightBarButtonItem = dismissButton
-        navigationItem.leftBarButtonItem = newButton
-        
-        dismissButton.target = self
-        dismissButton.action = #selector(didTapDismissButton(_:))
+        navigationItem.rightBarButtonItem = newButton
+        navigationController?.navigationBar.tintColor = FTColours.mainPrimary
         
         newButton.target = self
         newButton.action = #selector(didTapNewButton(_:))
@@ -61,24 +58,17 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.snp.makeConstraints() { make in
             make.top.equalTo(topLayoutGuide.snp.bottom)
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(addExerciseButton.snp.top)
         }
         
-        addExerciseButton.snp.makeConstraints() { make in
-            make.right.bottom.equalToSuperview()
-            make.left.equalTo(addSupersetButton.snp.right)
-            make.width.equalTo(addSupersetButton)
+        let stackView = UIStackView(arrangedSubviews: [addSupersetButton, addExerciseButton])
+        stackView.distribution = .fillEqually
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints() { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(tableView.snp.bottom)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top)
             make.height.equalTo(FTLayout.defaultButtonHeight)
         }
-        
-        addSupersetButton.snp.makeConstraints() { make in
-            make.left.bottom.equalToSuperview()
-            make.top.equalTo(addExerciseButton.snp.top)
-        }
-    }
-    
-    @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapNewButton(_ sender: UIBarButtonItem) {

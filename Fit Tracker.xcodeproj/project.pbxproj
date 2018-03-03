@@ -23,6 +23,7 @@
 		C928F919204911CA001BA6CE /* FTSetLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F90B204911C9001BA6CE /* FTSetLog+CoreDataProperties.swift */; };
 		C928F91A204911CA001BA6CE /* FTSetTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F90C204911C9001BA6CE /* FTSetTemplate+CoreDataClass.swift */; };
 		C928F91B204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F90D204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift */; };
+		C928F922204A46F5001BA6CE /* FTNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F921204A46F5001BA6CE /* FTNavigationManager.swift */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
 		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		C928F90B204911C9001BA6CE /* FTSetLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTSetLog+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Log/FTSetLog+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C928F90C204911C9001BA6CE /* FTSetTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTSetTemplate+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTSetTemplate+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C928F90D204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTWorkoutTemplate+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTWorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		C928F921204A46F5001BA6CE /* FTNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNavigationManager.swift; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,15 @@
 			path = Template;
 			sourceTree = "<group>";
 		};
+		C928F920204A46D3001BA6CE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */,
+				C928F921204A46F5001BA6CE /* FTNavigationManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		C9775CEE2020441C00C2E9B3 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +225,7 @@
 				C9EC4E3820340BD400CF538F /* Workouts */,
 				C9D2DA09202F694B00A1FB1C /* Home */,
 				C9A65FC5202D784F00C3AC72 /* Main */,
+				C928F920204A46D3001BA6CE /* Managers */,
 				C9B355122047CE4900B48D04 /* Core Data */,
 				C9A65FC8202D78D300C3AC72 /* Constants */,
 				C9CDFDD720219C2800FEE905 /* Helper */,
@@ -278,7 +290,6 @@
 		C9CDFDD720219C2800FEE905 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */,
 				C9EC4E5C2037E6F200CF538F /* FTStringFormatter.swift */,
 			);
 			name = Helper;
@@ -515,6 +526,7 @@
 				C928F917204911CA001BA6CE /* FTExercise+CoreDataProperties.swift in Sources */,
 				C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */,
 				C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */,
+				C928F922204A46F5001BA6CE /* FTNavigationManager.swift in Sources */,
 				C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */,
 				C9EC4E552037DA9D00CF538F /* FTTextFieldTableViewCell.swift in Sources */,
 				C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */,
