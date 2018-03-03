@@ -95,7 +95,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @objc private func didTapNewButton(_ sender: UIBarButtonItem) {
-        
+        let vc = UINavigationController(rootViewController: FTNewExerciseViewController())
+        present(vc, animated: true, completion: nil)
     }
     
     @objc private func didTapAddExercisesButton(_ sender: UIButton) {

@@ -44,15 +44,22 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupVisuals()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChangeNotification(_:)), name: .UITextFieldTextDidChange, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupVisuals() {
@@ -62,11 +69,11 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
         saveButton?.tintColor = FTColours.mainPrimary
         saveButton?.isEnabled = false
-        self.navigationItem.rightBarButtonItem = saveButton!
+        navigationItem.rightBarButtonItem = saveButton!
         
         dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
         dismissButton?.tintColor = FTColours.mainPrimary
-        self.navigationItem.leftBarButtonItem = dismissButton!
+        navigationItem.leftBarButtonItem = dismissButton!
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints() { make in
@@ -108,9 +115,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true) {
-            self.exerciseNameCell?.textField.text = nil
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func textFieldDidChangeNotification(_ notification: Notification) {
