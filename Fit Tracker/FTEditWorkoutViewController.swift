@@ -20,29 +20,38 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         tv.rowHeight = FTEditWorkoutViewController.rowHeight
         return tv
     }()
+    private var exerciseCountLabel: FTSizedLabel?
+    private var emptyWorkoutLabel = FTTitleLabel()
     
+    // Navbar.
     private lazy var dismissButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
         button.tintColor = FTColours.mainPrimary
         return button
     }()
-    private lazy var addButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
+    private lazy var editButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEditButton(_:)))
         button.tintColor = FTColours.mainPrimary
         return button
     }()
     private let finishButton = FTButtonFactory.simpleButton()
     
-    private var name: String?
     private var workout: FTWorkoutTemplate
-    private var sets = [Int: [FTSetTemplate]]()
-    private var exercises: [FTExerciseTemplate]
+    private var sets = [Int: [FTSetTemplate]]() {
+        didSet {
+            self.editButton.isEnabled = sets.count > 0
+        }
+    }
+    private var exercises: [FTExerciseTemplate] {
+        didSet {
+            emptyWorkoutLabel.isHidden = exercises.count > 0
+            exerciseCountLabel?.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, exercises.count)
+        }
+    }
     
     private var context: NSManagedObjectContext
     
-    required init(name: String? = nil, workout: FTWorkoutTemplate? = nil) {
-        self.name = name
-        
+    required init(workout: FTWorkoutTemplate? = nil) {
         let context = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
         self.context = context
         self.workout = workout ?? FTWorkoutTemplate(context: context)
@@ -66,6 +75,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         setupVisuals()
+        setupToolBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,22 +85,49 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     private func setupVisuals() {
-        self.title = name ?? "FTEditWorkoutViewController_NewWorkout".ft_localized
+        self.title = workout.name ?? "FTEditWorkoutViewController_NewWorkout".ft_localized
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = false
+            tableView.contentInsetAdjustmentBehavior = .always // Make sure the large title hiding is janky af.
         }
-        
-        
         view.backgroundColor = FTColours.lightBackground
         
+        view.addSubview(emptyWorkoutLabel)
+        emptyWorkoutLabel.text = "FTEditWorkoutViewController_EmptyWorkout".ft_localized
+        emptyWorkoutLabel.snp.makeConstraints({ $0.center.equalToSuperview() })
+        
+        tableView.backgroundColor = UIColor.clear
+        
         self.navigationItem.leftBarButtonItem = dismissButton
-        self.navigationItem.rightBarButtonItem = addButton
+        self.navigationItem.rightBarButtonItem = editButton
         
         finishButton.titleLabel?.text = "FTGeneral_Finish".ft_localized
     }
     
+    private func setupToolBar() {
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let rightSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        addBarButton.tintColor = FTColours.mainPrimary
+        
+        let label = FTSizedLabel(textSize: .small)
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = .center
+        label.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, exercises.count)
+        let labelBarButton = UIBarButtonItem(customView: label)
+        
+        navigationController?.setToolbarHidden(false, animated: false)
+        toolbarItems = [leftSpace, labelBarButton, rightSpace, addBarButton]
+    }
+    
     @objc private func didTapDismissButton(_ sender: UIButton) {
+        // TODO: Verify discard if exercises added.
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func didTapEditButton(_ sender: UIButton) {
+        
     }
     
     @objc private func didTapAddButton(_ sender: UIButton) {

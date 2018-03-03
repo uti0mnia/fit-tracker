@@ -153,11 +153,10 @@
 		C902CEB2204516D0005A14E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C9EC4E47203555FC00CF538F /* Labels */,
 				C9EC4E602037F4CE00CF538F /* FTSimpleFontSizeProtocol.swift */,
+				C9EC4E47203555FC00CF538F /* Labels */,
 				C9EC4E572037DAE600CF538F /* Textfield */,
 				C9EC4E562037DAA200CF538F /* Cells */,
-				C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */,
 				C9EC4E48203559AD00CF538F /* Buttons */,
 			);
 			name = Views;
@@ -365,6 +364,7 @@
 		C9EC4E572037DAE600CF538F /* Textfield */ = {
 			isa = PBXGroup;
 			children = (
+				C9EC4E542037DA9D00CF538F /* FTTextFieldTableViewCell.swift */,
 				C9EC4E582037DB0400CF538F /* FTDefaultTextField.swift */,
 			);
 			name = Textfield;

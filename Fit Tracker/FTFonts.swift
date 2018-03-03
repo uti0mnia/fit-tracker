@@ -19,6 +19,8 @@ class FTFonts: NSObject {
     static let large = UIFont.systemFont(ofSize: 18)
     static let medium = UIFont.systemFont(ofSize: 14)
     static let small = UIFont.systemFont(ofSize: 12)
+    static let tiny = UIFont.systemFont(ofSize: 10)
+    static let micro = UIFont.systemFont(ofSize: 8)
     
     // Buttons.
     static let simpleButton = UIFont.systemFont(ofSize: 16, weight: .bold)

@@ -20,6 +20,7 @@ class FTSizedLabel: UILabel, FTSimpleFontSize {
         self.init(frame: CGRect.zero)
         
         self.textSize = textSize
+        self.font = textSize.font
     }
 
     override init(frame: CGRect) {

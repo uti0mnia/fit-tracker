@@ -37,10 +37,11 @@
 
 // Edit workout VC
 "FTEditWorkoutViewController_NewWorkout" = "New Workout";
+"FTEditWorkoutViewController_ToolBarExercises" = "%i exercise(s)";
+"FTEditWorkoutViewController_EmptyWorkout" = "Tap '+' to add exercises!";
 
 // Add exercise vC
 "FTAddExerciseViewController_Title" = "Add Exercises";
 "FTAddExerciseViewController_AddExercise" = "Add Exercise";
-"FTAddExerciseViewController_AddExercise_Plural" = "Add Exercises";
 "FTAddExerciseViewController_AddSuperset" = "Superset";
-"FTAddExerciseViewController_New" = "New"; 
+"FTAddExerciseViewController_New" = "New";

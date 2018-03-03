@@ -9,10 +9,14 @@
 import UIKit
 
 public enum SimpleFontSize {
-    case small, medium, large
+    case micro, tiny, small, medium, large
     
     public var font: UIFont {
         switch self {
+        case .micro:
+            return FTFonts.micro
+        case .tiny:
+            return FTFonts.tiny
         case .small:
             return FTFonts.small
         case .medium:
