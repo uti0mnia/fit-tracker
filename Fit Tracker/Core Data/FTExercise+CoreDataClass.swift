@@ -11,6 +11,14 @@ import CoreData
 
 @objc(FTExercise)
 public class FTExercise: NSManagedObject {
+    
+    public var firstLetter: String {
+        self.willAccessValue(forKey: "firstLetter")
+        let firstLetter = self.name?[0] ?? ""
+        self.didAccessValue(forKey: "firstLetter")
+        return firstLetter
+    }
+    
     public enum BodyPart: Int16, CustomStringConvertible {
         case abs, arms, back, chest, legs, shoulders, none
         

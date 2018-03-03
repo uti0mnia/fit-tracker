@@ -110,8 +110,9 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         
         tableView.backgroundColor = UIColor.clear
         
-        self.navigationItem.leftBarButtonItem = dismissButton
-        self.navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = dismissButton
+        navigationItem.rightBarButtonItem = editButton
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         
         finishButton.titleLabel?.text = "FTGeneral_Finish".ft_localized
     }
