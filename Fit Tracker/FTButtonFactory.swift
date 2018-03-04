@@ -14,7 +14,7 @@ class FTButtonFactory: NSObject {
     
     // The default button to be used around the app.
     public static func simpleButton(cornerRadius: CGFloat = 0) -> UIButton {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitleColor(FTColours.mainPrimary, for: .normal)
         button.titleLabel?.font = FTFonts.simpleButton
         button.backgroundColor = FTColours.lightForeground
@@ -28,12 +28,12 @@ class FTButtonFactory: NSObject {
     
     // A button that makes it obvious what we want.
     public static func strongButton(cornerRadius: CGFloat = 0) -> UIButton {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitleColor(FTColours.lightTextColour, for: .normal)
         button.titleLabel?.font = FTFonts.simpleButton
         button.backgroundColor = FTColours.mainPrimary
         
-        button.layer.cornerRadius = FTLayout.buttonCornerRadius
+        button.layer.cornerRadius = cornerRadius
         
         return button
     }
@@ -51,7 +51,7 @@ class FTButtonFactory: NSObject {
     
     // A square button with custom colour.
     public static func destructiveButton(cornerRadius: CGFloat = 0) -> UIButton {
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.setTitleColor(FTColours.destructiveColour, for: .normal)
         button.titleLabel?.font = FTFonts.simpleButton
         button.backgroundColor = FTColours.lightForeground

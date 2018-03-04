@@ -44,8 +44,9 @@
 
 // Add exercise vC
 "FTAddExerciseViewController_Title" = "Add Exercises";
-"FTAddExerciseViewController_AddExercise" = "Add Exercise";
-"FTAddExerciseViewController_AddSuperset" = "Superset";
+"FTAddExerciseViewController_AddExercise" = "Add Exercise (%i)";
+"FTAddExerciseViewController_AddSuperset" = "Superset (%i)";
+"FTAddExerciseViewController_DisabledSuperset" = "Superset";
 "FTAddExerciseViewController_New" = "New";
 
 // Timer picker view

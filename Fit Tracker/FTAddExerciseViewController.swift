@@ -22,12 +22,24 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         return tv
     }()
     
-    private var selectedExercises = [FTExerciseTemplate]()
+    private var selectedExercisesIndexPaths = Set<IndexPath>() {
+        didSet {
+            let count = selectedExercisesIndexPaths.count
+            addExerciseButton.setTitle(String(format: "FTAddExerciseViewController_AddExercise".ft_localized, count), for: .normal)
+            
+            if count > 1 {
+                addSupersetButton.setTitle(String(format: "FTAddExerciseViewController_AddSuperset".ft_localized, count), for: .normal)
+            } else {
+                addSupersetButton.setTitle("FTAddExerciseViewController_DisabledSuperset".ft_localized, for: .normal)
+            }
+            addSupersetButton.isEnabled = count > 1
+        }
+    }
     
     private let newButton = UIBarButtonItem(title: "FTAddExerciseViewController_New".ft_localized, style: .plain, target: nil, action: nil)
 //    private let newButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
-    private let addExerciseButton = FTButtonFactory.simpleButton()
-    private let addSupersetButton = FTButtonFactory.countourButton()
+    private let addExerciseButton = FTButtonFactory.strongButton()
+    private let addSupersetButton = FTButtonFactory.simpleButton()
     
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
         let request = NSFetchRequest<FTExercise>(entityName: "FTExercise")
@@ -63,6 +75,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         view.addSubview(addSupersetButton)
         
         tableView.sectionIndexColor = FTColours.mainPrimary
+        tableView.allowsMultipleSelection = true
         
         navigationItem.rightBarButtonItem = newButton
         navigationController?.navigationBar.tintColor = FTColours.mainPrimary
@@ -70,11 +83,14 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         newButton.target = self
         newButton.action = #selector(didTapNewButton(_:))
         
-        addExerciseButton.setTitle("FTAddExerciseViewController_AddExercise".ft_localized, for: .normal)
+        let count = selectedExercisesIndexPaths.count
+        
+        addExerciseButton.setTitle(String(format: "FTAddExerciseViewController_AddExercise".ft_localized, count), for: .normal)
         addExerciseButton.addTarget(self, action: #selector(didTapAddExercisesButton(_:)), for: .touchUpInside)
         
-        addSupersetButton.setTitle("FTAddExerciseViewController_AddSuperset".ft_localized, for: .normal)
+        addSupersetButton.setTitle("FTAddExerciseViewController_DisabledSuperset".ft_localized, for: .normal)
         addSupersetButton.addTarget(self, action: #selector(didTapAddSupersetButton(_:)), for: .touchUpInside)
+        addSupersetButton.isEnabled = false
     }
     
     private func addConstraints() {
@@ -108,6 +124,18 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        selectedExercisesIndexPaths.insert(indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        selectedExercisesIndexPaths.remove(indexPath)
+    }
+    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,6 +149,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTAddExerciseViewController.cellReuse, for: indexPath)
         cell.textLabel?.text = frc.object(at: indexPath).name ?? ""
+        cell.selectionStyle = .none
         return cell
     }
     
