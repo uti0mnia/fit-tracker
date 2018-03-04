@@ -15,6 +15,14 @@ class FTColours: NSObject {
     private override init() {}
     
     // MARK: - Static Colours
+    public static let red = UIColor(hexString: "#FF3B30")!
+    public static let orange = UIColor(hexString: "#FF9500")!
+    public static let yellow = UIColor(hexString: "#FFCC00")!
+    public static let green = UIColor(hexString: "#4CD964")!
+    public static let tealBlue = UIColor(hexString: "#5AC8FA")!
+    public static let blue = UIColor(hexString: "#007AFF")!
+    public static let purple = UIColor(hexString: "#5856D6")!
+    public static let pink = UIColor(hexString: "#FF2D55")!
     
     // Main colours.
     public static let lightForeground = UIColor(hexString: "#F9F9F9")!
@@ -33,9 +41,9 @@ class FTColours: NSObject {
     public static let lightTextColour = FTColours.lightBackground
     
     // Colour used for interactions or popping out.
-    public static let defaultMainPrimary = UIColor.flatGreenDark
-    public static let destructiveColour = UIColor(hexString: "#CF000F")!
-    public static let missingColour = UIColor.red
+    public static let defaultMainPrimary = FTColours.green
+    public static let destructiveColour = FTColours.red
+    public static let missingColour = FTColours.red
     
     // Colours used for special things.
     public static let special = UIColor.flatRedDark

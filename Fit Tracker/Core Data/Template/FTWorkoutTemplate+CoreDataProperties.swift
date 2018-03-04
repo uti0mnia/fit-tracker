@@ -16,6 +16,8 @@ extension FTWorkoutTemplate {
         return NSFetchRequest<FTWorkoutTemplate>(entityName: "FTWorkoutTemplate")
     }
 
+    @NSManaged public var colour: Int16
+    @NSManaged public var dayOfWeek: Int16
     @NSManaged public var isDefault: Bool
     @NSManaged public var name: String?
     @NSManaged public var groupTemplates: Set<FTExerciseGroupTemplate>?

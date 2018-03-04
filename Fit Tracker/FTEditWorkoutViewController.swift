@@ -10,12 +10,15 @@ import UIKit
 import CoreData
 
 class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FTAddExerciseViewControllerDelegate {
-    private static let editSetCell = "editSetCell"
+    
+    private static let cellReuse = "cell"
     private static let rowHeight: CGFloat = 50
     
+    private static let sections = ["Exercises"]
+    
     private var tableView: UITableView = {
-        let tv = UITableView()
-        tv.register(UINib(nibName: "FTEditWorkoutSetTableViewCell", bundle: nil), forCellReuseIdentifier: FTEditWorkoutViewController.editSetCell)
+        let tv = UITableView(frame: .zero, style: .grouped)
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
         tv.rowHeight = FTEditWorkoutViewController.rowHeight
         return tv
     }()
@@ -37,21 +40,29 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
-    private lazy var frc: NSFetchedResultsController<FTSetTemplate> = {
-        let request = NSFetchRequest<FTSetTemplate>(entityName: "FTSetTemplate")
-        
-        let groupSort = NSSortDescriptor(key: "exerciseTemplate.groupTemplate.index", ascending: true)
-        let exerciseSort = NSSortDescriptor(key: "exerciseTemplate.index", ascending: true)
-        let indexSort = NSSortDescriptor(key: "index", ascending: true)
-        request.sortDescriptors = [groupSort, exerciseSort, indexSort]
-        
-        let predicate = NSPredicate(format: "%K == %@", "exerciseTemplate.groupTemplate.workoutTemplate", workout)
-        request.predicate = predicate
-        
-        let frc = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: context,
-                                             sectionNameKeyPath: "exerciseTemplate.exercise.name",
-                                             cacheName: nil)
+//    private lazy var frc: NSFetchedResultsController<FTSetTemplate> = {
+//        let request = NSFetchRequest<FTSetTemplate>(entityName: "FTSetTemplate")
+//
+//        let groupSort = NSSortDescriptor(key: "exerciseTemplate.groupTemplate.index", ascending: true)
+//        let exerciseSort = NSSortDescriptor(key: "exerciseTemplate.index", ascending: true)
+//        let indexSort = NSSortDescriptor(key: "index", ascending: true)
+//        request.sortDescriptors = [groupSort, exerciseSort, indexSort]
+//
+//        let predicate = NSPredicate(format: "%K == %@", "exerciseTemplate.groupTemplate.workoutTemplate", workout)
+//        request.predicate = predicate
+//
+//        let frc = NSFetchedResultsController(fetchRequest: request,
+//                                             managedObjectContext: context,
+//                                             sectionNameKeyPath: "exerciseTemplate.exercise.name",
+//                                             cacheName: nil)
+//        frc.delegate = self
+//        return frc
+//    }()
+    private lazy var frc: NSFetchedResultsController<FTExerciseTemplate> = {
+        let request = NSFetchRequest<FTExerciseTemplate>(entityName: "FTExerciseTemplate")
+        request.sortDescriptors = [NSSortDescriptor(key: "groupTemplate.index", ascending: true), NSSortDescriptor(key: "index", ascending: true)]
+        request.predicate = NSPredicate(format: "%K == %@", "groupTemplate.workoutTemplate", workout)
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         return frc
     }()
@@ -163,41 +174,33 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
-        guard let cell = cell as? FTEditWorkoutSetTableViewCell else {
-            return
-        }
-        
-        // TODO: Add superset colours.
-        cell.setTemplate = frc.object(at: indexPath)
-    }
+//    private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+//        guard let cell = cell as? FTEditWorkoutSetTableViewCell else {
+//            return
+//        }
+//
+//        // TODO: Add superset colours.
+//        cell.setTemplate = frc.object(at: indexPath)
+//    }
     
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return frc.sections?.count ?? 0
+        return FTEditWorkoutViewController.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return frc.sections?[section].numberOfObjects ?? 0
+        return frc.fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.editSetCell, for: indexPath)
-        configure(cell: cell, atIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath)
+        cell.textLabel?.text = frc.object(at: indexPath).exercise?.name
         return cell
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        return frc.sectionIndexTitles
-    }
-    
-    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return frc.section(forSectionIndexTitle: title, at: index)
-    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return frc.sectionIndexTitles[section]
+        return FTEditWorkoutViewController.sections[section]
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
@@ -242,13 +245,17 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        emptyWorkoutLabel.isHidden = (frc.fetchedObjects?.count ?? 0) > 0
     }
     
     // MARK: - FTAddExerciseViewControllerDelegate
     
     func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate]) {
+        var index = Int16(workout.groupTemplates?.count ?? 0)
         groups.forEach() { group in
             group.workoutTemplate = workout
+            group.index = index
+            index += 1
         }
     }
     

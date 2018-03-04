@@ -51,6 +51,8 @@
         <relationship name="workoutTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutTemplate" inverseName="workoutLogs" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
     </entity>
     <entity name="FTWorkoutTemplate" representedClassName="FTWorkoutTemplate" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="Integer 16" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dayOfWeek" optional="YES" attributeType="Integer 16" minValueString="-1" maxValueString="7" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groupTemplates" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseGroupTemplate" inverseName="workoutTemplate" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
@@ -63,7 +65,7 @@
         <element name="FTSetLog" positionX="-407" positionY="-157" width="128" height="103"/>
         <element name="FTSetTemplate" positionX="-405" positionY="-9" width="128" height="103"/>
         <element name="FTWorkoutLog" positionX="-243" positionY="-409" width="128" height="103"/>
-        <element name="FTWorkoutTemplate" positionX="-209" positionY="221" width="128" height="103"/>
+        <element name="FTWorkoutTemplate" positionX="-209" positionY="221" width="128" height="133"/>
         <element name="FTExerciseGroupTemplate" positionX="-605" positionY="269" width="128" height="88"/>
         <element name="FTExerciseGroupLog" positionX="-587" positionY="-378" width="128" height="88"/>
     </elements>
