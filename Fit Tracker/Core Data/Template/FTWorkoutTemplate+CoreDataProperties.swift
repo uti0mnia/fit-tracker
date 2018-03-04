@@ -18,7 +18,7 @@ extension FTWorkoutTemplate {
 
     @NSManaged public var isDefault: Bool
     @NSManaged public var name: String?
-    @NSManaged public var exerciseTemplates: Set<FTExerciseTemplate>?
+    @NSManaged public var groupTemplates: Set<FTExerciseGroupTemplate>?
     @NSManaged public var workoutLogs: Set<FTWorkoutLog>?
 
 }

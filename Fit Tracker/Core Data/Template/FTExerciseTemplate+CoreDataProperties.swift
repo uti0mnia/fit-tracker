@@ -19,7 +19,7 @@ extension FTExerciseTemplate {
     @NSManaged public var index: Int16
     @NSManaged public var exercise: FTExercise?
     @NSManaged public var setTemplates: Set<FTSetTemplate>?
-    @NSManaged public var workoutTemplate: FTWorkoutTemplate?
+    @NSManaged public var groupTemplate: FTExerciseGroupTemplate?
 
 }
 

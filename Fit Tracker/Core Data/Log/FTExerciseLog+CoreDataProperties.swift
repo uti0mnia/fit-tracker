@@ -20,7 +20,7 @@ extension FTExerciseLog {
     @NSManaged public var index: Int16
     @NSManaged public var exercise: FTExercise?
     @NSManaged public var setLogs: Set<FTSetLog>?
-    @NSManaged public var workoutLog: FTWorkoutLog?
+    @NSManaged public var groupLog: FTExerciseGroupLog?
 
 }
 

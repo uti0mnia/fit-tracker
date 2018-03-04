@@ -54,7 +54,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         let context = FTDataController.shared.createMainContext()
         self.context = context
         self.workout = workout ?? FTWorkoutTemplate(context: context)
-        self.exercises = workout?.exerciseTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTExerciseTemplate]()
+        
+        let templates = workout?.groupTemplates?.sorted(by: {$0.index < $1.index })
+        self.exercises = templates?.reduce([FTExerciseTemplate]()) { result, template in
+            if let logs = template.exerciseLogs?.sorted(by: { $0.index < $1.index }) {
+                return result + logs
+            }
+            return result
+        } ?? [FTExerciseTemplate]()
         
         super.init(nibName: nil, bundle: nil)
         
