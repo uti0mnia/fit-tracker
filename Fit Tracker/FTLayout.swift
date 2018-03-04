@@ -40,5 +40,6 @@ class FTLayout: NSObject {
     
     // Specific
     public static let setMultiplySize: CGFloat = 12
+    public static let defaultTableViewCellHeight: CGFloat = 50
     
 }

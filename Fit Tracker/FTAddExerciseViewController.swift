@@ -18,6 +18,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         tv.delegate = self
         tv.dataSource = self
         tv.register(UITableViewCell.self, forCellReuseIdentifier: FTAddExerciseViewController.cellReuse)
+        tv.rowHeight = FTLayout.defaultTableViewCellHeight
         return tv
     }()
     
@@ -60,6 +61,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         view.addSubview(tableView)
         view.addSubview(addExerciseButton)
         view.addSubview(addSupersetButton)
+        
+        tableView.sectionIndexColor = FTColours.mainPrimary
         
         navigationItem.rightBarButtonItem = newButton
         navigationController?.navigationBar.tintColor = FTColours.mainPrimary
@@ -127,6 +130,14 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return frc.section(forSectionIndexTitle: title, at: index)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return frc.sectionIndexTitles[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return frc.sectionIndexTitles
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
