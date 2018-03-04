@@ -98,7 +98,6 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.navigationBar.tintColor = FTColours.mainPrimary
         
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
-        saveButton?.isEnabled = false
         navigationItem.rightBarButtonItem = saveButton!
         
         dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
@@ -125,23 +124,48 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     private func updateBodyPartCell() {
         bodyPartCell.mainLabel.text = "FTNewExerciseViewController_BodyPart".ft_localized
         bodyPartCell.detailLabel.text = exercise.getBodyPart().description
+        bodyPartCell.detailLabel.textColor = FTColours.grayTextColour
     }
     
     private func updateCategoryCell() {
         categoryCell.mainLabel.text = "FTNewExerciseViewController_Category".ft_localized
         categoryCell.detailLabel.text = exercise.getCategory().description
+        categoryCell.detailLabel.textColor = FTColours.grayTextColour
     }
     
-    private func updateSaveButton() {
-        if exerciseNameCell.textField.text != nil && exerciseNameCell.textField.text != "" {
-            saveButton?.isEnabled = true
-        } else {
-            saveButton?.isEnabled = false
+    private func shake(_ view: UIView) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: view.center.x - 5, y: view.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: view.center.x + 5, y: view.center.y))
+        
+        view.layer.add(animation, forKey: "position")
+    }
+    
+    private func handleNonCompleteExercise() {
+        if exercise.getBodyPart() == .none {
+            bodyPartCell.detailLabel.textColor = FTColours.missingColour
+            shake(bodyPartCell.detailLabel)
+        }
+        
+        if exercise.getCategory() == .none {
+            categoryCell.detailLabel.textColor = FTColours.missingColour
+            shake(categoryCell.detailLabel)
+        }
+        
+        if exercise.name == nil || exercise.name == "" {
+            exerciseNameCell.textField.placeholderColour = FTColours.missingColour
+            shake(exerciseNameCell.textField)
         }
     }
 
     @objc private func didTapSaveButton(_ sender: UIBarButtonItem) {
-        assert(exercise.isComplete, "Saving uncomplete exercise")
+        guard exercise.isComplete else {
+            handleNonCompleteExercise()
+            return
+        }
         
         do {
             try context.save()
@@ -160,7 +184,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func textFieldDidChangeNotification(_ notification: Notification) {
-        updateSaveButton()
+        exerciseNameCell.textField.placeholderColour = exerciseNameCell.defaultPlaceholderColour
         exercise.name = exerciseNameCell.textField.text
     }
     

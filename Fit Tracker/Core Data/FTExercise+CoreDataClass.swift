@@ -13,7 +13,7 @@ import CoreData
 public class FTExercise: NSManagedObject {
     
     public var isComplete: Bool {
-        return name != nil && createdAt != nil
+        return name != nil && createdAt != nil && category != Category.none.rawValue && bodyPart != BodyPart.none.rawValue
     }
     
     public var firstLetter: String {
@@ -32,7 +32,7 @@ public class FTExercise: NSManagedObject {
     }
     
     public enum BodyPart: Int16, CustomStringConvertible {
-        case abs, arms, back, chest, legs, shoulders, none
+        case abs, arms, back, chest, legs, shoulders, none = -1
         
         public var description: String {
             switch self {
@@ -54,12 +54,12 @@ public class FTExercise: NSManagedObject {
         }
         
         public static var array: [BodyPart] {
-            return [.abs, .arms, .back, .chest, .legs, .shoulders, .none]
+            return [.abs, .arms, .back, .chest, .legs, .shoulders]
         }
     }
     
     public enum Category: Int16, CustomStringConvertible {
-        case assisted, barbell, cardio, dumbbell, duration, machine, other, reps, weighted, none
+        case assisted, barbell, cardio, dumbbell, duration, machine, other, reps, weighted, none = -1
         
         public var description: String {
             switch self {
@@ -87,7 +87,7 @@ public class FTExercise: NSManagedObject {
         }
         
         public static var array: [Category] {
-            return [.assisted, .barbell, .cardio, .dumbbell, .duration, .machine, .other, .reps, .weighted, .none]
+            return [.assisted, .barbell, .cardio, .dumbbell, .duration, .machine, .other, .reps, .weighted]
         }
     }
 }

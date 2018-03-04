@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FTExercise" representedClassName="FTExercise" syncable="YES">
-        <attribute name="bodyPart" attributeType="Integer 16" minValueString="0" defaultValueString="32767" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="category" attributeType="Integer 16" minValueString="0" defaultValueString="32767" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="bodyPart" attributeType="Integer 16" minValueString="-1" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="category" attributeType="Integer 16" minValueString="-1" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="restTime" attributeType="Integer 16" minValueString="0" defaultValueString="60" usesScalarValueType="YES" syncable="YES"/>

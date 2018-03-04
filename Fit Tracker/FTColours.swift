@@ -35,6 +35,7 @@ class FTColours: NSObject {
     // Colour used for interactions or popping out.
     public static let defaultMainPrimary = UIColor.flatGreenDark
     public static let destructiveColour = UIColor(hexString: "#CF000F")!
+    public static let missingColour = UIColor.red
     
     // Colours used for special things.
     public static let special = UIColor.flatRedDark

@@ -12,13 +12,19 @@ class FTTextFieldTableViewCell: UITableViewCell {
     
     public let textField = FTDefaultTextField()
     
+    public let defaultPlaceholderColour: UIColor
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        defaultPlaceholderColour = textField.placeholderColour
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupVisuals()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        defaultPlaceholderColour = textField.placeholderColour
+        
         super.init(coder: aDecoder)
         
         setupVisuals()
