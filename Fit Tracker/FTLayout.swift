@@ -19,6 +19,7 @@ class FTLayout: NSObject {
     // Padding.
     public static let defaultPadding: CGFloat = 8
     public static let largePadding: CGFloat = 16
+    public static let bigPadding: CGFloat = 30
     
     // Insets.
     public static let defaultInsets = UIEdgeInsets(top: FTLayout.defaultPadding,

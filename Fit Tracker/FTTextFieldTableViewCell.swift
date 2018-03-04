@@ -26,8 +26,10 @@ class FTTextFieldTableViewCell: UITableViewCell {
     
     private func setupVisuals() {
         contentView.addSubview(textField)
-        textField.frame = contentView.bounds.insetBy(dx: FTLayout.defaultPadding * 2, dy: FTLayout.defaultPadding * 2)
-        textField.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textField.snp.makeConstraints() { make in
+            make.left.right.equalToSuperview().inset(FTLayout.defaultInsets)
+            make.top.bottom.equalToSuperview().inset(FTLayout.largeInsets)
+        }
     }
 
 }

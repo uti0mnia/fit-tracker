@@ -34,6 +34,8 @@
 "FTGeneral_Next" = "Next";
 "FTGeneral_Finish" = "Finish";
 "FTGeneral_Reps" = "Reps";
+"FTGeneral_BodyPart" = "Body Part";
+"FTGeneral_Category" = "Category";
 
 // Edit workout VC
 "FTEditWorkoutViewController_NewWorkout" = "New Workout";

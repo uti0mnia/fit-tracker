@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Zy-XS-T9i">
-                        <rect key="frame" x="8" y="8" width="453" height="39.5"/>
+                        <rect key="frame" x="8" y="16" width="453" height="23.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-Ob-vtY" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="403" height="39.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="403" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp9-2a-E6c" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="411" y="0.0" width="42" height="39.5"/>
+                                <rect key="frame" x="411" y="0.0" width="42" height="23.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,9 +37,9 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1Zy-XS-T9i" firstAttribute="top" secondItem="mfN-AL-hiD" secondAttribute="top" constant="8" id="EIS-Ea-et5"/>
+                    <constraint firstItem="1Zy-XS-T9i" firstAttribute="top" secondItem="mfN-AL-hiD" secondAttribute="top" constant="16" id="EIS-Ea-et5"/>
                     <constraint firstAttribute="trailing" secondItem="1Zy-XS-T9i" secondAttribute="trailing" constant="8" id="da8-uu-vbl"/>
-                    <constraint firstAttribute="bottom" secondItem="1Zy-XS-T9i" secondAttribute="bottom" constant="8" id="lew-Ai-2P2"/>
+                    <constraint firstAttribute="bottom" secondItem="1Zy-XS-T9i" secondAttribute="bottom" constant="16" id="lew-Ai-2P2"/>
                     <constraint firstItem="1Zy-XS-T9i" firstAttribute="leading" secondItem="mfN-AL-hiD" secondAttribute="leading" constant="8" id="zrU-eU-iDZ"/>
                 </constraints>
             </tableViewCellContentView>

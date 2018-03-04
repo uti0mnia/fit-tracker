@@ -23,6 +23,14 @@ public class FTExercise: NSManagedObject {
         return firstLetter
     }
     
+    public func getBodyPart() -> BodyPart {
+        return BodyPart.init(rawValue: self.bodyPart) ?? .none
+    }
+    
+    public func getCategory() -> Category {
+        return Category.init(rawValue: self.category) ?? .none
+    }
+    
     public enum BodyPart: Int16, CustomStringConvertible {
         case abs, arms, back, chest, legs, shoulders, none
         

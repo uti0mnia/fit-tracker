@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, FTNewExerciseDetailViewControllerDelegate, FTTimerPickerCellDelegate {
+class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FTTimerPickerCellDelegate {
     
     private let detailVC = FTNewExerciseDetailViewController()
     
@@ -51,7 +51,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         tv.rowHeight = UITableViewAutomaticDimension
         return tv
     }()
-    private var exercise: FTExercise?
+    private var exercise: FTExercise!
     
     required init() {
         self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -60,7 +60,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         self.context.parent = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
         exercise = FTExercise(context: context)
-        exercise?.createdAt = NSDate()
+        exercise.createdAt = NSDate()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,8 +72,6 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        detailVC.delegate = self
 
         setupVisuals()
     }
@@ -82,6 +80,9 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChangeNotification(_:)), name: .UITextFieldTextDidChange, object: nil)
+        
+        updateBodyPartCell()
+        updateCategoryCell()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,18 +114,22 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         // Cells
         exerciseNameCell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".ft_localized
         
-        bodyPartCell.mainLabel.text = "FTNewExerciseViewController_BodyPart".ft_localized
-        bodyPartCell.detailLabel.text = "FTGeneral_None".ft_localized
-        
-        categoryCell.mainLabel.text = "FTNewExerciseViewController_Category".ft_localized
-        categoryCell.detailLabel.text = "FTGeneral_None".ft_localized
-        
         timerCell.mainLabel.text = "FTNewExerciseViewController_RestTimer".ft_localized
         let timer = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.preferredRestTime)
         timerCell.detailLabel.text = timer
         
         pickerCell.delegate = self
         pickerCell.setPickerTimer(seconds: FTSettingsManager.shared.preferredRestTime, animated: false)
+    }
+    
+    private func updateBodyPartCell() {
+        bodyPartCell.mainLabel.text = "FTNewExerciseViewController_BodyPart".ft_localized
+        bodyPartCell.detailLabel.text = exercise.getBodyPart().description
+    }
+    
+    private func updateCategoryCell() {
+        categoryCell.mainLabel.text = "FTNewExerciseViewController_Category".ft_localized
+        categoryCell.detailLabel.text = exercise.getCategory().description
     }
     
     private func updateSaveButton() {
@@ -136,7 +141,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
 
     @objc private func didTapSaveButton(_ sender: UIBarButtonItem) {
-        assert(exercise?.isComplete ?? false, "Saving uncomplete exercise")
+        assert(exercise.isComplete, "Saving uncomplete exercise")
         
         do {
             try context.save()
@@ -147,7 +152,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
-        if exercise?.name != nil {
+        if exercise.name != nil {
             // TODO: Double check with user.
             context.rollback()
         }
@@ -156,7 +161,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     @objc private func textFieldDidChangeNotification(_ notification: Notification) {
         updateSaveButton()
-        exercise?.name = exerciseNameCell.textField.text
+        exercise.name = exerciseNameCell.textField.text
     }
     
     private func hidePickerCell() {
@@ -208,24 +213,22 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         if cell == bodyPartCell {
-            
+            detailVC.detailType = .bodyPart
+            detailVC.title = "FTGeneral_BodyPart".ft_localized
+            detailVC.exercise = exercise
+            detailVC.selectedIndex = Int(exercise.getBodyPart().rawValue)
+            detailVC.options = FTExercise.BodyPart.array
+            navigationController?.pushViewController(detailVC, animated: true)
         } else if cell == categoryCell {
-            
+            detailVC.detailType = .category
+            detailVC.title = "FTGeneral_Category".ft_localized
+            detailVC.exercise = exercise
+            detailVC.selectedIndex = Int(exercise.getCategory().rawValue)
+            detailVC.options = FTExercise.Category.array
+            navigationController?.pushViewController(detailVC, animated: true)
         } else if cell == timerCell {
             isPickerCellHidden ? showPickerCell() : hidePickerCell()
         }
-    }
-    
-    // MARK: - UITextFieldDelegate
-
-    // MARK: - FTNewExerciseDetailViewControllerDelegate
-    
-    func newExerciseDetailViewController(_ viewController: FTNewExerciseViewController, willDismissWithSelectedIndexPath indexPath: IndexPath?) {
-        guard let indexPath = indexPath else {
-            return
-        }
-        
-        
     }
     
     // MARK: - FTTimerPickerCellDelegate
