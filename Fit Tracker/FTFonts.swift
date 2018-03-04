@@ -28,7 +28,8 @@ class FTFonts: NSObject {
     
     // TextFields.
     static let defaultTextField = UIFont.systemFont(ofSize: 14)
+    static let setTextField = UIFont.systemFont(ofSize: 16)
     
     // Specific
-    static let setDescription = UIFont.boldSystemFont(ofSize: 13)
+    static let setDescription = UIFont.boldSystemFont(ofSize: 16)
 }

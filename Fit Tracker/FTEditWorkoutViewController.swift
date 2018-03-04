@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FTAddExerciseViewControllerDelegate {
     private static let editSetCell = "editSetCell"
     private static let rowHeight: CGFloat = 50
     
     private var tableView: UITableView = {
         let tv = UITableView()
-        tv.register(FTEditWorkoutSetTableViewCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.editSetCell)
+        tv.register(UINib(nibName: "FTEditWorkoutSetTableViewCell", bundle: nil), forCellReuseIdentifier: FTEditWorkoutViewController.editSetCell)
         tv.rowHeight = FTEditWorkoutViewController.rowHeight
         return tv
     }()
@@ -57,9 +57,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }()
     
     required init(workout: FTWorkoutTemplate? = nil) {
-        let context = FTDataController.shared.createMainContext()
-        self.context = context
-        self.workout = workout ?? FTWorkoutTemplate(context: context)
+        self.context = FTDataController.shared.moc
+        self.workout = workout ?? FTWorkoutTemplate(context: FTDataController.shared.moc)
         
         super.init(nibName: nil, bundle: nil)
         
@@ -111,11 +110,18 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         }
         view.backgroundColor = FTColours.lightBackground
         
+        view.addSubview(tableView)
+        tableView.backgroundColor = UIColor.clear
+        tableView.tableFooterView = UIView()
+        tableView.snp.makeConstraints() { make in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top)
+        }
+        
         view.addSubview(emptyWorkoutLabel)
         emptyWorkoutLabel.text = "FTEditWorkoutViewController_EmptyWorkout".ft_localized
         emptyWorkoutLabel.snp.makeConstraints({ $0.center.equalToSuperview() })
-        
-        tableView.backgroundColor = UIColor.clear
         
         navigationItem.leftBarButtonItem = dismissButton
         navigationItem.rightBarButtonItem = editButton
@@ -153,6 +159,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     @objc private func didTapAddButton(_ sender: UIButton) {
         let vc = FTAddExerciseViewController()
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -196,6 +203,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("FRC detected change in workout template")
         tableView.beginUpdates()
     }
     
@@ -234,6 +242,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+    // MARK: - FTAddExerciseViewControllerDelegate
+    
+    func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate]) {
+        groups.forEach() { group in
+            group.workoutTemplate = workout
+        }
     }
     
 }

@@ -43,7 +43,6 @@ class FTDefaultTextField: UITextField, FTSimpleFontSize {
     private func commonInit() {
         self.textColor = FTColours.darkTextColour
         self.borderStyle = .none
-        self.clearButtonMode = .always
     }
     
     private func updatePlaceholder() {

@@ -9,9 +9,15 @@
 import UIKit
 import CoreData
 
+protocol FTAddExerciseViewControllerDelegate: class {
+    func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate])
+}
+
 class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     private static let cellReuse = "cell"
+    
+    public weak var delegate: FTAddExerciseViewControllerDelegate?
     
     private lazy var tableView: UITableView = {
         let tv = UITableView()
@@ -22,7 +28,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         return tv
     }()
     
-    private var selectedExercisesIndexPaths = Set<IndexPath>() {
+    private var selectedExercisesIndexPaths = [IndexPath]() {
         didSet {
             let count = selectedExercisesIndexPaths.count
             addExerciseButton.setTitle(String(format: "FTAddExerciseViewController_AddExercise".ft_localized, count), for: .normal)
@@ -41,13 +47,24 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     private let addExerciseButton = FTButtonFactory.strongButton()
     private let addSupersetButton = FTButtonFactory.simpleButton()
     
+    private let context: NSManagedObjectContext
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
         let request = NSFetchRequest<FTExercise>(entityName: "FTExercise")
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: FTDataController.shared.moc, sectionNameKeyPath: "firstLetter", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.context, sectionNameKeyPath: "firstLetter", cacheName: nil)
         frc.delegate = self
         return frc
     }()
+    
+    required init() {
+        self.context = FTDataController.shared.moc
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +75,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         do {
             try frc.performFetch()
         } catch {
-            assertionFailure("frc failed")
             print("Error performing fetch: \(error.localizedDescription)")
+            assertionFailure("frc failed")
         }
     }
     
@@ -117,23 +134,53 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @objc private func didTapAddExercisesButton(_ sender: UIButton) {
+        guard delegate != nil else {
+            assertionFailure("Cannot have a nil delegate.")
+            _ = navigationController?.popViewController(animated: true)
+            return
+        }
         
+        print("Adding exercises from selected array")
+        
+        var groups = [FTExerciseGroupTemplate]()
+        for (idx, indexPath) in self.selectedExercisesIndexPaths.enumerated() {
+            let groupTemplate = FTExerciseGroupTemplate(context: context)
+            groupTemplate.index = Int16(idx)
+            
+            let exerciseTemplate = FTExerciseTemplate(context: context)
+            exerciseTemplate.index = 0
+            exerciseTemplate.exercise = self.frc.object(at: indexPath)
+            exerciseTemplate.groupTemplate = groupTemplate
+            
+            // Create a default set template
+            let setTemplate = FTSetTemplate.defaultSetTemplate(context: context)
+            setTemplate.exerciseTemplate = exerciseTemplate
+            
+            groups.append(groupTemplate)
+        }
+        
+        print("Finished adding exercises from selected array")
+        
+        delegate?.addExerciseViewController(self, willDismissWithAddedExerciseGroups: groups)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapAddSupersetButton(_ sender: UIButton) {
-        
+        print("Tapped add superset button")
     }
     
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        selectedExercisesIndexPaths.insert(indexPath)
+        selectedExercisesIndexPaths.append(indexPath)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        selectedExercisesIndexPaths.remove(indexPath)
+        if let idx = selectedExercisesIndexPaths.index(of: indexPath) {
+            selectedExercisesIndexPaths.remove(at: idx)
+        }
     }
     
     // MARK: - UITableViewDataSource

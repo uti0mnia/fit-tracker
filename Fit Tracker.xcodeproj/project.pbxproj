@@ -37,6 +37,7 @@
 		C97B24B9204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B24B7204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataProperties.swift */; };
 		C97B24BC204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B24BA204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataClass.swift */; };
 		C97B24BD204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97B24BB204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataProperties.swift */; };
+		C97B24C0204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97B24BF204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib */; };
 		C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */; };
 		C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* FTColours.swift */; };
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
@@ -102,6 +103,7 @@
 		C97B24B7204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseGroupTemplate+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTExerciseGroupTemplate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C97B24BA204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseGroupLog+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Log/FTExerciseGroupLog+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C97B24BB204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseGroupLog+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Log/FTExerciseGroupLog+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		C97B24BF204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTEditWorkoutSetTableViewCell.xib; sourceTree = "<group>"; };
 		C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTLayout.swift; sourceTree = "<group>"; };
 		C9A65FCD202D79A500C3AC72 /* FTColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTColours.swift; sourceTree = "<group>"; };
 		C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsManager.swift; sourceTree = "<group>"; };
@@ -267,6 +269,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		C97B24BE204C9323008B59F8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */,
+				C97B24BF204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		C9A65FC5202D784F00C3AC72 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,7 +362,7 @@
 				C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */,
 				C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */,
 				C9EC4E6420389FD900CF538F /* FTEditWorkoutViewController.swift */,
-				C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */,
+				C97B24BE204C9323008B59F8 /* Cells */,
 			);
 			name = Workouts;
 			sourceTree = "<group>";
@@ -478,6 +489,7 @@
 			files = (
 				C97A234F204B6735001997E8 /* FTExerciseSelectionCell.xib in Resources */,
 				C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */,
+				C97B24C0204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib in Resources */,
 				C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */,
 				C9775D022020441C00C2E9B3 /* Assets.xcassets in Resources */,
 				C97A234D204B6695001997E8 /* FTTimerPickerCell.xib in Resources */,

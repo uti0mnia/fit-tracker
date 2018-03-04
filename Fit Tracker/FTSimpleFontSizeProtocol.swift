@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum SimpleFontSize {
+public enum SimpleFontSize: Int {
     case micro, tiny, small, medium, large
     
     public var font: UIFont {

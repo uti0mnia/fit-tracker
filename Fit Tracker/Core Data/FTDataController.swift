@@ -54,7 +54,7 @@ class FTDataController: NSObject {
         return nil
     }
     
-    public func performSaveBlockAsync(block: @escaping (NSManagedObjectContext) -> Void, completion: @escaping (Error?) -> Void) throws {
+    public func performSaveBlockAsync(block: @escaping (NSManagedObjectContext) -> Void, completion: @escaping (Error?) -> Void) {
         persistentContainer.performBackgroundTask() { context in
             block(context)
             
