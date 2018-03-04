@@ -25,7 +25,6 @@
 		C928F91B204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F90D204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift */; };
 		C928F922204A46F5001BA6CE /* FTNavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F921204A46F5001BA6CE /* FTNavigationManager.swift */; };
 		C928F928204A5637001BA6CE /* FTNavigationReceiverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F927204A5637001BA6CE /* FTNavigationReceiverDelegate.swift */; };
-		C928F92A204B1D0B001BA6CE /* FTTimerPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F929204B1D0B001BA6CE /* FTTimerPickerController.swift */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
 		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
@@ -89,7 +88,6 @@
 		C928F90D204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTWorkoutTemplate+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTWorkoutTemplate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C928F921204A46F5001BA6CE /* FTNavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNavigationManager.swift; sourceTree = "<group>"; };
 		C928F927204A5637001BA6CE /* FTNavigationReceiverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNavigationReceiverDelegate.swift; sourceTree = "<group>"; };
-		C928F929204B1D0B001BA6CE /* FTTimerPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTimerPickerController.swift; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainViewController.swift; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 				C9EC4E622037F88500CF538F /* FTNewExerciseDetailViewController.swift */,
 				C97A234B204B6614001997E8 /* Cells */,
 				C9EC4E7F203E8BF300CF538F /* FTAddExerciseViewController.swift */,
-				C928F929204B1D0B001BA6CE /* FTTimerPickerController.swift */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -597,7 +594,6 @@
 				C928F914204911CA001BA6CE /* FTWorkoutLog+CoreDataProperties.swift in Sources */,
 				C928F91A204911CA001BA6CE /* FTSetTemplate+CoreDataClass.swift in Sources */,
 				C928F919204911CA001BA6CE /* FTSetLog+CoreDataProperties.swift in Sources */,
-				C928F92A204B1D0B001BA6CE /* FTTimerPickerController.swift in Sources */,
 				C928F912204911CA001BA6CE /* FTExerciseLog+CoreDataProperties.swift in Sources */,
 				C928F911204911CA001BA6CE /* FTSetLog+CoreDataClass.swift in Sources */,
 				C9EC4E6520389FD900CF538F /* FTEditWorkoutViewController.swift in Sources */,

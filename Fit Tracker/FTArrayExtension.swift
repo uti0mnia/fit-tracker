@@ -16,7 +16,4 @@ extension Array {
         return self[idx]
     }
     
-    public func ft_nilMap<T>(transform: (Element) -> T) {
-        
-    }
 }

@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     private static let editSetCell = "editSetCell"
     private static let rowHeight: CGFloat = 50
     
@@ -36,38 +35,33 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }()
     private let finishButton = FTButtonFactory.simpleButton()
     
-    private var workout: FTWorkoutTemplate
-    private var sets = [Int: [FTSetTemplate]]() {
-        didSet {
-            self.editButton.isEnabled = sets.count > 0
-        }
-    }
-    private var exercises: [FTExerciseTemplate] {
-        didSet {
-            emptyWorkoutLabel.isHidden = exercises.count > 0
-            exerciseCountLabel?.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, exercises.count)
-        }
-    }
+    private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
+    private lazy var frc: NSFetchedResultsController<FTSetTemplate> = {
+        let request = NSFetchRequest<FTSetTemplate>(entityName: "FTSetTemplate")
+        
+        let groupSort = NSSortDescriptor(key: "exerciseTemplate.groupTemplate.index", ascending: true)
+        let exerciseSort = NSSortDescriptor(key: "exerciseTemplate.index", ascending: true)
+        let indexSort = NSSortDescriptor(key: "index", ascending: true)
+        request.sortDescriptors = [groupSort, exerciseSort, indexSort]
+        
+        let predicate = NSPredicate(format: "%K == %@", "exerciseTemplate.groupTemplate.workoutTemplate", workout)
+        request.predicate = predicate
+        
+        let frc = NSFetchedResultsController(fetchRequest: request,
+                                             managedObjectContext: context,
+                                             sectionNameKeyPath: "exerciseTemplate.exercise.name",
+                                             cacheName: nil)
+        frc.delegate = self
+        return frc
+    }()
     
     required init(workout: FTWorkoutTemplate? = nil) {
         let context = FTDataController.shared.createMainContext()
         self.context = context
         self.workout = workout ?? FTWorkoutTemplate(context: context)
         
-        let templates = workout?.groupTemplates?.sorted(by: {$0.index < $1.index })
-        self.exercises = templates?.reduce([FTExerciseTemplate]()) { result, template in
-            if let logs = template.exerciseLogs?.sorted(by: { $0.index < $1.index }) {
-                return result + logs
-            }
-            return result
-        } ?? [FTExerciseTemplate]()
-        
         super.init(nibName: nil, bundle: nil)
-        
-        exercises.forEach() { template in
-            self.sets[Int(template.index)] = template.setTemplates?.sorted(by: { return $0.index < $1.index }) ?? [FTSetTemplate]()
-        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -82,6 +76,13 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         
         setupVisuals()
         setupToolBar()
+        
+        do {
+            try frc.performFetch()
+        } catch {
+            print("Error fetching objects: \(error.localizedDescription)")
+            assertionFailure()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,10 +131,11 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         addBarButton.tintColor = FTColours.mainPrimary
         
+        // TODO: Fix this with exerciseCountLabel.
         let label = FTSizedLabel(textSize: .small)
         label.backgroundColor = UIColor.clear
         label.textAlignment = .center
-        label.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, exercises.count)
+        label.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, 0)
         let labelBarButton = UIBarButtonItem(customView: label)
         
         navigationController?.setToolbarHidden(false, animated: false)
@@ -159,31 +161,79 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             return
         }
         
-        // We will assume that
-        cell.setTemplate = sets[indexPath.section]?[indexPath.row]
+        // TODO: Add superset colours.
+        cell.setTemplate = frc.object(at: indexPath)
     }
     
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return exercises.count
+        return frc.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sets[section]?.count ?? 0
+        return frc.sections?[section].numberOfObjects ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.editSetCell, for: indexPath)
         configure(cell: cell, atIndexPath: indexPath)
         return cell
-        
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return exercises.map({ return $0.exercise?.name ?? "" })
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return frc.sectionIndexTitles
     }
     
-    // MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return frc.section(forSectionIndexTitle: title, at: index)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return frc.sectionIndexTitles[section]
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        let indexSet = IndexSet(integer: sectionIndex)
+        switch type {
+        case .insert:
+            tableView.insertSections(indexSet, with: .fade)
+        case .delete:
+            tableView.deleteSections(indexSet, with: .fade)
+        default:
+            break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        case .move:
+            if let indexPath = indexPath, let newIndexPath = newIndexPath {
+                tableView.moveRow(at: indexPath, to: newIndexPath)
+            }
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
     
 }
