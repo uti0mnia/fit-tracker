@@ -43,8 +43,6 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     }
     private var isPickerCellHidden = true
     private let pickerCellIndex = IndexPath(row: 1, section: 2)
-    
-    private var context: NSManagedObjectContext
 
     private var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
@@ -52,14 +50,12 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         return tv
     }()
     private var exercise: FTExercise!
+    private var context = FTDataController.shared.createBackgroundContext()
     
     required init() {
-        self.context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        
         super.init(nibName: nil, bundle: nil)
         
-        self.context.parent = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
-        exercise = FTExercise(context: context)
+        exercise = FTExercise(context: self.context)
         exercise.createdAt = NSDate()
     }
     
@@ -169,6 +165,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         
         do {
             try context.save()
+            try context.parent?.save()
         } catch {
             print("Error saving context: \(error.localizedDescription)")
         }
@@ -178,7 +175,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     @objc private func didTapDismissButton(_ sender: UIBarButtonItem) {
         if exercise.name != nil {
             // TODO: Double check with user.
-            context.rollback()
+            self.context.rollback()
         }
         self.dismiss(animated: true, completion: nil)
     }

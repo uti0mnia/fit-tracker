@@ -16,7 +16,7 @@ public class FTExercise: NSManagedObject {
         return name != nil && createdAt != nil && category != Category.none.rawValue && bodyPart != BodyPart.none.rawValue
     }
     
-    public var firstLetter: String {
+    @objc public var firstLetter: String {
         self.willAccessValue(forKey: "firstLetter")
         let firstLetter = self.name?[0] ?? ""
         self.didAccessValue(forKey: "firstLetter")

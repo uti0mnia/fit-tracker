@@ -48,11 +48,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             exerciseCountLabel?.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, exercises.count)
         }
     }
-    
-    private var context: NSManagedObjectContext
+    private let context: NSManagedObjectContext
     
     required init(workout: FTWorkoutTemplate? = nil) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).dataController.moc
+        let context = FTDataController.shared.createMainContext()
         self.context = context
         self.workout = workout ?? FTWorkoutTemplate(context: context)
         self.exercises = workout?.exerciseTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTExerciseTemplate]()

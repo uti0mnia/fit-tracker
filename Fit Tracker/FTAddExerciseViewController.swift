@@ -31,13 +31,10 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
         let request = NSFetchRequest<FTExercise>(entityName: "FTExercise")
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataController.moc, sectionNameKeyPath: "firstLetter", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: FTDataController.shared.moc, sectionNameKeyPath: "firstLetter", cacheName: nil)
+        frc.delegate = self
         return frc
     }()
-    
-    private var dataController: DataController {
-        return (UIApplication.shared.delegate as! AppDelegate).dataController
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

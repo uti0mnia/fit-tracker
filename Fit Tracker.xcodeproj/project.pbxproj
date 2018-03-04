@@ -39,7 +39,7 @@
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
 		C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9A65FD3202D821B00C3AC72 /* Localizable.strings */; };
 		C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9B355132047CE6100B48D04 /* Model.xcdatamodeld */; };
-		C9B355262047CF2100B48D04 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355252047CF2100B48D04 /* DataController.swift */; };
+		C9B355262047CF2100B48D04 /* FTDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355252047CF2100B48D04 /* FTDataController.swift */; };
 		C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */; };
 		C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */; };
 		C9D2DA102032AA4000A1FB1C /* FTTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */; };
@@ -104,7 +104,7 @@
 		C9A65FD4202D821B00C3AC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9A65FD6202D824200C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9B355142047CE6100B48D04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		C9B355252047CF2100B48D04 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		C9B355252047CF2100B48D04 /* FTDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDataController.swift; sourceTree = "<group>"; };
 		C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeViewController.swift; sourceTree = "<group>"; };
 		C9D2DA0C2032A9DE00A1FB1C /* FTHomeDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeDataView.swift; sourceTree = "<group>"; };
 		C9D2DA0F2032AA4000A1FB1C /* FTTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTitleLabel.swift; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 				C928F91C204912DC001BA6CE /* Log */,
 				C928F91D204912EA001BA6CE /* Template */,
 				C9B355132047CE6100B48D04 /* Model.xcdatamodeld */,
-				C9B355252047CF2100B48D04 /* DataController.swift */,
+				C9B355252047CF2100B48D04 /* FTDataController.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -542,7 +542,7 @@
 				C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */,
 				C9EC4E80203E8BF300CF538F /* FTAddExerciseViewController.swift in Sources */,
 				C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */,
-				C9B355262047CF2100B48D04 /* DataController.swift in Sources */,
+				C9B355262047CF2100B48D04 /* FTDataController.swift in Sources */,
 				C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */,
 				C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */,
 				C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */,
