@@ -32,6 +32,8 @@
 		C9775D022020441C00C2E9B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9775D012020441C00C2E9B3 /* Assets.xcassets */; };
 		C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775D032020441C00C2E9B3 /* LaunchScreen.storyboard */; };
 		C97A234A204B30FD001997E8 /* FTTimerPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A2349204B30FD001997E8 /* FTTimerPickerCell.swift */; };
+		C97A234D204B6695001997E8 /* FTTimerPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97A234C204B6695001997E8 /* FTTimerPickerCell.xib */; };
+		C97A234F204B6735001997E8 /* FTExerciseSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97A234E204B6735001997E8 /* FTExerciseSelectionCell.xib */; };
 		C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */; };
 		C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* FTColours.swift */; };
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
@@ -92,6 +94,8 @@
 		C9775D042020441C00C2E9B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9775D062020441C00C2E9B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C97A2349204B30FD001997E8 /* FTTimerPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTimerPickerCell.swift; sourceTree = "<group>"; };
+		C97A234C204B6695001997E8 /* FTTimerPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTimerPickerCell.xib; sourceTree = "<group>"; };
+		C97A234E204B6735001997E8 /* FTExerciseSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTExerciseSelectionCell.xib; sourceTree = "<group>"; };
 		C9A65FC9202D78EB00C3AC72 /* FTLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTLayout.swift; sourceTree = "<group>"; };
 		C9A65FCD202D79A500C3AC72 /* FTColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTColours.swift; sourceTree = "<group>"; };
 		C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsManager.swift; sourceTree = "<group>"; };
@@ -242,6 +246,17 @@
 			path = "Fit Tracker";
 			sourceTree = "<group>";
 		};
+		C97A234B204B6614001997E8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C9EC4E5E2037EF4100CF538F /* FTExerciseSelectionCell.swift */,
+				C97A234E204B6735001997E8 /* FTExerciseSelectionCell.xib */,
+				C97A2349204B30FD001997E8 /* FTTimerPickerCell.swift */,
+				C97A234C204B6695001997E8 /* FTTimerPickerCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		C9A65FC5202D784F00C3AC72 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,8 +380,7 @@
 			children = (
 				C9EC4E502037D34900CF538F /* FTNewExerciseViewController.swift */,
 				C9EC4E622037F88500CF538F /* FTNewExerciseDetailViewController.swift */,
-				C9EC4E5E2037EF4100CF538F /* FTExerciseSelectionCell.swift */,
-				C97A2349204B30FD001997E8 /* FTTimerPickerCell.swift */,
+				C97A234B204B6614001997E8 /* Cells */,
 				C9EC4E7F203E8BF300CF538F /* FTAddExerciseViewController.swift */,
 				C928F929204B1D0B001BA6CE /* FTTimerPickerController.swift */,
 			);
@@ -453,9 +467,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97A234F204B6735001997E8 /* FTExerciseSelectionCell.xib in Resources */,
 				C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */,
 				C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */,
 				C9775D022020441C00C2E9B3 /* Assets.xcassets in Resources */,
+				C97A234D204B6695001997E8 /* FTTimerPickerCell.xib in Resources */,
 				C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

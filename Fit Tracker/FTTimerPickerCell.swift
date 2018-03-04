@@ -17,10 +17,13 @@ class FTTimerPickerCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
     
     public weak var delegate: FTTimerPickerCellDelegate?
     
+    @IBOutlet private weak var pickerView: UIPickerView!
+    
+    
     private var minutes: [Int] = {
         var minutes = [Int]()
         for i in 0..<10 {
-            minutes.append(i)
+            minutes.append(i) // indexing is n to n
         }
         return minutes
     }()
@@ -28,52 +31,20 @@ class FTTimerPickerCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
     private var seconds: [Int] = {
         var seconds = [Int]()
         for i in 0..<12 {
-            seconds.append(i * 5)
+            seconds.append(i * 5) // indexing is n to 5n
         }
         return seconds
     }()
     
-    private let pickerView = UIPickerView()
-    
-    public let mainLabel = FTSizedLabel()
-    private let detailLabel = FTSizedLabel()
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        setupVisuals()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-
-    private func setupVisuals() {
-        let labelStackView = UIStackView(arrangedSubviews: [mainLabel, detailLabel])
-        
-        mainLabel.textSize = .large
-        mainLabel.text = "FTTimerPickerCell_RestTimer".ft_localized
-        
-        detailLabel.textColor = FTColours.grayTextColour
-        detailLabel.textAlignment = .right
-        detailLabel.textSize = .large
-        detailLabel.text = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.preferredRestTime)
-        
-        let stackView = UIStackView(arrangedSubviews: [labelStackView, pickerView])
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = FTLayout.defaultPadding
-        
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints({ $0.left.top.right.bottom.equalToSuperview().inset(FTLayout.defaultPadding) })
-    }
-    
-    public func togglePickerView() {
-        pickerView.isHidden = !pickerView.isHidden
+    public func setPickerTimer(seconds: Int, animated: Bool) {
+        var minutes = Int(seconds/60)
+        var seconds = Int(round(Double((seconds - minutes * 60) / 5)) * 5)
+        if minutes > 9 {
+            minutes = 9
+            seconds = 55
+        }
+        pickerView.selectRow(minutes, inComponent: 0, animated: animated)
+        pickerView.selectRow(seconds/5, inComponent: 1, animated: animated)
     }
     
     // MARK: - UIPickerViewDataSource
@@ -100,7 +71,6 @@ class FTTimerPickerCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDe
         let minutes = self.minutes[pickerView.selectedRow(inComponent: 0)]
         let seconds = self.seconds[pickerView.selectedRow(inComponent: 1)]
         let time = minutes * 60 + seconds
-        detailLabel.text = FTStringFormatter.shared.formatAsMinutes(seconds: time)
         delegate?.timerPickerCell(self, didUpdateTimerValueTo: time)
     }
 }

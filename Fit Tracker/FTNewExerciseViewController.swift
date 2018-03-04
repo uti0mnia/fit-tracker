@@ -11,24 +11,41 @@ import CoreData
 
 class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, FTNewExerciseDetailViewControllerDelegate, FTTimerPickerCellDelegate {
     
-    private static let sectionCount = 3
-    private static let sectionRowCount: [Int] = [1, 2, 1]
-    private static let cellHeight: CGFloat = 50
-    
-    private static let restTimers = [0, 15, 30, 45, 60, 90, 120, 300]
-    
     private let detailVC = FTNewExerciseDetailViewController()
     
     // Refactor to be lazy init so they're not optional.
     private var saveButton: UIBarButtonItem?
     private var dismissButton: UIBarButtonItem?
     
-    private var exerciseNameCell: FTTextFieldTableViewCell?
-    private var timerCell: FTExerciseSelectionCell?
+    // Cells - normally we wouldn't do this but fuck it there's like 5 and it's static.
+    private var exerciseNameCell = FTTextFieldTableViewCell()
+    // Do it this way because I fucking used xib kill me.
+    private var bodyPartCell = Bundle.main.loadNibNamed("FTExerciseSelectionCell", owner: nil, options: nil)?.first as! FTExerciseSelectionCell
+    private var categoryCell = Bundle.main.loadNibNamed("FTExerciseSelectionCell", owner: nil, options: nil)?.first as! FTExerciseSelectionCell
+    private var timerCell = Bundle.main.loadNibNamed("FTExerciseSelectionCell", owner: nil, options: nil)?.first as! FTExerciseSelectionCell
+    private var pickerCell = Bundle.main.loadNibNamed("FTTimerPickerCell", owner: nil, options: nil)?.first as! FTTimerPickerCell
+    
+    private lazy var cellMap: [IndexPath: UITableViewCell] = {
+        return [
+            IndexPath(row: 0, section: 0): exerciseNameCell,
+            IndexPath(row: 0, section: 1): bodyPartCell,
+            IndexPath(row: 1, section: 1): categoryCell,
+            IndexPath(row: 0, section: 2): timerCell,
+            IndexPath(row: 1, section: 2): pickerCell
+        ]
+    }()
+    private var sections: [Int: Int] {
+        return [
+            0: 1,
+            1: 2,
+            2: isPickerCellHidden ? 1 : 2
+        ]
+    }
+    private var isPickerCellHidden = true
+    private let pickerCellIndex = IndexPath(row: 1, section: 2)
     
     private var context: NSManagedObjectContext
 
-    // Set as lazy so I can use self lol.
     private var tableView: UITableView = {
         let tv = UITableView(frame: CGRect.zero, style: .grouped)
         tv.rowHeight = UITableViewAutomaticDimension
@@ -92,29 +109,26 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
             make.top.equalTo(topLayoutGuide.snp.bottom)
             make.bottom.equalTo(bottomLayoutGuide.snp.top)
         }
-    }
-    
-    private func newTextFieldCell() -> FTTextFieldTableViewCell {
-        let cell = FTTextFieldTableViewCell()
-        cell.textField.delegate = self
-        cell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".ft_localized
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    private func newChooseValueCell(title: String, detail: String) -> FTExerciseSelectionCell {
-        let cell = FTExerciseSelectionCell()
-        cell.mainLabel.text = title
-        cell.detailLabel.text = detail
-        return cell
+        
+        // Cells
+        exerciseNameCell.textField.placeholder = "FTNewExerciseViewController_ExercisePlaceholder".ft_localized
+        
+        bodyPartCell.mainLabel.text = "FTNewExerciseViewController_BodyPart".ft_localized
+        bodyPartCell.detailLabel.text = "FTGeneral_None".ft_localized
+        
+        categoryCell.mainLabel.text = "FTNewExerciseViewController_Category".ft_localized
+        categoryCell.detailLabel.text = "FTGeneral_None".ft_localized
+        
+        timerCell.mainLabel.text = "FTNewExerciseViewController_RestTimer".ft_localized
+        let timer = FTStringFormatter.shared.formatAsMinutes(seconds: FTSettingsManager.shared.preferredRestTime)
+        timerCell.detailLabel.text = timer
+        
+        pickerCell.delegate = self
+        pickerCell.setPickerTimer(seconds: FTSettingsManager.shared.preferredRestTime, animated: false)
     }
     
     private func updateSaveButton() {
-        guard let cell = exerciseNameCell else {
-            return
-        }
-        
-        if cell.textField.text != nil && cell.textField.text != "" {
+        if exerciseNameCell.textField.text != nil && exerciseNameCell.textField.text != "" {
             saveButton?.isEnabled = true
         } else {
             saveButton?.isEnabled = false
@@ -142,47 +156,45 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     
     @objc private func textFieldDidChangeNotification(_ notification: Notification) {
         updateSaveButton()
-        exercise?.name = exerciseNameCell?.textField.text
+        exercise?.name = exerciseNameCell.textField.text
+    }
+    
+    private func hidePickerCell() {
+        // We need to set this here so the tableview rows are correctly updated.
+        isPickerCellHidden = !isPickerCellHidden
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [pickerCellIndex], with: .fade)
+        tableView.endUpdates()
+    }
+    
+    private func showPickerCell() {
+        // We need to set this here so the tableview rows are correctly updated.
+        isPickerCellHidden = !isPickerCellHidden
+        tableView.beginUpdates()
+        tableView.insertRows(at: [pickerCellIndex], with: .fade)
+        tableView.endUpdates()
     }
     
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return indexPath == pickerCellIndex ? 150 : 50
     }
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return FTNewExerciseViewController.sectionCount
+        return sections.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FTNewExerciseViewController.sectionRowCount[section]
+        return sections[section] ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
-        let row = indexPath.row
+        let cell = cellMap[indexPath]
         
-        // Exercise name.
-        if section == 0 {
-            if exerciseNameCell == nil {
-                exerciseNameCell = newTextFieldCell()
-            }
-            return exerciseNameCell!
-        }
+        assert(cell != nil, "Unmapped IndexPath")
         
-        // Body Part/Category.
-        if section == 1 {
-            let title = (row == 0) ? "FTNewExerciseViewController_BodyPart".ft_localized : "FTNewExerciseViewController_Category".ft_localized
-            let cell = newChooseValueCell(title: title, detail: "FTGeneral_None".ft_localized)
-            cell.accessoryType = .disclosureIndicator
-            return cell
-        }
-        
-        // Timer.
-        let cell = FTTimerPickerCell()
-        cell.delegate = self
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     // MARK: - UITableViewDelegate
@@ -190,25 +202,17 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 0 {
+        guard let cell = cellMap[indexPath] else {
+            assertionFailure("Unknown cell at indexPath")
             return
-        } else if indexPath.section == 1 {
-            let row = indexPath.row
-            var opts: [CustomStringConvertible]!
-            var selectedIndex: IndexPath?
+        }
+        
+        if cell == bodyPartCell {
             
-            opts = (row == 0) ? FTExercise.BodyPart.array : FTExercise.Category.array
-            if let idx = (row == 0) ? exercise?.bodyPart : exercise?.category {
-                selectedIndex = IndexPath(row: Int(idx), section: 0)
-            }
+        } else if cell == categoryCell {
             
-            detailVC.options = opts
-            detailVC.selectedIndex = selectedIndex
-            navigationController?.pushViewController(detailVC, animated: true)
-        } else {
-            if let cell = tableView.cellForRow(at: indexPath) as? FTTimerPickerCell {
-                cell.togglePickerView()
-            }
+        } else if cell == timerCell {
+            isPickerCellHidden ? showPickerCell() : hidePickerCell()
         }
     }
     
@@ -227,6 +231,7 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - FTTimerPickerCellDelegate
     
     func timerPickerCell(_ cell: FTTimerPickerCell, didUpdateTimerValueTo value: Int) {
-        
+        let timer = FTStringFormatter.shared.formatAsMinutes(seconds: value)
+        timerCell.detailLabel.text = timer
     }
 }
