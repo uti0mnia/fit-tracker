@@ -39,12 +39,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s48-Up-P3i">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s48-Up-P3i">
                                 <rect key="frame" x="0.0" y="28.5" width="566" height="287"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="KGk-i7-Jjw" id="9MS-Po-anx"/>
-                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="BqO-h9-Cpa"/>
+                                    <outlet property="dataSource" destination="KGk-i7-Jjw" id="QPv-ot-9zW"/>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="vMS-dq-qd0"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -59,6 +59,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="mainStackView" destination="6dp-CW-vFz" id="o8F-eF-NMb"/>
                 <outlet property="nameLabel" destination="2gz-NI-4cF" id="X1s-uH-xKs"/>
                 <outlet property="setLabel" destination="PZx-Ap-WjI" id="AaG-Te-SPE"/>
                 <outlet property="tableView" destination="s48-Up-P3i" id="V1T-dA-0hL"/>

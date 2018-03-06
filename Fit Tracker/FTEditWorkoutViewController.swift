@@ -11,15 +11,15 @@ import CoreData
 
 class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FTAddExerciseViewControllerDelegate {
     
-    private static let cellReuse = "cell"
-    private static let rowHeight: CGFloat = 50
+    private static let cellReuse = "editWorkoutCell"
     
     private static let sections = ["Exercises"]
     
     private var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
-        tv.rowHeight = FTEditWorkoutViewController.rowHeight
+        tv.register(UINib(nibName: "FTEditWorkoutCell", bundle: nil), forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
+        tv.rowHeight = UITableViewAutomaticDimension
+        tv.estimatedRowHeight = 100
         return tv
     }()
     private var emptyWorkoutLabel = FTTitleLabel()
@@ -138,7 +138,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapEditButton(_ sender: UIButton) {
-        
+        tableView.reloadData()
     }
     
     @objc private func didTapAddButton(_ sender: UIButton) {
@@ -158,11 +158,9 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath) as! FTEditWorkoutCell
         let object = frc.object(at: indexPath)
-        cell.textLabel?.text = object.exercise?.name
-        cell.accessoryType = .disclosureIndicator
+        cell.exerciseTemplate = object
         return cell
     }
     
@@ -226,6 +224,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - FTAddExerciseViewControllerDelegate
     
     func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate]) {
+        // Note that the FTExerciseGroupTemplates are pre populated (with default values) in the FTAddExerciseViewController
         var index = Int16(workout.groupTemplates?.count ?? 0)
         groups.forEach() { group in
             group.workoutTemplate = workout
