@@ -23,22 +23,24 @@
                         <rect key="frame" x="8" y="8" width="566" height="315.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r6D-oF-0de">
-                                <rect key="frame" x="0.0" y="0.0" width="566" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="566" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Exercise Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gz-NI-4cF" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="505" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="524" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6l-XL-swC" customClass="FTSimpleButton" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="513" y="0.0" width="53" height="32"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZx-Ap-WjI" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
+                                        <rect key="frame" x="532" y="0.0" width="34" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s48-Up-P3i">
-                                <rect key="frame" x="0.0" y="40" width="566" height="275.5"/>
+                                <rect key="frame" x="0.0" y="28.5" width="566" height="287"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="KGk-i7-Jjw" id="9MS-Po-anx"/>
@@ -56,6 +58,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="2gz-NI-4cF" id="X1s-uH-xKs"/>
+                <outlet property="setLabel" destination="PZx-Ap-WjI" id="AaG-Te-SPE"/>
+                <outlet property="tableView" destination="s48-Up-P3i" id="V1T-dA-0hL"/>
+            </connections>
             <point key="canvasLocation" x="-17" y="59"/>
         </tableViewCell>
     </objects>

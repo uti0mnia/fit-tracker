@@ -9,13 +9,11 @@
 import UIKit
 
 protocol FTEditWorkoutSetTableViewCellDelegate: class {
-    func editWorkoutSetTableViewCell(_ cell: FTEditWorkoutSetTableViewCell, didTapRemoveForSet: FTSetTemplate)
-//    func editWorkoutSetTableViewCell(_ cell: FTEditWorkoutSetTableViewCell, didSwipeToDeleteSet: FTSetTemplate)
+    
 }
 
 class FTEditWorkoutSetTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var setLabel: UILabel!
     @IBOutlet weak var weightTextField: FTDefaultTextField!
     @IBOutlet weak var weightDescriptionLabel: FTSizedLabel!
@@ -41,13 +39,6 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        removeButton.setTitle("-", for: .normal)
-        removeButton.titleLabel?.textAlignment = .center
-        removeButton.setTitleColor(FTColours.destructiveColour, for: .normal)
-        removeButton.titleLabel?.font = FTFonts.simpleButton
-        removeButton.backgroundColor = FTColours.lightForeground
-        removeButton.layer.cornerRadius = 2
-        
         weightTextField.textAlignment = .right
         weightTextField.font = FTFonts.setTextField
         
@@ -59,17 +50,6 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
         
         repsDescriptionLabel.font = FTFonts.setDescription
         repsDescriptionLabel.text = "FTGeneral_Reps".ft_localized
-        
-        // Other
-        removeButton.addTarget(self, action: #selector(didTapRemoveButton(_:)), for: .touchUpInside)
-    }
-    
-    @objc private func didTapRemoveButton(_ sender: UIButton) {
-        guard let set = setTemplate else {
-            return
-        }
-        
-        self.delegate?.editWorkoutSetTableViewCell(self, didTapRemoveForSet: set)
     }
     
 }

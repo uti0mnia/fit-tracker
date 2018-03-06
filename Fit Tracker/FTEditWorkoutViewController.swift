@@ -124,7 +124,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private func setupToolBar() {
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let rightSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         addBarButton.tintColor = FTColours.mainPrimary
