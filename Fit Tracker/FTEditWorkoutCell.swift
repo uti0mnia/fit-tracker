@@ -8,7 +8,8 @@
 
 import UIKit
 
-class FTEditWorkoutCell: UITableViewCell {
+class FTEditWorkoutCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,16 @@ class FTEditWorkoutCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
     }
     
 }

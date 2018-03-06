@@ -13,7 +13,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     private static let workoutIdentifier = "workoutIdentifier"
     private static let esitmatedCellHeight: CGFloat = 150
 
-    private let quickStackButton = FTButtonFactory.simpleButton()
+    private let quickStackButton = FTSimpleButton()
     private lazy var tableView: UITableView = { [unowned self] in
         let tableView = UITableView()
         tableView.estimatedRowHeight = FTMainWorkoutViewController.esitmatedCellHeight

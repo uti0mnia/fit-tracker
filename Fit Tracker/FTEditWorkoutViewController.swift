@@ -22,7 +22,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         tv.rowHeight = FTEditWorkoutViewController.rowHeight
         return tv
     }()
-    private var exerciseCountLabel: FTSizedLabel?
     private var emptyWorkoutLabel = FTTitleLabel()
     
     // Navbar.
@@ -36,28 +35,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         button.tintColor = FTColours.mainPrimary
         return button
     }()
-    private let finishButton = FTButtonFactory.simpleButton()
+    private let finishButton = FTSimpleButton()
     
     private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
-//    private lazy var frc: NSFetchedResultsController<FTSetTemplate> = {
-//        let request = NSFetchRequest<FTSetTemplate>(entityName: "FTSetTemplate")
-//
-//        let groupSort = NSSortDescriptor(key: "exerciseTemplate.groupTemplate.index", ascending: true)
-//        let exerciseSort = NSSortDescriptor(key: "exerciseTemplate.index", ascending: true)
-//        let indexSort = NSSortDescriptor(key: "index", ascending: true)
-//        request.sortDescriptors = [groupSort, exerciseSort, indexSort]
-//
-//        let predicate = NSPredicate(format: "%K == %@", "exerciseTemplate.groupTemplate.workoutTemplate", workout)
-//        request.predicate = predicate
-//
-//        let frc = NSFetchedResultsController(fetchRequest: request,
-//                                             managedObjectContext: context,
-//                                             sectionNameKeyPath: "exerciseTemplate.exercise.name",
-//                                             cacheName: nil)
-//        frc.delegate = self
-//        return frc
-//    }()
     private lazy var frc: NSFetchedResultsController<FTExerciseTemplate> = {
         let request = NSFetchRequest<FTExerciseTemplate>(entityName: "FTExerciseTemplate")
         request.sortDescriptors = [NSSortDescriptor(key: "groupTemplate.index", ascending: true), NSSortDescriptor(key: "index", ascending: true)]
@@ -125,9 +106,9 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(topLayoutGuide.snp.bottom)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            make.left.right.equalToSuperview().inset(FTLayout.defaultInsets)
+            make.top.equalTo(topLayoutGuide.snp.bottom).offset(FTLayout.defaultPadding)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.defaultPadding)
         }
         
         view.addSubview(emptyWorkoutLabel)
@@ -148,15 +129,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
         addBarButton.tintColor = FTColours.mainPrimary
         
-        // TODO: Fix this with exerciseCountLabel.
-        let label = FTSizedLabel(textSize: .small)
-        label.backgroundColor = UIColor.clear
-        label.textAlignment = .center
-        label.text = String(format: "FTEditWorkoutViewController_ToolBarExercises".ft_localized, 0)
-        let labelBarButton = UIBarButtonItem(customView: label)
-        
         navigationController?.setToolbarHidden(false, animated: false)
-        toolbarItems = [leftSpace, labelBarButton, rightSpace, addBarButton]
+        toolbarItems = [leftSpace, addBarButton]
     }
     
     @objc private func didTapDismissButton(_ sender: UIButton) {
@@ -174,15 +148,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(vc, animated: true)
     }
     
-//    private func configure(cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
-//        guard let cell = cell as? FTEditWorkoutSetTableViewCell else {
-//            return
-//        }
-//
-//        // TODO: Add superset colours.
-//        cell.setTemplate = frc.object(at: indexPath)
-//    }
-    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -195,12 +160,23 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath)
-        cell.textLabel?.text = frc.object(at: indexPath).exercise?.name
+        
+        let object = frc.object(at: indexPath)
+        cell.textLabel?.text = object.exercise?.name
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return FTEditWorkoutViewController.sections[section]
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

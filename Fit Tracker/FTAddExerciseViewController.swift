@@ -44,8 +44,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     private let newButton = UIBarButtonItem(title: "FTAddExerciseViewController_New".ft_localized, style: .plain, target: nil, action: nil)
 //    private let newButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
-    private let addExerciseButton = FTButtonFactory.strongButton()
-    private let addSupersetButton = FTButtonFactory.simpleButton()
+    private let addExerciseButton = FTStrongButton()
+    private let addSupersetButton = FTSimpleButton()
     
     private let context: NSManagedObjectContext
     private lazy var frc: NSFetchedResultsController<FTExercise> = {

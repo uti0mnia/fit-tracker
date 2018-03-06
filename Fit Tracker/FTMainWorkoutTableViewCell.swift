@@ -19,8 +19,8 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
     
     public let nameLabel = FTTitleLabel()
     public let descriptionLabel = FTDescriptionLabel()
-    public let startButton = FTButtonFactory.strongButton()
-    public let editButton = FTButtonFactory.countourButton()
+    public let startButton = FTStrongButton()
+    public let editButton = FTContourButton()
     
     public var workout: FTWorkoutTemplate? {
         didSet {
