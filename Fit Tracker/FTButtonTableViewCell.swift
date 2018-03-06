@@ -10,7 +10,7 @@ import UIKit
 
 class FTButtonTableViewCell: UITableViewCell {
     
-    public let button = FTButtonFactory.simpleButton()
+    public let button = FTSimpleButton()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
