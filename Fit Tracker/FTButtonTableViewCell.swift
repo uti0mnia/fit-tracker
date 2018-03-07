@@ -26,9 +26,8 @@ class FTButtonTableViewCell: UITableViewCell {
     
     private func commonInit() {
         contentView.addSubview(button)
-        button.snp.makeConstraints() { make in
-            make.left.top.right.bottom.equalToSuperview().inset(FTLayout.defaultInsets)
-        }
+        button.frame = contentView.bounds
+        button.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
 }

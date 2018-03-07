@@ -18,65 +18,64 @@
                 <rect key="frame" x="0.0" y="0.0" width="535" height="86.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mYS-Lg-U4L">
-                        <rect key="frame" x="8" y="8" width="519" height="70.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Set #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-2Y-qE4" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="8" width="40.5" height="70.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YGQ-eY-3t8">
+                        <rect key="frame" x="48.5" y="8" width="486.5" height="70.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Set #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-2Y-qE4" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="65" height="70.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83T-4u-8PG" customClass="FTDefaultTextField" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="70.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="D9n-0Y-3wA"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="lbs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz0-mm-e7N" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="88" y="0.0" width="139.5" height="70.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YGQ-eY-3t8">
-                                <rect key="frame" x="73" y="0.0" width="446" height="70.5"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83T-4u-8PG" customClass="FTDefaultTextField" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="70.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="D9n-0Y-3wA"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="lbs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz0-mm-e7N" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="88" y="0.0" width="119" height="70.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" translatesAutoresizingMaskIntoConstraints="NO" id="11D-7q-T6q">
-                                        <rect key="frame" x="215" y="0.0" width="16" height="70.5"/>
-                                    </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-lh-73d" customClass="FTDefaultTextField" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="239" y="0.0" width="80" height="70.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="73g-3n-VC4"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="reps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usb-g0-iyW" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="327" y="0.0" width="119" height="70.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiply" translatesAutoresizingMaskIntoConstraints="NO" id="11D-7q-T6q">
+                                <rect key="frame" x="235.5" y="0.0" width="16" height="70.5"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7S5-lh-73d" customClass="FTDefaultTextField" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="259.5" y="0.0" width="80" height="70.5"/>
                                 <constraints>
-                                    <constraint firstItem="11D-7q-T6q" firstAttribute="centerX" secondItem="YGQ-eY-3t8" secondAttribute="centerX" id="dtv-Lh-BGG"/>
-                                    <constraint firstItem="11D-7q-T6q" firstAttribute="centerY" secondItem="YGQ-eY-3t8" secondAttribute="centerY" id="z46-Qr-9uQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="73g-3n-VC4"/>
                                 </constraints>
-                            </stackView>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="reps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usb-g0-iyW" customClass="FTSizedLabel" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="347.5" y="0.0" width="139" height="70.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="11D-7q-T6q" firstAttribute="centerX" secondItem="YGQ-eY-3t8" secondAttribute="centerX" id="dtv-Lh-BGG"/>
+                            <constraint firstItem="usb-g0-iyW" firstAttribute="width" secondItem="Mz0-mm-e7N" secondAttribute="width" id="wvf-V8-Yln"/>
+                            <constraint firstItem="11D-7q-T6q" firstAttribute="centerY" secondItem="YGQ-eY-3t8" secondAttribute="centerY" id="z46-Qr-9uQ"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="mYS-Lg-U4L" secondAttribute="bottom" constant="8" id="Mbg-p4-hsp"/>
-                    <constraint firstItem="mYS-Lg-U4L" firstAttribute="leading" secondItem="gmm-RU-HAa" secondAttribute="leading" constant="8" id="fmg-g3-Jbv"/>
-                    <constraint firstItem="mYS-Lg-U4L" firstAttribute="top" secondItem="gmm-RU-HAa" secondAttribute="top" constant="8" id="xU4-RL-NRS"/>
-                    <constraint firstAttribute="trailing" secondItem="mYS-Lg-U4L" secondAttribute="trailing" constant="8" id="zbf-Jd-tTA"/>
+                    <constraint firstItem="YGQ-eY-3t8" firstAttribute="leading" relation="lessThanOrEqual" secondItem="uLr-2Y-qE4" secondAttribute="trailing" constant="8" id="0rj-rc-AcD"/>
+                    <constraint firstItem="uLr-2Y-qE4" firstAttribute="top" secondItem="gmm-RU-HAa" secondAttribute="top" constant="8" id="R4q-6Z-3dn"/>
+                    <constraint firstAttribute="bottom" secondItem="YGQ-eY-3t8" secondAttribute="bottom" constant="8" id="SNi-2t-HBl"/>
+                    <constraint firstItem="YGQ-eY-3t8" firstAttribute="top" secondItem="gmm-RU-HAa" secondAttribute="top" constant="8" id="mGT-9s-e9t"/>
+                    <constraint firstAttribute="bottom" secondItem="uLr-2Y-qE4" secondAttribute="bottom" constant="8" id="qBr-nW-8nJ"/>
+                    <constraint firstAttribute="trailing" secondItem="YGQ-eY-3t8" secondAttribute="trailing" id="wpX-A2-XHh"/>
+                    <constraint firstItem="uLr-2Y-qE4" firstAttribute="leading" secondItem="gmm-RU-HAa" secondAttribute="leading" id="yYE-Yw-rn9"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

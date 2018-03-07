@@ -17,9 +17,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .grouped)
-        tv.register(UINib(nibName: "FTEditWorkoutCell", bundle: nil), forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
+        tv.register(FTEditWorkoutCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
         tv.rowHeight = UITableViewAutomaticDimension
-        tv.estimatedRowHeight = 100
         return tv
     }()
     private var emptyWorkoutLabel = FTTitleLabel()
@@ -173,13 +172,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
+        print(tableView.cellForRow(at: indexPath)!.intrinsicContentSize.height)
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("FRC detected change in workout template")
         tableView.beginUpdates()
     }
     

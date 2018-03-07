@@ -50,6 +50,8 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
         
         repsDescriptionLabel.font = FTFonts.setDescription
         repsDescriptionLabel.text = "FTGeneral_Reps".ft_localized
+        
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
 }
