@@ -146,6 +146,24 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    private func deleteExercise(at indexPath: IndexPath) {
+        let object = frc.object(at: indexPath)
+        
+        assert(object.groupTemplate != nil, "Exercise template needs to be attached to group template")
+        
+        guard let group = object.groupTemplate, let templates = group.exerciseTemplates else {
+            context.delete(object)
+            return
+        }
+        
+        if (templates.count == 1) {
+            context.delete(group)
+        } else {
+            context.delete(object)
+        }
+        
+    }
+    
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -171,8 +189,15 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        print(tableView.cellForRow(at: indexPath)!.intrinsicContentSize.height)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            deleteExercise(at: indexPath)
+        default:
+            break
+        }
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

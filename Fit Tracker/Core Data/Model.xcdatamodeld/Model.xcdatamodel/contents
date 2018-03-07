@@ -16,7 +16,7 @@
     </entity>
     <entity name="FTExerciseGroupTemplate" representedClassName="FTExerciseGroupTemplate" syncable="YES">
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="exerciseTemplates" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="FTExerciseTemplate" inverseName="groupTemplate" inverseEntity="FTExerciseTemplate" syncable="YES"/>
+        <relationship name="exerciseTemplates" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="FTExerciseTemplate" inverseName="groupTemplate" inverseEntity="FTExerciseTemplate" syncable="YES"/>
         <relationship name="workoutTemplate" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutTemplate" inverseName="groupTemplates" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
     </entity>
     <entity name="FTExerciseLog" representedClassName="FTExerciseLog" syncable="YES">
