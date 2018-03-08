@@ -45,7 +45,9 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     private let newButton = UIBarButtonItem(title: "FTAddExerciseViewController_New".ft_localized, style: .plain, target: nil, action: nil)
 //    private let newButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: nil)
     private let addExerciseButton = FTStrongButton()
+    private let addExerciseView = UIView()
     private let addSupersetButton = FTSimpleButton()
+    private let addSupersetView = UIView()
     
     private let context: NSManagedObjectContext
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
@@ -88,8 +90,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         
         view.backgroundColor = FTColours.lightBackground
         view.addSubview(tableView)
-        view.addSubview(addExerciseButton)
-        view.addSubview(addSupersetButton)
+        view.addSubview(addExerciseView)
+        view.addSubview(addSupersetView)
         
         tableView.sectionIndexColor = FTColours.mainPrimary
         tableView.allowsMultipleSelection = true
@@ -97,11 +99,13 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         navigationItem.rightBarButtonItem = newButton
         navigationController?.navigationBar.tintColor = FTColours.mainPrimary
         
+        addExerciseView.addSubview(addExerciseButton)
+        addSupersetView.addSubview(addSupersetButton)
+        
         newButton.target = self
         newButton.action = #selector(didTapNewButton(_:))
         
         let count = selectedExercisesIndexPaths.count
-        
         addExerciseButton.setTitle(String(format: "FTAddExerciseViewController_AddExercise".ft_localized, count), for: .normal)
         addExerciseButton.addTarget(self, action: #selector(didTapAddExercisesButton(_:)), for: .touchUpInside)
         
@@ -116,6 +120,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             make.left.right.equalToSuperview()
         }
         
+        
+        
         let stackView = UIStackView(arrangedSubviews: [addSupersetButton, addExerciseButton])
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
@@ -123,7 +129,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             make.left.right.equalToSuperview()
             make.top.equalTo(tableView.snp.bottom)
             make.bottom.equalTo(bottomLayoutGuide.snp.top)
-            make.height.equalTo(FTLayout.defaultButtonHeight)
+//            make.bottom.equalToSuperview()
+            make.height.equalTo(FTLayout.tallButtonHeight)
         }
     }
     
