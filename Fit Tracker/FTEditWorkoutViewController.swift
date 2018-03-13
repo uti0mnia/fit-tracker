@@ -137,7 +137,13 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapEditButton(_ sender: UIButton) {
-        tableView.reloadData()
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+            editButton.title = "Edit"
+        } else {
+            tableView.setEditing(true, animated: true)
+            editButton.title = "Done"
+        }
     }
     
     @objc private func didTapAddButton(_ sender: UIButton) {
@@ -185,6 +191,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         return FTEditWorkoutViewController.sections[section]
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -198,6 +208,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
