@@ -41,7 +41,7 @@ class FTColours: NSObject {
     public static let lightTextColour = FTColours.lightBackground
     
     // Colour used for interactions or popping out.
-    public static let defaultMainPrimary = FTColours.green
+    public static let defaultMainPrimary = FTColours.orange
     public static let destructiveColour = FTColours.red
     public static let missingColour = FTColours.red
     

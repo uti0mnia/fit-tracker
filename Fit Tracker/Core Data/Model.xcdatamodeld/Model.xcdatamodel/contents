@@ -4,50 +4,57 @@
         <attribute name="bodyPart" attributeType="Integer 16" minValueString="-1" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="category" attributeType="Integer 16" minValueString="-1" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isDefault" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="restTime" attributeType="Integer 16" minValueString="0" defaultValueString="60" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="exerciseLogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseLog" inverseName="exercise" inverseEntity="FTExerciseLog" syncable="YES"/>
-        <relationship name="exerciseTemplate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseTemplate" inverseName="exercise" inverseEntity="FTExerciseTemplate" syncable="YES"/>
+        <relationship name="exerciseLogs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FTExerciseLog" inverseName="exercise" inverseEntity="FTExerciseLog" syncable="YES"/>
+        <relationship name="exerciseTemplate" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FTExerciseTemplate" inverseName="exercise" inverseEntity="FTExerciseTemplate" syncable="YES"/>
+        <relationship name="options" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FTExerciseOptions" inverseName="exercise" inverseEntity="FTExerciseOptions" syncable="YES"/>
     </entity>
     <entity name="FTExerciseGroupLog" representedClassName="FTExerciseGroupLog" syncable="YES">
-        <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="exerciseLogs" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="FTExerciseLog" inverseName="groupLog" inverseEntity="FTExerciseLog" syncable="YES"/>
+        <relationship name="exerciseLogs" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="FTExerciseLog" inverseName="groupLog" inverseEntity="FTExerciseLog" syncable="YES"/>
         <relationship name="workoutLog" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutLog" inverseName="groupLogs" inverseEntity="FTWorkoutLog" syncable="YES"/>
     </entity>
     <entity name="FTExerciseGroupTemplate" representedClassName="FTExerciseGroupTemplate" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="exerciseTemplates" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="FTExerciseTemplate" inverseName="groupTemplate" inverseEntity="FTExerciseTemplate" syncable="YES"/>
-        <relationship name="workoutTemplate" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutTemplate" inverseName="groupTemplates" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
+        <relationship name="exerciseTemplates" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="FTExerciseTemplate" inverseName="groupTemplate" inverseEntity="FTExerciseTemplate" syncable="YES"/>
+        <relationship name="workoutTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutTemplate" inverseName="groupTemplate" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
     </entity>
     <entity name="FTExerciseLog" representedClassName="FTExerciseLog" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="exercise" maxCount="1" deletionRule="Nullify" destinationEntity="FTExercise" inverseName="exerciseLogs" inverseEntity="FTExercise" syncable="YES"/>
-        <relationship name="groupLog" maxCount="1" deletionRule="Nullify" destinationEntity="FTExerciseGroupLog" inverseName="exerciseLogs" inverseEntity="FTExerciseGroupLog" syncable="YES"/>
-        <relationship name="setLogs" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="FTSetLog" inverseName="exerciseLog" inverseEntity="FTSetLog" syncable="YES"/>
+        <relationship name="groupLog" maxCount="1" deletionRule="Cascade" destinationEntity="FTExerciseGroupLog" inverseName="exerciseLogs" inverseEntity="FTExerciseGroupLog" syncable="YES"/>
+        <relationship name="setLogs" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="FTSetLog" inverseName="exerciseLog" inverseEntity="FTSetLog" syncable="YES"/>
+    </entity>
+    <entity name="FTExerciseOptions" representedClassName="FTExerciseOptions" syncable="YES" codeGenerationType="class">
+        <attribute name="autoIncreaseAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isAutoIncreaseEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="exercise" maxCount="1" deletionRule="Nullify" destinationEntity="FTExercise" inverseName="options" inverseEntity="FTExercise" syncable="YES"/>
     </entity>
     <entity name="FTExerciseTemplate" representedClassName="FTExerciseTemplate" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endRestTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="exercise" maxCount="1" deletionRule="Nullify" destinationEntity="FTExercise" inverseName="exerciseTemplate" inverseEntity="FTExercise" syncable="YES"/>
-        <relationship name="groupTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTExerciseGroupTemplate" inverseName="exerciseTemplates" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
-        <relationship name="setTemplates" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="FTSetTemplate" inverseName="exerciseTemplate" inverseEntity="FTSetTemplate" syncable="YES"/>
+        <relationship name="groupTemplate" maxCount="1" deletionRule="Cascade" destinationEntity="FTExerciseGroupTemplate" inverseName="exerciseTemplates" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
+        <relationship name="setTemplates" toMany="YES" minCount="1" deletionRule="Cascade" ordered="YES" destinationEntity="FTSetTemplate" inverseName="exerciseTemplate" inverseEntity="FTSetTemplate" syncable="YES"/>
+    </entity>
+    <entity name="FTRoutineTemplate" representedClassName="FTRoutineTemplate" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="workouts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FTWorkoutTemplate" inverseName="routine" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
     </entity>
     <entity name="FTSetLog" representedClassName="FTSetLog" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="modifier" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="exerciseLog" maxCount="1" deletionRule="Nullify" destinationEntity="FTExerciseLog" inverseName="setLogs" inverseEntity="FTExerciseLog" syncable="YES"/>
     </entity>
     <entity name="FTSetTemplate" representedClassName="FTSetTemplate" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="modifier" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="exerciseTemplate" maxCount="1" deletionRule="Nullify" destinationEntity="FTExerciseTemplate" inverseName="setTemplates" inverseEntity="FTExerciseTemplate" syncable="YES"/>
     </entity>
     <entity name="FTWorkoutLog" representedClassName="FTWorkoutLog" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="groupLogs" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseGroupLog" inverseName="workoutLog" inverseEntity="FTExerciseGroupLog" syncable="YES"/>
+        <relationship name="groupLogs" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="FTExerciseGroupLog" inverseName="workoutLog" inverseEntity="FTExerciseGroupLog" syncable="YES"/>
         <relationship name="workoutTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTWorkoutTemplate" inverseName="workoutLogs" inverseEntity="FTWorkoutTemplate" syncable="YES"/>
     </entity>
     <entity name="FTWorkoutTemplate" representedClassName="FTWorkoutTemplate" syncable="YES">
@@ -55,18 +62,21 @@
         <attribute name="dayOfWeek" optional="YES" attributeType="Integer 16" minValueString="-1" maxValueString="7" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="groupTemplates" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseGroupTemplate" inverseName="workoutTemplate" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
+        <relationship name="groupTemplate" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FTExerciseGroupTemplate" inverseName="workoutTemplate" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
+        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTRoutineTemplate" inverseName="workouts" inverseEntity="FTRoutineTemplate" syncable="YES"/>
         <relationship name="workoutLogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTWorkoutLog" inverseName="workoutTemplate" inverseEntity="FTWorkoutLog" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FTExercise" positionX="-864" positionY="-153" width="128" height="148"/>
-        <element name="FTExerciseLog" positionX="-612" positionY="-171" width="128" height="118"/>
-        <element name="FTExerciseTemplate" positionX="-614" positionY="-18" width="128" height="103"/>
-        <element name="FTSetLog" positionX="-407" positionY="-157" width="128" height="103"/>
-        <element name="FTSetTemplate" positionX="-405" positionY="-9" width="128" height="103"/>
-        <element name="FTWorkoutLog" positionX="-243" positionY="-409" width="128" height="103"/>
-        <element name="FTWorkoutTemplate" positionX="-209" positionY="221" width="128" height="133"/>
-        <element name="FTExerciseGroupTemplate" positionX="-605" positionY="269" width="128" height="88"/>
-        <element name="FTExerciseGroupLog" positionX="-587" positionY="-378" width="128" height="88"/>
+        <element name="FTExercise" positionX="-864" positionY="-153" width="128" height="30"/>
+        <element name="FTExerciseGroupLog" positionX="-587" positionY="-378" width="128" height="73"/>
+        <element name="FTExerciseGroupTemplate" positionX="-810" positionY="248" width="128" height="73"/>
+        <element name="FTExerciseLog" positionX="-612" positionY="-171" width="128" height="103"/>
+        <element name="FTExerciseOptions" positionX="-765" positionY="-345" width="128" height="30"/>
+        <element name="FTExerciseTemplate" positionX="-495" positionY="33" width="128" height="30"/>
+        <element name="FTRoutineTemplate" positionX="-11" positionY="287" width="128" height="73"/>
+        <element name="FTSetLog" positionX="-407" positionY="-157" width="128" height="88"/>
+        <element name="FTSetTemplate" positionX="-549" positionY="308" width="128" height="88"/>
+        <element name="FTWorkoutLog" positionX="-315" positionY="-405" width="128" height="103"/>
+        <element name="FTWorkoutTemplate" positionX="-252" positionY="41" width="128" height="148"/>
     </elements>
 </model>
