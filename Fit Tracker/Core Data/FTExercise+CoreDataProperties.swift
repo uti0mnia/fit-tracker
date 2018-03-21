@@ -2,7 +2,7 @@
 //  FTExercise+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-01.
+//  Created by Casey McLewin on 2018-03-20.
 //
 //
 
@@ -19,10 +19,13 @@ extension FTExercise {
     @NSManaged public var bodyPart: Int16
     @NSManaged public var category: Int16
     @NSManaged public var createdAt: NSDate?
+    @NSManaged public var isDefault: Bool
+    @NSManaged public var isFavourite: Bool
     @NSManaged public var name: String?
     @NSManaged public var restTime: Int16
     @NSManaged public var exerciseLogs: Set<FTExerciseLog>?
     @NSManaged public var exerciseTemplate: Set<FTExerciseTemplate>?
+    @NSManaged public var options: FTExerciseOptions?
 
 }
 

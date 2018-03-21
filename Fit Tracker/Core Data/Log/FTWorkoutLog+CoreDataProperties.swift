@@ -2,7 +2,7 @@
 //  FTWorkoutLog+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-01.
+//  Created by Casey McLewin on 2018-03-20.
 //
 //
 
@@ -18,24 +18,42 @@ extension FTWorkoutLog {
 
     @NSManaged public var endDate: NSDate?
     @NSManaged public var startDate: NSDate?
-    @NSManaged public var groupLogs: Set<FTExerciseGroupLog>?
+    @NSManaged public var groupLogs: NSOrderedSet?
     @NSManaged public var workoutTemplate: FTWorkoutTemplate?
 
 }
 
-// MARK: Generated accessors for exerciseLogs
+// MARK: Generated accessors for groupLogs
 extension FTWorkoutLog {
 
-    @objc(addExerciseLogsObject:)
-    @NSManaged public func addToExerciseLogs(_ value: FTExerciseLog)
+    @objc(insertObject:inGroupLogsAtIndex:)
+    @NSManaged public func insertIntoGroupLogs(_ value: FTExerciseGroupLog, at idx: Int)
 
-    @objc(removeExerciseLogsObject:)
-    @NSManaged public func removeFromExerciseLogs(_ value: FTExerciseLog)
+    @objc(removeObjectFromGroupLogsAtIndex:)
+    @NSManaged public func removeFromGroupLogs(at idx: Int)
 
-    @objc(addExerciseLogs:)
-    @NSManaged public func addToExerciseLogs(_ values: NSSet)
+    @objc(insertGroupLogs:atIndexes:)
+    @NSManaged public func insertIntoGroupLogs(_ values: [FTExerciseGroupLog], at indexes: NSIndexSet)
 
-    @objc(removeExerciseLogs:)
-    @NSManaged public func removeFromExerciseLogs(_ values: NSSet)
+    @objc(removeGroupLogsAtIndexes:)
+    @NSManaged public func removeFromGroupLogs(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInGroupLogsAtIndex:withObject:)
+    @NSManaged public func replaceGroupLogs(at idx: Int, with value: FTExerciseGroupLog)
+
+    @objc(replaceGroupLogsAtIndexes:withGroupLogs:)
+    @NSManaged public func replaceGroupLogs(at indexes: NSIndexSet, with values: [FTExerciseGroupLog])
+
+    @objc(addGroupLogsObject:)
+    @NSManaged public func addToGroupLogs(_ value: FTExerciseGroupLog)
+
+    @objc(removeGroupLogsObject:)
+    @NSManaged public func removeFromGroupLogs(_ value: FTExerciseGroupLog)
+
+    @objc(addGroupLogs:)
+    @NSManaged public func addToGroupLogs(_ values: NSOrderedSet)
+
+    @objc(removeGroupLogs:)
+    @NSManaged public func removeFromGroupLogs(_ values: NSOrderedSet)
 
 }

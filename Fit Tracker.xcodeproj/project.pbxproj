@@ -49,6 +49,10 @@
 		C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCD202D79A500C3AC72 /* FTColours.swift */; };
 		C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A65FCF202D7ADB00C3AC72 /* FTSettingsManager.swift */; };
 		C9A65FD5202D821B00C3AC72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9A65FD3202D821B00C3AC72 /* Localizable.strings */; };
+		C9A7E520206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E51E206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift */; };
+		C9A7E521206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E51F206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift */; };
+		C9A7E524206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E522206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift */; };
+		C9A7E525206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E523206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift */; };
 		C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9B355132047CE6100B48D04 /* Model.xcdatamodeld */; };
 		C9B355262047CF2100B48D04 /* FTDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355252047CF2100B48D04 /* FTDataController.swift */; };
 		C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */; };
@@ -124,6 +128,10 @@
 		C9A65FD2202D81B300C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C9A65FD4202D821B00C3AC72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9A65FD6202D824200C3AC72 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C9A7E51E206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseOptions+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/FTExerciseOptions+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		C9A7E51F206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseOptions+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/FTExerciseOptions+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		C9A7E522206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTRoutineTemplate+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTRoutineTemplate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		C9A7E523206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTRoutineTemplate+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTRoutineTemplate+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C9B355142047CE6100B48D04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C9B355252047CF2100B48D04 /* FTDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDataController.swift; sourceTree = "<group>"; };
 		C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +229,8 @@
 				C928F908204911C9001BA6CE /* FTSetTemplate+CoreDataProperties.swift */,
 				C928F901204911C8001BA6CE /* FTWorkoutTemplate+CoreDataClass.swift */,
 				C928F90D204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift */,
+				C9A7E523206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift */,
+				C9A7E522206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -324,6 +334,8 @@
 			children = (
 				C928F907204911C9001BA6CE /* FTExercise+CoreDataClass.swift */,
 				C928F909204911C9001BA6CE /* FTExercise+CoreDataProperties.swift */,
+				C9A7E51F206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift */,
+				C9A7E51E206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift */,
 				C928F91C204912DC001BA6CE /* Log */,
 				C928F91D204912EA001BA6CE /* Template */,
 				C9B355132047CE6100B48D04 /* Model.xcdatamodeld */,
@@ -582,6 +594,7 @@
 				C9D2DA182032B3E500A1FB1C /* FTFonts.swift in Sources */,
 				C9EC4E80203E8BF300CF538F /* FTAddExerciseViewController.swift in Sources */,
 				C9EC4E402035513500CF538F /* FTMainWorkoutTableViewCell.swift in Sources */,
+				C9A7E525206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift in Sources */,
 				C9B355262047CF2100B48D04 /* FTDataController.swift in Sources */,
 				C97B24BC204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataClass.swift in Sources */,
 				C9EC4E592037DB0400CF538F /* FTDefaultTextField.swift in Sources */,
@@ -599,6 +612,7 @@
 				C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */,
 				C97B24C8204E5DC1008B59F8 /* FTStrongButton.swift in Sources */,
 				C9EC4E552037DA9D00CF538F /* FTTextFieldTableViewCell.swift in Sources */,
+				C9A7E521206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift in Sources */,
 				C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */,
 				C9EC4E462035559E00CF538F /* FTDescriptionLabel.swift in Sources */,
 				C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */,
@@ -613,6 +627,7 @@
 				C9EC4E5F2037EF4100CF538F /* FTExerciseSelectionCell.swift in Sources */,
 				C97B24CA204E5DFF008B59F8 /* FTContourButton.swift in Sources */,
 				C928F910204911CA001BA6CE /* FTExerciseLog+CoreDataClass.swift in Sources */,
+				C9A7E524206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift in Sources */,
 				C928F91B204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift in Sources */,
 				C9D2DA0D2032A9DE00A1FB1C /* FTHomeDataView.swift in Sources */,
 				C928F90F204911CA001BA6CE /* FTWorkoutTemplate+CoreDataClass.swift in Sources */,
@@ -624,6 +639,7 @@
 				C9EC4E44203553FD00CF538F /* FTSizedLabel.swift in Sources */,
 				C928F918204911CA001BA6CE /* FTExerciseTemplate+CoreDataClass.swift in Sources */,
 				C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */,
+				C9A7E520206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift in Sources */,
 				C928F913204911CA001BA6CE /* FTWorkoutLog+CoreDataClass.swift in Sources */,
 				C928F90E204911CA001BA6CE /* FTExerciseTemplate+CoreDataProperties.swift in Sources */,
 				C928F914204911CA001BA6CE /* FTWorkoutLog+CoreDataProperties.swift in Sources */,
