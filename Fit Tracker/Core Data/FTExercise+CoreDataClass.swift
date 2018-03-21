@@ -32,20 +32,26 @@ public class FTExercise: NSManagedObject {
     }
     
     public enum BodyPart: Int16, CustomStringConvertible {
-        case abs, arms, back, chest, legs, shoulders, none = -1
+        case arms, back, cardio, chest, core, fullBody, legs, olympic, shoulders, none = -1
         
         public var description: String {
             switch self {
-            case .abs:
-                return "Abs"
             case .arms:
                 return "Arms"
             case .back:
                 return "Back"
+            case .cardio:
+                return "Cardio"
             case .chest:
                 return "Chest"
+            case .core:
+                return "Core"
+            case .fullBody:
+                return "Full Body"
             case .legs:
                 return "Legs"
+            case .olympic:
+                return "Olympic"
             case .shoulders:
                 return "Shoulders"
             case .none:
@@ -54,17 +60,17 @@ public class FTExercise: NSManagedObject {
         }
         
         public static var array: [BodyPart] {
-            return [.abs, .arms, .back, .chest, .legs, .shoulders]
+            return [.arms, .back, .cardio, .chest, .core, .fullBody, .legs, .olympic, .shoulders]
         }
     }
     
     public enum Category: Int16, CustomStringConvertible {
-        case assisted, barbell, cardio, dumbbell, duration, machine, other, reps, weighted, none = -1
+        case assistedBodyweight, barbell, cardio, dumbbell, duration, machine, repsOnly, weightedBodyweight, none = -1
         
         public var description: String {
             switch self {
-            case .assisted:
-                return "Assisted"
+            case .assistedBodyweight:
+                return "Assisted Bodyweight"
             case .barbell:
                 return "Barbell"
             case .cardio:
@@ -75,19 +81,17 @@ public class FTExercise: NSManagedObject {
                 return "Duration"
             case .machine:
                 return "Machine"
-            case .other:
-                return "Other"
-            case .reps:
-                return "Reps"
-            case .weighted:
-                return "Weighted"
+            case .repsOnly:
+                return "Reps Only"
+            case .weightedBodyweight:
+                return "Weighted Bodyweight"
             case .none:
                 return "None"
             }
         }
         
         public static var array: [Category] {
-            return [.assisted, .barbell, .cardio, .dumbbell, .duration, .machine, .other, .reps, .weighted]
+            return [.assistedBodyweight, .barbell, .cardio, .dumbbell, .duration, .machine, .repsOnly, .weightedBodyweight]
         }
     }
 }

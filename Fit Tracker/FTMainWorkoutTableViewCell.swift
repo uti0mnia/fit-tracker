@@ -30,8 +30,8 @@ class FTMainWorkoutTableViewCell: UITableViewCell {
             
             nameLabel.text = workout.name
             // The flat map grabs the name of the exercise associated with the exercise template if the elements are of type FTExerciseTemplate
-            descriptionLabel.text = workout.groupTemplates?.flatMap() { (group: FTExerciseGroupTemplate) in
-                group.exerciseTemplates?.flatMap() { (log: FTExerciseTemplate) in
+            descriptionLabel.text = (workout.groupTemplates?.array as? [FTExerciseGroupTemplate])?.flatMap() { (group: FTExerciseGroupTemplate) in
+                (group.exerciseTemplates?.array as? [FTExerciseTemplate])?.flatMap() { (log: FTExerciseTemplate) in
                     return log.exercise?.name
                 }.joined(separator: " • ")
             }.joined(separator: " • ")

@@ -150,17 +150,15 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         print("Adding exercises from selected array")
         
         var groups = [FTExerciseGroupTemplate]()
-        for (idx, indexPath) in self.selectedExercisesIndexPaths.enumerated() {
+        for indexPath in self.selectedExercisesIndexPaths {
             let groupTemplate = FTExerciseGroupTemplate(context: context)
-            groupTemplate.index = Int16(idx)
             
             let exerciseTemplate = FTExerciseTemplate(context: context)
-            exerciseTemplate.index = 0
             exerciseTemplate.exercise = self.frc.object(at: indexPath)
             exerciseTemplate.groupTemplate = groupTemplate
             
             // Create a default set template
-            let setTemplate = FTSetTemplate.defaultSetTemplate(context: context)
+            let setTemplate = FTSetTemplate(context: context)
             setTemplate.exerciseTemplate = exerciseTemplate
             
             groups.append(groupTemplate)

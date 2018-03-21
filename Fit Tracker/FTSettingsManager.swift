@@ -14,6 +14,7 @@ class FTSettingsManager: NSObject {
         case primaryColour
         case preferredRestTime
         case preferredWeight
+        case preferredDistance
     }
     
     public enum Weight: Int {
@@ -26,6 +27,20 @@ class FTSettingsManager: NSObject {
                 return "lbs"
             case .kilo:
                 return "kg"
+            }
+        }
+    }
+    
+    public enum Distance: Int {
+        case km
+        case mile
+        
+        var string: String {
+            switch self {
+            case .km:
+                return "km"
+            case .mile:
+                return "mi"
             }
         }
     }
@@ -71,5 +86,12 @@ class FTSettingsManager: NSObject {
         }
     }
     
-    
+    public var preferredDistance: Distance {
+        get {
+            return Distance.init(rawValue: user.integer(forKey: Settings.preferredDistance.rawValue)) ?? .km
+        }
+        set {
+            user.set(preferredDistance.rawValue, forKey: Settings.preferredDistance.rawValue)
+        }
+    }
 }

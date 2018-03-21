@@ -261,13 +261,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - FTAddExerciseViewControllerDelegate
     
     func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate]) {
-        // Note that the FTExerciseGroupTemplates are pre populated (with default values) in the FTAddExerciseViewController
-        var index = Int16(workout.groupTemplates?.count ?? 0)
-        groups.forEach() { group in
-            group.workoutTemplate = workout
-            group.index = index
-            index += 1
-        }
+        workout.addToGroupTemplate(NSOrderedSet(array: groups))
     }
     
 }

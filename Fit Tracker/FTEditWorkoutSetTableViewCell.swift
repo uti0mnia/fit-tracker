@@ -28,11 +28,16 @@ class FTEditWorkoutSetTableViewCell: UITableViewCell {
                 return
             }
             
-            setLabel.text = "Set \(setTemplate.index + 1)"
-            let weight = setTemplate.weight
-            weightTextField.placeholder = weight > 0 ? "\(setTemplate.weight.cleanString)" : nil
-            let reps = setTemplate.reps
-            repsTextField.placeholder = reps > 0 ? "\(setTemplate.reps)" : nil
+        }
+    }
+    public var index: Int? {
+        didSet {
+            guard let index = index else {
+                setLabel.text = nil
+                return
+            }
+            
+            setLabel.text = "Set \(index + 1)"
         }
     }
     
