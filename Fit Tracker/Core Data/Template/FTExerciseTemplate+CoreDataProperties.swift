@@ -2,7 +2,7 @@
 //  FTExerciseTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 
@@ -17,32 +17,15 @@ extension FTExerciseTemplate {
     }
 
     @NSManaged public var endRestTime: Int16
+    @NSManaged public var index: Int16
     @NSManaged public var exercise: FTExercise?
     @NSManaged public var groupTemplate: FTExerciseGroupTemplate?
-    @NSManaged public var setTemplates: NSOrderedSet?
+    @NSManaged public var setTemplates: Set<FTSetTemplate>?
 
 }
 
 // MARK: Generated accessors for setTemplates
 extension FTExerciseTemplate {
-
-    @objc(insertObject:inSetTemplatesAtIndex:)
-    @NSManaged public func insertIntoSetTemplates(_ value: FTSetTemplate, at idx: Int)
-
-    @objc(removeObjectFromSetTemplatesAtIndex:)
-    @NSManaged public func removeFromSetTemplates(at idx: Int)
-
-    @objc(insertSetTemplates:atIndexes:)
-    @NSManaged public func insertIntoSetTemplates(_ values: [FTSetTemplate], at indexes: NSIndexSet)
-
-    @objc(removeSetTemplatesAtIndexes:)
-    @NSManaged public func removeFromSetTemplates(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInSetTemplatesAtIndex:withObject:)
-    @NSManaged public func replaceSetTemplates(at idx: Int, with value: FTSetTemplate)
-
-    @objc(replaceSetTemplatesAtIndexes:withSetTemplates:)
-    @NSManaged public func replaceSetTemplates(at indexes: NSIndexSet, with values: [FTSetTemplate])
 
     @objc(addSetTemplatesObject:)
     @NSManaged public func addToSetTemplates(_ value: FTSetTemplate)
@@ -51,9 +34,9 @@ extension FTExerciseTemplate {
     @NSManaged public func removeFromSetTemplates(_ value: FTSetTemplate)
 
     @objc(addSetTemplates:)
-    @NSManaged public func addToSetTemplates(_ values: NSOrderedSet)
+    @NSManaged public func addToSetTemplates(_ values: NSSet)
 
     @objc(removeSetTemplates:)
-    @NSManaged public func removeFromSetTemplates(_ values: NSOrderedSet)
+    @NSManaged public func removeFromSetTemplates(_ values: NSSet)
 
 }

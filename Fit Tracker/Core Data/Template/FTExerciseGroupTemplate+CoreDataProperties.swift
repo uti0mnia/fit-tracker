@@ -2,7 +2,7 @@
 //  FTExerciseGroupTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 
@@ -16,31 +16,14 @@ extension FTExerciseGroupTemplate {
         return NSFetchRequest<FTExerciseGroupTemplate>(entityName: "FTExerciseGroupTemplate")
     }
 
-    @NSManaged public var exerciseTemplates: NSOrderedSet?
+    @NSManaged public var index: Int16
+    @NSManaged public var exerciseTemplates: Set<FTExerciseTemplate>?
     @NSManaged public var workoutTemplate: FTWorkoutTemplate?
 
 }
 
 // MARK: Generated accessors for exerciseTemplates
 extension FTExerciseGroupTemplate {
-
-    @objc(insertObject:inExerciseTemplatesAtIndex:)
-    @NSManaged public func insertIntoExerciseTemplates(_ value: FTExerciseTemplate, at idx: Int)
-
-    @objc(removeObjectFromExerciseTemplatesAtIndex:)
-    @NSManaged public func removeFromExerciseTemplates(at idx: Int)
-
-    @objc(insertExerciseTemplates:atIndexes:)
-    @NSManaged public func insertIntoExerciseTemplates(_ values: [FTExerciseTemplate], at indexes: NSIndexSet)
-
-    @objc(removeExerciseTemplatesAtIndexes:)
-    @NSManaged public func removeFromExerciseTemplates(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInExerciseTemplatesAtIndex:withObject:)
-    @NSManaged public func replaceExerciseTemplates(at idx: Int, with value: FTExerciseTemplate)
-
-    @objc(replaceExerciseTemplatesAtIndexes:withExerciseTemplates:)
-    @NSManaged public func replaceExerciseTemplates(at indexes: NSIndexSet, with values: [FTExerciseTemplate])
 
     @objc(addExerciseTemplatesObject:)
     @NSManaged public func addToExerciseTemplates(_ value: FTExerciseTemplate)
@@ -49,9 +32,9 @@ extension FTExerciseGroupTemplate {
     @NSManaged public func removeFromExerciseTemplates(_ value: FTExerciseTemplate)
 
     @objc(addExerciseTemplates:)
-    @NSManaged public func addToExerciseTemplates(_ values: NSOrderedSet)
+    @NSManaged public func addToExerciseTemplates(_ values: NSSet)
 
     @objc(removeExerciseTemplates:)
-    @NSManaged public func removeFromExerciseTemplates(_ values: NSOrderedSet)
+    @NSManaged public func removeFromExerciseTemplates(_ values: NSSet)
 
 }

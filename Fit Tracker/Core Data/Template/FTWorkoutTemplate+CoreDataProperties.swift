@@ -2,7 +2,7 @@
 //  FTWorkoutTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 
@@ -20,44 +20,27 @@ extension FTWorkoutTemplate {
     @NSManaged public var dayOfWeek: Int16
     @NSManaged public var isDefault: Bool
     @NSManaged public var name: String?
-    @NSManaged public var groupTemplates: NSOrderedSet?
+    @NSManaged public var index: Int16
+    @NSManaged public var groupTemplates: Set<FTExerciseGroupTemplate>?
     @NSManaged public var routine: FTRoutineTemplate?
     @NSManaged public var workoutLogs: Set<FTWorkoutLog>?
 
 }
 
-// MARK: Generated accessors for groupTemplate
+// MARK: Generated accessors for groupTemplates
 extension FTWorkoutTemplate {
 
-    @objc(insertObject:inGroupTemplateAtIndex:)
-    @NSManaged public func insertIntoGroupTemplate(_ value: FTExerciseGroupTemplate, at idx: Int)
+    @objc(addGroupTemplatesObject:)
+    @NSManaged public func addToGroupTemplates(_ value: FTExerciseGroupTemplate)
 
-    @objc(removeObjectFromGroupTemplateAtIndex:)
-    @NSManaged public func removeFromGroupTemplate(at idx: Int)
+    @objc(removeGroupTemplatesObject:)
+    @NSManaged public func removeFromGroupTemplates(_ value: FTExerciseGroupTemplate)
 
-    @objc(insertGroupTemplate:atIndexes:)
-    @NSManaged public func insertIntoGroupTemplate(_ values: [FTExerciseGroupTemplate], at indexes: NSIndexSet)
+    @objc(addGroupTemplates:)
+    @NSManaged public func addToGroupTemplates(_ values: NSSet)
 
-    @objc(removeGroupTemplateAtIndexes:)
-    @NSManaged public func removeFromGroupTemplate(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInGroupTemplateAtIndex:withObject:)
-    @NSManaged public func replaceGroupTemplate(at idx: Int, with value: FTExerciseGroupTemplate)
-
-    @objc(replaceGroupTemplateAtIndexes:withGroupTemplate:)
-    @NSManaged public func replaceGroupTemplate(at indexes: NSIndexSet, with values: [FTExerciseGroupTemplate])
-
-    @objc(addGroupTemplateObject:)
-    @NSManaged public func addToGroupTemplate(_ value: FTExerciseGroupTemplate)
-
-    @objc(removeGroupTemplateObject:)
-    @NSManaged public func removeFromGroupTemplate(_ value: FTExerciseGroupTemplate)
-
-    @objc(addGroupTemplate:)
-    @NSManaged public func addToGroupTemplate(_ values: NSOrderedSet)
-
-    @objc(removeGroupTemplate:)
-    @NSManaged public func removeFromGroupTemplate(_ values: NSOrderedSet)
+    @objc(removeGroupTemplates:)
+    @NSManaged public func removeFromGroupTemplates(_ values: NSSet)
 
 }
 

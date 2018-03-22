@@ -2,7 +2,7 @@
 //  FTExercise+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 
@@ -24,7 +24,7 @@ extension FTExercise {
     @NSManaged public var name: String?
     @NSManaged public var restTime: Int16
     @NSManaged public var exerciseLogs: Set<FTExerciseLog>?
-    @NSManaged public var exerciseTemplate: Set<FTExerciseTemplate>?
+    @NSManaged public var exerciseTemplates: Set<FTExerciseTemplate>?
     @NSManaged public var options: FTExerciseOptions?
 
 }
@@ -46,19 +46,19 @@ extension FTExercise {
 
 }
 
-// MARK: Generated accessors for exerciseTemplate
+// MARK: Generated accessors for exerciseTemplates
 extension FTExercise {
 
-    @objc(addExerciseTemplateObject:)
-    @NSManaged public func addToExerciseTemplate(_ value: FTExerciseTemplate)
+    @objc(addExerciseTemplatesObject:)
+    @NSManaged public func addToExerciseTemplates(_ value: FTExerciseTemplate)
 
-    @objc(removeExerciseTemplateObject:)
-    @NSManaged public func removeFromExerciseTemplate(_ value: FTExerciseTemplate)
+    @objc(removeExerciseTemplatesObject:)
+    @NSManaged public func removeFromExerciseTemplates(_ value: FTExerciseTemplate)
 
-    @objc(addExerciseTemplate:)
-    @NSManaged public func addToExerciseTemplate(_ values: NSSet)
+    @objc(addExerciseTemplates:)
+    @NSManaged public func addToExerciseTemplates(_ values: NSSet)
 
-    @objc(removeExerciseTemplate:)
-    @NSManaged public func removeFromExerciseTemplate(_ values: NSSet)
+    @objc(removeExerciseTemplates:)
+    @NSManaged public func removeFromExerciseTemplates(_ values: NSSet)
 
 }

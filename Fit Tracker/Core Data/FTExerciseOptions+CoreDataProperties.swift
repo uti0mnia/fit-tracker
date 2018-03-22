@@ -2,7 +2,7 @@
 //  FTExerciseOptions+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 

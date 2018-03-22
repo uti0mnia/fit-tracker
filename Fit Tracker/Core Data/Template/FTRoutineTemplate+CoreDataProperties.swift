@@ -2,7 +2,7 @@
 //  FTRoutineTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-20.
+//  Created by Casey McLewin on 2018-03-21.
 //
 //
 
@@ -17,30 +17,12 @@ extension FTRoutineTemplate {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var workouts: NSOrderedSet?
+    @NSManaged public var workouts: Set<FTWorkoutTemplate>?
 
 }
 
 // MARK: Generated accessors for workouts
 extension FTRoutineTemplate {
-
-    @objc(insertObject:inWorkoutsAtIndex:)
-    @NSManaged public func insertIntoWorkouts(_ value: FTWorkoutTemplate, at idx: Int)
-
-    @objc(removeObjectFromWorkoutsAtIndex:)
-    @NSManaged public func removeFromWorkouts(at idx: Int)
-
-    @objc(insertWorkouts:atIndexes:)
-    @NSManaged public func insertIntoWorkouts(_ values: [FTWorkoutTemplate], at indexes: NSIndexSet)
-
-    @objc(removeWorkoutsAtIndexes:)
-    @NSManaged public func removeFromWorkouts(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInWorkoutsAtIndex:withObject:)
-    @NSManaged public func replaceWorkouts(at idx: Int, with value: FTWorkoutTemplate)
-
-    @objc(replaceWorkoutsAtIndexes:withWorkouts:)
-    @NSManaged public func replaceWorkouts(at indexes: NSIndexSet, with values: [FTWorkoutTemplate])
 
     @objc(addWorkoutsObject:)
     @NSManaged public func addToWorkouts(_ value: FTWorkoutTemplate)
@@ -49,9 +31,9 @@ extension FTRoutineTemplate {
     @NSManaged public func removeFromWorkouts(_ value: FTWorkoutTemplate)
 
     @objc(addWorkouts:)
-    @NSManaged public func addToWorkouts(_ values: NSOrderedSet)
+    @NSManaged public func addToWorkouts(_ values: NSSet)
 
     @objc(removeWorkouts:)
-    @NSManaged public func removeFromWorkouts(_ values: NSOrderedSet)
+    @NSManaged public func removeFromWorkouts(_ values: NSSet)
 
 }
