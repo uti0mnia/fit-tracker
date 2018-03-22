@@ -13,10 +13,10 @@ class FTEditWorkoutCell: UITableViewCell {
     private let nameLabel = FTSizedLabel()
     private let setLabel = FTSizedLabel(textSize: .medium)
     
-    public var exerciseTemplate: FTExerciseTemplate? {
+    public var exerciseGroup: FTExerciseGroupTemplate? {
         didSet {
-            nameLabel.text = exerciseTemplate?.exercise?.name
-            setLabel.text = "\(exerciseTemplate?.setTemplates?.count ?? 0) Sets"
+            let names = Array(exerciseGroup?.exerciseTemplates?.flatMap({ return $0.exercise?.name ?? "" }) ?? [String]()).joined(separator: ", ")
+            nameLabel.text = "Exercise count: \(exerciseGroup?.exerciseTemplates?.count ?? 0) (\(names))"
         }
     }
     

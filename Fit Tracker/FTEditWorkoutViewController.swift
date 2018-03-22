@@ -36,12 +36,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }()
     private let finishButton = FTSimpleButton()
     
+    private var updateFromUI = false
+    
     private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
-    private lazy var frc: NSFetchedResultsController<FTExerciseTemplate> = {
-        let request = NSFetchRequest<FTExerciseTemplate>(entityName: "FTExerciseTemplate")
-        request.sortDescriptors = [NSSortDescriptor(key: "groupTemplate.index", ascending: true), NSSortDescriptor(key: "index", ascending: true)]
-        request.predicate = NSPredicate(format: "%K == %@", "groupTemplate.workoutTemplate", workout)
+    private lazy var frc: NSFetchedResultsController<FTExerciseGroupTemplate> = {
+        let request: NSFetchRequest<FTExerciseGroupTemplate> = FTExerciseGroupTemplate.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "index", ascending: true)]
+        request.predicate = NSPredicate(format: "%K == %@", "workoutTemplate", workout)
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         return frc
@@ -152,22 +154,20 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func deleteExercise(at indexPath: IndexPath) {
-        let object = frc.object(at: indexPath)
+    private func deleteExerciseGroup(at indexPath: IndexPath) {
+        context.delete(frc.object(at: indexPath))
         
-        assert(object.groupTemplate != nil, "Exercise template needs to be attached to group template")
-        
-        guard let group = object.groupTemplate, let templates = group.exerciseTemplates else {
-            context.delete(object)
+        updateGroupIndices()
+    }
+    
+    private func updateGroupIndices() {
+        guard let groups = frc.fetchedObjects else {
             return
         }
         
-        if (templates.count == 1) {
-            context.delete(group)
-        } else {
-            context.delete(object)
+        for (idx, group) in groups.enumerated() {
+            group.index = Int16(idx)
         }
-        
     }
     
     // MARK: - UITableViewDataSource
@@ -182,8 +182,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath) as! FTEditWorkoutCell
-        let object = frc.object(at: indexPath)
-        cell.exerciseTemplate = object
+        let group = frc.object(at: indexPath)
+        cell.exerciseGroup = group
         return cell
     }
     
@@ -192,7 +192,15 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        guard var groups = frc.fetchedObjects else {
+            return
+        }
+
+        let object = groups.remove(at: sourceIndexPath.row)
+        groups.insert(object, at: destinationIndexPath.row)
+
+        updateGroupIndices()
+        updateFromUI = true
     }
     
     // MARK: - UITableViewDelegate
@@ -204,7 +212,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            deleteExercise(at: indexPath)
+            deleteExerciseGroup(at: indexPath)
         default:
             break
         }
@@ -221,15 +229,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        let indexSet = IndexSet(integer: sectionIndex)
-        switch type {
-        case .insert:
-            tableView.insertSections(indexSet, with: .fade)
-        case .delete:
-            tableView.deleteSections(indexSet, with: .fade)
-        default:
-            break
-        }
+        // Do nothing (no sectioning currently).
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -244,11 +244,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             }
         case .move:
             if let indexPath = indexPath, let newIndexPath = newIndexPath {
-                tableView.moveRow(at: indexPath, to: newIndexPath)
+                tableView.deleteRows(at: [indexPath], with: .none)
+                tableView.insertRows(at: [newIndexPath], with: .none)
             }
         case .update:
             if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .fade)
+                tableView.reloadRows(at: [indexPath], with: .none)
             }
         }
     }
@@ -261,7 +262,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - FTAddExerciseViewControllerDelegate
     
     func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate]) {
-        workout.addToGroupTemplate(NSOrderedSet(array: groups))
+        var index = Int16(workout.groupTemplates?.count ?? 0)
+        groups.forEach() { group in
+            group.index = index
+            index += 1
+        }
+        workout.addToGroupTemplates(NSSet(array: groups))
     }
     
 }
