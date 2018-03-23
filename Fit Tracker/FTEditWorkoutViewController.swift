@@ -36,8 +36,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }()
     private let finishButton = FTSimpleButton()
     
-    private var updateFromUI = false
-    
     private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
     private lazy var frc: NSFetchedResultsController<FTExerciseGroupTemplate> = {
@@ -157,16 +155,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private func deleteExerciseGroup(at indexPath: IndexPath) {
         context.delete(frc.object(at: indexPath))
         
-        updateGroupIndices()
-    }
-    
-    private func updateGroupIndices() {
-        guard let groups = frc.fetchedObjects else {
-            return
-        }
-        
-        for (idx, group) in groups.enumerated() {
-            group.index = Int16(idx)
+        if let groups = frc.fetchedObjects {
+            for (idx, group) in groups.enumerated() {
+                group.index = Int16(idx)
+            }
         }
     }
     
@@ -195,12 +187,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         guard var groups = frc.fetchedObjects else {
             return
         }
-
+        
         let object = groups.remove(at: sourceIndexPath.row)
         groups.insert(object, at: destinationIndexPath.row)
-
-        updateGroupIndices()
-        updateFromUI = true
+        
+        // Update the indices.
+        for (idx, group) in groups.enumerated() {
+            group.index = Int16(idx)
+        }
     }
     
     // MARK: - UITableViewDelegate
