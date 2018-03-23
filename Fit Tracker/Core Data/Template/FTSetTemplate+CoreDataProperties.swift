@@ -19,6 +19,7 @@ extension FTSetTemplate {
     @NSManaged public var amount: NSObject?
     @NSManaged public var modifier: NSObject?
     @NSManaged public var index: Int16
+    @NSManaged public var notes: String?
     @NSManaged public var exerciseTemplate: FTExerciseTemplate?
 
 }

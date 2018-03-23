@@ -19,6 +19,7 @@ extension FTExerciseLog {
     @NSManaged public var date: NSDate?
     @NSManaged public var index: Int16
     @NSManaged public var exercise: FTExercise?
+    @NSManaged public var notes: String?
     @NSManaged public var groupLog: FTExerciseGroupLog?
     @NSManaged public var setLogs: Set<FTSetLog>?
 
