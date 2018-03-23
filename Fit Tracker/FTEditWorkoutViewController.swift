@@ -264,4 +264,9 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         workout.addToGroupTemplates(NSSet(array: groups))
     }
     
+    func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedSupersetGroup group: FTExerciseGroupTemplate) {
+        group.index = Int16(workout.groupTemplates?.count ?? 0)
+        workout.addToGroupTemplates(group)
+    }
+    
 }

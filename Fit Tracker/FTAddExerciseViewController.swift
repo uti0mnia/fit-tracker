@@ -11,6 +11,7 @@ import CoreData
 
 protocol FTAddExerciseViewControllerDelegate: class {
     func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedExerciseGroups groups: [FTExerciseGroupTemplate])
+    func addExerciseViewController(_ controller: FTAddExerciseViewController, willDismissWithAddedSupersetGroup group: FTExerciseGroupTemplate)
 }
 
 class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
@@ -147,8 +148,6 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
         
-        print("Adding exercises from selected array")
-        
         var groups = [FTExerciseGroupTemplate]()
         for indexPath in self.selectedExercisesIndexPaths {
             let groupTemplate = FTExerciseGroupTemplate(context: context)
@@ -164,14 +163,28 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
             groups.append(groupTemplate)
         }
         
-        print("Finished adding exercises from selected array")
-        
         delegate?.addExerciseViewController(self, willDismissWithAddedExerciseGroups: groups)
         _ = navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapAddSupersetButton(_ sender: UIButton) {
-        print("Tapped add superset button")
+        var templates = [FTExerciseTemplate]()
+        
+        for indexPath in self.selectedExercisesIndexPaths {
+            let exerciseTemplate = FTExerciseTemplate(context: context)
+            exerciseTemplate.exercise = self.frc.object(at: indexPath)
+            
+            // Create a default set template
+            let setTemplate = FTSetTemplate(context: context)
+            setTemplate.exerciseTemplate = exerciseTemplate
+            
+            templates.append(exerciseTemplate)
+        }
+        let groupTemplate = FTExerciseGroupTemplate(context: context)
+        groupTemplate.addToExerciseTemplates(NSSet(array: templates))
+        
+        delegate?.addExerciseViewController(self, willDismissWithAddedSupersetGroup: groupTemplate)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UITableViewDelegate
