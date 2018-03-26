@@ -26,19 +26,18 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private var headerView = FTEditWorkoutHeaderView(title: "Exercises")
     
     // Navbar.
-    private lazy var dismissButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(didTapDismissButton(_:)))
-        button.tintColor = FTColours.mainPrimary
-        return button
-    }()
     private lazy var editButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEditButton(_:)))
         button.tintColor = FTColours.mainPrimary
         return button
     }()
-    private let finishButton = FTSimpleButton()
+    private lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneButton(_:)))
+        button.tintColor = FTColours.mainPrimary
+        return button
+    }()
     
-    private let workout: FTWorkoutTemplate
+    @objc private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
     private lazy var frc: NSFetchedResultsController<FTExerciseGroupTemplate> = {
         let request: NSFetchRequest<FTExerciseGroupTemplate> = FTExerciseGroupTemplate.fetchRequest()
@@ -48,6 +47,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         frc.delegate = self
         return frc
     }()
+    private var didEditWorkout = false
     
     required init(workout: FTWorkoutTemplate? = nil) {
         self.context = FTDataController.shared.moc
@@ -83,17 +83,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationController?.setToolbarHidden(false, animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // TODO: make name text field first reponder if no name.
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         navigationController?.setToolbarHidden(true, animated: true)
     }
+    
     
     private func setupVisuals() {
         self.title = workout.name ?? "FTEditWorkoutViewController_NewWorkout".ft_localized
@@ -116,50 +111,66 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         emptyWorkoutLabel.text = "FTEditWorkoutViewController_EmptyWorkout".ft_localized
         emptyWorkoutLabel.snp.makeConstraints({ $0.center.equalToSuperview() })
         
-        navigationItem.leftBarButtonItem = dismissButton
         navigationItem.rightBarButtonItem = editButton
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-        
-        finishButton.titleLabel?.text = "FTGeneral_Finish".ft_localized
         
         headerView.addButton.addTarget(self, action: #selector(didTapAddExercise(_:)), for: .touchUpInside)
     }
     
     private func setupToolBar() {
-        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
-        addBarButton.tintColor = FTColours.mainPrimary
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
+        saveButton.tintColor = FTColours.mainPrimary
+        
+        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapCancelButton(_:)))
+        trashButton.tintColor = FTColours.destructiveColour
         
         navigationController?.setToolbarHidden(false, animated: false)
-        toolbarItems = [leftSpace, addBarButton]
+        toolbarItems = [trashButton, flexSpace, saveButton]
     }
     
-    @objc private func didTapDismissButton(_ sender: UIButton) {
-        // TODO: Verify discard if exercises added.
-        self.dismiss(animated: true, completion: nil)
+    @objc private func didTapCancelButton(_ sender: UIButton) {
+        guard didEditWorkout else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to delete your changes?", preferredStyle: .alert)
+        let discard = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            self.context.rollback()
+            self.dismiss(animated: true, completion: nil)
+        }
+        let no = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(discard)
+        alert.addAction(no)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     @objc private func didTapEditButton(_ sender: UIButton) {
-        if tableView.isEditing {
-            tableView.setEditing(false, animated: true)
-            editButton.title = "Edit"
-        } else {
-            tableView.setEditing(true, animated: true)
-            editButton.title = "Done"
-        }
+        tableView.setEditing(true, animated: true)
+        navigationItem.setRightBarButton(doneButton, animated: true)
     }
     
-    @objc private func didTapAddButton(_ sender: UIButton) {
-        let vc = FTAddExerciseViewController()
-        vc.delegate = self
-        navigationController?.pushViewController(vc, animated: true)
+    @objc private func didTapDoneButton(_ sender: UIButton) {
+        tableView.setEditing(false, animated: true)
+        navigationItem.setRightBarButton(editButton, animated: true)
+    }
+    
+    @objc private func didTapSaveButton(_ sender: UIButton) {
+        // TODO: Handle save
     }
     
     @objc private func didTapAddExercise(_ sender: UIButton) {
         let vc = FTAddExerciseViewController()
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapNextButton(_ sender: UIBarButtonItem) {
+        
     }
     
     private func deleteExerciseGroup(at indexPath: IndexPath) {
@@ -245,6 +256,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        didEditWorkout = true
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
