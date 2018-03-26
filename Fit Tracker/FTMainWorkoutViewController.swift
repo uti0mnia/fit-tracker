@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
+class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private static let workoutIdentifier = "workoutIdentifier"
     private static let esitmatedCellHeight: CGFloat = 150
@@ -17,8 +17,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
     private lazy var tableView: UITableView = { [unowned self] in
         let tableView = UITableView()
         tableView.estimatedRowHeight = FTMainWorkoutViewController.esitmatedCellHeight
-        tableView.dataSource = self
-        tableView.dataSource = self
         tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
         return tableView
     }()
@@ -44,6 +42,8 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
             make.left.right.equalToSuperview()
             make.top.equalTo(topLayoutGuide.snp.bottom)
         }
+        tableView.dataSource = self
+        tableView.delegate = self
         
         // Quick add button.
         view.addSubview(quickStackButton)
@@ -77,4 +77,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTMainWorkoutTableViewCell
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
 }

@@ -53,6 +53,7 @@
 		C9A7E521206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E51F206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift */; };
 		C9A7E524206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E522206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift */; };
 		C9A7E525206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E523206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift */; };
+		C9A7E5272068823F0060EEE7 /* FTEditWorkoutHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7E5262068823F0060EEE7 /* FTEditWorkoutHeaderView.swift */; };
 		C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9B355132047CE6100B48D04 /* Model.xcdatamodeld */; };
 		C9B355262047CF2100B48D04 /* FTDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B355252047CF2100B48D04 /* FTDataController.swift */; };
 		C9D2DA0B202F695F00A1FB1C /* FTHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */; };
@@ -132,6 +133,7 @@
 		C9A7E51F206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTExerciseOptions+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/FTExerciseOptions+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		C9A7E522206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTRoutineTemplate+CoreDataProperties.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTRoutineTemplate+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		C9A7E523206207C20060EEE7 /* FTRoutineTemplate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FTRoutineTemplate+CoreDataClass.swift"; path = "/Users/casey/Documents/coding.nosync/Fit Tracker/Fit Tracker/Core Data/Template/FTRoutineTemplate+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		C9A7E5262068823F0060EEE7 /* FTEditWorkoutHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditWorkoutHeaderView.swift; sourceTree = "<group>"; };
 		C9B355142047CE6100B48D04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C9B355252047CF2100B48D04 /* FTDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDataController.swift; sourceTree = "<group>"; };
 		C9D2DA0A202F695F00A1FB1C /* FTHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHomeViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */,
 				C9EC4E3F2035513500CF538F /* FTMainWorkoutTableViewCell.swift */,
 				C9EC4E6420389FD900CF538F /* FTEditWorkoutViewController.swift */,
+				C9A7E5262068823F0060EEE7 /* FTEditWorkoutHeaderView.swift */,
 				C97B24BE204C9323008B59F8 /* Cells */,
 			);
 			name = Workouts;
@@ -645,6 +648,7 @@
 				C928F914204911CA001BA6CE /* FTWorkoutLog+CoreDataProperties.swift in Sources */,
 				C928F91A204911CA001BA6CE /* FTSetTemplate+CoreDataClass.swift in Sources */,
 				C928F919204911CA001BA6CE /* FTSetLog+CoreDataProperties.swift in Sources */,
+				C9A7E5272068823F0060EEE7 /* FTEditWorkoutHeaderView.swift in Sources */,
 				C928F912204911CA001BA6CE /* FTExerciseLog+CoreDataProperties.swift in Sources */,
 				C97B24CE204E6016008B59F8 /* FTButton.swift in Sources */,
 				C928F911204911CA001BA6CE /* FTSetLog+CoreDataClass.swift in Sources */,

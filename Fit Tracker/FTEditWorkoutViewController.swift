@@ -14,14 +14,16 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private static let cellReuse = "editWorkoutCell"
     
     private static let sections = ["Exercises"]
+    private static let estimatedHeaderViewHeight: CGFloat = 60
     
     private var tableView: UITableView = {
-        let tv = UITableView(frame: .zero, style: .grouped)
+        let tv = UITableView(frame: .zero, style: .plain)
         tv.register(FTEditWorkoutCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
         tv.rowHeight = UITableViewAutomaticDimension
         return tv
     }()
     private var emptyWorkoutLabel = FTTitleLabel()
+    private var headerView = FTEditWorkoutHeaderView(title: "Exercises")
     
     // Navbar.
     private lazy var dismissButton: UIBarButtonItem = {
@@ -119,6 +121,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         
         finishButton.titleLabel?.text = "FTGeneral_Finish".ft_localized
+        
+        headerView.addButton.addTarget(self, action: #selector(didTapAddExercise(_:)), for: .touchUpInside)
     }
     
     private func setupToolBar() {
@@ -147,6 +151,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapAddButton(_ sender: UIButton) {
+        let vc = FTAddExerciseViewController()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapAddExercise(_ sender: UIButton) {
         let vc = FTAddExerciseViewController()
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
@@ -198,6 +208,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return FTEditWorkoutViewController.estimatedHeaderViewHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
