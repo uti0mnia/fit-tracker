@@ -1,5 +1,5 @@
 //
-//  FTEditWorkoutViewController.swift
+//  FTEditWorkoutExercisesViewController.swift
 //  Fit Tracker
 //
 //  Created by Casey McLewin on 2018-02-17.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FTAddExerciseViewControllerDelegate {
+class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, FTAddExerciseViewControllerDelegate {
     
     private static let cellReuse = "editWorkoutCell"
     
@@ -18,7 +18,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private var tableView: UITableView = {
         let tv = UITableView(frame: .zero, style: .plain)
-        tv.register(FTEditWorkoutCell.self, forCellReuseIdentifier: FTEditWorkoutViewController.cellReuse)
+        tv.register(FTEditWorkoutCell.self, forCellReuseIdentifier: FTEditWorkoutExercisesViewController.cellReuse)
         tv.rowHeight = UITableViewAutomaticDimension
         return tv
     }()
@@ -120,14 +120,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private func setupToolBar() {
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
-        saveButton.tintColor = FTColours.mainPrimary
+        let nextButton = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(didTapNextButton(_:)))
+        nextButton.tintColor = FTColours.mainPrimary
         
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapCancelButton(_:)))
         trashButton.tintColor = FTColours.destructiveColour
         
         navigationController?.setToolbarHidden(false, animated: false)
-        toolbarItems = [trashButton, flexSpace, saveButton]
+        toolbarItems = [trashButton, flexSpace, nextButton]
     }
     
     @objc private func didTapCancelButton(_ sender: UIButton) {
@@ -159,10 +159,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         navigationItem.setRightBarButton(editButton, animated: true)
     }
     
-    @objc private func didTapSaveButton(_ sender: UIButton) {
-        // TODO: Handle save
-    }
-    
     @objc private func didTapAddExercise(_ sender: UIButton) {
         let vc = FTAddExerciseViewController()
         vc.delegate = self
@@ -170,7 +166,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapNextButton(_ sender: UIBarButtonItem) {
-        
+        let vc = FTEditWorkoutDetailsViewController(workout: workout, context: context)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func deleteExerciseGroup(at indexPath: IndexPath) {
@@ -186,7 +183,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return FTEditWorkoutViewController.sections.count
+        return FTEditWorkoutExercisesViewController.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,14 +191,14 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutViewController.cellReuse, for: indexPath) as! FTEditWorkoutCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTEditWorkoutExercisesViewController.cellReuse, for: indexPath) as! FTEditWorkoutCell
         let group = frc.object(at: indexPath)
         cell.exerciseGroup = group
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return FTEditWorkoutViewController.sections[section]
+        return FTEditWorkoutExercisesViewController.sections[section]
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -221,7 +218,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return FTEditWorkoutViewController.estimatedHeaderViewHeight
+        return FTEditWorkoutExercisesViewController.estimatedHeaderViewHeight
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

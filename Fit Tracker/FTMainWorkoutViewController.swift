@@ -63,7 +63,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapAddButton(_ sender: Any) {
-        let vc = UINavigationController(rootViewController: FTEditWorkoutViewController())
+        let vc = UINavigationController(rootViewController: FTEditWorkoutExercisesViewController())
         navigationController?.present(vc, animated: true, completion: nil)
     }
     
