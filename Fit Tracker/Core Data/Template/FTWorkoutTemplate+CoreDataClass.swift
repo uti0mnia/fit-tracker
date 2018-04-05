@@ -11,5 +11,5 @@ import CoreData
 
 @objc(FTWorkoutTemplate)
 public class FTWorkoutTemplate: NSManagedObject {
-
+    
 }

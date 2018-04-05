@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import SnapKit
 
-class FTEditWorkoutDetailsViewController: UIViewController {
+class FTEditWorkoutDetailsViewController: UIViewController, UITextFieldDelegate {
     
     private let workout: FTWorkoutTemplate
     private let context: NSManagedObjectContext
@@ -49,5 +49,48 @@ class FTEditWorkoutDetailsViewController: UIViewController {
         detailScrollView.contentInset = UIEdgeInsets(top: FTLayout.defaultPadding, left: 0, bottom: FTLayout.defaultPadding, right: 0)
         detailScrollView.nameLabel.text = "Workout name"
         detailScrollView.noteLabel.text = "Workout notes"
+        detailScrollView.textField.delegate = self
+        
+        let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(didTapSaveButton(_:)))
+        navigationItem.rightBarButtonItem = save
     }
+    
+    private func displayErrorMessage() {
+        let alert = UIAlertController(title: "Oops", message: "Something went wrong saving. If this continues, try making a new workout. Sorry :(", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func didTapSaveButton(_ sender: UIButton) {
+        // Update the workout name since the user tapped save.
+        workout.name = detailScrollView.textField.text
+        
+        guard workout.name != nil && workout.name != "" else {
+            detailScrollView.nameLabel.ft_shake()
+            return
+        }
+        
+        do {
+            try context.save()
+            
+            assert(self.navigationController != nil, "Um hello? How is this not in a NavController")
+            
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        } catch {
+            print("Error saving context: \(error.localizedDescription)")
+            assertionFailure()
+            
+            displayErrorMessage()
+        }
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }

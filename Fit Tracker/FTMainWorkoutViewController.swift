@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -20,6 +21,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
         return tableView
     }()
+    private let context = FTDataController.shared.moc
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +65,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc private func didTapAddButton(_ sender: Any) {
-        let vc = UINavigationController(rootViewController: FTEditWorkoutExercisesViewController())
+        let vc = UINavigationController(rootViewController: FTEditWorkoutExercisesViewController(context: self.context))
         navigationController?.present(vc, animated: true, completion: nil)
     }
     

@@ -49,8 +49,8 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
     }()
     private var didEditWorkout = false
     
-    required init(workout: FTWorkoutTemplate? = nil) {
-        self.context = FTDataController.shared.moc
+    required init(workout: FTWorkoutTemplate? = nil, context: NSManagedObjectContext) {
+        self.context = context
         self.workout = workout ?? FTWorkoutTemplate(context: FTDataController.shared.moc)
         
         super.init(nibName: nil, bundle: nil)

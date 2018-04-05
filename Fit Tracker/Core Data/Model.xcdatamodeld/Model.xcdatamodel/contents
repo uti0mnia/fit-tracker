@@ -72,6 +72,7 @@
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="groupTemplates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTExerciseGroupTemplate" inverseName="workoutTemplate" inverseEntity="FTExerciseGroupTemplate" syncable="YES"/>
         <relationship name="routine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FTRoutineTemplate" inverseName="workouts" inverseEntity="FTRoutineTemplate" syncable="YES"/>
         <relationship name="workoutLogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTWorkoutLog" inverseName="workoutTemplate" inverseEntity="FTWorkoutLog" syncable="YES"/>
@@ -80,13 +81,13 @@
         <element name="FTExercise" positionX="-864" positionY="-153" width="128" height="208"/>
         <element name="FTExerciseGroupLog" positionX="-587" positionY="-378" width="128" height="88"/>
         <element name="FTExerciseGroupTemplate" positionX="-810" positionY="248" width="128" height="88"/>
-        <element name="FTExerciseLog" positionX="-612" positionY="-171" width="128" height="133"/>
+        <element name="FTExerciseLog" positionX="-612" positionY="-171" width="128" height="135"/>
         <element name="FTExerciseOptions" positionX="-765" positionY="-345" width="128" height="90"/>
         <element name="FTExerciseTemplate" positionX="-657" positionY="132" width="128" height="133"/>
         <element name="FTRoutineTemplate" positionX="-11" positionY="287" width="128" height="73"/>
         <element name="FTSetLog" positionX="-407" positionY="-157" width="128" height="103"/>
         <element name="FTSetTemplate" positionX="-549" positionY="308" width="128" height="103"/>
         <element name="FTWorkoutLog" positionX="-315" positionY="-405" width="128" height="103"/>
-        <element name="FTWorkoutTemplate" positionX="-252" positionY="41" width="128" height="163"/>
+        <element name="FTWorkoutTemplate" positionX="-252" positionY="41" width="128" height="180"/>
     </elements>
 </model>

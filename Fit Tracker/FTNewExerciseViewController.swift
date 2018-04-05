@@ -129,31 +129,20 @@ class FTNewExerciseViewController: UIViewController, UITableViewDataSource, UITa
         categoryCell.detailLabel.textColor = FTColours.grayTextColour
     }
     
-    private func shake(_ view: UIView) {
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.05
-        animation.repeatCount = 2
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: view.center.x - 5, y: view.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: view.center.x + 5, y: view.center.y))
-        
-        view.layer.add(animation, forKey: "position")
-    }
-    
     private func handleNonCompleteExercise() {
         if exercise.getBodyPart() == .none {
             bodyPartCell.detailLabel.textColor = FTColours.missingColour
-            shake(bodyPartCell.detailLabel)
+            bodyPartCell.detailLabel.ft_shake()
         }
         
         if exercise.getCategory() == .none {
             categoryCell.detailLabel.textColor = FTColours.missingColour
-            shake(categoryCell.detailLabel)
+            categoryCell.detailLabel.ft_shake()
         }
         
         if exercise.name == nil || exercise.name == "" {
             exerciseNameCell.textField.placeholderColour = FTColours.missingColour
-            shake(exerciseNameCell.textField)
+            exerciseNameCell.textField.ft_shake()
         }
     }
 
