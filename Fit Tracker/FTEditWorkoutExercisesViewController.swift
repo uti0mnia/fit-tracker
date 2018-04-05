@@ -51,7 +51,7 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
     
     required init(workout: FTWorkoutTemplate? = nil, context: NSManagedObjectContext) {
         self.context = context
-        self.workout = workout ?? FTWorkoutTemplate(context: FTDataController.shared.moc)
+        self.workout = workout ?? FTWorkoutTemplate(context: context)
         
         super.init(nibName: nil, bundle: nil)
         
@@ -160,7 +160,7 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
     }
     
     @objc private func didTapAddExercise(_ sender: UIButton) {
-        let vc = FTAddExerciseViewController()
+        let vc = FTAddExerciseViewController(context: context)
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }

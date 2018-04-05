@@ -59,8 +59,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         return frc
     }()
     
-    required init() {
-        self.context = FTDataController.shared.moc
+    required init(context: NSManagedObjectContext) {
+        self.context = context
         
         super.init(nibName: nil, bundle: nil)
     }
