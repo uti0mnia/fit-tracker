@@ -43,15 +43,15 @@ class FTDataController: NSObject {
         return context
     }
     
-    public func saveContext() -> Error? {
+    public func saveContext(completion: (Error?) -> Void ) {
         do {
             try moc.save()
         } catch {
             print("Error saving moc: \(error.localizedDescription)")
-            return error
+            completion(error)
         }
         
-        return nil
+        completion(nil)
     }
     
     public func performSaveBlockAsync(block: @escaping (NSManagedObjectContext) -> Void, completion: @escaping (Error?) -> Void) {

@@ -31,6 +31,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         return frc
     }()
     
+    private let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
+    private let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +54,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         }
+        navigationController?.navigationBar.tintColor = FTColours.mainPrimary
         
         // UITableView, note that if the tableView isn't the first view added, the scroll to hide large title doesn't work.
         view.addSubview(tableView)
@@ -77,11 +81,33 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         addButton.tintColor = FTColours.mainPrimary
         self.navigationItem.rightBarButtonItem = addButton
         
+        editButton.target = self
+        editButton.action = #selector(didTapEditButton(_:))
+        self.navigationItem.leftBarButtonItem = editButton
+        
+        doneButton.target = self
+        doneButton.action = #selector(didTapDoneButton(_:))
     }
     
     @objc private func didTapAddButton(_ sender: Any) {
         let vc = UINavigationController(rootViewController: FTEditWorkoutExercisesViewController(context: FTDataController.shared.createMainContext()))
         navigationController?.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc private func didTapEditButton(_ sender: Any) {
+        tableView.setEditing(true, animated: true)
+        navigationItem.leftBarButtonItem = doneButton
+    }
+    
+    @objc private func didTapDoneButton(_ sender: Any) {
+        tableView.setEditing(false, animated: true)
+        navigationItem.leftBarButtonItem = editButton
+    }
+    
+    private func save() {
+        FTDataController.shared.saveContext() { _ in
+            // TODO: handle error
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -98,13 +124,27 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard var workouts = frc.fetchedObjects else {
+            return
+        }
+        
+        let object = workouts.remove(at: sourceIndexPath.row)
+        workouts.insert(object, at: destinationIndexPath.row)
+        
+        // Update the indices.
+        for (idx, workout) in workouts.enumerated() {
+            workout.index = Int16(idx)
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            frc.managedObjectContext.delete(frc.object(at: indexPath))
+            context.delete(frc.object(at: indexPath))
         }
     }
     
@@ -126,7 +166,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             }
         case .update:
             if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+                tableView.reloadRows(at: [indexPath], with: .none)
             }
         case .delete:
             if let indexPath = indexPath {

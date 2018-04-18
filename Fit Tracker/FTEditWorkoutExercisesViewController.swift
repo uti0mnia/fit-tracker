@@ -201,20 +201,6 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
         return FTEditWorkoutExercisesViewController.sections[section]
     }
     
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard var groups = frc.fetchedObjects else {
-            return
-        }
-        
-        let object = groups.remove(at: sourceIndexPath.row)
-        groups.insert(object, at: destinationIndexPath.row)
-        
-        // Update the indices.
-        for (idx, group) in groups.enumerated() {
-            group.index = Int16(idx)
-        }
-    }
-    
     // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
@@ -235,6 +221,20 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
             deleteExerciseGroup(at: indexPath)
         default:
             break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        guard var groups = frc.fetchedObjects else {
+            return
+        }
+        
+        let object = groups.remove(at: sourceIndexPath.row)
+        groups.insert(object, at: destinationIndexPath.row)
+        
+        // Update the indices.
+        for (idx, group) in groups.enumerated() {
+            group.index = Int16(idx)
         }
     }
     
