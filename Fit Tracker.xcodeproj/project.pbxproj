@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0892C3072089815B00204AC5 /* FTPreviewWorkoutExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892C3052089815B00204AC5 /* FTPreviewWorkoutExerciseView.swift */; };
+		0892C3082089815B00204AC5 /* FTPreviewWorkoutExerciseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0892C3062089815B00204AC5 /* FTPreviewWorkoutExerciseView.xib */; };
+		0892C30A208D2EB600204AC5 /* FTPreviewWorkoutExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892C309208D2EB600204AC5 /* FTPreviewWorkoutExerciseCell.swift */; };
 		53ADD1F2A311B0FC989B9ACF /* Pods_Fit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */; };
 		C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */; };
 		C927E8E520689E9200CCA83F /* FTExerciseDetailsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927E8E420689E9200CCA83F /* FTExerciseDetailsScrollView.swift */; };
@@ -87,6 +90,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0892C3052089815B00204AC5 /* FTPreviewWorkoutExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPreviewWorkoutExerciseView.swift; sourceTree = "<group>"; };
+		0892C3062089815B00204AC5 /* FTPreviewWorkoutExerciseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPreviewWorkoutExerciseView.xib; sourceTree = "<group>"; };
+		0892C309208D2EB600204AC5 /* FTPreviewWorkoutExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPreviewWorkoutExerciseCell.swift; sourceTree = "<group>"; };
 		950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArrayExtension.swift; sourceTree = "<group>"; };
 		C927E8E420689E9200CCA83F /* FTExerciseDetailsScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseDetailsScrollView.swift; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 		C927E8E320689E7900CCA83F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0892C3052089815B00204AC5 /* FTPreviewWorkoutExerciseView.swift */,
+				0892C3062089815B00204AC5 /* FTPreviewWorkoutExerciseView.xib */,
 				C9A7E5262068823F0060EEE7 /* FTEditWorkoutHeaderView.swift */,
 				C927E8E420689E9200CCA83F /* FTExerciseDetailsScrollView.swift */,
 			);
@@ -320,6 +328,7 @@
 				C9EC4E792039F02A00CF538F /* FTEditWorkoutSetTableViewCell.swift */,
 				C97B24BF204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib */,
 				C97B24C1204E5B40008B59F8 /* FTEditWorkoutCell.swift */,
+				0892C309208D2EB600204AC5 /* FTPreviewWorkoutExerciseCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -408,9 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */,
-				C942D8202086FD67004ED01F /* FTPreviewWorkoutViewController.swift */,
 				C9EC4E6420389FD900CF538F /* FTEditWorkoutExercisesViewController.swift */,
 				C9A7E528206891C10060EEE7 /* FTEditWorkoutDetailsViewController.swift */,
+				C942D8202086FD67004ED01F /* FTPreviewWorkoutViewController.swift */,
 				C927E8E320689E7900CCA83F /* Views */,
 				C97B24BE204C9323008B59F8 /* Cells */,
 			);
@@ -515,6 +524,7 @@
 				TargetAttributes = {
 					C9775CF62020441C00C2E9B3 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -543,6 +553,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0892C3082089815B00204AC5 /* FTPreviewWorkoutExerciseView.xib in Resources */,
 				C97A234F204B6735001997E8 /* FTExerciseSelectionCell.xib in Resources */,
 				C9775D052020441C00C2E9B3 /* LaunchScreen.storyboard in Resources */,
 				C97B24C0204C9335008B59F8 /* FTEditWorkoutSetTableViewCell.xib in Resources */,
@@ -628,6 +639,7 @@
 				C9A65FCE202D79A500C3AC72 /* FTColours.swift in Sources */,
 				C928F915204911CA001BA6CE /* FTExercise+CoreDataClass.swift in Sources */,
 				C928F928204A5637001BA6CE /* FTNavigationReceiverDelegate.swift in Sources */,
+				0892C3072089815B00204AC5 /* FTPreviewWorkoutExerciseView.swift in Sources */,
 				C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */,
 				C928F917204911CA001BA6CE /* FTExercise+CoreDataProperties.swift in Sources */,
 				C97B24BD204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataProperties.swift in Sources */,
@@ -676,6 +688,7 @@
 				C928F91A204911CA001BA6CE /* FTSetTemplate+CoreDataClass.swift in Sources */,
 				C928F919204911CA001BA6CE /* FTSetLog+CoreDataProperties.swift in Sources */,
 				C9A7E5272068823F0060EEE7 /* FTEditWorkoutHeaderView.swift in Sources */,
+				0892C30A208D2EB600204AC5 /* FTPreviewWorkoutExerciseCell.swift in Sources */,
 				C928F912204911CA001BA6CE /* FTExerciseLog+CoreDataProperties.swift in Sources */,
 				C97B24CE204E6016008B59F8 /* FTButton.swift in Sources */,
 				C928F911204911CA001BA6CE /* FTSetLog+CoreDataClass.swift in Sources */,
@@ -835,6 +848,7 @@
 			baseConfigurationReference = 950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3RP73GH99;
 				INFOPLIST_FILE = "Fit Tracker/Info.plist";
@@ -842,6 +856,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uti0mnia.Fit-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -852,6 +867,7 @@
 			baseConfigurationReference = F7B50096F82319BCEFF02D81 /* Pods-Fit Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3RP73GH99;
 				INFOPLIST_FILE = "Fit Tracker/Info.plist";

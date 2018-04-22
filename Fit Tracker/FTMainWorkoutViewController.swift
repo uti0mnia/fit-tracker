@@ -31,6 +31,8 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         return frc
     }()
     
+    private lazy var previewViewController = FTPreviewWorkoutViewController()
+    
     private let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
     private let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
     
@@ -124,10 +126,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     // MARK: - UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         guard var workouts = frc.fetchedObjects else {
             return
@@ -140,6 +138,12 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         for (idx, workout) in workouts.enumerated() {
             workout.index = Int16(idx)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let workout = frc.object(at: indexPath)
+        previewViewController.workout = workout
+        navigationController?.pushViewController(previewViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
