@@ -15,14 +15,36 @@ class FTColours: NSObject {
     private override init() {}
     
     // MARK: - Static Colours
-    public static let red = UIColor(hexString: "#FF3B30")!
-    public static let orange = UIColor(hexString: "#FF9500")!
-    public static let yellow = UIColor(hexString: "#FFCC00")!
-    public static let green = UIColor(hexString: "#4CD964")!
-    public static let tealBlue = UIColor(hexString: "#5AC8FA")!
-    public static let blue = UIColor(hexString: "#007AFF")!
-    public static let purple = UIColor(hexString: "#5856D6")!
-    public static let pink = UIColor(hexString: "#FF2D55")!
+    public static let blue = UIColor(hexString: "#22A7F0")!
+    public static let lightBlue = UIColor(hexString: "#E4F1FE")!
+    public static let red = UIColor(hexString: "#EC644B")!
+    public static let lightGreen = UIColor(hexString: "#87D37C")!
+    public static let green = UIColor(hexString: "#26A65B")!
+    public static let orange = UIColor(hexString: "#F89406")!
+    public static let purple = UIColor(hexString: "#9B59B6")!
+    public static let pink = UIColor(hexString: "#FF1654")!
+    
+    // TODO: More colours for supersets
+    
+    public static let buttonShadow = UIColor(hexString: "#000000", withAlpha: 0.2)!
+    public static let buttonEnabled = FTColours.blue
+    public static let buttonDisabled = FTColours.blue.withAlphaComponent(0.3)
+    public static let buttonTapped = FTColours.blue.withAlphaComponent(0.7)
+    
+    public static let background = UIColor(hexString: "#F1F1F1")!
+    
+    public static let tabBarDark = UIColor(hexString: "#000000", withAlpha: 0.9)!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // Main colours.
     public static let lightForeground = UIColor(hexString: "#F9F9F9")!
