@@ -103,8 +103,8 @@ class FTEditWorkoutExercisesViewController: UIViewController, UITableViewDataSou
         tableView.tableFooterView = UIView()
         tableView.snp.makeConstraints() { make in
             make.left.right.equalToSuperview().inset(FTLayout.defaultInsets)
-            make.top.equalTo(topLayoutGuide.snp.bottom).offset(FTLayout.defaultPadding)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.defaultPadding)
+            make.top.equalTo(topLayoutGuide.snp.bottom).offset(FTLayout.mediumPadding)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.mediumPadding)
         }
         
         view.addSubview(emptyWorkoutLabel)

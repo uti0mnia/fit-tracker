@@ -17,21 +17,26 @@ class FTLayout: NSObject {
     public static let tabBarHeight: CGFloat = 50
     
     // Padding.
-    public static let defaultPadding: CGFloat = 8
+    public static let smallPadding: CGFloat = 6
+    public static let mediumPadding: CGFloat = 10
     public static let largePadding: CGFloat = 16
-    public static let bigPadding: CGFloat = 30
     
     // Insets.
-    public static let defaultInsets = UIEdgeInsets(top: FTLayout.defaultPadding,
-                                                   left: FTLayout.defaultPadding,
-                                                   bottom: FTLayout.defaultPadding,
-                                                   right: FTLayout.defaultPadding)
+    public static let defaultInsets = UIEdgeInsets(top: FTLayout.mediumPadding,
+                                                   left: FTLayout.mediumPadding,
+                                                   bottom: FTLayout.mediumPadding,
+                                                   right: FTLayout.mediumPadding)
     public static let largeInsets = UIEdgeInsets(top: FTLayout.largePadding,
                                                  left: FTLayout.largePadding,
                                                  bottom: FTLayout.largePadding,
                                                  right: FTLayout.largePadding)
     
     // Buttons.
+    public static let buttonSmall: CGFloat = 26
+    public static let buttonRegular: CGFloat = 32
+    public static let buttonLarge: CGFloat = 44
+    public static let minButtonTap: CGFloat = 44
+    
     public static let buttonCornerRadius: CGFloat = 4
     public static let buttonShadowOffset = CGSize(width: 0.5, height: 0.5)
     public static let tallButtonHeight: CGFloat = 56

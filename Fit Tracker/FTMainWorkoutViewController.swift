@@ -71,9 +71,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         // Quick add button.
         view.addSubview(quickStackButton)
         quickStackButton.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.defaultPadding)
-            make.top.equalTo(tableView.snp.bottom).offset(FTLayout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.mediumPadding)
+            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.mediumPadding)
+            make.top.equalTo(tableView.snp.bottom).offset(FTLayout.mediumPadding)
             make.height.equalTo(FTLayout.defaultButtonHeight)
         }
         quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".ft_localized, for: .normal)

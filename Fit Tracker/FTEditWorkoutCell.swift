@@ -40,7 +40,7 @@ class FTEditWorkoutCell: UITableViewCell {
         
         setLabel.snp.makeConstraints() { make in
             make.left.bottom.right.equalToSuperview().inset(FTLayout.defaultInsets)
-            make.top.equalTo(nameLabel.snp.bottom).offset(FTLayout.defaultPadding)
+            make.top.equalTo(nameLabel.snp.bottom).offset(FTLayout.mediumPadding)
         }
         
         accessoryType = .disclosureIndicator

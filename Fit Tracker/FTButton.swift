@@ -8,41 +8,29 @@
 
 import UIKit
 
-@IBDesignable
 class FTButton: UIButton {
-
-    @IBInspectable public var cornerRadius: CGFloat = 0 {
+    
+    public var highlightColour: UIColor = FTColours.buttonHighlighted
+    public var buttonColour: UIColor = FTColours.buttonEnabled
+    public var disabledColour: UIColor = FTColours.buttonDisabled
+    
+    override var isHighlighted: Bool {
         didSet {
-            layer.cornerRadius = cornerRadius
+            backgroundColor = isHighlighted ? highlightColour : buttonColour
         }
     }
     
-    convenience init(cornerRadius: CGFloat = 0) {
-        self.init(frame: CGRect.zero)
-        
-        self.cornerRadius = cornerRadius
+    override var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? buttonColour : disabledColour
+        }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        commonInit()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        commonInit()
-    }
-    
-    public func commonInit() {
-        
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let height = max(self.bounds.height, FTLayout.minButtonTap)
+        let width = max(self.bounds.width, FTLayout.minButtonTap)
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        return rect.contains(point)
     }
 
 }

@@ -15,6 +15,7 @@ class FTColours: NSObject {
     private override init() {}
     
     // MARK: - Static Colours
+    public static let white = UIColor.white
     public static let blue = UIColor(hexString: "#22A7F0")!
     public static let lightBlue = UIColor(hexString: "#E4F1FE")!
     public static let red = UIColor(hexString: "#EC644B")!
@@ -26,16 +27,18 @@ class FTColours: NSObject {
     
     // TODO: More colours for supersets
     
-    public static let buttonShadow = UIColor(hexString: "#000000", withAlpha: 0.2)!
-    public static let buttonEnabled = FTColours.blue
-    public static let buttonDisabled = FTColours.blue.withAlphaComponent(0.3)
-    public static let buttonTapped = FTColours.blue.withAlphaComponent(0.7)
     
     public static let background = UIColor(hexString: "#F1F1F1")!
     
     public static let tabBarDark = UIColor(hexString: "#000000", withAlpha: 0.9)!
     
-    
+    // Buttons
+    public static let buttonShadow = UIColor(hexString: "#000000", withAlpha: 0.2)!
+    public static let buttonEnabled = FTColours.blue
+    public static let buttonDisabled = FTColours.blue.withAlphaComponent(0.3)
+    public static let buttonHighlighted = UIColor(hexString: "#4687AB")!
+    public static let buttonTextLight = FTColours.lightBlue
+    public static let buttonTextDark = FTColours.blue
     
     
     

@@ -23,7 +23,7 @@ class FTTextView: UITextView {
     }
     
     private func commonInit() {
-        font = FTFonts.defaultTextField
+        font = FTFonts.body
         allowsEditingTextAttributes = false
         
         backgroundColor = FTColours.lightForeground

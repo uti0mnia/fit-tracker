@@ -46,7 +46,7 @@ class FTEditWorkoutDetailsViewController: UIViewController, UITextFieldDelegate 
         detailScrollView.alwaysBounceVertical = true
         detailScrollView.showsVerticalScrollIndicator = false
         detailScrollView.keyboardDismissMode = .onDrag
-        detailScrollView.contentInset = UIEdgeInsets(top: FTLayout.defaultPadding, left: 0, bottom: FTLayout.defaultPadding, right: 0)
+        detailScrollView.contentInset = UIEdgeInsets(top: FTLayout.mediumPadding, left: 0, bottom: FTLayout.mediumPadding, right: 0)
         detailScrollView.nameLabel.text = "Workout name"
         detailScrollView.noteLabel.text = "Workout notes"
         detailScrollView.textField.delegate = self

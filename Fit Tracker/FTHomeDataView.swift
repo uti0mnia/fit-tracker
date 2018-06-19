@@ -35,14 +35,14 @@ class FTHomeDataView: UIView {
         addSubview(subLabel)
 
         mainLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.mediumPadding)
             make.top.equalToSuperview()
         }
 
         subLabel.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(FTLayout.defaultPadding)
+            make.left.right.equalToSuperview().inset(FTLayout.mediumPadding)
             make.bottom.equalToSuperview()
-            make.top.equalTo(mainLabel.snp.bottom).offset(FTLayout.defaultPadding)
+            make.top.equalTo(mainLabel.snp.bottom).offset(FTLayout.mediumPadding)
         }
     }
     

@@ -42,17 +42,17 @@ class FTExerciseDetailsScrollView: UIScrollView {
         
         textField.snp.makeConstraints() { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(nameLabel.snp.bottom).offset(FTLayout.defaultPadding)
+            make.top.equalTo(nameLabel.snp.bottom).offset(FTLayout.mediumPadding)
         }
         textField.returnKeyType = .done
         
         noteLabel.snp.makeConstraints() { make in
             make.left.right.equalToSuperview().inset(FTLayout.defaultInsets)
-            make.top.equalTo(textField.snp.bottom).offset(FTLayout.defaultPadding)
+            make.top.equalTo(textField.snp.bottom).offset(FTLayout.mediumPadding)
         }
         
         textView.snp.makeConstraints() { make in
-            make.top.equalTo(noteLabel.snp.bottom).offset(FTLayout.defaultPadding)
+            make.top.equalTo(noteLabel.snp.bottom).offset(FTLayout.mediumPadding)
             make.left.right.equalToSuperview()
             make.height.equalTo(132)
         }

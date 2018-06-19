@@ -16,7 +16,7 @@ class FTPreviewWorkoutExerciseCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
-        stackView.spacing = FTLayout.defaultPadding
+        stackView.spacing = FTLayout.mediumPadding
         return stackView
     }()
     
