@@ -11,120 +11,115 @@ import CoreData
 
 class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    private static let workoutIdentifier = "workoutIdentifier"
-    private static let esitmatedCellHeight: CGFloat = 150
-
-    private let quickStackButton = FTSimpleButton()
-    private lazy var tableView: UITableView = { [unowned self] in
-        let tableView = UITableView()
-        tableView.allowsSelection = false
-        tableView.estimatedRowHeight = FTMainWorkoutViewController.esitmatedCellHeight
-        tableView.register(FTMainWorkoutTableViewCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
-        return tableView
-    }()
+    private static let workoutIdentifier = "workoutCell"
+    private static let emptyIdentifier = "emptyCell"
+    private static let cacheName = "workoutsCache"
+    
+    @IBOutlet private weak var tableView: FTTableView!
+    @IBOutlet private weak var editBarButton: UIBarButtonItem!
+    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
+    
     private let context = FTDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTWorkoutTemplate> = {
         let request = NSFetchRequest<FTWorkoutTemplate>(entityName: "FTWorkoutTemplate")
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+        request.sortDescriptors = [NSSortDescriptor(key: "isArchived", ascending: true), NSSortDescriptor(key: "name", ascending: true)]
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.context, sectionNameKeyPath: "isArchived", cacheName: FTMainWorkoutViewController.cacheName)
         frc.delegate = self
         return frc
     }()
     
-    private lazy var previewViewController = FTPreviewWorkoutViewController()
-    
-    private let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: nil)
-    private let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    private var hasWorkouts: Bool {
+        return frc.sections?.ft_safeAccess(at: 0)?.numberOfObjects ?? 0 > 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupVisuals()
+        navigationController?.navigationBar.tintColor = FTColours.navigationTintColour
+        tableView.register(FTDetailCell.getNib(), forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
+        tableView.register(FTEmptyWorkoutCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.emptyIdentifier)
         do {
             try frc.performFetch()
         } catch {
-            print("Error performing fetch: \(error.localizedDescription)")
-            assertionFailure()
+            assertionFailure("Error performing fetch: \(error.localizedDescription)")
         }
     }
     
-    private func setupVisuals() {
-        view.backgroundColor = FTColours.lightBackground
-        // Navigation bar.
-        self.title = "FTMainWorkoutViewController_Title".ft_localized
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-            navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        }
-        navigationController?.navigationBar.tintColor = FTColours.mainPrimary
+    @IBAction func addWorkout(_ sender: Any) {
         
-        // UITableView, note that if the tableView isn't the first view added, the scroll to hide large title doesn't work.
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview()
-            make.top.equalTo(topLayoutGuide.snp.bottom)
-        }
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        
-        // Quick add button.
-        view.addSubview(quickStackButton)
-        quickStackButton.snp.makeConstraints() { make in
-            make.left.right.equalToSuperview().inset(FTLayout.mediumPadding)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-FTLayout.mediumPadding)
-            make.top.equalTo(tableView.snp.bottom).offset(FTLayout.mediumPadding)
-            make.height.equalTo(FTLayout.defaultButtonHeight)
-        }
-        quickStackButton.setTitle("FTMainWorkoutViewController_QuickStart".ft_localized, for: .normal)
-        
-        // New workout button.
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton(_:)))
-        addButton.tintColor = FTColours.mainPrimary
-        self.navigationItem.rightBarButtonItem = addButton
-        
-        editButton.target = self
-        editButton.action = #selector(didTapEditButton(_:))
-        self.navigationItem.leftBarButtonItem = editButton
-        
-        doneButton.target = self
-        doneButton.action = #selector(didTapDoneButton(_:))
     }
     
-    @objc private func didTapAddButton(_ sender: Any) {
-        let vc = UINavigationController(rootViewController: FTEditWorkoutExercisesViewController(context: FTDataController.shared.createMainContext()))
-        navigationController?.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc private func didTapEditButton(_ sender: Any) {
+    @IBAction func setTableViewEditing(_ sender: Any) {
         tableView.setEditing(true, animated: true)
-        navigationItem.leftBarButtonItem = doneButton
+        navigationItem.leftBarButtonItem = doneBarButton
     }
     
-    @objc private func didTapDoneButton(_ sender: Any) {
+    @IBAction func setTableViewDoneEditing(_ sender: Any) {
         tableView.setEditing(false, animated: true)
-        navigationItem.leftBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = editBarButton
     }
     
-    private func save() {
-        FTDataController.shared.saveContext() { _ in
-            // TODO: handle error
-        }
+    private func configureWorkoutCell(_ cell: FTDetailCell, at indexPath: IndexPath) {
+        let workout = frc.object(at: indexPath)
+        cell.mainLabel.text = workout.name
+        cell.detailLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("%d exercises", comment: "") as NSString, workout.exerciseCount) as String
     }
     
     // MARK: - UITableViewDataSource
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        let secNum = frc.sections?.count ?? 1
+        return secNum + 1 // +1 for the quick start
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return frc.sections?[section].numberOfObjects ?? 0
+        switch section {
+        case 0:
+            // Quick Start
+            return 1
+        case 1:
+            // My Workouts
+            return frc.sections?.ft_safeAccess(at: 0)?.numberOfObjects ?? 1
+        case 2:
+            // Archived Workouts
+            return frc.sections?.ft_safeAccess(at: 1)?.numberOfObjects ?? 0
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTMainWorkoutTableViewCell
-        cell.workout = frc.object(at: indexPath)
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTDetailCell
+            cell.mainLabel?.text = "Empty Workout"
+            cell.detailLabel?.text = "Quick Start. Add exercises on the fly!"
+            return cell
+        } else if  indexPath.section == 1 && !hasWorkouts {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.emptyIdentifier, for: indexPath) as! FTEmptyWorkoutCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.emptyIdentifier, for: indexPath) as! FTDetailCell
+            configureWorkoutCell(cell, at: indexPath)
+            return cell
+        }
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 { return "Quick Start" }
+        else if section == 1 { return "My Workouts" }
+        else { return "Archived Workouts" }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return !hasWorkouts && indexPath.section == 1 ? FTLayout.emptyWorkoutCellHeight : FTLayout.defaultCellHeight
+    }
+    
+    
     // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return hasWorkouts && indexPath.section == 1
+    }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         guard var workouts = frc.fetchedObjects else {
@@ -141,9 +136,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let workout = frc.object(at: indexPath)
-        previewViewController.workout = workout
-        navigationController?.pushViewController(previewViewController, animated: true)
+//        let workout = frc.object(at: indexPath)
+//        previewViewController.workout = workout
+//        navigationController?.pushViewController(previewViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

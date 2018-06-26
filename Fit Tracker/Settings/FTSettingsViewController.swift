@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FTSettingsViewController: UIViewController {
+class FTSettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

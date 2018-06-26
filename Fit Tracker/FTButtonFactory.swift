@@ -43,12 +43,35 @@ class FTButtonFactory: NSObject {
         let button = FTButton(type: .custom)
         button.layer.cornerRadius = roundToPixel(size.height / 2)
         
+        button.layer.shadowColor = FTColours.buttonShadow.cgColor
+        button.layer.shadowOpacity = FTColours.buttonShadowOpacity
+        button.layer.shadowRadius = FTLayout.buttonShadowRadius
+        
+        
         button.buttonColour = FTColours.white
         button.highlightColour = FTColours.white
         
         button.titleLabel?.font = FTFonts.headline
         button.setTitleColor(FTColours.buttonEnabled, for: .normal)
         button.setTitleColor(FTColours.buttonHighlighted, for: .highlighted)
+        button.setTitleColor(FTColours.buttonDisabled, for: .disabled)
+        
+        return button
+    }
+    
+    // TODO: do it
+    public func createInfoBar() -> FTButton {
+        let button = FTButton(type: .custom)
+        button.layer.cornerRadius = FTLayout.infoBarCornerRadius
+        
+        button.layer.shadowColor = FTColours.infoBarShadow.cgColor
+        button.layer.shadowOpacity = FTColours.infoBarShadowOpacity
+        button.layer.shadowRadius = FTLayout.infoBarShadowRadius
+        
+        button.backgroundColor = FTColours.background
+        button.highlightColour = FTColours.buttonHighlighted
+        
+        button.tintColor = FTColours.mainTint
         
         return button
     }

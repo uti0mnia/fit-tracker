@@ -27,43 +27,31 @@ class FTColours: NSObject {
     
     // TODO: More colours for supersets
     
+    // Global
+    public static let mainTint = FTColours.blue
     
     public static let background = UIColor(hexString: "#F1F1F1")!
     
     public static let tabBarDark = UIColor(hexString: "#000000", withAlpha: 0.9)!
     
     // Buttons
-    public static let buttonShadow = UIColor(hexString: "#000000", withAlpha: 0.2)!
+    public static let buttonShadow = UIColor(hexString: "#000000")!
+    public static let buttonShadowOpacity: Float = 0.3
     public static let buttonEnabled = FTColours.blue
     public static let buttonDisabled = FTColours.blue.withAlphaComponent(0.3)
     public static let buttonHighlighted = UIColor(hexString: "#4687AB")!
     public static let buttonTextLight = FTColours.lightBlue
     public static let buttonTextDark = FTColours.blue
     
+    // Navigation
+    public static let navigationTintColour = FTColours.blue
     
+    // Text
+    public static let descriptionText = UIColor(hexString: "#999999")!
     
-    
-    
-    
-    
-    
-    
-    
-    // Main colours.
-    public static let lightForeground = UIColor(hexString: "#F9F9F9")!
-    public static let lightBackground = UIColor(hexString: "#F5F5F5")!
-    public static let darkForeground = UIColor(hexString: "#212121")!
-    public static let darkBackground = UIColor.flatBlack
-    
-    // Item colours.
-    public static let tabBarTintColour = FTColours.lightBackground
-    public static let tabBarBarTintColour = FTColours.darkBackground
-    
-    // TextColours
-    public static let darkTextColour = UIColor.flatBlackDark
-    public static let darkGrayTextColour = UIColor.flatGrayDark
-    public static let grayTextColour = UIColor.flatGrayDark
-    public static let lightTextColour = FTColours.lightBackground
+    // Info bar
+    public static let infoBarShadow = UIColor(hexString: "#000000")!
+    public static let infoBarShadowOpacity: Float = 0.3
     
     // Colour used for interactions or popping out.
     public static let defaultMainPrimary = FTColours.orange
@@ -72,9 +60,6 @@ class FTColours: NSObject {
     
     // Colours used for special things.
     public static let special = UIColor.flatRedDark
-    
-    // Other colours.
-    public static let shadow = UIColor(hexString: "#EDEDED")!
     
     // MARK: - Variable colours
     

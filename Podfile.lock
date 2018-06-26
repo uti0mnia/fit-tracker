@@ -2,14 +2,19 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Charts
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Charts
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -23,8 +28,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: ab7a516d947fd844e9650527ea3be9b8bc7edcf3
+PODFILE CHECKSUM: 271fea723b1424bfbb7dfb63bd1b328eac1244d4
 
 COCOAPODS: 1.5.0

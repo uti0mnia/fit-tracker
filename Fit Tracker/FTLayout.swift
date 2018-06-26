@@ -31,18 +31,22 @@ class FTLayout: NSObject {
                                                  bottom: FTLayout.largePadding,
                                                  right: FTLayout.largePadding)
     
+    // Cells
+    public static let defaultCellHeight: CGFloat = 48
+    public static let emptyWorkoutCellHeight: CGFloat = 135
+    
+    // Info bar
+    public static let infoBarCornerRadius: CGFloat = 2
+    public static let infoBarShadowRadius: CGFloat = 3
+    public static let infoBarItemIconSize: CGFloat = 27
+    public static let infoBarItemHeight: CGFloat = 38
+    
     // Buttons.
     public static let buttonSmall: CGFloat = 26
     public static let buttonRegular: CGFloat = 32
     public static let buttonLarge: CGFloat = 44
+    public static let buttonShadowRadius: CGFloat = 4
     public static let minButtonTap: CGFloat = 44
-    
-    public static let buttonCornerRadius: CGFloat = 4
-    public static let buttonShadowOffset = CGSize(width: 0.5, height: 0.5)
-    public static let tallButtonHeight: CGFloat = 56
-    public static let defaultButtonHeight: CGFloat = 44
-    public static let smallButtonHeight: CGFloat = 30
-    public static let contourButtonBorderWidth: CGFloat = 1.5
     
     // Specific
     public static let setMultiplySize: CGFloat = 12

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%d exercises</key>
+	<dict>
+		<key>exercises</key>
+		<dict>
+			<key>other</key>
+			<string>%d exercises</string>
+			<key>one</key>
+			<string>%d exercise</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+		</dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@exercises@</string>
+	</dict>
+</dict>
+</plist>

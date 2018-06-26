@@ -11,5 +11,11 @@ import CoreData
 
 @objc(FTWorkoutTemplate)
 public class FTWorkoutTemplate: NSManagedObject {
-    
+    public var exerciseCount: Int {
+        var count = 0
+        for group in groupTemplates ?? [] {
+            count += group.exerciseTemplates?.count ?? 0
+        }
+        return count
+    }
 }
