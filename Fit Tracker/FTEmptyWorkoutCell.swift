@@ -11,7 +11,8 @@ import UIKit
 class FTEmptyWorkoutCell: UITableViewCell {
     
     private lazy var emptyView: FTEmptyWorkoutView = { [unowned self] in
-        let view = FTEmptyWorkoutView(frame: self.contentView.frame)
+        let view = FTEmptyWorkoutView.instantiateFromNib()
+        view.frame = self.contentView.frame
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.mainLabel.text = "You have no workouts."
         view.backgroundColor = UIColor.clear
@@ -31,6 +32,7 @@ class FTEmptyWorkoutCell: UITableViewCell {
     }
     
     private func commonInit() {
+        backgroundColor = UIColor.clear
         contentView.backgroundColor = UIColor.clear
         contentView.addSubview(emptyView)
     }

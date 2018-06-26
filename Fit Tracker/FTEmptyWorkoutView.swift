@@ -17,4 +17,8 @@ class FTEmptyWorkoutView: UIView {
         
         mainLabel.font = FTFonts.body
     }
+    
+    public static func instantiateFromNib() -> FTEmptyWorkoutView {
+        return UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! FTEmptyWorkoutView
+    }
 }

@@ -24,4 +24,5 @@ class FTDetailCell: UITableViewCell {
     public static func getNib() -> UINib {
         return UINib(nibName: String(describing: self), bundle: nil)
     }
+    
 }

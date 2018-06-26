@@ -24,7 +24,7 @@ class FTTableView: UITableView {
     
     private func commonInit() {
         alwaysBounceVertical = true
-        contentInset = UIEdgeInsets(top: 0, left: FTLayout.smallPadding, bottom: 0, right: -FTLayout.smallPadding)
+//        contentInset = UIEdgeInsets(top: 0, left: FTLayout.smallPadding, bottom: 0, right: -FTLayout.smallPadding)
         backgroundColor = FTColours.background
     }
     

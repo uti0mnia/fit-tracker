@@ -68,7 +68,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let secNum = frc.sections?.count ?? 1
+        let secNum = max(frc.sections?.count ?? 0, 1)
         return secNum + 1 // +1 for the quick start
     }
     
