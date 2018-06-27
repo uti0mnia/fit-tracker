@@ -25,7 +25,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SP-Xl-gtr">
-                    <rect key="frame" x="0.0" y="104" width="375" height="21"/>
+                    <rect key="frame" x="166.5" y="104" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -35,8 +35,7 @@
             <constraints>
                 <constraint firstItem="1SP-Xl-gtr" firstAttribute="bottom" secondItem="abe-jB-2LY" secondAttribute="bottom" constant="-10" id="J4f-L1-yTy"/>
                 <constraint firstItem="Ord-1A-Xxe" firstAttribute="centerX" secondItem="abe-jB-2LY" secondAttribute="centerX" id="Q01-id-vCw"/>
-                <constraint firstItem="1SP-Xl-gtr" firstAttribute="trailing" secondItem="abe-jB-2LY" secondAttribute="trailing" id="tjp-JF-jcl"/>
-                <constraint firstItem="1SP-Xl-gtr" firstAttribute="leading" secondItem="abe-jB-2LY" secondAttribute="leading" id="xFV-uZ-22W"/>
+                <constraint firstItem="1SP-Xl-gtr" firstAttribute="centerX" secondItem="abe-jB-2LY" secondAttribute="centerX" id="cGU-G6-02b"/>
                 <constraint firstItem="Ord-1A-Xxe" firstAttribute="top" secondItem="abe-jB-2LY" secondAttribute="top" constant="10" id="xGo-7F-Agh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

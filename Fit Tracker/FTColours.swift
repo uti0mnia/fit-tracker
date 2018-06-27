@@ -48,24 +48,16 @@ class FTColours: NSObject {
     
     // Text
     public static let descriptionText = UIColor(hexString: "#999999")!
+    public static let workoutSetUnfilled = UIColor(hexString: "#B9B9BC")!
     
     // Info bar
     public static let infoBarShadow = UIColor(hexString: "#000000")!
     public static let infoBarShadowOpacity: Float = 0.3
     
-    // Colour used for interactions or popping out.
-    public static let defaultMainPrimary = FTColours.orange
-    public static let destructiveColour = FTColours.red
-    public static let missingColour = FTColours.red
+    // Timer bar
+    public static let timerBarBackground = UIColor(hexString: "#ECECEC")!
     
-    // Colours used for special things.
-    public static let special = UIColor.flatRedDark
-    
-    // MARK: - Variable colours
-    
-    // Colour used for interactions or popping out.
-    public static var mainPrimary: UIColor {
-        return FTSettingsManager.shared.primaryColour
-    }
+    // Workout sets
+    public static let setNumber = UIColor(hexString: "#89C4F4")!
     
 }

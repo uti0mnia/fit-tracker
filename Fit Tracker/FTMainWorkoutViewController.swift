@@ -16,8 +16,6 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private static let cacheName = "workoutsCache"
     
     @IBOutlet private weak var tableView: FTTableView!
-    @IBOutlet private weak var editBarButton: UIBarButtonItem!
-    @IBOutlet private weak var doneBarButton: UIBarButtonItem!
     
     private let context = FTDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTWorkoutTemplate> = {
@@ -36,6 +34,8 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         navigationController?.navigationBar.tintColor = FTColours.navigationTintColour
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         tableView.register(FTDetailCell.getNib(), forCellReuseIdentifier: FTMainWorkoutViewController.workoutIdentifier)
         tableView.register(FTEmptyWorkoutCell.self, forCellReuseIdentifier: FTMainWorkoutViewController.emptyIdentifier)
         do {
@@ -45,18 +45,22 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    @IBAction func addWorkout(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
-    @IBAction func setTableViewEditing(_ sender: Any) {
-        tableView.setEditing(true, animated: true)
-        navigationItem.leftBarButtonItem = doneBarButton
+    @IBAction func addWorkout(_ sender: Any) {
+        let vc = UIViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.view.backgroundColor = UIColor.blue
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func setTableViewDoneEditing(_ sender: Any) {
-        tableView.setEditing(false, animated: true)
-        navigationItem.leftBarButtonItem = editBarButton
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        tableView.setEditing(editing, animated: true)
     }
     
     private func configureWorkoutCell(_ cell: FTDetailCell, at indexPath: IndexPath) {
@@ -145,6 +149,10 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         if editingStyle == .delete {
             context.delete(frc.object(at: indexPath))
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return hasWorkouts && indexPath.section == 1
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

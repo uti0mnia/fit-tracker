@@ -6,16 +6,19 @@ PODS:
     - Charts/Core (= 3.1.1)
   - Charts/Core (3.1.1)
   - SnapKit (4.0.0)
+  - SwiftRichString (1.1.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Charts
   - SnapKit (~> 4.0.0)
+  - SwiftRichString
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Charts
     - SnapKit
+    - SwiftRichString
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftRichString: 49c75726140c7f780fad1d067f804491d51188fa
 
-PODFILE CHECKSUM: 271fea723b1424bfbb7dfb63bd1b328eac1244d4
+PODFILE CHECKSUM: e5f67486bd361ae3d6d58baa41ecf5ad1a6ddb21
 
 COCOAPODS: 1.5.0

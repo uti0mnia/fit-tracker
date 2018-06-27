@@ -37,9 +37,12 @@ class FTLayout: NSObject {
     
     // Info bar
     public static let infoBarCornerRadius: CGFloat = 2
-    public static let infoBarShadowRadius: CGFloat = 3
+    public static let infoBarShadowRadius: CGFloat = 1
     public static let infoBarItemIconSize: CGFloat = 27
     public static let infoBarItemHeight: CGFloat = 38
+    
+    // Timer bar
+    public static let timerBarHeight: CGFloat = 14
     
     // Buttons.
     public static let buttonSmall: CGFloat = 26
@@ -51,5 +54,11 @@ class FTLayout: NSObject {
     // Specific
     public static let setMultiplySize: CGFloat = 12
     public static let defaultTableViewCellHeight: CGFloat = 50
+    
+    // Misc
+    public static let lineHeight: CGFloat = 2
+    public static let lineCornerRadius: CGFloat = 1
+    public static let smallIconSize: CGFloat = 20
+    public static let mediumIconSize: CGFloat = 26
     
 }

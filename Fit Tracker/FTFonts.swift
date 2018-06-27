@@ -21,7 +21,7 @@ class FTFonts: NSObject {
     public static let body = UIFont.systemFont(ofSize: 17)
     public static let small = UIFont.systemFont(ofSize: 14)
     public static let description = UIFont.systemFont(ofSize: 14)
-    public static let tiny = UIFont.systemFont(ofSize: 12)
-    public static let micro = UIFont.systemFont(ofSize: 10)
+    public static let tiny = UIFont.systemFont(ofSize: 12, weight: .medium)
+    public static let micro = UIFont.systemFont(ofSize: 10, weight: .medium)
     
 }

@@ -6,4 +6,5 @@ target 'Fit Tracker' do
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
     pod 'SnapKit', '~> 4.0.0'
     pod 'Charts'
+    pod 'SwiftRichString'
 end
