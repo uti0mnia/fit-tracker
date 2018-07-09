@@ -79,7 +79,7 @@
         <relationship name="workoutLogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FTWorkoutLog" inverseName="workoutTemplate" inverseEntity="FTWorkoutLog" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FTExercise" positionX="-1080" positionY="-189" width="128" height="208"/>
+        <element name="FTExercise" positionX="-1080" positionY="-189" width="128" height="210"/>
         <element name="FTExerciseGroupLog" positionX="-587" positionY="-378" width="128" height="88"/>
         <element name="FTExerciseGroupTemplate" positionX="-810" positionY="248" width="128" height="88"/>
         <element name="FTExerciseLog" positionX="-612" positionY="-171" width="128" height="135"/>

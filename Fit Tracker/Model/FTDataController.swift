@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-class FTDataController: NSObject {
+class FTCoreDataController: NSObject {
     
-    public static let shared = FTDataController()
+    public static let shared = FTCoreDataController()
     
     // Only to use with main thread
     public var moc: NSManagedObjectContext {

@@ -17,7 +17,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet private weak var tableView: FTTableView!
     
-    private let context = FTDataController.shared.moc
+    private let context = FTCoreDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTWorkoutTemplate> = {
         let request = NSFetchRequest<FTWorkoutTemplate>(entityName: "FTWorkoutTemplate")
         request.sortDescriptors = [NSSortDescriptor(key: "isArchived", ascending: true), NSSortDescriptor(key: "name", ascending: true)]

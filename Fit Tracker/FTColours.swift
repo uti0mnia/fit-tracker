@@ -42,6 +42,7 @@ class FTColours: NSObject {
     public static let buttonHighlighted = UIColor(hexString: "#4687AB")!
     public static let buttonTextLight = FTColours.lightBlue
     public static let buttonTextDark = FTColours.blue
+    public static let buttonDarkenPercent: CGFloat = 0.3
     
     // Navigation
     public static let navigationTintColour = FTColours.blue

@@ -59,21 +59,4 @@ class FTButtonFactory: NSObject {
         return button
     }
     
-    // TODO: do it
-    public func createInfoBar() -> FTButton {
-        let button = FTButton(type: .custom)
-        button.layer.cornerRadius = FTLayout.infoBarCornerRadius
-        
-        button.layer.shadowColor = FTColours.infoBarShadow.cgColor
-        button.layer.shadowOpacity = FTColours.infoBarShadowOpacity
-        button.layer.shadowRadius = FTLayout.infoBarShadowRadius
-        
-        button.backgroundColor = FTColours.background
-        button.highlightColour = FTColours.buttonHighlighted
-        
-        button.tintColor = FTColours.mainTint
-        
-        return button
-    }
-    
 }

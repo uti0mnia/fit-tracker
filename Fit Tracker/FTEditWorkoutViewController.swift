@@ -8,7 +8,14 @@
 
 import UIKit
 
-class FTCreateWorkoutViewController: UIViewController {
+class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet private weak var infoBar: FTWorkoutInfoBar!
+    @IBOutlet private weak var timerBar: FTTimerBar!
+    @IBOutlet private weak var exerciseSetView: FTExerciseSetView!
+    @IBOutlet weak var exerciseTableView: FTTableView!
+    @IBOutlet weak var addExercisesButton: FTBottomButton!
+    
     
     public var workout: FTWorkoutTemplate?
 
@@ -16,6 +23,12 @@ class FTCreateWorkoutViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = FTColours.background
+        
+        exerciseTableView.delegate = self
+        exerciseTableView.dataSource = self
+        
+        exerciseSetView.tableView.delegate = self
+        exerciseSetView.tableView.dataSource = self
         
         navigationItem.rightBarButtonItem = editButtonItem
         if #available(iOS 11.0, *) {
@@ -25,6 +38,7 @@ class FTCreateWorkoutViewController: UIViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        
         
     }
     

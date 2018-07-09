@@ -55,7 +55,7 @@ class FTSettingsManager: NSObject {
         get {
             guard let colourData = user.data(forKey: Settings.primaryColour.rawValue),
                 let colour = NSKeyedUnarchiver.unarchiveObject(with: colourData) as? UIColor else {
-                return FTColours.defaultMainPrimary
+                return FTColours.blue
             }
             
             return colour

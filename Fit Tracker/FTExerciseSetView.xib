@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTExerciseSetView" customModule="Fit_Tracker" customModuleProvider="target">
             <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="YZV-Gu-Or9"/>
                 <outlet property="exerciseLabel" destination="Hm2-c0-hDl" id="5Fd-o5-umX"/>
                 <outlet property="segmentController" destination="8Nj-Vc-eZ5" id="FfD-Kv-S3o"/>
                 <outlet property="tableView" destination="dEH-U5-XBk" id="ZB6-54-Hht"/>
@@ -35,7 +36,7 @@
                         <constraint firstAttribute="height" constant="28" id="lyZ-5b-Puv"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dEH-U5-XBk">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dEH-U5-XBk" customClass="FTTableView" customModule="Fit_Tracker" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="55" width="420" height="401"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

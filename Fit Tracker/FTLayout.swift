@@ -44,12 +44,17 @@ class FTLayout: NSObject {
     // Timer bar
     public static let timerBarHeight: CGFloat = 14
     
+    // Exercise Set
+    public static let workoutSetCellHeight: CGFloat = 45
+    
     // Buttons.
     public static let buttonSmall: CGFloat = 26
     public static let buttonRegular: CGFloat = 32
     public static let buttonLarge: CGFloat = 44
-    public static let buttonShadowRadius: CGFloat = 4
+    public static let buttonShadowRadius: CGFloat = 2
     public static let minButtonTap: CGFloat = 44
+    
+    public static let bottomButtonCornerRadius: CGFloat = 8
     
     // Specific
     public static let setMultiplySize: CGFloat = 12

@@ -33,16 +33,21 @@ public class FTSegmentItem: UIView {
     }
     
     private func commonInit() {
+        backgroundColor = UIColor.clear
+        
         label.frame = bounds
         label.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.textAlignment = .center
         label.font = FTFonts.body
         addSubview(label)
         
-        line.frame = CGRect(x: 0, y: bounds.height - FTLayout.lineHeight, width: bounds.width, height: FTLayout.lineHeight)
-        line.autoresizingMask = .flexibleWidth
         line.layer.cornerRadius = FTLayout.lineCornerRadius
         line.backgroundColor = FTColours.blue
+        addSubview(line)
+        line.snp.makeConstraints() { make in
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(FTLayout.lineHeight)
+        }
     }
     
 }

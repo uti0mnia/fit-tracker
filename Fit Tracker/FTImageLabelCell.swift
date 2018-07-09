@@ -46,6 +46,8 @@ class FTImageLabelCell: UITableViewCell {
         view.snp.makeConstraints() { make in
             make.center.equalToSuperview()
         }
+        
+        selectionStyle = .none
     }
     
 }

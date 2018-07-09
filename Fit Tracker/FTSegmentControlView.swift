@@ -27,22 +27,23 @@ class FTSegmentControlView: UIView {
                     diff -= 1
                 }
             }
+            
+            if selectedIndex > segmentCount {
+                selectedIndex = 0
+            }
+            updateTags()
         }
     }
     @IBInspectable public var selectedIndex = 0 {
         didSet {
-            guard selectedIndex < stackView.arrangedSubviews.count else {
-                return
-            }
-            
-            for i in 0...stackView.arrangedSubviews.count {
-                if let item = stackView.arrangedSubviews[i] as? FTSegmentItem {
-                    item.isSelected = i == selectedIndex
-                }
-            }
+            updateSelected()
         }
     }
     @IBInspectable public weak var delegate: FTSegmentControlViewDelegate?
+    
+    public var items: [FTSegmentItem] {
+        return stackView.arrangedSubviews.compactMap() { return $0 as? FTSegmentItem }
+    }
     
     private var stackView: UIStackView = {
         let view = UIStackView()
@@ -65,10 +66,43 @@ class FTSegmentControlView: UIView {
         commonInit()
     }
     
+    @objc private func handleSegmentTap(_ sender: UITapGestureRecognizer) {
+        guard let view = sender.view else {
+            return
+        }
+        if view.tag != selectedIndex {
+            selectedIndex = view.tag
+        }
+        updateSelected()
+        delegate?.segmentControlView(self, didSelectIndex: view.tag)
+    }
+    
     private func commonInit() {
         addSubview(stackView)
         stackView.frame = bounds
         stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    }
+    
+    private func updateSelected() {
+        guard selectedIndex < stackView.arrangedSubviews.count else {
+            return
+        }
+        
+        for i in 0..<stackView.arrangedSubviews.count {
+            if let view = stackView.arrangedSubviews[i] as? FTSegmentItem {
+                view.isSelected = i == selectedIndex
+            }
+        }
+    }
+    
+    private func updateTags() {
+        for i in 0..<stackView.arrangedSubviews.count {
+            let view = stackView.arrangedSubviews[i]
+            view.tag = i
+            view.gestureRecognizers?.removeAll()
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleSegmentTap(_:)))
+            view.addGestureRecognizer(tap)
+        }
     }
     
 }

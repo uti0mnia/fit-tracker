@@ -38,6 +38,8 @@
 		C959B30920E3EDAF00B9173F /* FTFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C959B30820E3EDAF00B9173F /* FTFontsExtension.swift */; };
 		C959B30B20E4242000B9173F /* FTImageLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C959B30A20E4242000B9173F /* FTImageLabelCell.swift */; };
 		C959B30D20E4264F00B9173F /* FTExerciseSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C959B30C20E4264F00B9173F /* FTExerciseSetView.swift */; };
+		C959B31620E4437E00B9173F /* FTBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C959B31520E4437E00B9173F /* FTBottomButton.swift */; };
+		C959B33620E557F300B9173F /* FTExerciseSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C959B33520E557F300B9173F /* FTExerciseSetViewController.swift */; };
 		C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */; };
 		C9775CFD2020441C00C2E9B3 /* FTMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */; };
 		C9775D002020441C00C2E9B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9775CFE2020441C00C2E9B3 /* Main.storyboard */; };
@@ -108,6 +110,8 @@
 		C959B30820E3EDAF00B9173F /* FTFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFontsExtension.swift; sourceTree = "<group>"; };
 		C959B30A20E4242000B9173F /* FTImageLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTImageLabelCell.swift; sourceTree = "<group>"; };
 		C959B30C20E4264F00B9173F /* FTExerciseSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseSetView.swift; sourceTree = "<group>"; };
+		C959B31520E4437E00B9173F /* FTBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBottomButton.swift; sourceTree = "<group>"; };
+		C959B33520E557F300B9173F /* FTExerciseSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTExerciseSetViewController.swift; sourceTree = "<group>"; };
 		C9775CF72020441C00C2E9B3 /* Fit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9775CFA2020441C00C2E9B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9775CFC2020441C00C2E9B3 /* FTMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 			children = (
 				C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */,
 				C91C6B7A20E2F965002E45C5 /* FTEditWorkoutViewController.swift */,
+				C959B33520E557F300B9173F /* FTExerciseSetViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				C97B24CD204E6016008B59F8 /* FTButton.swift */,
+				C959B31520E4437E00B9173F /* FTBottomButton.swift */,
 				C9BC606520D812A9001BC510 /* FTButtonFactory.swift */,
 			);
 			name = Buttons;
@@ -587,6 +593,7 @@
 				C91C6B6720E068E0002E45C5 /* FTWorkoutInfoBar.swift in Sources */,
 				C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */,
 				C9BA602820DEB5C700BB8274 /* FTTableView.swift in Sources */,
+				C959B31620E4437E00B9173F /* FTBottomButton.swift in Sources */,
 				C927E8E72075D3E800CCA83F /* FTUIViewExtension.swift in Sources */,
 				C928F922204A46F5001BA6CE /* FTNavigationManager.swift in Sources */,
 				C97B24B9204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataProperties.swift in Sources */,
@@ -610,6 +617,7 @@
 				C928F918204911CA001BA6CE /* FTExerciseTemplate+CoreDataClass.swift in Sources */,
 				C959B30B20E4242000B9173F /* FTImageLabelCell.swift in Sources */,
 				C91C6B7B20E2F965002E45C5 /* FTEditWorkoutViewController.swift in Sources */,
+				C959B33620E557F300B9173F /* FTExerciseSetViewController.swift in Sources */,
 				C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */,
 				C9A7E520206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift in Sources */,
 				C91C6B8320E3DD8E002E45C5 /* FTSegmentItem.swift in Sources */,

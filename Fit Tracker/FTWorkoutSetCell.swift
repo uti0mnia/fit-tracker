@@ -20,9 +20,11 @@ class FTWorkoutSetCell: UITableViewCell {
         
         numberLabel.font = FTFonts.body
         numberLabel.textColor = FTColours.setNumber
+        
+        selectionStyle = .none
     }
     
-    public func getNib() -> UINib {
+    public static func getNib() -> UINib {
         return UINib(nibName: String(describing: self), bundle: nil)
     }
     
