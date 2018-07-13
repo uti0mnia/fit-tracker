@@ -58,7 +58,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         switch segue.identifier {
         case "editWorkoutSegue":
             if let vc = segue.destination as? FTEditWorkoutViewController {
-                vc.workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate
+                let workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate
+                workout?.name = "New Workout"
+                vc.workout = workout
             }
         default:
             break

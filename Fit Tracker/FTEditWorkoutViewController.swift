@@ -166,7 +166,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         switch textField {
         case titleTextField:
             textField.resignFirstResponder()

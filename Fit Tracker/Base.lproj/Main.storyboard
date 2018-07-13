@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJQ-K4-9O2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="349"/>
+            <point key="canvasLocation" x="566" y="-162"/>
         </scene>
         <!--Edit Workout-->
         <scene sceneID="wdc-1s-aFH">
@@ -155,7 +155,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1584.8" y="348.02955665024632"/>
+            <point key="canvasLocation" x="566" y="604"/>
         </scene>
         <!--Stats-->
         <scene sceneID="FdK-dD-kQ1">
@@ -537,6 +537,87 @@
             </objects>
             <point key="canvasLocation" x="3828" y="156"/>
         </scene>
+        <!--Add Exercise View Controller-->
+        <scene sceneID="P1f-ZJ-Zbc">
+            <objects>
+                <viewController id="qR8-Xb-2bb" customClass="FTAddExerciseViewController" customModule="Fit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lqv-yM-7m4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search Exercises" translatesAutoresizingMaskIntoConstraints="NO" id="j60-Fp-DQN">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="qR8-Xb-2bb" id="CMT-8I-nET"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xfT-Ht-YhO" customClass="FTTableView" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="100" width="375" height="634"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qR8-Xb-2bb" id="gzq-dn-U73"/>
+                                    <outlet property="delegate" destination="qR8-Xb-2bb" id="kyh-LM-gvC"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dst-HL-9SG" customClass="FTBottomButton" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="734" width="186.66666666666666" height="78"/>
+                                <state key="normal" title="Add Superset"/>
+                                <connections>
+                                    <action selector="handleAddSuperset:" destination="qR8-Xb-2bb" eventType="touchUpInside" id="HOa-cD-1AP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3p-n4-BuJ" customClass="FTBottomButton" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="188.66666666666663" y="734" width="186.33333333333337" height="78"/>
+                                <state key="normal" title="Add Exercise"/>
+                                <connections>
+                                    <action selector="handleAddExercises:" destination="qR8-Xb-2bb" eventType="touchUpInside" id="eVF-QJ-Z4O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="B3p-n4-BuJ" firstAttribute="leading" secondItem="Dst-HL-9SG" secondAttribute="trailing" constant="2" id="GCB-eU-Pfj"/>
+                            <constraint firstItem="B3p-n4-BuJ" firstAttribute="trailing" secondItem="N1J-4d-Jx7" secondAttribute="trailing" id="IJE-F3-Vhd"/>
+                            <constraint firstAttribute="bottom" secondItem="Dst-HL-9SG" secondAttribute="bottom" id="PYK-Oo-V8U"/>
+                            <constraint firstItem="xfT-Ht-YhO" firstAttribute="trailing" secondItem="N1J-4d-Jx7" secondAttribute="trailing" id="V9H-ZR-O7U"/>
+                            <constraint firstItem="j60-Fp-DQN" firstAttribute="trailing" secondItem="N1J-4d-Jx7" secondAttribute="trailing" id="W1Z-b5-3GG"/>
+                            <constraint firstItem="B3p-n4-BuJ" firstAttribute="width" secondItem="Dst-HL-9SG" secondAttribute="width" id="XtR-G3-tAo"/>
+                            <constraint firstItem="Dst-HL-9SG" firstAttribute="top" secondItem="N1J-4d-Jx7" secondAttribute="bottom" constant="-44" id="cqi-Dy-yRM"/>
+                            <constraint firstItem="Dst-HL-9SG" firstAttribute="leading" secondItem="N1J-4d-Jx7" secondAttribute="leading" id="e13-u7-Pqr"/>
+                            <constraint firstAttribute="bottom" secondItem="B3p-n4-BuJ" secondAttribute="bottom" id="fpp-Ua-eai"/>
+                            <constraint firstItem="Dst-HL-9SG" firstAttribute="top" secondItem="xfT-Ht-YhO" secondAttribute="bottom" id="jz1-L1-fsA"/>
+                            <constraint firstItem="B3p-n4-BuJ" firstAttribute="top" secondItem="N1J-4d-Jx7" secondAttribute="bottom" constant="-44" id="kQu-pk-IvK"/>
+                            <constraint firstItem="xfT-Ht-YhO" firstAttribute="leading" secondItem="N1J-4d-Jx7" secondAttribute="leading" id="qLn-Lj-iXn"/>
+                            <constraint firstItem="j60-Fp-DQN" firstAttribute="leading" secondItem="N1J-4d-Jx7" secondAttribute="leading" id="sMJ-W6-BjQ"/>
+                            <constraint firstItem="j60-Fp-DQN" firstAttribute="top" secondItem="N1J-4d-Jx7" secondAttribute="top" id="uxB-YF-IeZ"/>
+                            <constraint firstItem="xfT-Ht-YhO" firstAttribute="top" secondItem="j60-Fp-DQN" secondAttribute="bottom" id="vtb-iw-DCA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N1J-4d-Jx7"/>
+                    </view>
+                    <connections>
+                        <outlet property="addExerciseButton" destination="B3p-n4-BuJ" id="naq-Cl-lC7"/>
+                        <outlet property="addSupersetButton" destination="Dst-HL-9SG" id="HLg-XE-6hM"/>
+                        <outlet property="tableView" destination="xfT-Ht-YhO" id="ydE-lJ-EWH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTX-kY-EVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="hyJ-jW-ITI">
+                    <connections>
+                        <outlet property="delegate" destination="qR8-Xb-2bb" id="VP4-SM-PDy"/>
+                        <outlet property="searchBar" destination="j60-Fp-DQN" id="44H-ky-QDe"/>
+                        <outlet property="searchContentsController" destination="qR8-Xb-2bb" id="9cH-j2-P5Y"/>
+                        <outlet property="searchResultsDataSource" destination="qR8-Xb-2bb" id="8e8-Hh-oZM"/>
+                        <outlet property="searchResultsDelegate" destination="qR8-Xb-2bb" id="39h-9P-uaP"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3816.8000000000002" y="-1797.0443349753696"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="f1L-i9-Kip">
             <objects>
@@ -573,7 +654,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzh-dz-NOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="566" y="-630"/>
+            <point key="canvasLocation" x="566" y="-918"/>
         </scene>
     </scenes>
     <resources>
