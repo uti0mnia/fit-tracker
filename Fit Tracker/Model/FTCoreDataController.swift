@@ -31,12 +31,6 @@ class FTCoreDataController: NSObject {
         super.init()
     }
     
-    public func createMainContext() -> NSManagedObjectContext {
-        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.parent = moc
-        return context
-    }
-    
     public func createBackgroundContext() -> NSManagedObjectContext {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.parent = moc

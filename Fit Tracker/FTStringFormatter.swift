@@ -22,19 +22,17 @@ class FTStringFormatter: NSObject {
     }
     
     public func formatWorkoutSetString(amount: Double, value: String, filled: Bool = false) -> NSAttributedString {
-        let normal = Style("normal") {
-            $0.font = FTFonts.small.ft_toFontAttribute()
+        let normal = Style {
+            $0.font = FTFonts.small
         }
-        let bold = Style("bold") {
-            $0.font = FTFonts.headline.ft_toFontAttribute()
+        
+        let bold = Style {
+            $0.font = FTFonts.headline
             $0.color = filled ? UIColor.black : FTColours.workoutSetUnfilled
         }
         
-        let str = "<bold>\(amount.ft_cleanString)</bold> <normal>\(value)</normal>".renderTags(withStyles: [normal, bold])
-        
-        assert(str != nil, "Attributed string not correctly implemented")
-        
-        return str ?? NSAttributedString()
-        
+        let group = StyleGroup(base: normal, ["bold": bold])
+        let str = "<bold>\(amount.ft_cleanString)</bold> <normal>\(value)</normal>"
+        return str.set(style: group)
     }
 }

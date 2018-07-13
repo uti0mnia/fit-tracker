@@ -28,7 +28,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o87-gW-RM1">
                     <rect key="frame" x="0.0" y="0.0" width="623" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEq-a9-OZu" customClass="FTButton" customModule="Fit_Tracker" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEq-a9-OZu" customClass="FTWorkoutInfoBarButton" customModule="Fit_Tracker" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="116.5" height="40"/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="notes"/>
@@ -36,7 +36,7 @@
                                 <action selector="handleButtonTap:" destination="-1" eventType="touchUpInside" id="X32-AE-hf3"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-4F-5WR" customClass="FTButton" customModule="Fit_Tracker" customModuleProvider="target">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Fy-4F-5WR" customClass="FTWorkoutInfoBarButton" customModule="Fit_Tracker" customModuleProvider="target">
                             <rect key="frame" x="126.5" y="0.0" width="116.5" height="40"/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="plate calculator"/>
@@ -44,7 +44,7 @@
                                 <action selector="handleButtonTap:" destination="-1" eventType="touchUpInside" id="eVf-jS-slj"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHs-LL-RWu" customClass="FTButton" customModule="Fit_Tracker" customModuleProvider="target">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHs-LL-RWu" customClass="FTWorkoutInfoBarButton" customModule="Fit_Tracker" customModuleProvider="target">
                             <rect key="frame" x="253" y="0.0" width="117" height="40"/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="warmup"/>
@@ -52,7 +52,7 @@
                                 <action selector="handleButtonTap:" destination="-1" eventType="touchUpInside" id="yYh-9d-XU4"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev5-In-o80" customClass="FTButton" customModule="Fit_Tracker" customModuleProvider="target">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev5-In-o80" customClass="FTWorkoutInfoBarButton" customModule="Fit_Tracker" customModuleProvider="target">
                             <rect key="frame" x="380" y="0.0" width="116.5" height="40"/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="timer"/>
@@ -60,7 +60,7 @@
                                 <action selector="handleButtonTap:" destination="-1" eventType="touchUpInside" id="TFG-1t-q0e"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHU-uo-dtH" customClass="FTButton" customModule="Fit_Tracker" customModuleProvider="target">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHU-uo-dtH" customClass="FTWorkoutInfoBarButton" customModule="Fit_Tracker" customModuleProvider="target">
                             <rect key="frame" x="506.5" y="0.0" width="116.5" height="40"/>
                             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="more"/>

@@ -43,6 +43,7 @@ class FTColours: NSObject {
     public static let buttonTextLight = FTColours.lightBlue
     public static let buttonTextDark = FTColours.blue
     public static let buttonDarkenPercent: CGFloat = 0.3
+    public static let buttonWorkoutBar = UIColor(hexString: "#F6F6F6")!
     
     // Navigation
     public static let navigationTintColour = FTColours.blue

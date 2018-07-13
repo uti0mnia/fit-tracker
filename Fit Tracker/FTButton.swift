@@ -10,9 +10,13 @@ import UIKit
 
 class FTButton: UIButton {
     
-    public var highlightColour: UIColor = FTColours.buttonHighlighted
-    public var buttonColour: UIColor = FTColours.buttonEnabled
-    public var disabledColour: UIColor = FTColours.buttonDisabled
+    public var highlightColour: UIColor? = FTColours.buttonHighlighted
+    public var buttonColour: UIColor? = FTColours.buttonEnabled {
+        didSet {
+            backgroundColor = buttonColour
+        }
+    }
+    public var disabledColour: UIColor? = FTColours.buttonDisabled
     
     override var isHighlighted: Bool {
         didSet {
@@ -24,6 +28,22 @@ class FTButton: UIButton {
         didSet {
             backgroundColor = isEnabled ? buttonColour : disabledColour
         }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        commonInit()
+    }
+    
+    private func commonInit() {
+        backgroundColor = buttonColour
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

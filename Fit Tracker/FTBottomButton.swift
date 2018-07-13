@@ -33,16 +33,21 @@ class FTBottomButton: FTButton {
         layer.shadowOpacity = FTColours.buttonShadowOpacity
         layer.shadowRadius = FTLayout.buttonShadowRadius
         
-        buttonColour = FTColours.white
-        highlightColour = FTColours.white
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
         
-        titleLabel?.font = FTFonts.body
+        buttonColour = FTColours.white
+        highlightColour = FTColours.white.darken(byPercentage: 0.1)
+        disabledColour = FTColours.white
+        
+        titleLabel?.font = FTFonts.headline
         setTitleColor(FTColours.buttonEnabled, for: .normal)
         setTitleColor(FTColours.buttonHighlighted, for: .highlighted)
         setTitleColor(FTColours.buttonDisabled, for: .disabled)
         
         contentVerticalAlignment = .top
         contentEdgeInsets = UIEdgeInsets(top: FTLayout.mediumPadding, left: 0, bottom: 0, right: 0)
+        
     }
     
     override func layoutSubviews() {

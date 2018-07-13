@@ -29,6 +29,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     private var hasWorkouts: Bool {
         return frc.sections?.ft_safeAccess(at: 0)?.numberOfObjects ?? 0 > 0
     }
+    private var hasArchivedWorkouts: Bool {
+        return frc.sections?.ft_safeAccess(at: 1)?.numberOfObjects ?? 0 > 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,28 +48,44 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    @IBAction func addWorkout(_ sender: Any) {
-        let vc = UIViewController()
-        vc.hidesBottomBarWhenPushed = true
-        vc.view.backgroundColor = UIColor.blue
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
         tableView.setEditing(editing, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editWorkoutSegue":
+            if let vc = segue.destination as? FTEditWorkoutViewController {
+                vc.workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate
+            }
+        default:
+            break
+        }
+    }
+    
     private func configureWorkoutCell(_ cell: FTDetailCell, at indexPath: IndexPath) {
+        guard let indexPath = translateTableViewToFRC(indexPath: indexPath) else {
+            return
+        }
         let workout = frc.object(at: indexPath)
         cell.mainLabel.text = workout.name
         cell.detailLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("%d exercises", comment: "") as NSString, workout.exerciseCount) as String
+    }
+    
+    private func translateFRCToTableView(indexPath: IndexPath?) -> IndexPath? {
+        guard let indexPath = indexPath else {
+            return nil
+        }
+        return IndexPath(row: indexPath.row, section: indexPath.section + 1)
+    }
+    
+    private func translateTableViewToFRC(indexPath: IndexPath?) -> IndexPath? {
+        guard let indexPath = indexPath else {
+            return nil
+        }
+        return IndexPath(row: indexPath.row, section: indexPath.section - 1)
     }
     
     // MARK: - UITableViewDataSource
@@ -86,7 +105,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             return frc.sections?.ft_safeAccess(at: 0)?.numberOfObjects ?? 1
         case 2:
             // Archived Workouts
-            return frc.sections?.ft_safeAccess(at: 1)?.numberOfObjects ?? 0
+            return hasArchivedWorkouts ? 1 : 0
         default:
             return 0
         }
@@ -98,11 +117,16 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             cell.mainLabel?.text = "Empty Workout"
             cell.detailLabel?.text = "Quick Start. Add exercises on the fly!"
             return cell
-        } else if  indexPath.section == 1 && !hasWorkouts {
+        } else if indexPath.section == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTDetailCell
+            cell.mainLabel?.text = "Archived Workouts"
+            cell.detailLabel?.text = "View archived workouts"
+            return cell
+        } else if indexPath.section == 1 && !hasWorkouts {
             let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.emptyIdentifier, for: indexPath) as! FTEmptyWorkoutCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.emptyIdentifier, for: indexPath) as! FTDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FTMainWorkoutViewController.workoutIdentifier, for: indexPath) as! FTDetailCell
             configureWorkoutCell(cell, at: indexPath)
             return cell
         }
@@ -162,21 +186,29 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard newIndexPath?.section != 1 && indexPath?.section != 1 else {
+            // this is an archived routine so we don't update anything in that section
+            return
+        }
+        
         switch type {
         case .insert:
-            if let indexPath = newIndexPath {
+            if let indexPath = translateFRCToTableView(indexPath: newIndexPath) {
+                if indexPath.section == 1 && indexPath.row == 0 {
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
         case .move:
-            if let indexPath = indexPath, let newIndexPath = newIndexPath {
+            if let indexPath = translateFRCToTableView(indexPath: indexPath), let newIndexPath = translateFRCToTableView(indexPath: newIndexPath) {
                 tableView.moveRow(at: indexPath, to: newIndexPath)
             }
         case .update:
-            if let indexPath = indexPath {
-                tableView.reloadRows(at: [indexPath], with: .none)
+            if let indexPath = translateFRCToTableView(indexPath: indexPath) {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = translateFRCToTableView(indexPath: indexPath) {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }

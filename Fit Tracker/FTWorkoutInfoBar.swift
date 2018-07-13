@@ -41,21 +41,6 @@ class FTWorkoutInfoBar: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        buttonCollection.forEach({
-            $0.imageView?.contentMode = .scaleAspectFit
-            let inset = (FTLayout.infoBarItemHeight - FTLayout.infoBarItemIconSize) / 2
-            $0.imageEdgeInsets = UIEdgeInsets(top: inset, left: 0, bottom: inset, right: 0)
-            
-            $0.layer.cornerRadius = FTLayout.infoBarCornerRadius
-            $0.layer.shadowColor = FTColours.infoBarShadow.cgColor
-            $0.layer.shadowRadius = FTLayout.infoBarShadowRadius
-            $0.layer.shadowOpacity = FTColours.infoBarShadowOpacity
-            $0.layer.shadowOffset = CGSize.zero
-            
-            $0.layer.shouldRasterize = true
-            $0.layer.rasterizationScale = UIScreen.main.scale
-        })
     }
     
     @IBAction private func handleButtonTap(_ sender: UIButton) {
@@ -75,5 +60,12 @@ class FTWorkoutInfoBar: UIView {
         }
     }
     
+    public func disableAll() {
+        buttonCollection.forEach({ $0.isEnabled = false })
+    }
+    
+    public func enableAll() {
+        buttonCollection.forEach({ $0.isEnabled = true })
+    }
 
 }
