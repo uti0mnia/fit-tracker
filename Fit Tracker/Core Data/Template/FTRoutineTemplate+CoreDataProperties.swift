@@ -2,7 +2,7 @@
 //  FTRoutineTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-21.
+//  Created by Casey McLewin on 2018-07-13.
 //
 //
 
@@ -17,7 +17,7 @@ extension FTRoutineTemplate {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var workouts: Set<FTWorkoutTemplate>?
+    @NSManaged public var workouts: NSSet?
 
 }
 

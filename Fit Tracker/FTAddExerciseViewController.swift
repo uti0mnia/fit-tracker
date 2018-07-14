@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
-class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FTSelectExerciseCellDelegate {
+    
+    private static let exerciseReuse = "exerciseReuse"
+    private static let estimatedRowHeight: CGFloat = 50
     
     @IBOutlet private weak var tableView: FTTableView!
     @IBOutlet private weak var addSupersetButton: FTBottomButton!
@@ -22,6 +25,8 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    public var workout: FTWorkoutTemplate?
+    
     private let context = FTCoreDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
         let request = NSFetchRequest<FTExercise>(entityName: "FTExercise")
@@ -33,6 +38,11 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(FTSelectExerciseCell.getNib(), forCellReuseIdentifier: FTAddExerciseViewController.exerciseReuse)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = FTAddExerciseViewController.estimatedRowHeight
+        tableView.sectionIndexColor = FTColours.mainTint
 
         do {
             try frc.performFetch()
@@ -47,6 +57,12 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction private func handleAddExercises(_ sender: FTBottomButton) {
         
+    }
+    
+    private func configure(cell: FTSelectExerciseCell, atIndexPath indexPath: IndexPath) {
+        let exercise = frc.object(at: indexPath)
+        cell.mainLabel.text = exercise.name
+        cell.detailLabel.text = exercise.getBodyPart().description
     }
     
     // MARK: - UITableViewDelegate
@@ -67,7 +83,9 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTAddExerciseViewController.exerciseReuse, for: indexPath) as! FTSelectExerciseCell
+        configure(cell: cell, atIndexPath: indexPath)
+        return cell
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -81,6 +99,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return frc.sectionIndexTitles.ft_safeAccess(at: section)
     }
+    
     
     // MARK: - NSFetchedResultsControllerDelegate
     
@@ -122,5 +141,11 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+    }
+    
+    // MARK: - FTSelectExerciseCellDelegate
+    
+    func selectExerciseCellDidTapOnMoreInfo(_ selectExerciseCell: FTSelectExerciseCell) {
+        <#code#>
     }
 }

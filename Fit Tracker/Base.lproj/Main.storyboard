@@ -537,10 +537,10 @@
             </objects>
             <point key="canvasLocation" x="3828" y="156"/>
         </scene>
-        <!--Add Exercise View Controller-->
+        <!--Add Exercises-->
         <scene sceneID="P1f-ZJ-Zbc">
             <objects>
-                <viewController id="qR8-Xb-2bb" customClass="FTAddExerciseViewController" customModule="Fit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Add Exercises" id="qR8-Xb-2bb" customClass="FTAddExerciseViewController" customModule="Fit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lqv-yM-7m4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

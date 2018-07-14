@@ -2,7 +2,7 @@
 //  FTExercise+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-03-21.
+//  Created by Casey McLewin on 2018-07-13.
 //
 //
 
@@ -24,42 +24,24 @@ extension FTExercise {
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
     @NSManaged public var restTime: Int16
-    @NSManaged public var exerciseLogs: Set<FTExerciseLog>?
-    @NSManaged public var exerciseTemplates: Set<FTExerciseTemplate>?
     @NSManaged public var options: FTExerciseOptions?
+    @NSManaged public var abstractExercise: NSSet?
 
 }
 
-// MARK: Generated accessors for exerciseLogs
+// MARK: Generated accessors for abstractExercise
 extension FTExercise {
 
-    @objc(addExerciseLogsObject:)
-    @NSManaged public func addToExerciseLogs(_ value: FTExerciseLog)
+    @objc(addAbstractExerciseObject:)
+    @NSManaged public func addToAbstractExercise(_ value: FTAbstractExercise)
 
-    @objc(removeExerciseLogsObject:)
-    @NSManaged public func removeFromExerciseLogs(_ value: FTExerciseLog)
+    @objc(removeAbstractExerciseObject:)
+    @NSManaged public func removeFromAbstractExercise(_ value: FTAbstractExercise)
 
-    @objc(addExerciseLogs:)
-    @NSManaged public func addToExerciseLogs(_ values: NSSet)
+    @objc(addAbstractExercise:)
+    @NSManaged public func addToAbstractExercise(_ values: NSSet)
 
-    @objc(removeExerciseLogs:)
-    @NSManaged public func removeFromExerciseLogs(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for exerciseTemplates
-extension FTExercise {
-
-    @objc(addExerciseTemplatesObject:)
-    @NSManaged public func addToExerciseTemplates(_ value: FTExerciseTemplate)
-
-    @objc(removeExerciseTemplatesObject:)
-    @NSManaged public func removeFromExerciseTemplates(_ value: FTExerciseTemplate)
-
-    @objc(addExerciseTemplates:)
-    @NSManaged public func addToExerciseTemplates(_ values: NSSet)
-
-    @objc(removeExerciseTemplates:)
-    @NSManaged public func removeFromExerciseTemplates(_ values: NSSet)
+    @objc(removeAbstractExercise:)
+    @NSManaged public func removeFromAbstractExercise(_ values: NSSet)
 
 }
