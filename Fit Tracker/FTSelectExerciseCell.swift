@@ -15,10 +15,19 @@ protocol FTSelectExerciseCellDelegate: class {
 class FTSelectExerciseCell: UITableViewCell {
 
     @IBOutlet private weak var selectionImageView: UIImageView!
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet private weak var mainLabel: UILabel!
+    @IBOutlet private weak var detailLabel: UILabel!
     
-    public var exercise: FTExercise?
+    public var exercise: FTExercise? {
+        didSet {
+            guard let exercise = exercise else {
+                return
+            }
+            
+            mainLabel.text = exercise.name
+            detailLabel.text = exercise.getBodyPart().description
+        }
+    }
     
     public weak var delegate: FTSelectExerciseCellDelegate?
     
@@ -41,6 +50,6 @@ class FTSelectExerciseCell: UITableViewCell {
     }
 
     @IBAction private func handleInfoTap(_ sender: FTButton) {
-        
+        delegate?.selectExerciseCellDidTapOnMoreInfo(self)
     }
 }

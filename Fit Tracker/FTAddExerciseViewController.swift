@@ -25,7 +25,7 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    public var workout: FTWorkoutTemplate?
+    public var workout: FTAbstractWorkout?
     
     private let context = FTCoreDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTExercise> = {
@@ -47,22 +47,25 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         do {
             try frc.performFetch()
         } catch {
+            // TODO: Handle this gracefully
             assertionFailure("Yikes")
         }
     }
     
     @IBAction private func handleAddSuperset(_ sender: FTBottomButton) {
+        assert(selectedExercises.count >= 2, "Need at least 2 exercises")
+        
         
     }
     
     @IBAction private func handleAddExercises(_ sender: FTBottomButton) {
-        
+        assert(selectedExercises.count >= 1, "Need at least an exercise")
     }
     
     private func configure(cell: FTSelectExerciseCell, atIndexPath indexPath: IndexPath) {
         let exercise = frc.object(at: indexPath)
-        cell.mainLabel.text = exercise.name
-        cell.detailLabel.text = exercise.getBodyPart().description
+        cell.delegate = self
+        cell.exercise = exercise
     }
     
     // MARK: - UITableViewDelegate
@@ -70,6 +73,15 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let exercise = frc.object(at: indexPath)
         selectedExercises.append(exercise)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let index = selectedExercises.index(of: frc.object(at: indexPath)) else {
+            assertionFailure("If selected, should exist in 'selectedExercises'")
+            return
+        }
+        
+        selectedExercises.remove(at: index)
     }
     
     // MARK: - UITableViewDataSource
@@ -146,6 +158,6 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - FTSelectExerciseCellDelegate
     
     func selectExerciseCellDidTapOnMoreInfo(_ selectExerciseCell: FTSelectExerciseCell) {
-        <#code#>
+        
     }
 }

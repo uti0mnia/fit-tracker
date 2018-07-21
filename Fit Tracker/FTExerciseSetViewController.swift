@@ -15,12 +15,12 @@ class FTExerciseSetViewController: UIViewController, UITableViewDelegate, UITabl
     
     private let exerciseSetView = FTExerciseSetView()
     
-    public var exerciseTemplate: FTExerciseTemplate? {
+    public var exercise: FTAbstractExercise? {
         didSet {
-            sets = exerciseTemplate?.setTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTSetTemplate]()
+            sets = exercise?.sets?.sorted(by: { $0.index < $1.index }) ?? [FTAbstractSet]()
         }
     }
-    private var sets = [FTSetTemplate]()
+    private var sets = [FTAbstractSet]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class FTExerciseSetViewController: UIViewController, UITableViewDelegate, UITabl
         exerciseSetView.tableView.register(FTImageLabelCell.self, forCellReuseIdentifier: FTExerciseSetViewController.addSetIdentifier)
         exerciseSetView.tableView.rowHeight = FTLayout.workoutSetCellHeight
         
-        exerciseSetView.exerciseLabel.text = exerciseTemplate?.exercise?.name
+        exerciseSetView.exerciseLabel.text = exercise?.exercise?.name
     }
     
     // MARK: - UITableViewDataSource

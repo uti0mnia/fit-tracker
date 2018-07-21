@@ -75,14 +75,14 @@
 		C9D9CD8F20F932790042FF2E /* FTAddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD8E20F932790042FF2E /* FTAddExerciseViewController.swift */; };
 		C9D9CD9120F968500042FF2E /* FTSelectExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9020F968500042FF2E /* FTSelectExerciseCell.swift */; };
 		C9D9CD9320F968630042FF2E /* FTSelectExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D9CD9220F968630042FF2E /* FTSelectExerciseCell.xib */; };
-		C9D9CD9D20F980CA0042FF2E /* FTAbstractSet+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9520F980CA0042FF2E /* FTAbstractSet+CoreDataClass copy.swift */; };
-		C9D9CD9E20F980CA0042FF2E /* FTAbstractExercise+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9620F980CA0042FF2E /* FTAbstractExercise+CoreDataClass copy.swift */; };
-		C9D9CD9F20F980CA0042FF2E /* FTAbstractWorkout+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9720F980CA0042FF2E /* FTAbstractWorkout+CoreDataClass copy.swift */; };
-		C9D9CDA020F980CA0042FF2E /* FTAbstractExercise+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9820F980CA0042FF2E /* FTAbstractExercise+CoreDataProperties copy.swift */; };
-		C9D9CDA120F980CA0042FF2E /* FTAbstractGroup+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9920F980CA0042FF2E /* FTAbstractGroup+CoreDataClass copy.swift */; };
-		C9D9CDA220F980CA0042FF2E /* FTAbstractWorkout+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9A20F980CA0042FF2E /* FTAbstractWorkout+CoreDataProperties copy.swift */; };
-		C9D9CDA320F980CA0042FF2E /* FTAbstractSet+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9B20F980CA0042FF2E /* FTAbstractSet+CoreDataProperties copy.swift */; };
-		C9D9CDA420F980CA0042FF2E /* FTAbstractGroup+CoreDataProperties copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CD9C20F980CA0042FF2E /* FTAbstractGroup+CoreDataProperties copy.swift */; };
+		C9D9CDAD20FA3A480042FF2E /* FTAbstractExercise+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDA520FA3A480042FF2E /* FTAbstractExercise+CoreDataClass.swift */; };
+		C9D9CDAE20FA3A480042FF2E /* FTAbstractGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDA620FA3A480042FF2E /* FTAbstractGroup+CoreDataClass.swift */; };
+		C9D9CDAF20FA3A490042FF2E /* FTAbstractExercise+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDA720FA3A480042FF2E /* FTAbstractExercise+CoreDataProperties.swift */; };
+		C9D9CDB020FA3A490042FF2E /* FTAbstractWorkout+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDA820FA3A480042FF2E /* FTAbstractWorkout+CoreDataClass.swift */; };
+		C9D9CDB120FA3A490042FF2E /* FTAbstractWorkout+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDA920FA3A480042FF2E /* FTAbstractWorkout+CoreDataProperties.swift */; };
+		C9D9CDB220FA3A490042FF2E /* FTAbstractSet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDAA20FA3A480042FF2E /* FTAbstractSet+CoreDataProperties.swift */; };
+		C9D9CDB320FA3A490042FF2E /* FTAbstractSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDAB20FA3A480042FF2E /* FTAbstractSet+CoreDataClass.swift */; };
+		C9D9CDB420FA3A490042FF2E /* FTAbstractGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9CDAC20FA3A480042FF2E /* FTAbstractGroup+CoreDataProperties.swift */; };
 		C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */; };
 		C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */; };
 		C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */; };
@@ -164,14 +164,14 @@
 		C9D9CD8E20F932790042FF2E /* FTAddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAddExerciseViewController.swift; sourceTree = "<group>"; };
 		C9D9CD9020F968500042FF2E /* FTSelectExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSelectExerciseCell.swift; sourceTree = "<group>"; };
 		C9D9CD9220F968630042FF2E /* FTSelectExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSelectExerciseCell.xib; sourceTree = "<group>"; };
-		C9D9CD9520F980CA0042FF2E /* FTAbstractSet+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractSet+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9620F980CA0042FF2E /* FTAbstractExercise+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractExercise+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9720F980CA0042FF2E /* FTAbstractWorkout+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractWorkout+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9820F980CA0042FF2E /* FTAbstractExercise+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractExercise+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9920F980CA0042FF2E /* FTAbstractGroup+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractGroup+CoreDataClass copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9A20F980CA0042FF2E /* FTAbstractWorkout+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractWorkout+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9B20F980CA0042FF2E /* FTAbstractSet+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractSet+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
-		C9D9CD9C20F980CA0042FF2E /* FTAbstractGroup+CoreDataProperties copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractGroup+CoreDataProperties copy.swift"; sourceTree = "<group>"; };
+		C9D9CDA520FA3A480042FF2E /* FTAbstractExercise+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractExercise+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9D9CDA620FA3A480042FF2E /* FTAbstractGroup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9D9CDA720FA3A480042FF2E /* FTAbstractExercise+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractExercise+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9D9CDA820FA3A480042FF2E /* FTAbstractWorkout+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractWorkout+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9D9CDA920FA3A480042FF2E /* FTAbstractWorkout+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractWorkout+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9D9CDAA20FA3A480042FF2E /* FTAbstractSet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractSet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9D9CDAB20FA3A480042FF2E /* FTAbstractSet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractSet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9D9CDAC20FA3A480042FF2E /* FTAbstractGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FTAbstractGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9EC4E3920340BFB00CF538F /* FTMainWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMainWorkoutViewController.swift; sourceTree = "<group>"; };
 		C9EC4E4C20355C8A00CF538F /* FTStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTStringExtension.swift; sourceTree = "<group>"; };
 		C9EC4E5A2037E44C00CF538F /* FTGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTGlobals.swift; sourceTree = "<group>"; };
@@ -419,14 +419,14 @@
 		C9D9CD9420F980AE0042FF2E /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
-				C9D9CD9C20F980CA0042FF2E /* FTAbstractGroup+CoreDataProperties copy.swift */,
-				C9D9CD9B20F980CA0042FF2E /* FTAbstractSet+CoreDataProperties copy.swift */,
-				C9D9CD9A20F980CA0042FF2E /* FTAbstractWorkout+CoreDataProperties copy.swift */,
-				C9D9CD9920F980CA0042FF2E /* FTAbstractGroup+CoreDataClass copy.swift */,
-				C9D9CD9820F980CA0042FF2E /* FTAbstractExercise+CoreDataProperties copy.swift */,
-				C9D9CD9720F980CA0042FF2E /* FTAbstractWorkout+CoreDataClass copy.swift */,
-				C9D9CD9620F980CA0042FF2E /* FTAbstractExercise+CoreDataClass copy.swift */,
-				C9D9CD9520F980CA0042FF2E /* FTAbstractSet+CoreDataClass copy.swift */,
+				C9D9CDA520FA3A480042FF2E /* FTAbstractExercise+CoreDataClass.swift */,
+				C9D9CDA720FA3A480042FF2E /* FTAbstractExercise+CoreDataProperties.swift */,
+				C9D9CDA620FA3A480042FF2E /* FTAbstractGroup+CoreDataClass.swift */,
+				C9D9CDAC20FA3A480042FF2E /* FTAbstractGroup+CoreDataProperties.swift */,
+				C9D9CDAB20FA3A480042FF2E /* FTAbstractSet+CoreDataClass.swift */,
+				C9D9CDAA20FA3A480042FF2E /* FTAbstractSet+CoreDataProperties.swift */,
+				C9D9CDA820FA3A480042FF2E /* FTAbstractWorkout+CoreDataClass.swift */,
+				C9D9CDA920FA3A480042FF2E /* FTAbstractWorkout+CoreDataProperties.swift */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -634,36 +634,36 @@
 				C9775CFB2020441C00C2E9B3 /* AppDelegate.swift in Sources */,
 				C91C6B8720E3E590002E45C5 /* FTWorkoutSetCell.swift in Sources */,
 				C928F917204911CA001BA6CE /* FTExercise+CoreDataProperties.swift in Sources */,
-				C9D9CD9F20F980CA0042FF2E /* FTAbstractWorkout+CoreDataClass copy.swift in Sources */,
 				C9D9CD9120F968500042FF2E /* FTSelectExerciseCell.swift in Sources */,
 				C97B24BD204BDB57008B59F8 /* FTExerciseGroupLog+CoreDataProperties.swift in Sources */,
+				C9D9CDAD20FA3A480042FF2E /* FTAbstractExercise+CoreDataClass.swift in Sources */,
 				C91C6B6720E068E0002E45C5 /* FTWorkoutInfoBar.swift in Sources */,
 				C9A65FD0202D7ADB00C3AC72 /* FTSettingsManager.swift in Sources */,
 				C9BA602820DEB5C700BB8274 /* FTTableView.swift in Sources */,
 				C959B31620E4437E00B9173F /* FTBottomButton.swift in Sources */,
 				C9D9CD8F20F932790042FF2E /* FTAddExerciseViewController.swift in Sources */,
 				C939269C20F8E0770059AFDB /* FTCoreDataContextObserver.swift in Sources */,
-				C9D9CDA220F980CA0042FF2E /* FTAbstractWorkout+CoreDataProperties copy.swift in Sources */,
-				C9D9CDA420F980CA0042FF2E /* FTAbstractGroup+CoreDataProperties copy.swift in Sources */,
 				C927E8E72075D3E800CCA83F /* FTUIViewExtension.swift in Sources */,
 				C928F922204A46F5001BA6CE /* FTNavigationManager.swift in Sources */,
-				C9D9CD9E20F980CA0042FF2E /* FTAbstractExercise+CoreDataClass copy.swift in Sources */,
 				C97B24B9204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataProperties.swift in Sources */,
 				C9EC4E7E203BFADD00CF538F /* FTDoubleExtension.swift in Sources */,
 				C9A7E521206207210060EEE7 /* FTExerciseOptions+CoreDataClass.swift in Sources */,
 				C9EC4E5B2037E44C00CF538F /* FTGlobals.swift in Sources */,
+				C9D9CDB420FA3A490042FF2E /* FTAbstractGroup+CoreDataProperties.swift in Sources */,
 				C9BC606420D28762001BC510 /* FTSettingDetailsViewController.swift in Sources */,
 				C9EC4E3A20340BFB00CF538F /* FTMainWorkoutViewController.swift in Sources */,
 				C97B24B8204BD714008B59F8 /* FTExerciseGroupTemplate+CoreDataClass.swift in Sources */,
 				C9A65FCA202D78EB00C3AC72 /* FTLayout.swift in Sources */,
 				C959B30D20E4264F00B9173F /* FTExerciseSetView.swift in Sources */,
+				C9D9CDB020FA3A490042FF2E /* FTAbstractWorkout+CoreDataClass.swift in Sources */,
+				C9D9CDB320FA3A490042FF2E /* FTAbstractSet+CoreDataClass.swift in Sources */,
 				C9A58DF020F6570C00DD0B4E /* FTWorkoutInfoBarButton.swift in Sources */,
 				C928F910204911CA001BA6CE /* FTExerciseLog+CoreDataClass.swift in Sources */,
 				C9A7E524206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift in Sources */,
 				C928F91B204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift in Sources */,
 				C928F90F204911CA001BA6CE /* FTWorkoutTemplate+CoreDataClass.swift in Sources */,
 				C9BA602A20DFECD000BB8274 /* FTEmptyWorkoutView.swift in Sources */,
-				C9D9CD9D20F980CA0042FF2E /* FTAbstractSet+CoreDataClass copy.swift in Sources */,
+				C9D9CDAF20FA3A490042FF2E /* FTAbstractExercise+CoreDataProperties.swift in Sources */,
 				C9BC606620D812A9001BC510 /* FTButtonFactory.swift in Sources */,
 				C9EC4E5D2037E6F200CF538F /* FTStringFormatter.swift in Sources */,
 				C928F916204911CA001BA6CE /* FTSetTemplate+CoreDataProperties.swift in Sources */,
@@ -672,24 +672,24 @@
 				C91C6B7B20E2F965002E45C5 /* FTEditWorkoutViewController.swift in Sources */,
 				C959B33620E557F300B9173F /* FTExerciseSetViewController.swift in Sources */,
 				C9B355152047CE6100B48D04 /* Model.xcdatamodeld in Sources */,
-				C9D9CDA320F980CA0042FF2E /* FTAbstractSet+CoreDataProperties copy.swift in Sources */,
 				C9A7E520206207210060EEE7 /* FTExerciseOptions+CoreDataProperties.swift in Sources */,
 				C91C6B8320E3DD8E002E45C5 /* FTSegmentItem.swift in Sources */,
 				C928F913204911CA001BA6CE /* FTWorkoutLog+CoreDataClass.swift in Sources */,
 				C928F90E204911CA001BA6CE /* FTExerciseTemplate+CoreDataProperties.swift in Sources */,
 				C928F914204911CA001BA6CE /* FTWorkoutLog+CoreDataProperties.swift in Sources */,
+				C9D9CDAE20FA3A480042FF2E /* FTAbstractGroup+CoreDataClass.swift in Sources */,
+				C9D9CDB120FA3A490042FF2E /* FTAbstractWorkout+CoreDataProperties.swift in Sources */,
 				C928F91A204911CA001BA6CE /* FTSetTemplate+CoreDataClass.swift in Sources */,
 				C9BA602E20E017F700BB8274 /* FTEmptyWorkoutCell.swift in Sources */,
 				C9BA603120E0447B00BB8274 /* FTDetailCell.swift in Sources */,
 				C928F919204911CA001BA6CE /* FTSetLog+CoreDataProperties.swift in Sources */,
 				C928F912204911CA001BA6CE /* FTExerciseLog+CoreDataProperties.swift in Sources */,
-				C9D9CDA120F980CA0042FF2E /* FTAbstractGroup+CoreDataClass copy.swift in Sources */,
 				C97B24CE204E6016008B59F8 /* FTButton.swift in Sources */,
 				C928F911204911CA001BA6CE /* FTSetLog+CoreDataClass.swift in Sources */,
-				C9D9CDA020F980CA0042FF2E /* FTAbstractExercise+CoreDataProperties copy.swift in Sources */,
 				C9EC4E4D20355C8A00CF538F /* FTStringExtension.swift in Sources */,
 				C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */,
 				C9BC606820D813C5001BC510 /* FTRoundPixel.swift in Sources */,
+				C9D9CDB220FA3A490042FF2E /* FTAbstractSet+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

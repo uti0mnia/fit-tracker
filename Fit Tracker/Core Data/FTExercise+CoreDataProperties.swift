@@ -25,7 +25,7 @@ extension FTExercise {
     @NSManaged public var notes: String?
     @NSManaged public var restTime: Int16
     @NSManaged public var options: FTExerciseOptions?
-    @NSManaged public var abstractExercise: NSSet?
+    @NSManaged public var abstractExercise: Set<FTAbstractExercise>?
 
 }
 
