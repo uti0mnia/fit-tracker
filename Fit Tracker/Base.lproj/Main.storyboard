@@ -158,7 +158,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="566" y="604"/>
+            <point key="canvasLocation" x="566" y="584"/>
         </scene>
         <!--Stats-->
         <scene sceneID="FdK-dD-kQ1">
@@ -658,6 +658,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzh-dz-NOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="566" y="-918"/>
+        </scene>
+        <!--Edit Workout-->
+        <scene sceneID="ltL-Xk-3Pd">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="37b-cO-iOa" userLabel="Edit Workout" customClass="FTEditWorkoutViewController" customModule="Fit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2NE-P0-PxH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKy-4V-DPp" customClass="FTTimerBar" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="96" width="375" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Tp1-7T-gj5"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enabled" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0en-gq-2BO" customClass="FTExerciseSetView" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="6" y="116" width="363" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="Ny2-eE-afG"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-bu-gGx" customClass="FTTableView" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="6" y="412" width="363" height="322"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="37b-cO-iOa" id="AnC-20-9cQ"/>
+                                    <outlet property="delegate" destination="37b-cO-iOa" id="t2V-uH-CSa"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlv-Ur-32o" customClass="FTWorkoutInfoBar" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="6" y="50" width="363" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RtY-og-mKL"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="37b-cO-iOa" id="WeH-0L-9xj"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BT5-Io-G8e" customClass="FTBottomButton" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="734" width="375" height="78"/>
+                                <state key="normal" title="Add Exercises"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="zKy-4V-DPp" firstAttribute="leading" secondItem="Bvs-bD-wcs" secondAttribute="leading" id="CnM-cW-ZsD"/>
+                            <constraint firstItem="pa3-bu-gGx" firstAttribute="trailing" secondItem="Bvs-bD-wcs" secondAttribute="trailing" constant="-6" id="G5Q-Gg-nN6"/>
+                            <constraint firstItem="0en-gq-2BO" firstAttribute="top" secondItem="zKy-4V-DPp" secondAttribute="bottom" constant="6" id="H3T-Oe-dnc"/>
+                            <constraint firstItem="BT5-Io-G8e" firstAttribute="top" secondItem="pa3-bu-gGx" secondAttribute="bottom" id="HJH-aj-AD5"/>
+                            <constraint firstItem="0en-gq-2BO" firstAttribute="leading" secondItem="Bvs-bD-wcs" secondAttribute="leading" constant="6" id="Lfd-lb-Id9"/>
+                            <constraint firstItem="pa3-bu-gGx" firstAttribute="leading" secondItem="Bvs-bD-wcs" secondAttribute="leading" constant="6" id="MLT-k9-dpo"/>
+                            <constraint firstItem="hlv-Ur-32o" firstAttribute="trailing" secondItem="Bvs-bD-wcs" secondAttribute="trailing" constant="-6" id="MMh-ie-iu9"/>
+                            <constraint firstItem="hlv-Ur-32o" firstAttribute="top" secondItem="Bvs-bD-wcs" secondAttribute="top" constant="6" id="P1c-fV-izF"/>
+                            <constraint firstItem="zKy-4V-DPp" firstAttribute="top" secondItem="hlv-Ur-32o" secondAttribute="bottom" constant="6" id="VpP-Cj-8um"/>
+                            <constraint firstAttribute="bottom" secondItem="BT5-Io-G8e" secondAttribute="bottom" id="W1M-RZ-oWh"/>
+                            <constraint firstItem="pa3-bu-gGx" firstAttribute="top" secondItem="0en-gq-2BO" secondAttribute="bottom" constant="16" id="bhp-u1-Q0v"/>
+                            <constraint firstItem="BT5-Io-G8e" firstAttribute="top" secondItem="Bvs-bD-wcs" secondAttribute="bottom" constant="-44" id="dY9-Ux-wni"/>
+                            <constraint firstItem="hlv-Ur-32o" firstAttribute="leading" secondItem="Bvs-bD-wcs" secondAttribute="leading" constant="6" id="g0V-TS-YOr"/>
+                            <constraint firstItem="0en-gq-2BO" firstAttribute="trailing" secondItem="Bvs-bD-wcs" secondAttribute="trailing" constant="-6" id="ncw-MX-Txe"/>
+                            <constraint firstItem="zKy-4V-DPp" firstAttribute="trailing" secondItem="Bvs-bD-wcs" secondAttribute="trailing" id="tMM-l9-kTk"/>
+                            <constraint firstItem="BT5-Io-G8e" firstAttribute="trailing" secondItem="Bvs-bD-wcs" secondAttribute="trailing" id="tOK-ej-rn0"/>
+                            <constraint firstItem="BT5-Io-G8e" firstAttribute="leading" secondItem="Bvs-bD-wcs" secondAttribute="leading" id="uMJ-cr-FOW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bvs-bD-wcs"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="m1l-If-QXc" appends="YES" id="ng7-VX-bjO"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="exerciseSetView" destination="0en-gq-2BO" id="ndW-V3-aa6"/>
+                        <outlet property="exerciseTableView" destination="pa3-bu-gGx" id="YCU-uz-5p6"/>
+                        <outlet property="infoBar" destination="hlv-Ur-32o" id="ja9-tj-a34"/>
+                        <outlet property="tapGestureRecognizer" destination="ZnO-Uy-tik" id="4vR-f7-82Q"/>
+                        <outlet property="timerBar" destination="zKy-4V-DPp" id="HhG-xt-jQO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jfm-HW-C3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" id="m1l-If-QXc">
+                    <connections>
+                        <action selector="handleTap:" destination="37b-cO-iOa" id="9RJ-g0-cVC"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-486" y="584"/>
         </scene>
     </scenes>
     <resources>
