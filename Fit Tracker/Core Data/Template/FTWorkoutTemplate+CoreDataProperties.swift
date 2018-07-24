@@ -2,7 +2,7 @@
 //  FTWorkoutTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-07-13.
+//  Created by Casey McLewin on 2018-07-24.
 //
 //
 
@@ -23,9 +23,9 @@ extension FTWorkoutTemplate {
     @NSManaged public var isDefault: Bool
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
-    @NSManaged public var groupTemplates: NSSet?
+    @NSManaged public var groupTemplates: Set<FTExerciseGroupTemplate>?
     @NSManaged public var routine: FTRoutineTemplate?
-    @NSManaged public var workoutLogs: NSSet?
+    @NSManaged public var workoutLogs: Set<FTWorkoutLog>?
 
 }
 

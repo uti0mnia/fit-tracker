@@ -2,7 +2,7 @@
 //  FTSetTemplate+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-07-13.
+//  Created by Casey McLewin on 2018-07-24.
 //
 //
 
@@ -16,5 +16,9 @@ extension FTSetTemplate {
         return NSFetchRequest<FTSetTemplate>(entityName: "FTSetTemplate")
     }
 
+    @NSManaged public var amount: NSObject?
+    @NSManaged public var index: Int16
+    @NSManaged public var modifier: NSObject?
+    @NSManaged public var exerciseTemplate: FTExerciseTemplate?
 
 }

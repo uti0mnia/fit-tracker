@@ -2,7 +2,7 @@
 //  FTExerciseLog+CoreDataProperties.swift
 //  
 //
-//  Created by Casey McLewin on 2018-07-13.
+//  Created by Casey McLewin on 2018-07-24.
 //
 //
 
@@ -17,5 +17,27 @@ extension FTExerciseLog {
     }
 
     @NSManaged public var date: NSDate?
+    @NSManaged public var index: Int16
+    @NSManaged public var notes: String?
+    @NSManaged public var exercise: FTExercise?
+    @NSManaged public var groupLog: FTExerciseGroupLog?
+    @NSManaged public var setLogs: Set<FTSetLog>?
+
+}
+
+// MARK: Generated accessors for setLogs
+extension FTExerciseLog {
+
+    @objc(addSetLogsObject:)
+    @NSManaged public func addToSetLogs(_ value: FTSetLog)
+
+    @objc(removeSetLogsObject:)
+    @NSManaged public func removeFromSetLogs(_ value: FTSetLog)
+
+    @objc(addSetLogs:)
+    @NSManaged public func addToSetLogs(_ values: NSSet)
+
+    @objc(removeSetLogs:)
+    @NSManaged public func removeFromSetLogs(_ values: NSSet)
 
 }
