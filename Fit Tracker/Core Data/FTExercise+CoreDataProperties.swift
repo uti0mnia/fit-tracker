@@ -24,7 +24,7 @@ extension FTExercise {
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
     @NSManaged public var restTime: Int16
-    @NSManaged public var exerciseLogs: Set<FTExerciceLog>?
+    @NSManaged public var exerciseLogs: Set<FTExerciseLog>?
     @NSManaged public var exerciseTemplates: Set<FTExerciseTemplate>?
     @NSManaged public var options: FTExerciseOptions?
 

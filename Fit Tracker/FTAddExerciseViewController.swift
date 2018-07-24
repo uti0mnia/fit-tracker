@@ -25,7 +25,6 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    public var workout: FTAbstractWorkout?
     
     private let context = FTCoreDataController.shared.moc
     private lazy var frc: NSFetchedResultsController<FTExercise> = {

@@ -15,12 +15,12 @@ class FTExerciseSetViewController: UIViewController, UITableViewDelegate, UITabl
     
     private let exerciseSetView = FTExerciseSetView()
     
-    public var exercise: FTAbstractExercise? {
+    public var exercise: FTExerciseTemplate? {
         didSet {
-            sets = exercise?.sets?.sorted(by: { $0.index < $1.index }) ?? [FTAbstractSet]()
+            sets = exercise?.setTemplates?.sorted(by: { $0.index < $1.index }) ?? [FTSetTemplate]()
         }
     }
-    private var sets = [FTAbstractSet]()
+    private var sets = [FTSetTemplate]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

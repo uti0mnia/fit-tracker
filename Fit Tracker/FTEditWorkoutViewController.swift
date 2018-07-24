@@ -39,7 +39,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         return tf
     }()
     
-    public var workout: FTAbstractWorkout? {
+    public var workout: FTWorkoutTemplate? {
         didSet {
             workoutObserver = nil
             if let context = workout?.managedObjectContext {
@@ -69,8 +69,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        titleTextField.text = self.workout?.displayName ?? "New Workout"
-        if workout == nil || workout?.groups?.count == 0 {
+        titleTextField.text = self.workout?.name ?? "New Workout"
+        if workout == nil || workout?.groupTemplates?.count == 0 {
             handleEmptyWorkout()
         }
     }
@@ -111,7 +111,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         // TODO: Maybe not do unnecessary updates
-        titleTextField.text = workout.displayName
+        titleTextField.text = workout.name
         
     }
     
@@ -157,7 +157,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case titleTextField:
-            self.workout?.displayName = textField.text ?? "" == "" ? "New Workout" : textField.text
+            self.workout?.name = textField.text ?? "" == "" ? "New Workout" : textField.text
             view.subviews.forEach({ $0.isUserInteractionEnabled = true })
             tapGestureRecognizer.isEnabled = false
         default:
