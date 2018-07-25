@@ -10,8 +10,9 @@ import UIKit
 import CoreData
 
 protocol FTEditWorkoutModelProtocol {
-    var workoutName: String { get set }
+    var workoutName: String? { get set }
     var exerciseCount: Int { get }
+    func applyChanges()
 }
 
 protocol FTEditWorkoutInterfaceProtocol {
@@ -52,12 +53,12 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     public var editWorkoutInterface: FTEditWorkoutInterfaceProtocol?
-    public var editWorkoutModel: FTEditWorkoutModelProtocol?
+    public var editWorkoutViewModel: FTEditWorkoutModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(editWorkoutModel != nil, "Workout model shouldn't be nil")
+        assert(editWorkoutViewModel != nil, "Workout model shouldn't be nil")
         assert(editWorkoutInterface != nil, "Workout interface shouldn't be nil")
         
         view.backgroundColor = FTColours.background
@@ -75,16 +76,23 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        titleTextField.text = editWorkoutModel?.workoutName ?? "New Workout"
-        if editWorkoutModel?.exerciseCount ?? 0 == 0 {
+        titleTextField.text = editWorkoutViewModel?.workoutName ?? "New Workout"
+        if editWorkoutViewModel?.exerciseCount ?? 0 == 0 {
             handleEmptyWorkout()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        titleTextField.resignFirstResponder()
+        editWorkoutViewModel?.applyChanges()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if editWorkoutInterface?.canEditWorkoutName ?? false && editWorkoutModel?.workoutName == "" {
+        if editWorkoutInterface?.canEditWorkoutName ?? false && editWorkoutViewModel?.workoutName == nil {
             titleTextField.becomeFirstResponder()
         }
     }
@@ -115,7 +123,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     
     private func handleWorkoutUpdate() {
         // TODO: Maybe not do unnecessary updates
-        titleTextField.text = editWorkoutModel?.workoutName
+        titleTextField.text = editWorkoutViewModel?.workoutName
         
     }
     
@@ -166,7 +174,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case titleTextField:
-            editWorkoutModel?.workoutName = textField.text ?? ""
+            editWorkoutViewModel?.workoutName = textField.text ?? ""
             view.subviews.forEach({ $0.isUserInteractionEnabled = true })
             tapGestureRecognizer.isEnabled = false
         default:

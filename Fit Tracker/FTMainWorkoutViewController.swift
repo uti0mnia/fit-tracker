@@ -56,13 +56,10 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
     
     private func goToEditWorkout() {
         let vc = FTEditWorkoutViewController.instantiateFromStoryboard()
-        if let workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate {
-            workout.name = "New Workout"
-            let viewModel = FTEditWorkoutTemplateViewModel(workout: workout)
-            let interface = FTEditWorkoutTemplateInterface()
-            vc.editWorkoutModel = viewModel
-            vc.editWorkoutInterface = interface
-        }
+        let viewModel = FTEditWorkoutTemplateViewModel(context: context)
+        let interface = FTEditWorkoutTemplateInterface()
+        vc.editWorkoutViewModel = viewModel
+        vc.editWorkoutInterface = interface
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -200,7 +197,7 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         case .insert:
             if let indexPath = translateFRCToTableView(indexPath: newIndexPath) {
                 if indexPath.section == 1 && indexPath.row == 0 {
-                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    tableView.deleteRows(at: [indexPath], with: .none)
                 }
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
@@ -214,6 +211,9 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             }
         case .delete:
             if let indexPath = translateFRCToTableView(indexPath: indexPath) {
+                if indexPath.section == 1 && indexPath.row == 0 {
+                    tableView.insertRows(at: [indexPath], with: .none)
+                }
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
