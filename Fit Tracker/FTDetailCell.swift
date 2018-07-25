@@ -19,6 +19,8 @@ class FTDetailCell: UITableViewCell {
         mainLabel.font = FTFonts.body
         detailLabel.textColor = FTColours.descriptionText
         detailLabel.font = FTFonts.description
+        
+        selectionStyle = .none
     }
     
     public static func getNib() -> UINib {

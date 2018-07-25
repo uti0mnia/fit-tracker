@@ -515,6 +515,45 @@
             </objects>
             <point key="canvasLocation" x="1508" y="1297.536945812808"/>
         </scene>
+        <!--New Exercise View Controller-->
+        <scene sceneID="cLq-X8-5Hh">
+            <objects>
+                <viewController id="VEM-jw-2mZ" customClass="FTNewExerciseViewController" customModule="Fit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sd8-ec-tRl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZzM-Ys-ITR" customClass="FTTableView" customModule="Fit_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZzM-Ys-ITR" firstAttribute="top" secondItem="1xc-Qz-sby" secondAttribute="top" id="2Zp-PD-YMW"/>
+                            <constraint firstItem="ZzM-Ys-ITR" firstAttribute="bottom" secondItem="1xc-Qz-sby" secondAttribute="bottom" id="ATJ-zt-qOc"/>
+                            <constraint firstItem="ZzM-Ys-ITR" firstAttribute="trailing" secondItem="1xc-Qz-sby" secondAttribute="trailing" id="DjT-j4-hZB"/>
+                            <constraint firstItem="ZzM-Ys-ITR" firstAttribute="leading" secondItem="1xc-Qz-sby" secondAttribute="leading" id="PMU-hJ-NV6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1xc-Qz-sby"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="osk-uY-qNj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bam-mo-EuT">
+                            <connections>
+                                <action selector="handleCancelTap:" destination="VEM-jw-2mZ" id="vGb-J3-jZG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="FsX-tH-rbb"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="FsX-tH-rbb" id="a4Y-KP-DHH"/>
+                        <outlet property="tableView" destination="ZzM-Ys-ITR" id="TeR-Im-VOL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xB9-lK-sjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3408.8000000000002" y="1310.8374384236454"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="f1L-i9-Kip">
             <objects>
@@ -662,6 +701,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Op-XM-LaX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565.60000000000002" y="1297.536945812808"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UQJ-hR-YvG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZCo-Gu-Wg0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CTN-e5-grO">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VEM-jw-2mZ" kind="relationship" relationship="rootViewController" id="dKE-sK-b3C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fv5-Jw-pup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466.4000000000001" y="1310.8374384236454"/>
         </scene>
     </scenes>
     <resources>

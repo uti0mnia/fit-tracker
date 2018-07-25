@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53ADD1F2A311B0FC989B9ACF /* Pods_Fit_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CB329BFC37FDA63EBC38C /* Pods_Fit_Tracker.framework */; };
 		C902CEAD2042B3AA005A14E3 /* FTArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */; };
+		C918E557210938C40077C512 /* FTNewExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C918E556210938C40077C512 /* FTNewExerciseViewController.swift */; };
 		C91C6B6520E04F41002E45C5 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C91C6B6420E04F41002E45C5 /* Localizable.stringsdict */; };
 		C91C6B6720E068E0002E45C5 /* FTWorkoutInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91C6B6620E068E0002E45C5 /* FTWorkoutInfoBar.swift */; };
 		C91C6B7320E292D3002E45C5 /* FTWorkoutInfoBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C91C6B7220E292D3002E45C5 /* FTWorkoutInfoBar.xib */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		950B968F1984DBBF7771FA02 /* Pods-Fit Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fit Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fit Tracker/Pods-Fit Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		C902CEAC2042B3AA005A14E3 /* FTArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArrayExtension.swift; sourceTree = "<group>"; };
+		C918E556210938C40077C512 /* FTNewExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNewExerciseViewController.swift; sourceTree = "<group>"; };
 		C91C6B6420E04F41002E45C5 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		C91C6B6620E068E0002E45C5 /* FTWorkoutInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWorkoutInfoBar.swift; sourceTree = "<group>"; };
 		C91C6B7220E292D3002E45C5 /* FTWorkoutInfoBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTWorkoutInfoBar.xib; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				C9D9CD8E20F932790042FF2E /* FTAddExerciseViewController.swift */,
+				C918E556210938C40077C512 /* FTNewExerciseViewController.swift */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				C9A58DF020F6570C00DD0B4E /* FTWorkoutInfoBarButton.swift in Sources */,
 				C928F910204911CA001BA6CE /* FTExerciseLog+CoreDataClass.swift in Sources */,
 				C9A7E524206207C20060EEE7 /* FTRoutineTemplate+CoreDataProperties.swift in Sources */,
+				C918E557210938C40077C512 /* FTNewExerciseViewController.swift in Sources */,
 				C928F91B204911CA001BA6CE /* FTWorkoutTemplate+CoreDataProperties.swift in Sources */,
 				C928F90F204911CA001BA6CE /* FTWorkoutTemplate+CoreDataClass.swift in Sources */,
 				C9BA602A20DFECD000BB8274 /* FTEmptyWorkoutView.swift in Sources */,
