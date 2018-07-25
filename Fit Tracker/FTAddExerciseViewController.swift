@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FTSelectExerciseCellDelegate {
+class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, FTSelectExerciseCellDelegate, UISearchResultsUpdating {
     
     private static let exerciseReuse = "exerciseReuse"
     private static let estimatedRowHeight: CGFloat = 50
@@ -34,14 +34,31 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         frc.delegate = self
         return frc
     }()
+    
+    private lazy var searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchResultsUpdater = self
+        sc.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        return sc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.tintColor = FTColours.mainTint
+        
+        view.backgroundColor = FTColours.background
+        
+        addSupersetButton.rectCorner = [.topLeft]
+        addExerciseButton.rectCorner = [.topRight]
         
         tableView.register(FTSelectExerciseCell.getNib(), forCellReuseIdentifier: FTAddExerciseViewController.exerciseReuse)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = FTAddExerciseViewController.estimatedRowHeight
         tableView.sectionIndexColor = FTColours.mainTint
+        tableView.tableHeaderView = searchController.searchBar
 
         do {
             try frc.performFetch()
@@ -51,9 +68,12 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    public static func instantiateFromStoryboard() -> FTAddExerciseViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FTAddExerciseNavController") as! FTAddExerciseViewController
+    }
+    
     @IBAction private func handleAddSuperset(_ sender: FTBottomButton) {
         assert(selectedExercises.count >= 2, "Need at least 2 exercises")
-        
         
     }
     
@@ -61,10 +81,19 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
         assert(selectedExercises.count >= 1, "Need at least an exercise")
     }
     
+    @IBAction func handleDoneTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     private func configure(cell: FTSelectExerciseCell, atIndexPath indexPath: IndexPath) {
         let exercise = frc.object(at: indexPath)
         cell.delegate = self
         cell.exercise = exercise
+    }
+    
+    private func filterExercises(searchText: String)  {
+        
     }
     
     // MARK: - UITableViewDelegate
@@ -159,4 +188,11 @@ class FTAddExerciseViewController: UIViewController, UITableViewDelegate, UITabl
     func selectExerciseCellDidTapOnMoreInfo(_ selectExerciseCell: FTSelectExerciseCell) {
         
     }
+    
+    // MARK: - UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
 }

@@ -52,6 +52,10 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         return tf
     }()
     
+    private lazy var addExerciseVC: FTAddExerciseViewController = {
+        return FTAddExerciseViewController.instantiateFromStoryboard()
+    }()
+    
     public var editWorkoutInterface: FTEditWorkoutInterfaceProtocol?
     public var editWorkoutViewModel: FTEditWorkoutModelProtocol?
 
@@ -92,7 +96,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if editWorkoutInterface?.canEditWorkoutName ?? false && editWorkoutViewModel?.workoutName == nil {
+        if (isBeingPresented || isMovingToParentViewController) && editWorkoutInterface?.canEditWorkoutName ?? false && editWorkoutViewModel?.workoutName == nil {
             titleTextField.becomeFirstResponder()
         }
     }
@@ -131,10 +135,6 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         if sender.view == self.view && titleTextField.isEditing {
             titleTextField.resignFirstResponder()
         }
-    }
-    
-    @IBAction private func handleAddExerciseButton(_ sender: Any) {
-        
     }
     
     
