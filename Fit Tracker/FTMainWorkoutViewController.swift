@@ -54,17 +54,16 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
         tableView.setEditing(editing, animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "editWorkoutSegue":
-            if let vc = segue.destination as? FTEditWorkoutViewController {
-                let workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate
-                workout?.name = "New Workout"
-                vc.workout = workout
-            }
-        default:
-            break
+    private func goToEditWorkout() {
+        let vc = FTEditWorkoutViewController.instantiateFromStoryboard()
+        if let workout = NSEntityDescription.insertNewObject(forEntityName: String(describing: FTWorkoutTemplate.self), into: context) as? FTWorkoutTemplate {
+            workout.name = "New Workout"
+            let viewModel = FTEditWorkoutTemplateViewModel(workout: workout)
+            let interface = FTEditWorkoutTemplateInterface()
+            vc.editWorkoutModel = viewModel
+            vc.editWorkoutInterface = interface
         }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func configureWorkoutCell(_ cell: FTDetailCell, at indexPath: IndexPath) {
@@ -88,6 +87,10 @@ class FTMainWorkoutViewController: UIViewController, UITableViewDataSource, UITa
             return nil
         }
         return IndexPath(row: indexPath.row, section: indexPath.section - 1)
+    }
+    
+    @IBAction private func handleAddButtonTap(_ sender: Any) {
+        goToEditWorkout()
     }
     
     // MARK: - UITableViewDataSource

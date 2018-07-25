@@ -7,6 +7,17 @@
 //
 
 import UIKit
+import CoreData
+
+protocol FTEditWorkoutModelProtocol {
+    var workoutName: String { get set }
+    var exerciseCount: Int { get }
+}
+
+protocol FTEditWorkoutInterfaceProtocol {
+    var canEditWorkoutName: Bool { get }
+    
+}
 
 class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FTWorkoutInfoBarDelegate, UITextFieldDelegate {
     
@@ -24,7 +35,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         return view
     }()
     
-    private lazy var titleTextField: UITextField = {
+    public lazy var titleTextField: UITextField = {
         // TODO: Actually center this before I go crazy.
         let tf = UITextField(frame: CGRect.init(x: 0, y: 0, width: view.bounds.width, height: 44))
         
@@ -35,24 +46,19 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
         tf.font = FTFonts.body
         tf.minimumFontSize = 9
         tf.textAlignment = .center
+        tf.isUserInteractionEnabled = editWorkoutInterface?.canEditWorkoutName ?? false
         
         return tf
     }()
     
-    public var workout: FTWorkoutTemplate? {
-        didSet {
-            workoutObserver = nil
-            if let context = workout?.managedObjectContext {
-                workoutObserver = FTCoreDataContextObserver(context: context)
-            }
-        }
-    }
-    private var workoutObserver: FTCoreDataContextObserver?
+    public var editWorkoutInterface: FTEditWorkoutInterfaceProtocol?
+    public var editWorkoutModel: FTEditWorkoutModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(workout != nil, "Workout shouldn't be nil")
+        assert(editWorkoutModel != nil, "Workout model shouldn't be nil")
+        assert(editWorkoutInterface != nil, "Workout interface shouldn't be nil")
         
         view.backgroundColor = FTColours.background
         
@@ -69,8 +75,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        titleTextField.text = self.workout?.name ?? "New Workout"
-        if workout == nil || workout?.groupTemplates?.count == 0 {
+        titleTextField.text = editWorkoutModel?.workoutName ?? "New Workout"
+        if editWorkoutModel?.exerciseCount ?? 0 == 0 {
             handleEmptyWorkout()
         }
     }
@@ -78,7 +84,9 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        titleTextField.becomeFirstResponder()
+        if editWorkoutInterface?.canEditWorkoutName ?? false && editWorkoutModel?.workoutName == "" {
+            titleTextField.becomeFirstResponder()
+        }
     }
     
     public static func instantiateFromStoryboard() -> FTEditWorkoutViewController {
@@ -106,12 +114,8 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     private func handleWorkoutUpdate() {
-        guard let workout = self.workout else {
-            return
-        }
-        
         // TODO: Maybe not do unnecessary updates
-        titleTextField.text = workout.name
+        titleTextField.text = editWorkoutModel?.workoutName
         
     }
     
@@ -120,6 +124,11 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
             titleTextField.resignFirstResponder()
         }
     }
+    
+    @IBAction private func handleAddExerciseButton(_ sender: Any) {
+        
+    }
+    
     
     // MARK: - UITableViewDelegate
     
@@ -157,7 +166,7 @@ class FTEditWorkoutViewController: UIViewController, UITableViewDelegate, UITabl
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case titleTextField:
-            self.workout?.name = textField.text ?? "" == "" ? "New Workout" : textField.text
+            editWorkoutModel?.workoutName = textField.text ?? ""
             view.subviews.forEach({ $0.isUserInteractionEnabled = true })
             tapGestureRecognizer.isEnabled = false
         default:
